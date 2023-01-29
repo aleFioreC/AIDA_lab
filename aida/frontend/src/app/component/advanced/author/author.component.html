@@ -1,0 +1,22 @@
+<div class="grid-container mt-5">
+    <h1 class="mat-h1">Author</h1>
+    <mat-grid-list cols="2" rowHeight="250px">
+        <mat-grid-tile *ngFor="let card of cards" [colspan]="1" [rowspan]="1">
+            <mat-card class="dashboard-card">
+                <mat-card-header>
+                    <mat-card-title>
+                        {{card.role}}
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="dashboard-card-content">
+                    <div>
+                        <img [src]="imageSource" alt="Image Source">
+                    </div>
+                    {{card.name}}
+                    {{card.surname}}
+                    {{card.description}}
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

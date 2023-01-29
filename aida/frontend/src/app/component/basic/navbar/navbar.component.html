@@ -1,0 +1,21 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-toolbar color="primary">
+    <span>
+      <img class="img" src="assets/logo_unicas.gif">
+    </span>
+    <span class="cursor" routerLink="/">Aida </span>
+    <span class="example-spacer"></span>
+    <span class="cursor" routerLink="/author">Author</span>
+    <span class="example-divider"></span>
+    <span class="cursor" routerLink="/news">News</span>
+    <span class="example-divider"></span>
+    <span class="cursor" routerLink="/about">About</span>
+    <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <span class="example-divider"></span>
+    <mat-menu #menu="matMenu">
+      <li mat-menu-item routerLink="/settings"> Settings</li>
+    </mat-menu>
+  </mat-toolbar>
+</mat-sidenav-container>

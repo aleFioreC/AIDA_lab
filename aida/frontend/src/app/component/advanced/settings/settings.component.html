@@ -1,0 +1,27 @@
+<div class="row mt-2">
+
+    <h1 class="mat-h1 mt-2">Insert News</h1>
+
+    <div>
+        <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
+            (change)="uploadListener($event)" accept="*" />
+    </div>
+
+    <div *ngIf="imageSource">
+        <img class="img" [src]="imageSource" alt="Image Source">
+    </div>
+
+    <table class="example-full-width mt-2 mb-2 margin-left" cellspacing="0">
+        <tr>
+            <td>
+                <input type="text" class="form-control mt-2" placeholder="Title" [(ngModel)]="title">
+            </td>
+        </tr>
+        <tr class="mt-2">
+            <td>
+                <input type="text-area" class="form-control mt-2" placeholder="Description" [(ngModel)]="description">
+            </td>
+        </tr>
+    </table>
+    <button mat-raised-button class="margin-left" color="primary" (click)="save()">Save</button>
+</div>
