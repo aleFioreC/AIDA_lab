@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { GeneralService } from 'src/app/service/general.service';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-news',
@@ -13,15 +11,10 @@ export class NewsComponent implements OnInit {
 
   imageSource;
 
-  constructor(private _sanitizer: DomSanitizer, private generalService: GeneralService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.generalService.allNews().subscribe((res: any) => {
-      this.imageSource = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + res[0].file)
-      res.forEach(element => {
-        this.cards.push(element)
-      });
-    });
+
   }
 
 }

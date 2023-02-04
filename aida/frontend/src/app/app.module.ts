@@ -32,6 +32,8 @@ import { FormsModule } from '@angular/forms';
 import { SpinnerComponent } from './component/basic/spinner/spinner.component';
 import { LoadingInterceptor } from './service/interceptor/loading.interceptor';
 import { MatDialogModule } from '@angular/material/dialog';
+import { PublicationComponent } from './component/advanced/publication/publication.component';
+import { ContactComponent } from './component/advanced/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     DashboardComponent,
     GenericTableComponent,
     SettingsComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    PublicationComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

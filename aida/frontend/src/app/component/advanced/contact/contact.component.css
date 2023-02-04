@@ -1,0 +1,8 @@
+mat-card::ng-deep.mat-card-header-text{
+    margin: 0px !important
+}
+
+mat-card::ng-deep.mat-card-content.center{
+    text-align: center
+}
+

@@ -5,12 +5,16 @@ import { AuthorComponent } from './component/advanced/author/author.component';
 import { NewsComponent } from './component/advanced/news/news.component';
 import { AboutComponent } from './component/advanced/about/about.component';
 import { SettingsComponent } from './component/advanced/settings/settings.component';
+import { PublicationComponent } from './component/advanced/publication/publication.component';
+import { ContactComponent } from './component/advanced/contact/contact.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
-  { path: 'news', component: NewsComponent },
+  { path: 'research', component: NewsComponent },
+  { path: 'publication', component: PublicationComponent },
   { path: 'author', component: AuthorComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'contact', component: ContactComponent },
   { path: 'settings', component: SettingsComponent },
 ];
 

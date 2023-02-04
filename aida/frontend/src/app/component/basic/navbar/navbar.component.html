@@ -3,17 +3,25 @@
     <span>
       <img class="img" src="assets/logo_unicas.gif">
     </span>
-    <span class="cursor" routerLink="/">Aida </span>
-    <span class="example-spacer"></span>
-    <span class="cursor" routerLink="/author">Author</span>
-    <span class="example-divider"></span>
-    <span class="cursor" routerLink="/news">News</span>
-    <span class="example-divider"></span>
+    <span>
+      <img class="img" src="assets/logo_aida.png">
+    </span>
+    <span class="spacer"></span>
+    <span class="cursor" routerLink="/">Home</span>
+    <span class="divider"></span>
+    <span class="cursor" routerLink="/author">People</span>
+    <span class="divider"></span>
+    <span class="cursor" routerLink="/research">Research</span>
+    <span class="divider"></span>
+    <span class="cursor" routerLink="/publication">Publication</span>
+    <span class="divider"></span>
     <span class="cursor" routerLink="/about">About</span>
+    <span class="divider"></span>
+    <span class="cursor" routerLink="/contact">Contact</span>
     <button mat-button [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
     </button>
-    <span class="example-divider"></span>
+    <span class="divider"></span>
     <mat-menu #menu="matMenu">
       <li mat-menu-item routerLink="/settings"> Settings</li>
     </mat-menu>
