@@ -34,6 +34,7 @@ import { LoadingInterceptor } from './service/interceptor/loading.interceptor';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PublicationComponent } from './component/advanced/publication/publication.component';
 import { ContactComponent } from './component/advanced/contact/contact.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { ContactComponent } from './component/advanced/contact/contact.component
     MatListModule,
     MatNativeDateModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule
   ],
   providers: [
     {

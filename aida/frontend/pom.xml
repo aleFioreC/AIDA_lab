@@ -58,7 +58,7 @@
               <goal>npm</goal>
             </goals>
             <configuration>
-              <arguments>run build --prod</arguments>
+              <arguments>run build --prod --base-href='./'</arguments>
             </configuration>
           </execution>
 
@@ -69,7 +69,6 @@
 
     <resources>
       <resource>
-        <!-- we copy the content of the frontend directory in the final artifact -->
         <directory>dist/frontend</directory>
       </resource>
     </resources>

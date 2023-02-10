@@ -1,5 +1,19 @@
 <div class="row mt-2">
 
+    <h4>Scegli quale risorsa inserire:</h4>
+    <mat-form-field appearance="fill">
+        <mat-label>Choose an option</mat-label>
+        <mat-select [(value)]="selected" (selectionChange)="selection()">
+            <mat-option value="news">News</mat-option>
+            <mat-option value="people">People</mat-option>
+            <mat-option value="research">Research</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+</div>
+
+<div class="row mt-2" *ngIf="showNews">
+
     <h1 class="mat-h1 mt-2">Inserisci una nuova news</h1>
 
     <div>
@@ -23,5 +37,71 @@
             </td>
         </tr>
     </table>
-    <button mat-raised-button class="margin-left" color="primary" (click)="save()">Inserisci</button>
+    <button mat-raised-button class="margin-left" color="primary" (click)="saveNews()">Inserisci</button>
+</div>
+
+<div class="row mt-2" *ngIf="showResearch">
+
+    <h1 class="mat-h1 mt-2">Inserisci una nuova ricerca</h1>
+
+    <div>
+        <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
+            (change)="uploadListener($event)" accept="*" />
+    </div>
+
+    <div *ngIf="imageSource">
+        <img class="img" [src]="imageSource" alt="Image Source">
+    </div>
+
+    <table class="full-width mt-2 mb-2 margin-left" cellspacing="0">
+        <tr>
+            <td>
+                <input type="text" class="form-control mt-2" placeholder="Title" [(ngModel)]="title">
+            </td>
+        </tr>
+        <tr class="mt-2">
+            <td>
+                <input type="text-area" class="form-control mt-2" placeholder="Description" [(ngModel)]="description">
+            </td>
+        </tr>
+        <tr class="mt-2">
+            <td>
+                <input type="text-area" class="form-control mt-2" placeholder="Year" [(ngModel)]="year">
+            </td>
+        </tr>
+    </table>
+    <button mat-raised-button class="margin-left" color="primary" (click)="saveResearch()">Inserisci</button>
+</div>
+
+<div class="row mt-2" *ngIf="showPeople;">
+
+    <h1 class="mat-h1 mt-2">Inserisci un nuovo membro del team di ricerca</h1>
+
+    <div>
+        <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
+            (change)="uploadListener($event)" accept="*" />
+    </div>
+
+    <div *ngIf="imageSource">
+        <img class="img" [src]="imageSource" alt="Image Source">
+    </div>
+
+    <table class="full-width mt-2 mb-2 margin-left" cellspacing="0">
+        <tr>
+            <td>
+                <input type="text" class="form-control mt-2" placeholder="Name" [(ngModel)]="name">
+            </td>
+        </tr>
+        <tr class="mt-2">
+            <td>
+                <input type="text-area" class="form-control mt-2" placeholder="Surname" [(ngModel)]="surname">
+            </td>
+        </tr>
+        <tr class="mt-2">
+            <td>
+                <input type="text-area" class="form-control mt-2" placeholder="Role" [(ngModel)]="role">
+            </td>
+        </tr>
+    </table>
+    <button mat-raised-button class="margin-left" color="primary" (click)="savePeople()">Inserisci</button>
 </div>

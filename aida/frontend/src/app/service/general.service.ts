@@ -11,7 +11,6 @@ export class GeneralService {
 
     constructor(private httpClient: HttpClient) {
         this.environment = environment.base_url
-        console.log(this.environment)
     }
 
     allNews() {
@@ -28,6 +27,14 @@ export class GeneralService {
 
     saveNews(body: any) {
         return this.httpClient.post(this.environment + 'news/save', body);
+    }
+
+    savePeople(body: any) {
+        return this.httpClient.post(this.environment + 'people/save', body);
+    }
+
+    saveResearch(body: any) {
+        return this.httpClient.post(this.environment + 'research/save', body);
     }
 
     login(body: any) {
