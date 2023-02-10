@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'research', component: NewsComponent },
   { path: 'publication', component: PublicationComponent },
-  { path: 'author', component: AuthorComponent },
+  { path: 'people', component: AuthorComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'settings', component: SettingsComponent },

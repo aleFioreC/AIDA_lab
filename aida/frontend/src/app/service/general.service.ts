@@ -22,8 +22,8 @@ export class GeneralService {
         return this.httpClient.get(this.environment + 'news/findById?=' + id);
     }
 
-    allAuthor() {
-        return this.httpClient.get(this.environment + 'author/findAll');
+    allPeople() {
+        return this.httpClient.get(this.environment + 'people/findAll');
     }
 
     saveNews(body: any) {
