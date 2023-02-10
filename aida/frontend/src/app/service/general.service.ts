@@ -25,6 +25,10 @@ export class GeneralService {
         return this.httpClient.get(this.environment + 'people/findAll');
     }
 
+    allResearch() {
+        return this.httpClient.get(this.environment + 'research/findAll');
+    }
+
     saveNews(body: any) {
         return this.httpClient.post(this.environment + 'news/save', body);
     }

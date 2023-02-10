@@ -13,15 +13,13 @@ export class DashboardComponent {
 
   cards: CardLayout[] = [];
 
-  imageSource;
-
   constructor(private _sanitizer: DomSanitizer, private generalService: GeneralService) { }
 
   ngOnInit(): void {
-    this.generalService.allNews().subscribe((res: News[]) => {
-      this.imageSource = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + res[0].file)
+    this.generalService.allNews().subscribe((res: any) => {
       res.forEach(element => {
-        let card = new CardLayout(element.title, '2', '1', element.description)
+        element.file = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file)
+        let card = new CardLayout(element.title, '2', '1', element.description, element.file)
         this.cards.push(card)
       });
     });

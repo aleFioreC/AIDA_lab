@@ -1,26 +1,6 @@
 <div class="grid-container mt-5">
     <h1 class="mat-h1">Publications</h1>
-    <mat-grid-list cols="2" rowHeight="300px">
-        <mat-grid-tile *ngFor="let card of cards" [colspan]="2" [rowspan]="1">
-            <mat-card class="aida-card">
-                <mat-card-header>
-                    <mat-card-title>
-                        {{card.title}}
-                    </mat-card-title>
-                </mat-card-header>
-                <mat-card-content class="dashboard-card-content">
-                    <div class="row">
-                        <div class="col-sm-5">
-                            <img class="img" [src]="imageSource" alt="Image Source">
-                        </div>
-                        <div class="col-sm-7">
-                            <p>
-                                {{card.description}}
-                            </p>
-                        </div>
-                    </div>
-                </mat-card-content>
-            </mat-card>
-        </mat-grid-tile>
-    </mat-grid-list>
+    <div class="grid-container center mt-5">
+        <img class="img center" src="assets/work_inprogress.png">
+    </div>
 </div>

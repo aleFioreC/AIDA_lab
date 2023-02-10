@@ -35,6 +35,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { PublicationComponent } from './component/advanced/publication/publication.component';
 import { ContactComponent } from './component/advanced/contact/contact.component';
 import { MatSelectModule } from '@angular/material/select';
+import { ResearchComponent } from './component/advanced/research/research.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { MatSelectModule } from '@angular/material/select';
     SettingsComponent,
     SpinnerComponent,
     PublicationComponent,
-    ContactComponent
+    ContactComponent,
+    ResearchComponent
   ],
   imports: [
     BrowserModule,
