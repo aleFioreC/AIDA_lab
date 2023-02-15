@@ -1,11 +1,13 @@
 export class CardLayout {
+    id: number;
     title: string;
     cols: string;
     rows: string;
     description: string;
     file: string;
 
-    constructor(title, cols, rows, description, file) {
+    constructor(id, title, cols, rows, description, file) {
+        this.id = id
         this.title = title
         this.cols = cols
         this.rows = rows

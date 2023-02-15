@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { News } from 'src/app/model/news';
 import { GeneralService } from 'src/app/service/general.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ModalDialogComponent } from '../../basic/modal-dialog/modal-dialog.component';
 import { Router } from '@angular/router';
 import { People } from 'src/app/model/people';
@@ -76,7 +76,7 @@ export class SettingsComponent implements OnInit {
   saveNews() {
     let obj: News = new News(this.title, this.description, this.imageSource)
     this.generalService.saveNews(obj).subscribe(res => {
-      this.dialog.open(ModalDialogComponent)
+      this.openDialog()
       this.router.navigate(['/news']);
     })
   }
@@ -84,7 +84,7 @@ export class SettingsComponent implements OnInit {
   saveResearch() {
     let obj: Research = new Research(this.title, this.description, this.year, this.imageSource)
     this.generalService.saveResearch(obj).subscribe(res => {
-      this.dialog.open(ModalDialogComponent)
+      this.openDialog()
       this.router.navigate(['/research']);
     })
   }
@@ -92,9 +92,26 @@ export class SettingsComponent implements OnInit {
   savePeople() {
     let obj: People = new People(this.name, this.surname, this.role, this.imageSource)
     this.generalService.savePeople(obj).subscribe(res => {
-      this.dialog.open(ModalDialogComponent)
+      this.openDialog()
       this.router.navigate(['/people']);
     })
+  }
+
+
+  openDialog() {
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    dialogConfig.data = {
+      title: 'Operazione completata',
+      message: 'La risorsa è stata salvata.'
+    };
+
+    this.dialog.open(ModalDialogComponent, dialogConfig);
+
   }
 
 }

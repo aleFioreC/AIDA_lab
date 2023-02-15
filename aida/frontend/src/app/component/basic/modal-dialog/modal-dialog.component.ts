@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-modal-dialog',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalDialogComponent implements OnInit {
 
-  constructor() { }
+  message;
+  title;
+
+  constructor(
+    @Inject(MAT_DIALOG_DATA) data) {
+    this.title = data.title
+    this.message = data.message;
+  }
 
   ngOnInit(): void {
   }

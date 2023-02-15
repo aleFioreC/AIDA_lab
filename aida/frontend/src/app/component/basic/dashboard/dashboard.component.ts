@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { GeneralService } from 'src/app/service/general.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CardLayout } from 'src/app/model/card_layout';
-import { News } from 'src/app/model/news';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ModalDialogComponent } from '../modal-dialog/modal-dialog.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,16 +14,44 @@ export class DashboardComponent {
 
   cards: CardLayout[] = [];
 
-  constructor(private _sanitizer: DomSanitizer, private generalService: GeneralService) { }
+  constructor(private _sanitizer: DomSanitizer, public dialog: MatDialog, private generalService: GeneralService) { }
 
   ngOnInit(): void {
+    this.findAll()
+  }
+
+  remove(card) {
+    this.generalService.deletNews(card.id).subscribe(res => {
+      this.findAll()
+      this.openDialog()
+    })
+  }
+
+  findAll() {
+    this.cards = []
     this.generalService.allNews().subscribe((res: any) => {
       res.forEach(element => {
         element.file = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file)
-        let card = new CardLayout(element.title, '2', '1', element.description, element.file)
+        let card = new CardLayout(element.idNews, element.title, '2', '1', element.description, element.file)
         this.cards.push(card)
       });
     });
+  }
+
+  openDialog() {
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    dialogConfig.data = {
+      title: 'Operazione completata',
+      message: 'La risorsa è stata eliminata.'
+    };
+
+    this.dialog.open(ModalDialogComponent, dialogConfig);
+
   }
 
 }

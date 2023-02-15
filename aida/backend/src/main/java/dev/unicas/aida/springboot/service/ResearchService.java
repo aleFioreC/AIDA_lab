@@ -23,4 +23,8 @@ public class ResearchService {
 		return (List<Research>) this.repository.findAll();
 	}
 	
+	public boolean delete(Integer id) {
+		this.repository.deleteById(id);;
+		return true;
+	}
 }

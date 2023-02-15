@@ -6,3 +6,9 @@
   .aida-card  {
     width: 800px;
   }
+
+  .more-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }

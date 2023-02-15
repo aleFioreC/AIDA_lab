@@ -22,4 +22,9 @@ public class NewsService {
 	public List<News> findAll() {
 		return (List<News>) this.repository.findAll();
 	}
+	
+	public boolean delete(Integer id) {
+		this.repository.deleteById(id);;
+		return true;
+	}
 }

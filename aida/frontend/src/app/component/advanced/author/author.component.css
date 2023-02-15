@@ -2,3 +2,10 @@
     width: 300px;
     height: 300px
 }
+
+.more-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
+  

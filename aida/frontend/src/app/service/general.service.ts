@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
     providedIn: 'root',
@@ -39,6 +39,18 @@ export class GeneralService {
 
     saveResearch(body: any) {
         return this.httpClient.post(this.environment + 'research/save', body);
+    }
+
+    deletNews(id: number) {
+        return this.httpClient.delete(this.environment + 'news/delete/' + id);
+    }
+
+    deletePeople(id: number) {
+        return this.httpClient.delete(this.environment + 'people/delete/' + id);
+    }
+
+    deleteResearch(id: number) {
+        return this.httpClient.delete(this.environment + 'research/delete/' + id);
     }
 
     login(body: any) {

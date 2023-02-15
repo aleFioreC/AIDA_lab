@@ -23,4 +23,8 @@ public class PeopleService {
 		return (List<People>) this.repository.findAll();
 	}
 	
+	public boolean delete(Integer id) {
+		this.repository.deleteById(id);;
+		return true;
+	}
 }

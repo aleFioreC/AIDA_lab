@@ -10,7 +10,7 @@
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item>Expand</button>
+              <button (click)="remove(card)" mat-menu-item>Remove</button>
             </mat-menu>
           </mat-card-title>
         </mat-card-header>
