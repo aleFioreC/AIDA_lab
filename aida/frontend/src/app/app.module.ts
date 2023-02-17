@@ -36,6 +36,7 @@ import { PublicationComponent } from './component/advanced/publication/publicati
 import { ContactComponent } from './component/advanced/contact/contact.component';
 import { MatSelectModule } from '@angular/material/select';
 import { ResearchComponent } from './component/advanced/research/research.component';
+import { DashboardDetailComponent } from './component/basic/dashboard-detail/dashboard-detail.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ResearchComponent } from './component/advanced/research/research.compon
     SpinnerComponent,
     PublicationComponent,
     ContactComponent,
-    ResearchComponent
+    ResearchComponent,
+    DashboardDetailComponent
   ],
   imports: [
     BrowserModule,

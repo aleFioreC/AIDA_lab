@@ -1,6 +1,7 @@
 package dev.unicas.aida.springboot.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,10 @@ public class NewsService {
 
 	public List<News> findAll() {
 		return (List<News>) this.repository.findAll();
+	}
+	
+	public Optional<News> findById(Integer id) {
+		return this.repository.findById(id);
 	}
 	
 	public boolean delete(Integer id) {

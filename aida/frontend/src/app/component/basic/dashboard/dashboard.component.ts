@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { CardLayout } from 'src/app/model/card_layout';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ModalDialogComponent } from '../modal-dialog/modal-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +15,7 @@ export class DashboardComponent {
 
   cards: CardLayout[] = [];
 
-  constructor(private _sanitizer: DomSanitizer, public dialog: MatDialog, private generalService: GeneralService) { }
+  constructor(private _sanitizer: DomSanitizer, public dialog: MatDialog, private generalService: GeneralService, private router: Router) { }
 
   ngOnInit(): void {
     this.findAll()
@@ -25,6 +26,10 @@ export class DashboardComponent {
       this.findAll()
       this.openDialog()
     })
+  }
+
+  open(card) {
+    this.router.navigate(['/news/' + card.id])
   }
 
   findAll() {

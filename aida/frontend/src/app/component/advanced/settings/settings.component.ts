@@ -77,7 +77,7 @@ export class SettingsComponent implements OnInit {
     let obj: News = new News(this.title, this.description, this.imageSource)
     this.generalService.saveNews(obj).subscribe(res => {
       this.openDialog()
-      this.router.navigate(['/news']);
+      this.router.navigate(['/']);
     })
   }
 

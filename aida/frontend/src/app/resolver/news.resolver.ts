@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { GeneralService } from '../service/general.service';
 
 @Injectable({ providedIn: 'root' })
-export class CameriereResolver implements Resolve<any>{
+export class NewsResolver implements Resolve<any>{
 
     constructor(private service: GeneralService) { }
 
