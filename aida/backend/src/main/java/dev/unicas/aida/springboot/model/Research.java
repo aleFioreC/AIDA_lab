@@ -13,12 +13,12 @@ public class Research {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idNews;
+	private Integer idResearch;
 
 	private String title;
 
 	private String description;
-	
+
 	private Integer year;
 
 	private Date creation_date;
@@ -29,7 +29,7 @@ public class Research {
 	public Research() {
 	}
 
-	public Research(String title, String description, String file,Date creation_date) {
+	public Research(String title, String description, String file, Date creation_date) {
 		super();
 		this.title = title;
 		this.description = description;
@@ -37,12 +37,12 @@ public class Research {
 		this.creation_date = creation_date;
 	}
 
-	public Integer getIdNews() {
-		return idNews;
+	public Integer getIdResearch() {
+		return idResearch;
 	}
 
-	public void setIdNews(Integer idNews) {
-		this.idNews = idNews;
+	public void setIdResearch(Integer idResearch) {
+		this.idResearch = idResearch;
 	}
 
 	public String getTitle() {

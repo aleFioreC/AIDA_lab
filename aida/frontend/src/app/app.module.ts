@@ -36,7 +36,9 @@ import { PublicationComponent } from './component/advanced/publication/publicati
 import { ContactComponent } from './component/advanced/contact/contact.component';
 import { MatSelectModule } from '@angular/material/select';
 import { ResearchComponent } from './component/advanced/research/research.component';
-import { DashboardDetailComponent } from './component/basic/dashboard-detail/dashboard-detail.component';
+import { DashboardDetailComponent } from './component/basic/dashboard/dashboard-detail/dashboard-detail.component';
+import { ResearchDetailComponent } from './component/advanced/research/research-detail/research-detail.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,8 @@ import { DashboardDetailComponent } from './component/basic/dashboard-detail/das
     PublicationComponent,
     ContactComponent,
     ResearchComponent,
-    DashboardDetailComponent
+    DashboardDetailComponent,
+    ResearchDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +84,10 @@ import { DashboardDetailComponent } from './component/basic/dashboard-detail/das
   ],
   providers: [
     {
-      provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true
+      provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true,
+    },
+    {
+      provide: LocationStrategy, useClass: HashLocationStrategy,
     }
   ],
   bootstrap: [AppComponent]

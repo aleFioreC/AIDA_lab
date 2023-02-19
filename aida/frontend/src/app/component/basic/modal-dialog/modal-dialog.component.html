@@ -1,5 +1,11 @@
 <h1 mat-dialog-title>{{title}}</h1>
-<div mat-dialog-content>{{message}}</div>
+<div mat-dialog-content>
+    <div *ngIf="icon">
+        <mat-icon>{{icon}}</mat-icon>
+    </div>
+    <div *ngIf="message"> {{message}}
+    </div>
+</div>
 <div mat-dialog-actions>
     <button mat-button mat-dialog-close>Close</button>
 </div>

@@ -3,6 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { GeneralService } from 'src/app/service/general.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ModalDialogComponent } from '../../basic/modal-dialog/modal-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-research',
@@ -13,7 +14,7 @@ export class ResearchComponent implements OnInit {
 
   cards = [];
 
-  constructor(private _sanitizer: DomSanitizer, public dialog: MatDialog, private generalService: GeneralService) { }
+  constructor(private _sanitizer: DomSanitizer, public dialog: MatDialog, private generalService: GeneralService, private router: Router) { }
 
   ngOnInit(): void {
     this.findAll()
@@ -24,6 +25,10 @@ export class ResearchComponent implements OnInit {
       this.findAll()
       this.openDialog()
     })
+  }
+
+  open(card) {
+    this.router.navigate(['/research/' + card.idResearch])
   }
 
   findAll() {

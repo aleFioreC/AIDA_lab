@@ -7,12 +7,19 @@ import { PublicationComponent } from './component/advanced/publication/publicati
 import { ResearchComponent } from './component/advanced/research/research.component';
 import { SettingsComponent } from './component/advanced/settings/settings.component';
 import { DashboardComponent } from './component/basic/dashboard/dashboard.component';
-import { DashboardDetailComponent } from './component/basic/dashboard-detail/dashboard-detail.component';
 import { NewsResolver } from './resolver/news.resolver';
+import { DashboardDetailComponent } from './component/basic/dashboard/dashboard-detail/dashboard-detail.component';
+import { ResearchDetailComponent } from './component/advanced/research/research-detail/research-detail.component';
+import { ResearchResolver } from './resolver/research.resolver';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'research', component: ResearchComponent },
+  {
+    path: 'research/:id',
+    component: ResearchDetailComponent,
+    resolve: { research: ResearchResolver }
+  },
   {
     path: 'news/:id',
     component: DashboardDetailComponent,

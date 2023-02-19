@@ -107,7 +107,8 @@ export class SettingsComponent implements OnInit {
 
     dialogConfig.data = {
       title: 'Operazione completata',
-      message: 'La risorsa è stata salvata.'
+      message: 'La risorsa è stata salvata.',
+      icon: 'check'
     };
 
     this.dialog.open(ModalDialogComponent, dialogConfig);

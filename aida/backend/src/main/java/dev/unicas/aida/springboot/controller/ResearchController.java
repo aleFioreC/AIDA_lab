@@ -1,6 +1,7 @@
 package dev.unicas.aida.springboot.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -28,6 +29,13 @@ public class ResearchController {
 	public List<Research> findAll() {
 		return service.findAll();
 	}
+	
+    @GetMapping(value = "/findById/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Research findById(@PathVariable Integer id) {
+    	Optional<Research> research  = service.findById(id);
+    	if (research.isPresent()) return research.get();
+    	return null;
+    }
 
 	@PostMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Research save(@RequestBody Research r) {
