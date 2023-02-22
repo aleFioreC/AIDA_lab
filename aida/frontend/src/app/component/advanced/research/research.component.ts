@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { GeneralService } from 'src/app/service/general.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -34,11 +34,16 @@ export class ResearchComponent implements OnInit {
     }
   }
 
-  remove(card) {
-    this.generalService.deleteResearch(card.idResearch).subscribe(res => {
-      this.findAll()
-      this.openDialog()
-    })
+  /*   remove(card) {
+      this.generalService.deleteResearch(card.idResearch).subscribe(res => {
+        this.findAll()
+        this.openDialog()
+      })
+    } */
+
+  @ViewChild('focus', { read: ElementRef }) tableInput: ElementRef;
+  scrollUp(): void {
+    setTimeout(() => window.scrollTo(0, 0));
   }
 
   open(card) {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GeneralService } from 'src/app/service/general.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-private-section',
@@ -15,7 +15,8 @@ export class PrivateSectionComponent implements OnInit {
   showError1: boolean = false;
   showError2: boolean = false;
 
-  constructor(private service: GeneralService, private router: Router) {
+  constructor(private route: ActivatedRoute,
+    private service: GeneralService, private router: Router) {
   }
 
   ngOnInit() {
@@ -30,15 +31,7 @@ export class PrivateSectionComponent implements OnInit {
       this.showError1 = false;
       this.showError2 = false;
       if (res) {
-        this.router.navigate(['/settings'], { state: res })
-      } else {
-        if (user.username) {
-          this.showError1 = true;
-        } else {
-          this.showError2 = true;
-        }
-        this.username = ""
-        this.password = ""
+        this.router.navigate(['private'], { state: { user: res } });
       }
     })
   }

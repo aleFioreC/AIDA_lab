@@ -19,8 +19,8 @@ import dev.unicas.aida.springboot.model.News;
 import dev.unicas.aida.springboot.service.NewsService;
 
 @RestController
-@RequestMapping("/news")
 @CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/news")
 public class NewsController {
 	
 	@Autowired

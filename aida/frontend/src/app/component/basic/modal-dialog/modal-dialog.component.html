@@ -1,11 +1,12 @@
+<div class="modal-div" [ngClass]="class"></div>
 <h1 mat-dialog-title>{{title}}</h1>
 <div mat-dialog-content>
     <div *ngIf="icon">
         <mat-icon>{{icon}}</mat-icon>
     </div>
-    <div *ngIf="message"> {{message}}
+    <div class="content" *ngIf="message"> {{message}}
     </div>
 </div>
-<div mat-dialog-actions>
-    <button mat-button mat-dialog-close>Close</button>
-</div>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Chiudi</button>
+</mat-dialog-actions>

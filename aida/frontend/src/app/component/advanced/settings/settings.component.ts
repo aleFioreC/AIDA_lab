@@ -6,6 +6,7 @@ import { ModalDialogComponent } from '../../basic/modal-dialog/modal-dialog.comp
 import { Router } from '@angular/router';
 import { People } from 'src/app/model/people';
 import { Research } from 'src/app/model/research';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-settings',
@@ -29,7 +30,13 @@ export class SettingsComponent implements OnInit {
   showResearch: boolean = false;
 
 
-  constructor(private generalService: GeneralService, public dialog: MatDialog, public router: Router) { }
+  constructor(private generalService: GeneralService, public dialog: MatDialog, public router: Router, private location: Location) {
+    let loc: any = this.location.getState();
+    console.log(loc)
+    if (!loc.user) {
+      this.router.navigate(['/']);
+    }
+  }
 
   async uploadListener($event: any) {
     let files = $event.srcElement.files;
@@ -104,11 +111,13 @@ export class SettingsComponent implements OnInit {
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
+    dialogConfig.height = '220px'
+    dialogConfig.width = '600px'
 
     dialogConfig.data = {
       title: 'Operazione completata',
-      message: 'La risorsa è stata salvata.',
-      icon: 'check'
+      message: 'Salvataggio effettuato correttamente.',
+      class: 'success-class'
     };
 
     this.dialog.open(ModalDialogComponent, dialogConfig);

@@ -19,7 +19,7 @@
               </button>
               <mat-menu #menu="matMenu" xPosition="before">
                 <button (click)="open(card)" mat-menu-item>Detail</button>
-                <button (click)="remove(card)" mat-menu-item>Remove</button>
+                <!-- <button (click)="remove(card)" mat-menu-item>Remove</button> -->
               </mat-menu>
             </mat-card-title>
           </mat-card-header>
@@ -38,6 +38,8 @@
         </mat-card>
       </mat-grid-tile>
     </mat-grid-list>
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    <div class="container-fluid" #focus>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" (page)="scrollUp()"></mat-paginator>
+    </div>
   </div>
 </div>

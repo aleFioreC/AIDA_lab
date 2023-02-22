@@ -11,12 +11,14 @@ export class ModalDialogComponent implements OnInit {
   message;
   title;
   icon;
+  class;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) data) {
     this.title = data.title
     this.message = data.message;
     this.icon = data.icon;
+    this.class = data.class
   }
 
   ngOnInit(): void {

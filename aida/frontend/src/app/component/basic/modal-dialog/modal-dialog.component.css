@@ -1,0 +1,29 @@
+::ng-deep .mat-dialog-container {
+      padding-top: 0;
+}
+
+.mat-dialog-actions {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+
+.mat-dialog-title {
+  margin-top: 15px !important;
+}
+
+.modal-div {
+    margin-left: -24px;
+    margin-right: -24px;
+}
+
+.error-class {
+    background-color: var(--bs-danger);
+    height:50px; 
+    width:auto
+}
+
+.success-class {
+    background-color: var(--bs-success);
+    height:50px; 
+    width:auto
+}

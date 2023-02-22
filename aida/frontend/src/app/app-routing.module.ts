@@ -31,16 +31,10 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   {
-    path: 'private', component: PrivateSectionComponent,
-    children: [
-      { path: '', redirectTo: 'private', pathMatch: 'full' },
-      { path: 'settings', component: SettingsComponent },
-    ]
+    path: 'login', component: PrivateSectionComponent
   },
   {
-    path: '*',
-    pathMatch: 'full',
-    redirectTo: ''
+    path: 'private', component: SettingsComponent
   }
 ];
 

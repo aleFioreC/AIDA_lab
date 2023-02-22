@@ -1,4 +1,4 @@
-import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, ViewChild, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { GeneralService } from 'src/app/service/general.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CardLayout } from 'src/app/model/card_layout';
@@ -23,11 +23,16 @@ export class DashboardComponent {
 
   constructor(private changeDetectorRef: ChangeDetectorRef, private _sanitizer: DomSanitizer, public dialog: MatDialog, private generalService: GeneralService, private router: Router) { }
 
-  remove(card) {
-    this.generalService.deletNews(card.id).subscribe(res => {
-      this.findAll()
-      this.openDialog()
-    })
+  /*   remove(card) {
+      this.generalService.deletNews(card.id).subscribe(res => {
+        this.findAll()
+        this.openDialog()
+      })
+    } */
+
+  @ViewChild('focus', { read: ElementRef }) tableInput: ElementRef;
+  scrollUp(): void {
+    setTimeout(() => window.scrollTo(0, 0));
   }
 
   open(card) {

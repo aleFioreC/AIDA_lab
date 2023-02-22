@@ -4,7 +4,8 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
-  HttpErrorResponse
+  HttpErrorResponse,
+  HttpHeaders
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
@@ -23,7 +24,11 @@ export class LoadingInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     this.totalRequests++;
     this.loadingService.setLoading(true);
-    return next.handle(request)
+    const headers = new HttpHeaders({
+      Authorization: 'Basic ' + btoa("user" + ':' + "admin")
+    });
+    const clonedRequest = request.clone({ headers: headers });
+    return next.handle(clonedRequest)
       .pipe(
         finalize(() => {
           this.totalRequests--;
@@ -32,15 +37,24 @@ export class LoadingInterceptor implements HttpInterceptor {
           }
         }),
         catchError((error: HttpErrorResponse) => {
-          let errorMsg = `Error Code: ${error.status},  Message: ${error.message}`;
+          let errorMsg = ''
+          if (error.status != 403) {
+            errorMsg = 'Errore durante l\'\operazione.';
+          } else {
+            errorMsg = 'Non sei autorizzato ad accedere alla sezione.'
+          }
           const dialogConfig = new MatDialogConfig();
           dialogConfig.disableClose = true;
           dialogConfig.autoFocus = true;
+          dialogConfig.height = '220px'
+          dialogConfig.width = '600px'
+          dialogConfig.panelClass = 'full-screen-modal'
           dialogConfig.data = {
-            title: 'Errore!',
-            message: errorMsg
+            title: 'Errore',
+            message: errorMsg,
+            class: 'error-class'
           };
-          this.dialog.open(ModalDialogComponent, dialogConfig);
+          this.dialog.open(ModalDialogComponent, dialogConfig)
           return throwError(errorMsg);
         })
       )

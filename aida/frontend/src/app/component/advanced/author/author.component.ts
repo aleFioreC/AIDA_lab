@@ -19,12 +19,12 @@ export class AuthorComponent implements OnInit {
     this.findAll()
   }
 
-  remove(card) {
-    this.generalService.deletePeople(card.idPeople).subscribe(res => {
-      this.findAll()
-      this.openDialog()
-    })
-  }
+  /*   remove(card) {
+      this.generalService.deletePeople(card.idPeople).subscribe(res => {
+        this.findAll()
+        this.openDialog()
+      })
+    } */
 
   findAll() {
     this.cards = []
