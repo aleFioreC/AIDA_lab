@@ -1,4 +1,4 @@
-<div class="grid-container mt-5">
+<div class="grid-container mt-2">
     <h1 class="mat-h1">Research</h1>
     <mat-grid-list cols="2" rowHeight="300px">
         <mat-grid-tile *ngFor="let card of obs | async" [colspan]="2" [rowspan]="1">
@@ -11,7 +11,6 @@
                         </button>
                         <mat-menu #menu="matMenu" xPosition="before">
                             <button (click)="open(card)" mat-menu-item>Detail</button>
-                            <!--                             <button (click)="remove(card)" mat-menu-item>Remove</button> -->
                         </mat-menu>
                     </mat-card-title>
                 </mat-card-header>

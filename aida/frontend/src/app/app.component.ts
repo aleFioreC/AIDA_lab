@@ -1,7 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
-import { BreakpointObserver } from '@angular/cdk/layout';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -11,25 +9,6 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 })
 export class AppComponent implements OnInit {
 
-  @ViewChild(MatSidenav)
-  sidenav!: MatSidenav;
-  isShow: boolean = false;
-
-  constructor(private observer: BreakpointObserver) { }
-
-  ngOnInit(
-  ) {
-  }
-
-  ngAfterViewInit() {
-    this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
-      if (res.matches) {
-        this.sidenav.mode = 'over';
-        this.sidenav.close();
-        this.isShow = false;
-      } else {
-        this.isShow = true
-      }
-    });
+  ngOnInit(): void {
   }
 }

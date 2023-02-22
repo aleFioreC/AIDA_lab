@@ -1,5 +1,9 @@
-<mat-sidenav-container class="sidenav-container">
+<div style="height: 80vh;">
+
   <mat-toolbar class="background">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
     <span>
       <img class="img" src="assets/logo_aida.png">
     </span>
@@ -7,27 +11,48 @@
       <span>AIDA LAB</span> <br>
       Artificial Intelligence and Data Analysis Laboratory
     </span>
-    <span class="spacer"></span>
-    <span class="cursor" routerLink="/">Home</span>
-    <span class="divider"></span>
-    <span class="cursor" routerLink="/people">People</span>
-    <span class="divider"></span>
-    <span class="cursor" routerLink="/research">Research</span>
-    <span class="divider"></span>
-    <span class="cursor" routerLink="/publication">Publication</span>
-    <span class="divider"></span>
-    <span class="cursor" routerLink="/about">About</span>
-    <span class="divider"></span>
-    <span class="cursor" routerLink="/contact">Contact</span>
-    <span class="divider"></span>
-    <span class="divider"></span>
-    <span class="cursor" routerLink="/login">Login</span>
+    <span class="menu-spacer"></span>
+    <div *ngIf="isShow">
+      <span class="spacer"></span>
+      <span class="cursor" routerLink="/">Home</span>
+      <span class="divider"></span>
+      <span class="cursor" routerLink="/people">People</span>
+      <span class="divider"></span>
+      <span class="cursor" routerLink="/research">Research</span>
+      <span class="divider"></span>
+      <span class="cursor" routerLink="/publication">Publication</span>
+      <span class="divider"></span>
+      <span class="cursor" routerLink="/about">About</span>
+      <span class="divider"></span>
+      <span class="cursor" routerLink="/contact">Contact</span>
+      <span class="divider"></span>
+      <span class="divider"></span>
+      <span class="cursor" routerLink="/login">Login</span>
+    </div>
   </mat-toolbar>
-</mat-sidenav-container>
 
-<div class="site-header iu-hide bg-secondary text-white">
-  <div class="site-title" id="headerText">
-    <div>
-      AIDA</div>
-  </div>
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav">
+      <mat-nav-list>
+        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="" mat-list-item>News</a>
+        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/people" mat-list-item>People</a>
+        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/research" mat-list-item>Research</a>
+        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/publication" mat-list-item>Publication</a>
+        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/about" mat-list-item>About</a>
+        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/contact" mat-list-item>Contact</a>
+        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/login" mat-list-item>Login</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="site-header iu-hide bg-secondary text-white">
+        <div class="site-title" id="headerText">
+          AIDA
+        </div>
+      </div>
+      <div class="container">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
 </div>
