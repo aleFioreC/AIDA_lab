@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { GeneralService } from 'src/app/service/general.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CardLayout } from 'src/app/model/card_layout';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ModalDialogComponent } from '../modal-dialog/modal-dialog.component';
 import { Router } from '@angular/router';
+import { MatPaginator } from '@angular/material/paginator';
+import { Observable } from 'rxjs';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,12 +17,11 @@ import { Router } from '@angular/router';
 export class DashboardComponent {
 
   cards: CardLayout[] = [];
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  dataSource: MatTableDataSource<CardLayout>;
+  obs: Observable<any>;
 
-  constructor(private _sanitizer: DomSanitizer, public dialog: MatDialog, private generalService: GeneralService, private router: Router) { }
-
-  ngOnInit(): void {
-    this.findAll()
-  }
+  constructor(private changeDetectorRef: ChangeDetectorRef, private _sanitizer: DomSanitizer, public dialog: MatDialog, private generalService: GeneralService, private router: Router) { }
 
   remove(card) {
     this.generalService.deletNews(card.id).subscribe(res => {
@@ -32,14 +34,28 @@ export class DashboardComponent {
     this.router.navigate(['/news/' + card.id])
   }
 
+  ngOnInit() {
+    this.changeDetectorRef.detectChanges();
+    this.findAll()
+  }
+
+  ngOnDestroy() {
+    if (this.dataSource) {
+      this.dataSource.disconnect();
+    }
+  }
+
   findAll() {
     this.cards = []
     this.generalService.allNews().subscribe((res: any) => {
       res.forEach(element => {
-        element.file = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file)
+        element.file = element.file != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file) : null
         let card = new CardLayout(element.idNews, element.title, '2', '1', element.description, element.file)
         this.cards.push(card)
       });
+      this.dataSource = new MatTableDataSource<CardLayout>(this.cards);
+      this.dataSource.paginator = this.paginator;
+      this.obs = this.dataSource.connect();
     });
   }
 

@@ -6,6 +6,6 @@ import dev.unicas.aida.springboot.model.User;
 
 public interface UserRepository extends CrudRepository<User, Integer> {
 
-	User findUtenteByUsernameAndPassword(String username, String password);
+	User findUserByUsername(String username);
 
 }

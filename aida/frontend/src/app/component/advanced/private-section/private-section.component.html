@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="d-flex justify-content-center" style="margin-top:100px">
+        <div class="user_card">
+            <div class="d-flex justify-content-center">
+                <div class="brand_logo_container">
+                    <span>
+                        <img class="img" src="assets/logo_aida.png">
+                    </span>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center form_container">
+                <form>
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" [(ngModel)]="username" name="username" class="form-control input_user"
+                            placeholder="Username">
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="password" [(ngModel)]="password" name="password" class="form-control input_pass"
+                            value="" placeholder="Password">
+                    </div>
+                    <div class="d-flex justify-content-center mt-3 login_container">
+                        <button type="button" name="button" class="btn login_btn" (click)="login()">Login</button>
+                    </div>
+                    <div class="d-flex justify-content-center mt-3 login_container">
+                        <span *ngIf="showError1">Errore nelle credenziali inserite, riprovare</span>
+                        <span *ngIf="showError2">Errore: credenziali assenti, riprovare</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

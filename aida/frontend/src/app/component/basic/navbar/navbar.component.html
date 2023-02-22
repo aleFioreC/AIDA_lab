@@ -1,5 +1,5 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-toolbar color="primary">
+  <mat-toolbar class="background">
     <span>
       <img class="img" src="assets/logo_aida.png">
     </span>
@@ -19,12 +19,15 @@
     <span class="cursor" routerLink="/about">About</span>
     <span class="divider"></span>
     <span class="cursor" routerLink="/contact">Contact</span>
-    <button mat-button [matMenuTriggerFor]="menu">
-      <mat-icon>more_vert</mat-icon>
-    </button>
     <span class="divider"></span>
-    <mat-menu #menu="matMenu">
-      <li mat-menu-item routerLink="/settings"> Settings</li>
-    </mat-menu>
+    <span class="divider"></span>
+    <span class="cursor" routerLink="/private">Login</span>
   </mat-toolbar>
 </mat-sidenav-container>
+
+<div class="site-header iu-hide bg-secondary text-white">
+  <div class="site-title" id="headerText">
+    <div>
+      AIDA</div>
+  </div>
+</div>

@@ -39,6 +39,7 @@ import { ResearchComponent } from './component/advanced/research/research.compon
 import { DashboardDetailComponent } from './component/basic/dashboard/dashboard-detail/dashboard-detail.component';
 import { ResearchDetailComponent } from './component/advanced/research/research-detail/research-detail.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { PrivateSectionComponent } from './component/advanced/private-section/private-section.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     ContactComponent,
     ResearchComponent,
     DashboardDetailComponent,
-    ResearchDetailComponent
+    ResearchDetailComponent,
+    PrivateSectionComponent
   ],
   imports: [
     BrowserModule,

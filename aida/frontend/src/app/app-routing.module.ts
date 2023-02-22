@@ -11,6 +11,7 @@ import { NewsResolver } from './resolver/news.resolver';
 import { DashboardDetailComponent } from './component/basic/dashboard/dashboard-detail/dashboard-detail.component';
 import { ResearchDetailComponent } from './component/advanced/research/research-detail/research-detail.component';
 import { ResearchResolver } from './resolver/research.resolver';
+import { PrivateSectionComponent } from './component/advanced/private-section/private-section.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -29,7 +30,13 @@ const routes: Routes = [
   { path: 'people', component: AuthorComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'settings', component: SettingsComponent },
+  {
+    path: 'private', component: PrivateSectionComponent,
+    children: [
+      { path: '', redirectTo: 'private', pathMatch: 'full' },
+      { path: 'settings', component: SettingsComponent },
+    ]
+  },
   {
     path: '*',
     pathMatch: 'full',

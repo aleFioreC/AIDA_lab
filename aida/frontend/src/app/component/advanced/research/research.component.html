@@ -1,7 +1,7 @@
 <div class="grid-container mt-5">
     <h1 class="mat-h1">Research</h1>
     <mat-grid-list cols="2" rowHeight="300px">
-        <mat-grid-tile *ngFor="let card of cards" [colspan]="2" [rowspan]="1">
+        <mat-grid-tile *ngFor="let card of obs | async" [colspan]="2" [rowspan]="1">
             <mat-card class="aida-card">
                 <mat-card-header>
                     <mat-card-title>
@@ -30,4 +30,5 @@
             </mat-card>
         </mat-grid-tile>
     </mat-grid-list>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </div>

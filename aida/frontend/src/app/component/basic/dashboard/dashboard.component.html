@@ -1,33 +1,43 @@
-<div class="grid-container mt-5">
-  <h1 class="mat-h1">Dashboard</h1>
-  <mat-grid-list cols="2" rowHeight="350px">
-    <mat-grid-tile *ngFor="let card of cards" [colspan]="card.cols" [rowspan]="card.rows">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>
-            {{card.title}}
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu" xPosition="before">
-              <button (click)="open(card)" mat-menu-item>Detail</button>
-              <button (click)="remove(card)" mat-menu-item>Remove</button>
-            </mat-menu>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <div class="row">
-            <div class="col-sm-5">
-              <img class="img" [src]="card.file" alt="Image Source">
+<div class="grid-container mt-2">
+  <div class="col-md-12">
+    <h1>AIDA LAB <small>Artificial Intelligence and Data Analysis</small></h1>
+    <p class="CinecaSiteIntroduction">Welcome to the Home Page of the Artificial Intelligence and Data Analysis Group of
+      the DIEI, the University of Cassino and Southern Lazio, Cassino, Italy.
+    </p>
+  </div>
+
+  <div class="col-md-12 mt-3">
+    <h1 class="mat-h1">Ultime news</h1>
+    <mat-grid-list cols="2" rowHeight="350px">
+      <mat-grid-tile *ngFor="let card of obs | async" [colspan]="card.cols" [rowspan]="card.rows">
+        <mat-card class="dashboard-card">
+          <mat-card-header>
+            <mat-card-title>
+              {{card.title}}
+              <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button (click)="open(card)" mat-menu-item>Detail</button>
+                <button (click)="remove(card)" mat-menu-item>Remove</button>
+              </mat-menu>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <div class="row">
+              <div class="col-sm-5">
+                <img *ngIf="card.file" class="img" [src]="card.file" alt="Image Source">
+              </div>
+              <div class="col-sm-7">
+                <p>
+                  {{card.description}}
+                </p>
+              </div>
             </div>
-            <div class="col-sm-7">
-              <p>
-                {{card.description}}
-              </p>
-            </div>
-          </div>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
 </div>

@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-@Entity // This tells Hibernate to make a table out of this class
+@Entity 
 public class User {
 
 	@Id
@@ -22,7 +22,7 @@ public class User {
 	private String password;
 
 	@ManyToOne
-	private UserRole tipologiaRuolo;
+	private UserRole role;
 
 	public Integer getIdUser() {
 		return idUser;
@@ -64,12 +64,12 @@ public class User {
 		this.password = password;
 	}
 
-	public UserRole getTipologiaRuolo() {
-		return tipologiaRuolo;
+	public UserRole getRole() {
+		return role;
 	}
 
-	public void setTipologiaRuolo(UserRole tipologiaRuolo) {
-		this.tipologiaRuolo = tipologiaRuolo;
+	public void setRole(UserRole role) {
+		this.role = role;
 	}
 
 }
