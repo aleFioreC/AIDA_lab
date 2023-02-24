@@ -90,3 +90,8 @@ mat-sidenav {
 mat-sidenav-container {
   height: calc(100vh - 65px);
 }
+.site-header {
+  padding: 20px;
+  background: linear-gradient(rgba(96,110,208,0.2), rgba(96,110,208,0.2)),url(/aida/assets/cover-bg-light.png);
+  background-size: cover;
+}

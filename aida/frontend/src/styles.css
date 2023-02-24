@@ -77,12 +77,6 @@ body { margin: 0; font: var(--bs-font-sans-serif) !important; background-color: 
     background-color: var(--bs-primary) !important
 }
   
-.site-header {
-    padding: 20px;
-    background: linear-gradient(rgba(96,110,208,0.2), rgba(96,110,208,0.2)),url(/assets/cover-bg-light.png);
-    background-size: cover;
-  }
-  
 .mat-paginator  {
     background: none
 }

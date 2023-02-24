@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-// import { environment } from 'src/environments/environment.prod';
-import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
     providedIn: 'root',
@@ -15,51 +14,51 @@ export class GeneralService {
     }
 
     allNews() {
-        return this.httpClient.get(this.environment + 'news/findAll');
+        return this.httpClient.get(this.environment + '/news/findAll');
     }
 
     getNews(id: string) {
-        return this.httpClient.get(this.environment + 'news/findById/' + id);
+        return this.httpClient.get(this.environment + '/news/findById/' + id);
     }
 
     allPeople() {
-        return this.httpClient.get(this.environment + 'people/findAll');
+        return this.httpClient.get(this.environment + '/people/findAll');
     }
 
     allResearch() {
-        return this.httpClient.get(this.environment + 'research/findAll');
+        return this.httpClient.get(this.environment + '/research/findAll');
     }
 
     getResearch(id: string) {
-        return this.httpClient.get(this.environment + 'research/findById/' + id);
+        return this.httpClient.get(this.environment + '/research/findById/' + id);
     }
 
     saveNews(body: any) {
-        return this.httpClient.post(this.environment + 'news/save', body);
+        return this.httpClient.post(this.environment + '/news/save', body);
     }
 
     savePeople(body: any) {
-        return this.httpClient.post(this.environment + 'people/save', body);
+        return this.httpClient.post(this.environment + '/people/save', body);
     }
 
     saveResearch(body: any) {
-        return this.httpClient.post(this.environment + 'research/save', body);
+        return this.httpClient.post(this.environment + '/research/save', body);
     }
 
     deletNews(id: number) {
-        return this.httpClient.delete(this.environment + 'news/delete/' + id);
+        return this.httpClient.delete(this.environment + '/news/delete/' + id);
     }
 
     deletePeople(id: number) {
-        return this.httpClient.delete(this.environment + 'people/delete/' + id);
+        return this.httpClient.delete(this.environment + '/people/delete/' + id);
     }
 
     deleteResearch(id: number) {
-        return this.httpClient.delete(this.environment + 'research/delete/' + id);
+        return this.httpClient.delete(this.environment + '/research/delete/' + id);
     }
 
     login(body: any) {
-        return this.httpClient.post(this.environment + 'user/login', body);
+        return this.httpClient.post(this.environment + '/user/login', body);
     }
 
 }

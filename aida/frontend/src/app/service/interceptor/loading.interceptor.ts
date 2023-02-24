@@ -25,7 +25,7 @@ export class LoadingInterceptor implements HttpInterceptor {
     this.totalRequests++;
     this.loadingService.setLoading(true);
     const headers = new HttpHeaders({
-      Authorization: 'Basic ' + btoa("user" + ':' + "admin")
+      Authorization: 'Basic ' + btoa("username" + ':' + "password")
     });
     const clonedRequest = request.clone({ headers: headers });
     return next.handle(clonedRequest)

@@ -1,7 +1,7 @@
 <div style="height: 80vh;">
 
   <mat-toolbar class="background">
-    <button mat-icon-button (click)="sidenav.toggle()">
+    <button mat-icon-button (click)="sidenav.toggle()" *ngIf="!isShow">
       <mat-icon>menu</mat-icon>
     </button>
     <span>

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -15,10 +15,14 @@ export class NavbarComponent {
   sidenav!: MatSidenav;
   isShow: boolean = false;
 
-  constructor(private observer: BreakpointObserver) { }
+  constructor(private observer: BreakpointObserver, private cdRef: ChangeDetectorRef) { }
 
   ngOnInit(
   ) {
+  }
+
+  ngAfterViewChecked() {
+    this.cdRef.detectChanges();
   }
 
   ngAfterViewInit() {
