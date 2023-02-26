@@ -2,6 +2,7 @@ package dev.unicas.aida.springboot.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,7 +20,8 @@ public class News {
 
 	private String description;
 
-	private Date creation_date;
+	@Column(name = "CREATION_DATE")
+	private Date creationDate;
 
 	@Lob
 	private String file;
@@ -27,12 +29,12 @@ public class News {
 	public News() {
 	}
 
-	public News(String title, String description, String file,Date creation_date) {
+	public News(String title, String description, String file, Date creation_date) {
 		super();
 		this.title = title;
 		this.description = description;
 		this.file = file;
-		this.creation_date = creation_date;
+		this.creationDate = creation_date;
 	}
 
 	public Integer getIdNews() {
@@ -67,12 +69,12 @@ public class News {
 		this.file = file;
 	}
 
-	public Date getCreation_date() {
-		return creation_date;
+	public Date getCreationDate() {
+		return creationDate;
 	}
 
-	public void setCreation_date(Date creation_date) {
-		this.creation_date = creation_date;
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
 	}
 
 }

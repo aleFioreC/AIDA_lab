@@ -40,7 +40,7 @@ public class NewsController {
 
     @PostMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
     public News save(@RequestBody News news) {
-    	news.setCreation_date(new Date());
+    	news.setCreationDate(new Date());
 		return this.service.save(news);
     }
     

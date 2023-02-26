@@ -40,6 +40,10 @@ import { DashboardDetailComponent } from './component/basic/dashboard/dashboard-
 import { ResearchDetailComponent } from './component/advanced/research/research-detail/research-detail.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { PrivateSectionComponent } from './component/advanced/private-section/private-section.component';
+// import ngx-translate and the http loader
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -82,7 +86,14 @@ import { PrivateSectionComponent } from './component/advanced/private-section/pr
     MatNativeDateModule,
     FormsModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     {
@@ -95,3 +106,7 @@ import { PrivateSectionComponent } from './component/advanced/private-section/pr
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http);
+}

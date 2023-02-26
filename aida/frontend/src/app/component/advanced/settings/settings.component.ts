@@ -32,7 +32,6 @@ export class SettingsComponent implements OnInit {
 
   constructor(private generalService: GeneralService, public dialog: MatDialog, public router: Router, private location: Location) {
     let loc: any = this.location.getState();
-    console.log(loc)
     if (!loc.user) {
       this.router.navigate(['/']);
     }

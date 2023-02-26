@@ -5,15 +5,20 @@
       <mat-icon>menu</mat-icon>
     </button>
     <span>
-      <img class="img" src="assets/logo_aida.png">
+      <img class="logo" src="assets/logo_aida.png">
     </span>
     <span class="small-text">
       <span>AIDA LAB</span> <br>
       Artificial Intelligence and Data Analysis Laboratory
     </span>
-    <span class="menu-spacer"></span>
-    <div *ngIf="isShow">
-      <span class="spacer"></span>
+    <div class="menu-spacer"></div>
+    <mat-icon *ngIf="isShow">language</mat-icon>
+    <button mat-button [matMenuTriggerFor]="language" *ngIf="isShow">{{selected?.toUpperCase()}}</button>
+    <mat-menu #language="matMenu">
+      <button mat-menu-item (click)="setLanguage('it')">IT</button>
+      <button mat-menu-item (click)="setLanguage('en')">EN</button>
+    </mat-menu>
+    <div class="menu-spacer" *ngIf="isShow">
       <span class="cursor" routerLink="/">Home</span>
       <span class="divider"></span>
       <span class="cursor" routerLink="/people">People</span>
@@ -25,7 +30,6 @@
       <span class="cursor" routerLink="/about">About</span>
       <span class="divider"></span>
       <span class="cursor" routerLink="/contact">Contact</span>
-      <span class="divider"></span>
       <span class="divider"></span>
       <span class="cursor" routerLink="/login">Login</span>
     </div>
@@ -44,7 +48,7 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-      <div class="site-header iu-hide bg-secondary text-white">
+      <div class="site-header text-white">
         <div class="site-title" id="headerText">
           AIDA
         </div>

@@ -1,7 +1,5 @@
-import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { Component, ViewChild, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
@@ -14,11 +12,19 @@ export class NavbarComponent {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   isShow: boolean = false;
+  selected = 'en';
+
+  @Output() language: EventEmitter<any> = new EventEmitter();
 
   constructor(private observer: BreakpointObserver, private cdRef: ChangeDetectorRef) { }
 
   ngOnInit(
   ) {
+  }
+
+  setLanguage(language: string) {
+    this.selected = language
+    this.language.emit(this.selected)
   }
 
   ngAfterViewChecked() {

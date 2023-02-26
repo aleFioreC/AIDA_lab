@@ -1,34 +1,35 @@
 <div class="grid-container mt-2">
     <h1 class="mat-h1">Research</h1>
-    <mat-grid-list cols="2" rowHeight="300px">
-        <mat-grid-tile *ngFor="let card of obs | async" [colspan]="2" [rowspan]="1">
-            <mat-card class="aida-card">
-                <mat-card-header>
-                    <mat-card-title>
-                        {{card.title}}
-                        <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-                            <mat-icon>more_vert</mat-icon>
-                        </button>
-                        <mat-menu #menu="matMenu" xPosition="before">
-                            <button (click)="open(card)" mat-menu-item>Detail</button>
-                        </mat-menu>
-                    </mat-card-title>
-                </mat-card-header>
-                <mat-card-content class="dashboard-card-content">
-                    <div class="row">
-                        <div class="col-sm-5">
-                            <img class="img" [src]="card.file" alt="Image Source">
-                        </div>
-                        <div class="col-sm-7">
-                            <p>
-                                {{card.description}}
-                            </p>
-                        </div>
+    <div class="col-sm-12 col-md-12 mt-5" *ngFor="let card of obs | async">
+        <mat-card class="aida-card">
+            <mat-card-header>
+                <mat-card-title>
+                    {{card.title}}
+                    <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu" xPosition="before">
+                        <button (click)="open(card)" mat-menu-item>Detail</button>
+                    </mat-menu>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="dashboard-card-content">
+                <div class="row">
+                    <span>Year: {{card.year}}</span>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <img class="img" [src]="card.file" alt="Image Source">
                     </div>
-                </mat-card-content>
-            </mat-card>
-        </mat-grid-tile>
-    </mat-grid-list>
+                    <div class="col-sm-6">
+                        <p>
+                            {{card.description}}
+                        </p>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
     <div class="container-fluid" #focus>
         <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" (page)="scrollUp()"></mat-paginator>
     </div>

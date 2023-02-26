@@ -55,7 +55,7 @@ export class DashboardComponent {
     this.generalService.allNews().subscribe((res: any) => {
       res.forEach(element => {
         element.file = element.file != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file) : null
-        let card = new CardLayout(element.idNews, element.title, '2', '1', element.description, element.file)
+        let card = new CardLayout(element.idNews, element.title, '2', '1', element.description, element.file, element.creationDate)
         this.cards.push(card)
       });
       this.dataSource = new MatTableDataSource<CardLayout>(this.cards);

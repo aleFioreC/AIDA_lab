@@ -21,7 +21,7 @@ public class NewsService {
 	}
 
 	public List<News> findAll() {
-		return (List<News>) this.repository.findAll();
+		return (List<News>) this.repository.findAllByOrderByCreationDateDesc();
 	}
 	
 	public Optional<News> findById(Integer id) {
