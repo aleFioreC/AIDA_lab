@@ -13,6 +13,7 @@ import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import dev.unicas.aida.springboot.service.AuthService;
+import dev.unicas.aida.springboot.service.UserService;
 
 @Component
 public class SecurityInterceptor implements HandlerInterceptor {
@@ -21,12 +22,13 @@ public class SecurityInterceptor implements HandlerInterceptor {
 
 	private static final String AUTH_HEADER_PARAMETER_AUTHERIZATION = "authorization";
 
-	private String userName = "username";
-
-	private String password = "password";
+	private String username = "admin";
 
 	@Autowired
 	private AuthService authService;
+
+	@Autowired
+	private UserService userService;
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -52,9 +54,11 @@ public class SecurityInterceptor implements HandlerInterceptor {
 		    
 			// Grab basic header value from request header object.
 			String basicAuthHeaderValue = request.getHeader(AUTH_HEADER_PARAMETER_AUTHERIZATION);
+			
+			String psw = this.userService.getEncodedPsw(username);
 
 			// Process basic authentication
-			isValidBasicAuthRequest = authService.validateBasicAuthentication(userName, password, basicAuthHeaderValue);
+			isValidBasicAuthRequest = authService.validateBasicAuthentication(username, psw, basicAuthHeaderValue);
 
 			// If this is invalid request, then set the status as UNAUTHORIZED.
 			if (!isValidBasicAuthRequest) {

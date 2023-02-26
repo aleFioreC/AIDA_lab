@@ -1,6 +1,26 @@
 {
-    "demo": {
-        "title": "Translation demo",
-        "text": "This is a simple demonstration app for ngx-translate"
+    "dashboard": {
+        "title": "Translation",
+        "text": "Welcome to the Home Page of the Artificial Intelligence and Data Analysis Group of the DIEI the University of Cassino and Southern Lazio, Cassino, Italy",
+        "subtitle": "Last news",
+        "detail": "Detail"
+    },
+    "people": {
+        "title": "People"
+    },
+    "research": {
+        "title": "Research"
+    },
+    "publication": {
+        "title": "Publication"
+    },
+    "about": {
+        "title": "About"
+    },
+    "contact": {
+        "title": "Contact"
+    },
+    "login": {
+        "title": "Login"
     }
 }

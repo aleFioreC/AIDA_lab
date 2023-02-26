@@ -21,30 +21,36 @@
     <div class="menu-spacer" *ngIf="isShow">
       <span class="cursor" routerLink="/">Home</span>
       <span class="divider"></span>
-      <span class="cursor" routerLink="/people">People</span>
+      <span class="cursor" routerLink="/people">{{ 'people.title' | translate }}</span>
       <span class="divider"></span>
-      <span class="cursor" routerLink="/research">Research</span>
+      <span class="cursor" routerLink="/research">{{ 'research.title' | translate }}</span>
       <span class="divider"></span>
-      <span class="cursor" routerLink="/publication">Publication</span>
+      <span class="cursor" routerLink="/publication">{{ 'publication.title' | translate }}</span>
       <span class="divider"></span>
-      <span class="cursor" routerLink="/about">About</span>
+      <span class="cursor" routerLink="/about">{{ 'about.title' | translate }}</span>
       <span class="divider"></span>
-      <span class="cursor" routerLink="/contact">Contact</span>
+      <span class="cursor" routerLink="/contact">{{ 'contact.title' | translate }}</span>
       <span class="divider"></span>
-      <span class="cursor" routerLink="/login">Login</span>
+      <span class="cursor" routerLink="/login">{{ 'login.title' | translate }}</span>
     </div>
   </mat-toolbar>
 
   <mat-sidenav-container>
     <mat-sidenav #sidenav="matSidenav">
       <mat-nav-list>
-        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="" mat-list-item>News</a>
-        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/people" mat-list-item>People</a>
-        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/research" mat-list-item>Research</a>
-        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/publication" mat-list-item>Publication</a>
-        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/about" mat-list-item>About</a>
-        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/contact" mat-list-item>Contact</a>
-        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/login" mat-list-item>Login</a>
+        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="" mat-list-item>Home</a>
+        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/people"
+          mat-list-item>{{ 'people.title' | translate }}</a>
+        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/research"
+          mat-list-item>{{ 'research.title' | translate }}</a>
+        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/publication"
+          mat-list-item>{{ 'publication.title' | translate }}</a>
+        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/about"
+          mat-list-item>{{ 'about.title' | translate }}</a>
+        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/contact"
+          mat-list-item>{{ 'contact.title' | translate }}</a>
+        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/login"
+          mat-list-item>{{ 'login.title' | translate }}</a>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>

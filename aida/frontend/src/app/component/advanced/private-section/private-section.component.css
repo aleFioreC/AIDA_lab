@@ -4,7 +4,7 @@
       width: 350px;
       margin-top: auto;
       margin-bottom: auto;
-      background: linear-gradient(rgba(96,110,208,0.2), rgba(96,110,208,0.2)),url(/assets/cover-bg-light.png);
+      background: linear-gradient(var(--bs-blue), var(--bs-gray-400));
       position: relative;
       display: flex;
       justify-content: center;
@@ -18,8 +18,8 @@
     }
     .brand_logo_container {
       position: absolute;
-      height: 170px;
-      width:170px;
+      height: 150px;
+      width:150px;
       top: 20px;
       border-radius: 50%;
       background: #60a3bc;
@@ -71,4 +71,9 @@
 
     .input-group-text {
       height: 50px;
+    }
+
+    .logo {
+      width: 120px;
+      height:100px;
     }
