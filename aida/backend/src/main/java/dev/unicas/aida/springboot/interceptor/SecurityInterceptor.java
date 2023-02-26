@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import dev.unicas.aida.springboot.service.AuthService;
@@ -37,7 +38,18 @@ public class SecurityInterceptor implements HandlerInterceptor {
 				+ request.getRequestURI());
 
 		try {
-
+			
+		     String path = (String) request.
+                     getAttribute(HandlerMapping.
+                       BEST_MATCHING_PATTERN_ATTRIBUTE);
+		     
+		    String paths[]=path.split("/");
+		    
+		    // caso path "/aida"
+		    if (paths.length <= 2) {
+				return true;
+		    }
+		    
 			// Grab basic header value from request header object.
 			String basicAuthHeaderValue = request.getHeader(AUTH_HEADER_PARAMETER_AUTHERIZATION);
 

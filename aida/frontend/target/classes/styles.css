@@ -82,6 +82,48 @@ body { margin: 0; font: var(--bs-font-sans-serif) !important; background-color: 
 .mat-paginator  {
     background: none
 }
+
+@media (min-width: 1200px) {
+    .img-author  {
+    width: 150px;
+    height: 140px;
+    }
+}
+
+@media (min-width: 725px) and (max-width: 1199px) {
+    .img-author  {
+    width: 80px;
+    height: 70px;
+    }
+}
+
+@media(max-width: 724px) {
+    .img-author  {
+    width: 80px;
+    height: 70px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .img  {
+    width: 220px;
+    height: 210px;
+    }
+}
+
+@media (min-width: 725px) and (max-width: 1199px) {
+    .img  {
+    width: 160px;
+    height: 150px;
+    }
+}
+
+@media(max-width: 724px) {
+    .img  {
+    width: 80px;
+    height: 70px;
+    }
+}
   
 
 
