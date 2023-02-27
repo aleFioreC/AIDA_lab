@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
-@Entity // This tells Hibernate to make a table out of this class
+@Entity
 public class News {
 
 	@Id

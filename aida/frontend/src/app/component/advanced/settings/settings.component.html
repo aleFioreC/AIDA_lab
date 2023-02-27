@@ -1,11 +1,11 @@
 <div class="row mt-2">
 
     <mat-form-field appearance="fill">
-        <mat-label>Choose a resource to create</mat-label>
+        <mat-label>{{'settings.title'| translate}}</mat-label>
         <mat-select [(value)]="selected" (selectionChange)="selection()">
-            <mat-option value="news">News</mat-option>
-            <mat-option value="people">People</mat-option>
-            <mat-option value="research">Research</mat-option>
+            <mat-option value="news">{{'news.title'| translate}}</mat-option>
+            <mat-option value="people">{{'people.title'| translate}}</mat-option>
+            <mat-option value="research">{{'research.title'| translate}}</mat-option>
         </mat-select>
     </mat-form-field>
 
@@ -13,7 +13,7 @@
 
 <div class="row mt-2" *ngIf="showNews">
 
-    <h1 class="mat-h1 mt-2">Inserisci una nuova news</h1>
+    <h1 class="mat-h1 mt-2">{{ 'settings.news.title' | translate}}</h1>
 
     <div>
         <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
@@ -35,13 +35,20 @@
                 <input type="text-area" class="form-control mt-2" placeholder="Description" [(ngModel)]="description">
             </td>
         </tr>
+        <tr class="mt-3 right">
+            <td>
+                <button mat-raised-button class="margin-left" color="primary"
+                    (click)="saveNews()">{{ 'settings.button.save' | translate}}</button>
+                <button mat-raised-button class="margin-left" color="warn"
+                    (click)="clear()">{{ 'settings.button.clear' | translate}}</button>
+            </td>
+        </tr>
     </table>
-    <button mat-raised-button class="margin-left" color="primary" (click)="saveNews()">Inserisci</button>
 </div>
 
 <div class="row mt-2" *ngIf="showResearch">
 
-    <h1 class="mat-h1 mt-2">Inserisci una nuova ricerca</h1>
+    <h1 class="mat-h1 mt-2">{{ 'settings.research.title' | translate}}</h1>
 
     <div>
         <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
@@ -68,13 +75,20 @@
                 <input type="text-area" class="form-control mt-2" placeholder="Year" [(ngModel)]="year">
             </td>
         </tr>
+        <tr class="mt-3 right">
+            <td>
+                <button mat-raised-button class="margin-left" color="primary"
+                    (click)="saveResearch()">{{ 'settings.button.save' | translate}}</button>
+                <button mat-raised-button class="margin-left" color="warn"
+                    (click)="clear()">{{ 'settings.button.clear' | translate}}</button>
+            </td>
+        </tr>
     </table>
-    <button mat-raised-button class="margin-left" color="primary" (click)="saveResearch()">Inserisci</button>
 </div>
 
 <div class="row mt-2" *ngIf="showPeople;">
 
-    <h1 class="mat-h1 mt-2">Inserisci un nuovo membro del team di ricerca</h1>
+    <h1 class="mat-h1 mt-2">{{ 'settings.people.title' | translate}}</h1>
 
     <div>
         <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
@@ -101,6 +115,13 @@
                 <input type="text-area" class="form-control mt-2" placeholder="Role" [(ngModel)]="role">
             </td>
         </tr>
+        <tr class="mt-3 right">
+            <td>
+                <button mat-raised-button class="margin-left" color="primary"
+                    (click)="savePeople()">{{ 'settings.button.save' | translate}}</button>
+                <button mat-raised-button class="margin-left" color="warn"
+                    (click)="clear()">{{ 'settings.button.clear' | translate}}</button>
+            </td>
+        </tr>
     </table>
-    <button mat-raised-button class="margin-left" color="primary" (click)="savePeople()">Inserisci</button>
 </div>

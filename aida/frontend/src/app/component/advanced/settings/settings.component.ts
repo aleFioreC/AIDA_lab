@@ -37,10 +37,24 @@ export class SettingsComponent implements OnInit {
     }
   }
 
+  ngOnInit(): void {
+    this.showNews = true
+  }
+
   async uploadListener($event: any) {
     let files = $event.srcElement.files;
     let img = await this.convertBase64(files[0])
     this.imageSource = img
+  }
+
+  clear() {
+    this.imageSource = null;
+    this.title = null;
+    this.description = null;
+    this.name = null;
+    this.surname = null;
+    this.year = null;
+    this.role = null;
   }
 
   convertBase64 = (file) => {
@@ -74,9 +88,6 @@ export class SettingsComponent implements OnInit {
       this.showNews = false
       this.showResearch = false
     }
-  }
-
-  ngOnInit(): void {
   }
 
   saveNews() {

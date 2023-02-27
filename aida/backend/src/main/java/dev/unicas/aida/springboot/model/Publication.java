@@ -6,43 +6,42 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Research {
+public class Publication {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idResearch;
+	private Integer idPublication;
 
 	private String title;
 
 	private String description;
 
-	private Integer year;
-
 	private Date creation_date;
 
-	@Lob
-	private String file;
+	@ManyToOne
+	private People people;
 
-	public Research() {
+	public Publication() {
 	}
 
-	public Research(String title, String description, String file, Date creation_date) {
+	public Publication(Integer idPublication, String title, String description, Date creation_date, People people) {
 		super();
+		this.idPublication = idPublication;
 		this.title = title;
 		this.description = description;
-		this.file = file;
 		this.creation_date = creation_date;
+		this.people = people;
 	}
 
-	public Integer getIdResearch() {
-		return idResearch;
+	public Integer getIdPublication() {
+		return idPublication;
 	}
 
-	public void setIdResearch(Integer idResearch) {
-		this.idResearch = idResearch;
+	public void setIdPublication(Integer idPublication) {
+		this.idPublication = idPublication;
 	}
 
 	public String getTitle() {
@@ -61,14 +60,6 @@ public class Research {
 		this.description = description;
 	}
 
-	public String getFile() {
-		return file;
-	}
-
-	public void setFile(String file) {
-		this.file = file;
-	}
-
 	public Date getCreation_date() {
 		return creation_date;
 	}
@@ -77,12 +68,12 @@ public class Research {
 		this.creation_date = creation_date;
 	}
 
-	public Integer getYear() {
-		return year;
+	public People getPeople() {
+		return people;
 	}
 
-	public void setYear(Integer year) {
-		this.year = year;
+	public void setPeople(People people) {
+		this.people = people;
 	}
 
 }

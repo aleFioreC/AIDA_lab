@@ -1,7 +1,7 @@
 <div class="grid-container mt-2">
   <div class="col-md-12">
     <h1>AIDA LAB <small>Artificial Intelligence and Data Analysis</small></h1>
-    <p class="CinecaSiteIntroduction">{{ 'dashboard.text' | translate }}
+    <p>{{ 'dashboard.text' | translate }}
     </p>
   </div>
 
@@ -23,18 +23,13 @@
             </mat-card-title>
           </mat-card-header>
           <mat-card-content class="dashboard-card-content">
-            <div class="row col-sm-12">
-              <div class="col-sm-5">
-                <span>{{card.creationDate | date:'dd/MM/yyyy, h:mm a'}}</span>
-              </div>
-            </div>
             <div class="row">
               <div class="col-sm-5">
                 <img *ngIf="card.file" class="img" [src]="card.file" alt="Image Source">
               </div>
               <div class="col-sm-7">
                 <p>
-                  {{card.description}}
+                  <span>{{card.description}}</span>
                 </p>
               </div>
             </div>

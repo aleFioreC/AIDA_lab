@@ -73,9 +73,21 @@ html, body { height: 100%; }
 body { margin: 0; background: var(--bs-primary) !important}
 
 .background {
-    background-color: var(--bs-primary) !important
+    background: var(--bs-primary) !important
 }
   
+html {
+    position: relative;
+    min-width: 1024px;
+    min-height: 768px;
+    height: 100%;
+}
+
+.Row {
+    display: table-row;
+    height: 1px;
+}
+
 .mat-paginator  {
     background: none
 }

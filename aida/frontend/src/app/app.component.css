@@ -97,3 +97,11 @@ mat-sidenav {
 mat-sidenav-container {
     height: calc(100vh - 65px);
 }
+
+.p-4 {
+  color: lightgray;
+}
+
+.p-3 {
+  color: lightgray;
+}
