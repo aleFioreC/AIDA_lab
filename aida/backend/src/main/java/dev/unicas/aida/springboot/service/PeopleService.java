@@ -20,7 +20,7 @@ public class PeopleService {
 	}
 
 	public List<People> findAll() {
-		return (List<People>) this.repository.findAll();
+		return (List<People>) this.repository.findAllByOrderByIdPeopleDesc();
 	}
 	
 	public boolean delete(Integer id) {
