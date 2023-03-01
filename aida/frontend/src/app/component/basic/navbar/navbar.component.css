@@ -54,7 +54,7 @@
   color: lightgrey;
 }
 
-mat-divider {
+mat-divider1 {
   margin-top: 16px;
   margin-bottom: 16px;
 }
@@ -68,11 +68,10 @@ mat-sidenav {
   border-right: none;
   background-color: var(--bs-primary) !important;
   color: white;
-  padding: 16px;
   text-align: center;
 }
 
-.content {
+.content1{
   height: calc(100vh);
   border-radius: 10px;
   margin: 16px;
@@ -84,7 +83,7 @@ mat-sidenav {
   color: lightgray;
 }
 
-mat-sidenav-container {
+mat-sidenav-container1 {
   height: calc(100vh);
 }
 

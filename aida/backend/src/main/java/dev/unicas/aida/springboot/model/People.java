@@ -17,6 +17,12 @@ public class People {
 
 	private String surname;
 
+	private String email;
+
+	private String number;
+
+	private String additionalInfo;
+
 	private String role;
 
 	@Lob
@@ -54,6 +60,30 @@ public class People {
 		this.role = role;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getNumber() {
+		return number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
+	}
+
+	public String getAdditionalInfo() {
+		return additionalInfo;
+	}
+
+	public void setAdditionalInfo(String additionalInfo) {
+		this.additionalInfo = additionalInfo;
+	}
+
 	public String getFile() {
 		return file;
 	}
@@ -61,6 +91,5 @@ public class People {
 	public void setFile(String file) {
 		this.file = file;
 	}
-
 
 }

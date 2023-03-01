@@ -3,4 +3,21 @@
     top: 5px;
     right: 10px;
   }
-  
+
+@media (min-width: 1200px) {
+    .dashboard-card {
+      min-height: 300px;
+    }
+}
+@media (min-width: 725px) and (max-width: 1199px) {
+  .dashboard-card {
+    min-height: 400px;
+  }
+}
+
+@media(max-width: 724px) {
+  .dashboard-card {
+    min-height: 400px;
+    max-width: 400px;
+  }
+}

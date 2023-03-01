@@ -22,6 +22,9 @@ export class SettingsComponent implements OnInit {
   surname;
   year;
   role;
+  email;
+  number;
+  additionalInfo;
 
   selected;
 
@@ -55,6 +58,9 @@ export class SettingsComponent implements OnInit {
     this.surname = null;
     this.year = null;
     this.role = null;
+    this.email = null;
+    this.number = null;
+    this.additionalInfo = null;
   }
 
   convertBase64 = (file) => {
@@ -107,7 +113,7 @@ export class SettingsComponent implements OnInit {
   }
 
   savePeople() {
-    let obj: People = new People(this.name, this.surname, this.role, this.imageSource)
+    let obj: People = new People(this.name, this.surname, this.email, this.number, this.additionalInfo, this.role, this.imageSource)
     this.generalService.savePeople(obj).subscribe(res => {
       this.openDialog()
       this.router.navigate(['/people']);

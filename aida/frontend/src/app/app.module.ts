@@ -44,6 +44,7 @@ import { PrivateSectionComponent } from './component/advanced/private-section/pr
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,6 @@ import { HttpClient } from '@angular/common/http';
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
-    MatFormFieldModule,
     MatGridListModule,
     MatMenuModule,
     MatButtonModule,
@@ -93,7 +93,9 @@ import { HttpClient } from '@angular/common/http';
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [
     {
