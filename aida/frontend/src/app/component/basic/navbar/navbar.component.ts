@@ -32,7 +32,7 @@ export class NavbarComponent {
   }
 
   ngAfterViewInit() {
-    this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
+    this.observer.observe(['(max-width: 1200px)']).subscribe((res) => {
       if (res.matches) {
         this.sidenav.mode = 'over';
         this.sidenav.close();

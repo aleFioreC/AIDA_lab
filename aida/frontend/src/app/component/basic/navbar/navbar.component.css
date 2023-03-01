@@ -54,7 +54,7 @@
   color: lightgrey;
 }
 
-mat-divider1 {
+mat-divider {
   margin-top: 16px;
   margin-bottom: 16px;
 }
@@ -69,22 +69,6 @@ mat-sidenav {
   background-color: var(--bs-primary) !important;
   color: white;
   text-align: center;
-}
-
-.content1{
-  height: calc(100vh);
-  border-radius: 10px;
-  margin: 16px;
-  margin-left: 32px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  color: lightgray;
-}
-
-mat-sidenav-container1 {
-  height: calc(100vh);
 }
 
 .site-header {
