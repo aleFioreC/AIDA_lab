@@ -54,6 +54,7 @@ export class ResearchComponent implements OnInit {
     this.cards = []
     this.generalService.allResearch().subscribe((res: any) => {
       res.forEach(element => {
+        element.description = element.description && element.description.length > 500 ? element.description.slice(0, 320) : element.description
         element.file = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file)
         this.cards.push(element)
       });

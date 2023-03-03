@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 import { Observable } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
+import { elementEventFullName } from '@angular/compiler/src/view_compiler/view_compiler';
 
 @Component({
   selector: 'app-dashboard',
@@ -54,6 +55,7 @@ export class DashboardComponent {
     this.cards = []
     this.generalService.allNews().subscribe((res: any) => {
       res.forEach(element => {
+        element.description = element.description && element.description.length > 500 ? element.description.slice(0, 320) : element.description
         element.file = element.file != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file) : null
         let card = new CardLayout(element.idNews, element.title, '2', '1', element.description, element.file, element.creationDate)
         this.cards.push(card)

@@ -78,8 +78,6 @@ body { margin: 0; background: var(--bs-primary) !important}
   
 html {
     position: relative;
-    min-width: 1024px;
-    min-height: 768px;
     height: 100%;
 }
 
@@ -132,7 +130,7 @@ html {
         height: 70px;
     }
 }
-  
+
 .mat-typography, .container {
     overflow-y: auto;
  }

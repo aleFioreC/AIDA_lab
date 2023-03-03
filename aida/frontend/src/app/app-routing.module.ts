@@ -7,11 +7,11 @@ import { PublicationComponent } from './component/advanced/publication/publicati
 import { ResearchComponent } from './component/advanced/research/research.component';
 import { SettingsComponent } from './component/advanced/settings/settings.component';
 import { DashboardComponent } from './component/basic/dashboard/dashboard.component';
-import { NewsResolver } from './resolver/news.resolver';
 import { DashboardDetailComponent } from './component/basic/dashboard/dashboard-detail/dashboard-detail.component';
 import { ResearchDetailComponent } from './component/advanced/research/research-detail/research-detail.component';
-import { ResearchResolver } from './resolver/research.resolver';
 import { PrivateSectionComponent } from './component/advanced/private-section/private-section.component';
+import { ResearchResolver } from './model/resolver/research.resolver';
+import { NewsResolver } from './model/resolver/news.resolver';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },

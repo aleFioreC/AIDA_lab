@@ -8,7 +8,7 @@
 
 .t {
   text-align: justify;
-  height: 200px;
+  height: 350px;
 }
 
 .align-img {
@@ -40,7 +40,8 @@
 
 .long-text {
   word-break: break-word;
-  height: 200px;
+  text-overflow: ellipsis ellipsis;
+  height: 70%;
 }
 
 .dashboard-card-content{
