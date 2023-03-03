@@ -76,55 +76,68 @@ html, body { height: 100%; }
 body { margin: 0; background: var(--bs-primary) !important}
 
 .background {
-    background-color: var(--bs-primary) !important
+    background: var(--bs-primary) !important
+}
+
+html {
+    position: relative;
+    height: 100%;
+}
+
+.Row {
+    display: table-row;
+    height: 1px;
 }
 
 .mat-paginator  {
     background: none
 }
 
+.cursor {
+    cursor: pointer;
+}
+
 @media (min-width: 1200px) {
     .img-author  {
-    width: 150px;
-    height: 140px;
+        width: 240px;
+        height: 230px;
     }
 }
 
 @media (min-width: 725px) and (max-width: 1199px) {
     .img-author  {
-    width: 80px;
-    height: 70px;
+        width: 190px;
+        height: 180px;
     }
 }
 
 @media(max-width: 724px) {
     .img-author  {
-    width: 80px;
-    height: 70px;
+        width: 180px;
+        height: 190px;
     }
 }
 
 @media (min-width: 1200px) {
     .img  {
-    width: 220px;
-    height: 210px;
+        width: 220px;
+        height: 210px;
     }
 }
 
 @media (min-width: 725px) and (max-width: 1199px) {
     .img  {
-    width: 160px;
-    height: 150px;
+        width: 160px;
+        height: 150px;
     }
 }
 
 @media(max-width: 724px) {
     .img  {
-    width: 80px;
-    height: 70px;
+        width: 80px;
+        height: 70px;
     }
 }
-  
 
 
 /*# sourceMappingURL=styles.css.map*/

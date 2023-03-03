@@ -10,7 +10,8 @@
                 </mat-card-header>
                 <mat-card-content class="dashboard-card-content">
                     <div class="col-sm-12">
-                        <img class="img-author" [src]="card.file" alt="Image Source">
+                        <img *ngIf="card.file" class="img-author" [src]="card.file" alt="Image Source">
+                        <img *ngIf="!card.file" class="img" src="assets/noimage.png" alt="Image Source">
                     </div>
                     <div class="col-sm-12 mt-5">
                         <h3>{{card.name}} {{card.surname}} <br></h3>

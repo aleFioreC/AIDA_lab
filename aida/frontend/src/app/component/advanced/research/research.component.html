@@ -10,7 +10,8 @@
             <mat-card-content class="dashboard-card-content">
                 <div class="row">
                     <div class="col-sm-4">
-                        <img class="img" [src]="card.file" alt="Image Source">
+                        <img *ngIf="card.file" class="img" [src]="card.file" alt="Image Source">
+                        <img *ngIf="!card.file" class="img" src="assets/noimage.png" alt="Image Source">
                     </div>
                     <div class="col-sm-8 t">
                         <p class="long-text">
