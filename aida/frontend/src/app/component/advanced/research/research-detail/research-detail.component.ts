@@ -18,7 +18,7 @@ export class ResearchDetailComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe((response: any) => {
       this.research = response.research
-      this.file = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + this.research.file)
+      this.file = this.research.file != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + this.research.file) : null
     });
   }
 

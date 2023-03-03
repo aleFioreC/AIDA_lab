@@ -5,3 +5,14 @@
     top: 5px;
     right: 10px;
   }
+
+
+.t {
+  text-align: justify;
+  text-overflow: ellipsis;
+}
+
+.long-text {
+  word-break: break-word;
+  height: 200px;
+}

@@ -17,9 +17,8 @@ export class DashboardDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe((response: any) => {
-      console.log(response)
       this.news = response.news
-      this.file = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + this.news.file)
+      this.file = this.news.file != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + this.news.file) : null
     });
   }
 

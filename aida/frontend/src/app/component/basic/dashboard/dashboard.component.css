@@ -6,6 +6,11 @@
   height: 100px;
 }
 
+.t {
+  text-align: justify;
+  height: 200px;
+}
+
 .align-img {
   text-align: right;
   margin-top: 15px;
@@ -28,16 +33,14 @@
   right: 10px;
 }
 
-.dashboard-card-content {
-  text-align: center;
-}
 
 .aida-card  {
   width: 800px;
 }
 
-p {
+.long-text {
   word-break: break-word;
+  height: 200px;
 }
 
 .dashboard-card-content{
