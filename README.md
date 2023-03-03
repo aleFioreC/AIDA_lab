@@ -1,4 +1,4 @@
-#AIDA_lab
+# AIDA_lab
 Realizzazione webapp per gestione di un pub con Angular e Java
 
 Passaggi da eseguire per l'installazione:
