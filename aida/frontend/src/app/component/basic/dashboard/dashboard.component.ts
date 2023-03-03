@@ -55,7 +55,7 @@ export class DashboardComponent {
     this.cards = []
     this.generalService.allNews().subscribe((res: any) => {
       res.forEach(element => {
-        element.description = element.description && element.description.length > 500 ? element.description.slice(0, 320) : element.description
+        element.description = element.description && element.description.length > 400 ? element.description.slice(0, 320) + '...read more...' : element.description
         element.file = element.file != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file) : null
         let card = new CardLayout(element.idNews, element.title, '2', '1', element.description, element.file, element.creationDate)
         this.cards.push(card)
