@@ -1,11 +1,12 @@
 <div class="grid-container mt-5">
     <div class="row col-sm-12">
         <h1>{{news?.title}}</h1>
-        <div class="col-sm-8">
+        <div class="col-sm-8 justify">
             <h3>{{news?.description}}</h3>
         </div>
         <div class="col-sm-4">
             <img *ngIf="news.file" class="img" [src]="news.file" alt="Image Source">
+            <img *ngIf="!news.file" class="img" src="assets/noimage.png" alt="Image Source">
         </div>
     </div>
 </div>

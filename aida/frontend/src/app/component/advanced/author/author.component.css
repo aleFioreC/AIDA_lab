@@ -4,9 +4,9 @@
     right: 10px;
   }
 
-  .dashboard-card-content {
+.dashboard-card-content {
     text-align: center
-  }
+}
 
 @media (min-width: 1200px) {
   .dashboard-card {
