@@ -1,10 +1,15 @@
 package dev.unicas.aida.springboot.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class People {
@@ -27,6 +32,13 @@ public class People {
 
 	@Lob
 	private String file;
+
+	@ManyToMany
+	@JoinTable(
+			  name = "publication_people", 
+			  joinColumns = @JoinColumn(name = "id_publication"), 
+			  inverseJoinColumns = @JoinColumn(name = "id_people"))
+	private Set<Publication> publications;
 
 	public Integer getIdPeople() {
 		return idPeople;
@@ -90,6 +102,14 @@ public class People {
 
 	public void setFile(String file) {
 		this.file = file;
+	}
+
+	public Set<Publication> getPublications() {
+		return publications;
+	}
+
+	public void setPublications(Set<Publication> publications) {
+		this.publications = publications;
 	}
 
 }

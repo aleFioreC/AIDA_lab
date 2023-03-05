@@ -1,12 +1,13 @@
 package dev.unicas.aida.springboot.model;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Publication {
@@ -21,19 +22,18 @@ public class Publication {
 
 	private Date creation_date;
 
-	@ManyToOne
-	private People people;
+	@ManyToMany(mappedBy = "publications")
+	private Set<People> people;
 
 	public Publication() {
 	}
 
-	public Publication(Integer idPublication, String title, String description, Date creation_date, People people) {
+	public Publication(Integer idPublication, String title, String description, Date creation_date) {
 		super();
 		this.idPublication = idPublication;
 		this.title = title;
 		this.description = description;
 		this.creation_date = creation_date;
-		this.people = people;
 	}
 
 	public Integer getIdPublication() {
@@ -68,11 +68,11 @@ public class Publication {
 		this.creation_date = creation_date;
 	}
 
-	public People getPeople() {
+	public Set<People> getPeople() {
 		return people;
 	}
 
-	public void setPeople(People people) {
+	public void setPeople(Set<People> people) {
 		this.people = people;
 	}
 
