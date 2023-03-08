@@ -12,8 +12,8 @@
       Artificial Intelligence and Data Analysis Laboratory
     </span>
     <div class="menu-spacer"></div>
-    <mat-icon *ngIf="isShow">language</mat-icon>
-    <button mat-button [matMenuTriggerFor]="language" *ngIf="isShow">{{selected?.toUpperCase()}}</button>
+    <mat-icon *ngIf="false">language</mat-icon>
+    <button mat-button [matMenuTriggerFor]="language" *ngIf="false">{{selected?.toUpperCase()}}</button>
     <mat-menu #language="matMenu">
       <button mat-menu-item (click)="setLanguage('it')">IT</button>
       <button mat-menu-item (click)="setLanguage('en')">EN</button>
@@ -39,26 +39,21 @@
     <mat-sidenav #sidenav="matSidenav">
       <mat-nav-list>
         <a (click)="sidenav.toggle()" class="small-text-href" routerLink="" mat-list-item>Home</a>
-        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/people"
-          mat-list-item>{{ 'people.title' | translate }}</a>
-        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/research"
-          mat-list-item>{{ 'research.title' | translate }}</a>
-        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/publication"
-          mat-list-item>{{ 'publication.title' | translate }}</a>
-        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/about"
-          mat-list-item>{{ 'about.title' | translate }}</a>
-        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/contact"
-          mat-list-item>{{ 'contact.title' | translate }}</a>
-        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/login"
-          mat-list-item>{{ 'login.title' | translate }}</a>
+        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/people" mat-list-item>{{ 'people.title' |
+          translate }}</a>
+        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/research" mat-list-item>{{ 'research.title' |
+          translate }}</a>
+        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/publication" mat-list-item>{{
+          'publication.title' | translate }}</a>
+        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/about" mat-list-item>{{ 'about.title' |
+          translate }}</a>
+        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/contact" mat-list-item>{{ 'contact.title' |
+          translate }}</a>
+        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/login" mat-list-item>{{ 'login.title' |
+          translate }}</a>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-      <div class="site-header text-white">
-        <div class="site-title" id="headerText">
-          AIDA
-        </div>
-      </div>
       <div class="container">
         <router-outlet></router-outlet>
       </div>

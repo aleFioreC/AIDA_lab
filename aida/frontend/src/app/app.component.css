@@ -1,107 +1,63 @@
 .menu-spacer {
-    flex: 1 1 auto;
-  }
-  
-
-.divider {
-    margin-right: 5px;
-    margin-left: 5px;
-  }
-  
-  .small-text{
-    font-size: 14px;
-    color: var(--bs-white)
-  }
-  
-  .small-icon{
-    font-size: 24px;
-    color: var(--bs-white)
-  }
-  
-  .logo {
-    height: 50px;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-  
-  .cursor {
-    cursor: pointer;
-    color: var(--bs-white)
-  }
-
-  .small-text-href {
-    cursor: pointer;
-    color: var(--bs-white)
-  }
-
-  .menu-button {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    font-size: 1rem;
-
+  flex: 1 1 auto;
 }
 
-.avatar {
-    margin-top: 16px;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+
+.divider {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.small-text {
+  font-size: 14px;
+  color: var(--bs-white)
+}
+
+.small-icon {
+  font-size: 24px;
+  color: var(--bs-white)
+}
+
+.logo {
+  height: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.cursor {
+  cursor: pointer;
+  color: var(--bs-white)
+}
+
+.small-text-href {
+  cursor: pointer;
+  color: var(--bs-white)
+}
+
+.menu-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1rem;
+
 }
 
 .name {
-    margin-top: 8px;
-    font-weight: normal;
+  margin-top: 8px;
+  font-weight: normal;
 }
 
 .designation {
-    margin-top: 2px;
-    font-size: 0.7rem;
-    color: lightgrey;
-}
-
-mat-divider {
-    margin-top: 16px;
-    margin-bottom: 16px;
-}
-
-mat-toolbar {
-    background: #004a9f;
-    color: white;
-}
-
-mat-sidenav {
-    width: 200px;
-    border-right: none;
-    background-color: var(--bs-primary) !important;
-    color: white;
-    padding: 16px;
-    text-align: center;
-}
-
-.content {
-    height: calc(100vh - 98px);
-    border-radius: 10px;
-    margin: 16px;
-    margin-left: 32px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-size: 2rem;
-    color: lightgray;
-}
-
-mat-sidenav-container {
-    height: calc(100vh - 65px);
+  margin-top: 2px;
+  font-size: 0.7rem;
+  color: var(--bs-white)
 }
 
 .p-4 {
-  color: lightgray;
+  color: var(--bs-white)
 }
 
 .p-3 {
-  color: lightgray;
+  color: var(--bs-white)
 }

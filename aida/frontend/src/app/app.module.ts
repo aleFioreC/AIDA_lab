@@ -6,7 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { MatCardModule, MatCard } from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { NavbarComponent } from './component/basic/navbar/navbar.component';
 import { FooterComponent } from './component/basic/footer/footer.component';
 import { ModalDialogComponent } from './component/basic/modal-dialog/modal-dialog.component';
@@ -26,7 +26,6 @@ import { MatListModule } from '@angular/material/list';
 import { GenericTableComponent } from './component/basic/generic-table/generic-table.component';
 import { DashboardComponent } from './component/basic/dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
-import { SettingsComponent } from './component/advanced/settings/settings.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
 import { SpinnerComponent } from './component/basic/spinner/spinner.component';
@@ -45,6 +44,12 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
+import { InsertComponent } from './component/advanced/private-section/insert/insert.component';
+import { LoginComponent } from './component/advanced/private-section/login/login.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { EditNewsComponent } from './component/advanced/private-section/edit-news/edit-news.component';
+import { EditPeopleComponent } from './component/advanced/private-section/edit-people/edit-people.component';
+import { EditResearchComponent } from './component/advanced/private-section/edit-research/edit-research.component';
 
 @NgModule({
   declarations: [
@@ -57,14 +62,18 @@ import { MatInputModule } from '@angular/material/input';
     NewsComponent,
     DashboardComponent,
     GenericTableComponent,
-    SettingsComponent,
     SpinnerComponent,
     PublicationComponent,
     ContactComponent,
     ResearchComponent,
     DashboardDetailComponent,
     ResearchDetailComponent,
-    PrivateSectionComponent
+    PrivateSectionComponent,
+    InsertComponent,
+    LoginComponent,
+    EditNewsComponent,
+    EditPeopleComponent,
+    EditResearchComponent
   ],
   imports: [
     BrowserModule,
@@ -95,7 +104,8 @@ import { MatInputModule } from '@angular/material/input';
       }
     }),
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatTabsModule
   ],
   providers: [
     {

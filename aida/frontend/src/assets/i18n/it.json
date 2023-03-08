@@ -1,7 +1,7 @@
 {
     "dashboard": {
         "text": "Benvenuti nella Home Page del laboratorio di Artificial Intelligence and Data Analysis Group del DIEI dell' Universita di Cassino e del Lazio Meridionale, Cassino, Italy",
-        "subtitle": "Ultime notizie",
+        "subtitle": "Notizie",
         "detail": "Dettaglio"
     },
     "news": {
@@ -26,7 +26,8 @@
         "title": "Accedi"
     },
     "settings": {
-        "title": "Scegli quale informazione inserire tra le seguenti",
+        "title": "Inserisci",
+        "subtitle": "Scegli quale informazione inserire tra le seguenti",
         "button": {
             "save": "Salva",
             "clear": "Pulisci"

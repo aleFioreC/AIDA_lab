@@ -1,18 +1,24 @@
 .more-button {
-    position: absolute;
-    top: 5px;
-    right: 10px;
-  }
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
 
 .dashboard-card-content {
-    text-align: center
+  text-align: center
+}
+
+.person {
+  text-align: center;
+  padding-bottom: 1em;
 }
 
 @media (min-width: 1200px) {
   .dashboard-card {
-      min-height: 510px;
+    min-height: 510px;
   }
 }
+
 @media (min-width: 725px) and (max-width: 1199px) {
   .dashboard-card {
     min-height: 500px;

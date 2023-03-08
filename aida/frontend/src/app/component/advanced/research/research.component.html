@@ -1,14 +1,14 @@
 <div class="grid-container mt-2">
-    <h1 class="mat-h1">Research</h1>
+    <h1 class="title">Research</h1>
     <div class="col-sm-12 col-md-12 mt-5" *ngFor="let card of obs | async">
-        <mat-card class="aida-card cursor" (click)="open(card)">
+        <mat-card class="aida-card cursor">
             <mat-card-header>
                 <mat-card-title>
-                    {{card.title}}
                 </mat-card-title>
             </mat-card-header>
             <mat-card-content class="dashboard-card-content">
                 <div class="row">
+                    <h1 class="title"> {{card.title}} </h1>
                     <div class="col-sm-8 justify">
                         <p class="long-text">
                             <span>{{card.description}}</span>
@@ -18,6 +18,9 @@
                         <img *ngIf="card.file" class="img" [src]="card.file" alt="Image Source">
                         <img *ngIf="!card.file" class="img" src="assets/noimage.png" alt="Image Source">
                     </div>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-primary" (click)="open(card)">More information</button>
                 </div>
             </mat-card-content>
         </mat-card>

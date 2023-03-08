@@ -1,19 +1,20 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { News } from 'src/app/model/news';
-import { GeneralService } from 'src/app/service/general.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { ModalDialogComponent } from '../../basic/modal-dialog/modal-dialog.component';
 import { Router } from '@angular/router';
+import { ModalDialogComponent } from 'src/app/component/basic/modal-dialog/modal-dialog.component';
+import { News } from 'src/app/model/news';
 import { People } from 'src/app/model/people';
 import { Research } from 'src/app/model/research';
-import { Location } from '@angular/common';
+import { GeneralService } from 'src/app/service/general.service';
 
 @Component({
-  selector: 'app-settings',
-  templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.css']
+  selector: 'app-insert',
+  templateUrl: './insert.component.html',
+  styleUrls: ['./insert.component.css']
 })
-export class SettingsComponent implements OnInit {
+export class InsertComponent implements OnInit {
+
 
   imageSource;
   title;
@@ -32,10 +33,11 @@ export class SettingsComponent implements OnInit {
   showNews: boolean = false;
   showResearch: boolean = false;
 
+  state: any
 
   constructor(private generalService: GeneralService, public dialog: MatDialog, public router: Router, private location: Location) {
-    let loc: any = this.location.getState();
-    if (!loc.user) {
+    this.state = this.location.getState();
+    if (!this.state.user) {
       this.router.navigate(['/']);
     }
   }
@@ -100,7 +102,7 @@ export class SettingsComponent implements OnInit {
     let obj: News = new News(this.title, this.description, this.imageSource)
     this.generalService.saveNews(obj).subscribe(res => {
       this.openDialog()
-      this.router.navigate(['/']);
+      this.router.navigate(['/private']);
     })
   }
 
@@ -108,7 +110,7 @@ export class SettingsComponent implements OnInit {
     let obj: Research = new Research(this.title, this.description, this.year, this.imageSource)
     this.generalService.saveResearch(obj).subscribe(res => {
       this.openDialog()
-      this.router.navigate(['/research']);
+      this.router.navigate(['/private']);
     })
   }
 
@@ -116,7 +118,7 @@ export class SettingsComponent implements OnInit {
     let obj: People = new People(this.name, this.surname, this.email, this.number, this.additionalInfo, this.role, this.imageSource)
     this.generalService.savePeople(obj).subscribe(res => {
       this.openDialog()
-      this.router.navigate(['/people']);
+      this.router.navigate(['/private']);
     })
   }
 
@@ -139,5 +141,10 @@ export class SettingsComponent implements OnInit {
     this.dialog.open(ModalDialogComponent, dialogConfig);
 
   }
+
+  back() {
+    this.router.navigate(['/private'], { state: { user: this.state } })
+  }
+
 
 }

@@ -1,0 +1,152 @@
+<div class="grid-container mt-2 mb-2">
+
+    <button class="btn btn-primary" (click)="back()">Back</button>
+
+    <div class=" row mt-2">
+
+        <h1 class="title mt-2">{{ 'settings.title' | translate}}</h1>
+
+        <mat-form-field appearance="fill">
+            <mat-label>{{'settings.subtitle' | translate}}</mat-label>
+            <mat-select [(value)]="selected" (selectionChange)="selection()">
+                <mat-option value="news">{{'news.title'| translate}}</mat-option>
+                <mat-option value="people">{{'people.title'| translate}}</mat-option>
+                <mat-option value="research">{{'research.title'| translate}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+    </div>
+
+    <div class="row mt-2" *ngIf="showNews">
+
+        <h1 class="title mt-2">{{ 'settings.news.title' | translate}}</h1>
+
+        <div>
+            <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
+                (change)="uploadListener($event)" accept="*" />
+        </div>
+
+        <div class="mat-h1 mt-5" *ngIf="imageSource">
+            <img class="img" [src]="imageSource" alt="Image Source">
+        </div>
+
+        <table class="full-width mt-2 mb-2 margin-left" cellspacing="0">
+            <tr>
+                <td>
+                    <input type="text" class="form-control mt-2" placeholder="Title" [(ngModel)]="title">
+                </td>
+            </tr>
+            <tr class="mt-2">
+                <td>
+                    <input type="text-area" class="form-control mt-2" placeholder="Description"
+                        [(ngModel)]="description">
+                </td>
+            </tr>
+        </table>
+        <div class="right mt-2">
+            <button mat-raised-button class="btn btn-primary margin-left" (click)=" saveNews()">{{
+                'settings.button.save' | translate}}</button>
+            <button mat-raised-button class="margin-left" color="warn" (click)="clear()">{{
+                'settings.button.clear'
+                | translate}}</button>
+        </div>
+    </div>
+
+    <div class="row mt-2" *ngIf="showResearch">
+
+        <h1 class="title mt-2">{{ 'settings.research.title' | translate}}</h1>
+
+        <div>
+            <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
+                (change)="uploadListener($event)" accept="*" />
+        </div>
+
+        <div class="mat-h1 mt-5" *ngIf="imageSource">
+            <img class="img" [src]="imageSource" alt="Image Source">
+        </div>
+
+        <table class="full-width mt-2 mb-2 margin-left" cellspacing="0">
+            <tr>
+                <td>
+                    <input type="text" class="form-control mt-2" placeholder="Title" [(ngModel)]="title">
+                </td>
+            </tr>
+            <tr class="mt-2">
+                <td>
+                    <input type="text-area" class="form-control mt-2" placeholder="Description"
+                        [(ngModel)]="description">
+                </td>
+            </tr>
+            <tr class="mt-2">
+                <td>
+                    <input type="text-area" class="form-control mt-2" placeholder="Year" [(ngModel)]="year">
+                </td>
+            </tr>
+        </table>
+        <div class="right mt-2">
+            <button mat-raised-button class="btn btn-primary margin-left" color="primary" (click)="saveResearch()">{{
+                'settings.button.save' | translate}}</button>
+            <button mat-raised-button class="margin-left" color="warn" (click)="clear()">{{
+                'settings.button.clear'
+                | translate}}</button>
+        </div>
+    </div>
+
+    <div class="row mt-2" *ngIf="showPeople;">
+
+        <h1 class="title mt-2">{{ 'settings.people.title' | translate}}</h1>
+
+        <div>
+            <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
+                (change)="uploadListener($event)" accept="*" />
+        </div>
+
+        <div class="mat-h1 mt-5" *ngIf="imageSource">
+            <img class="img" [src]="imageSource" alt="Image Source">
+        </div>
+
+        <table class="full-width mt-2 mb-2 margin-left" cellspacing="0">
+            <tr>
+                <td>
+                    <input type="text" class="form-control mt-2" placeholder="Name" [(ngModel)]="name">
+                </td>
+            </tr>
+            <tr class="mt-2">
+                <td>
+                    <input type="text-area" class="form-control mt-2" placeholder="Surname" [(ngModel)]="surname">
+                </td>
+            </tr>
+            <tr class="mt-2">
+                <td>
+                    <input type="email" class="form-control mt-2" placeholder="Email" [(ngModel)]="email">
+                </td>
+            </tr>
+            <tr class="mt-2">
+                <td>
+                    <input type="text-area" class="form-control mt-2" placeholder="Number" [(ngModel)]="number">
+                </td>
+            </tr>
+            <tr class="mt-2">
+                <td>
+                    <input type="text-area" class="form-control mt-2" placeholder="Additional info"
+                        [(ngModel)]="additionalInfo">
+                </td>
+            </tr>
+            <tr class="mt-2">
+                <td>
+                    <input type="text-area" class="form-control mt-2" placeholder="Role" [(ngModel)]="role">
+                </td>
+            </tr>
+        </table>
+        <div class="right mt-2">
+            <button mat-raised-button class="btn btn-primary margin-left" (click)="savePeople()">{{
+                'settings.button.save' | translate}}</button>
+            <button mat-raised-button class="margin-left" color="warn" (click)="clear()">{{
+                'settings.button.clear'
+                | translate}}</button>
+        </div>
+    </div>
+
+    <div class="row mt-2"></div>
+
+</div>
