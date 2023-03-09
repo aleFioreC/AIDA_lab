@@ -1,4 +1,4 @@
-<div class="row mt-2">
+<div class="row col-sm-12 mt-2">
 
     <h1 class="title mt-2">{{ 'settings.people.title' | translate}}</h1>
 
@@ -11,39 +11,41 @@
         <img class="img" [src]="imageSource" alt="Image Source">
     </div>
 
-    <table class="full-width mt-2 mb-2 margin-left" cellspacing="0">
-        <tr>
-            <td>
-                <input type="text" class="form-control mt-2" placeholder="Name" [(ngModel)]="people.name">
-            </td>
-        </tr>
-        <tr class="mt-2">
-            <td>
-                <input type="text-area" class="form-control mt-2" placeholder="Surname" [(ngModel)]="people.surname">
-            </td>
-        </tr>
-        <tr class="mt-2">
-            <td>
-                <input type="email" class="form-control mt-2" placeholder="Email" [(ngModel)]="people.email">
-            </td>
-        </tr>
-        <tr class="mt-2">
-            <td>
-                <input type="text-area" class="form-control mt-2" placeholder="Number" [(ngModel)]="people.number">
-            </td>
-        </tr>
-        <tr class="mt-2">
-            <td>
-                <input type="text-area" class="form-control mt-2" placeholder="Additional info"
-                    [(ngModel)]="people.additionalInfo">
-            </td>
-        </tr>
-        <tr class="mt-2">
-            <td>
-                <input type="text-area" class="form-control mt-2" placeholder="Role" [(ngModel)]="people.role">
-            </td>
-        </tr>
-    </table>
+
+    <mat-form-field class="mt-4" appearance="fill">
+        <mat-label>Name</mat-label>
+        <input [(ngModel)]="people.name" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Surname</mat-label>
+        <input [(ngModel)]="people.surname" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input [(ngModel)]="people.email" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Number</mat-label>
+        <input [(ngModel)]="people.number" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Additional info</mat-label>
+        <input [(ngModel)]="people.additionalInfo" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Role</mat-label>
+        <mat-select [(value)]="people.role">
+            <mat-option value="Full Professor">Full Professor</mat-option>
+            <mat-option value="Associate Professor">Associate Professor</mat-option>
+            <mat-option value="Researcher">Researcher</mat-option>
+        </mat-select>
+    </mat-form-field>
+
     <div class="right mt-2">
         <button mat-raised-button class="btn btn-primary margin-left" (click)="savePeople()">{{
             'settings.button.save' | translate}}</button>

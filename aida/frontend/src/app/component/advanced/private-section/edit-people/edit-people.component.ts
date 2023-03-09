@@ -34,7 +34,7 @@ export class EditPeopleComponent implements OnInit {
       this.router.navigate(['/']);
     }
     this.activatedRoute.data.subscribe((response: any) => {
-      this.people = response.news
+      this.people = response.people
       this.imageSource = this.people.file != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + this.people.file) : null
     });
   }

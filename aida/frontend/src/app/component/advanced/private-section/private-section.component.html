@@ -5,7 +5,6 @@
 <mat-tab-group>
     <mat-tab label="News">
         <div class="grid-container mt-2">
-            <h1 class="title">{{ 'dashboard.subtitle' | translate }}</h1>
             <div class="col-sm-12 col-md-12 mt-5" *ngFor="let card of news">
                 <mat-card class="dashboard-card cursor">
                     <mat-card-header>
@@ -37,9 +36,8 @@
             </div>
         </div>
     </mat-tab>
-    <mat-tab label=" People">
+    <mat-tab label="People">
         <div class="grid-container mt-2">
-            <h1 class="title">Research</h1>
             <div class="col-sm-12 col-md-12 mt-5" *ngFor="let card of people">
                 <mat-card class="aida-card cursor">
                     <mat-card-header>
@@ -75,7 +73,6 @@
     </mat-tab>
     <mat-tab label="Research">
         <div class="grid-container mt-2">
-            <h1 class="title">Research</h1>
             <div class="col-sm-12 col-md-12 mt-5" *ngFor="let card of research">
                 <mat-card class="aida-card cursor">
                     <mat-card-header>

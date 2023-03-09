@@ -17,6 +17,7 @@ import { NewsDetailComponent } from './component/advanced/news/news-detail/news-
 import { EditResearchComponent } from './component/advanced/private-section/edit-research/edit-research.component';
 import { PeopleResolver } from './model/resolver/people.resolver';
 import { AuthorDetailComponent } from './component/advanced/author/author-detail/author-detail.component';
+import { EditPeopleComponent } from './component/advanced/private-section/edit-people/edit-people.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -58,6 +59,11 @@ const routes: Routes = [
     path: 'edit-research/:id',
     component: EditResearchComponent,
     resolve: { research: ResearchResolver }
+  },
+  {
+    path: 'edit-people/:id',
+    component: EditPeopleComponent,
+    resolve: { people: PeopleResolver }
   },
 ];
 

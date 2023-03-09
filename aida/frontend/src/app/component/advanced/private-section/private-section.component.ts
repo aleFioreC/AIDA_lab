@@ -98,7 +98,7 @@ export class PrivateSectionComponent implements OnInit {
   }
 
   openResearch(card) {
-    this.router.navigate(['/edit-research/' + card.id], { state: { user: this.state } })
+    this.router.navigate(['/edit-research/' + card.idResearch], { state: { user: this.state } })
   }
 
   removeResearch(card) {
@@ -108,7 +108,7 @@ export class PrivateSectionComponent implements OnInit {
   }
 
   openPeople(card) {
-    this.router.navigate(['/edit-people/' + card.id], { state: { user: this.state } })
+    this.router.navigate(['/edit-people/' + card.idPeople], { state: { user: this.state } })
   }
 
   deletePeople(card) {

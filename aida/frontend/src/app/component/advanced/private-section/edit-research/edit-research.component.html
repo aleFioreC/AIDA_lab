@@ -11,24 +11,21 @@
         <img class="img" [src]="imageSource" alt="Image Source">
     </div>
 
-    <table class="full-width mt-2 mb-2 margin-left" cellspacing="0">
-        <tr>
-            <td>
-                <input type="text" class="form-control mt-2" placeholder="Title" [(ngModel)]="research.title">
-            </td>
-        </tr>
-        <tr class="mt-2">
-            <td>
-                <input type="text-area" class="form-control mt-2" placeholder="Description"
-                    [(ngModel)]="research.description">
-            </td>
-        </tr>
-        <tr class="mt-2">
-            <td>
-                <input type="text-area" class="form-control mt-2" placeholder="Year" [(ngModel)]="research.year">
-            </td>
-        </tr>
-    </table>
+    <mat-form-field class="mt-4" appearance="fill">
+        <mat-label>Title</mat-label>
+        <input [(ngModel)]="research.title" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea [(ngModel)]="research.description" matInput></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Year</mat-label>
+        <input [(ngModel)]="research.year" matInput>
+    </mat-form-field>
+
     <div class="right mt-2">
         <button mat-raised-button class="btn btn-primary margin-left" color="primary" (click)="saveResearch()">{{
             'settings.button.save' | translate}}</button>
