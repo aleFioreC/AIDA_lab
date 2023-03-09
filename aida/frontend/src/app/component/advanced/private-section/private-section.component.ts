@@ -7,6 +7,7 @@ import { Location } from '@angular/common';
 import { CardLayout } from 'src/app/model/card_layout';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Research } from 'src/app/model/research';
+import { People } from 'src/app/model/people';
 
 @Component({
   selector: 'app-private-section',
@@ -24,12 +25,24 @@ export class PrivateSectionComponent implements OnInit {
     if (!this.state.user) {
       this.router.navigate(['/']);
     }
+    this.findAllPeople()
     this.findAllNews()
     this.findAllResearch()
   }
 
   news: CardLayout[] = [];
   research: Research[] = [];
+  people: People[] = [];
+
+  findAllPeople() {
+    this.people = []
+    this.generalService.allPeople().subscribe((res: any) => {
+      res.forEach(element => {
+        element.file = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file)
+        this.people.push(element)
+      });
+    });
+  }
 
   findAllNews() {
     this.news = []
@@ -90,6 +103,16 @@ export class PrivateSectionComponent implements OnInit {
 
   removeResearch(card) {
     this.generalService.deleteResearch(card.id).subscribe(res => {
+      this.openDialog()
+    })
+  }
+
+  openPeople(card) {
+    this.router.navigate(['/edit-people/' + card.id], { state: { user: this.state } })
+  }
+
+  deletePeople(card) {
+    this.generalService.deletePeople(card.id).subscribe(res => {
       this.openDialog()
     })
   }

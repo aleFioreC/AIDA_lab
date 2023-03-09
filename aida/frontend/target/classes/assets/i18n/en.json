@@ -1,7 +1,7 @@
 {
     "dashboard": {
         "text": "Welcome to the Home Page of the Artificial Intelligence and Data Analysis Group of the DIEI the University of Cassino and Southern Lazio, Cassino, Italy",
-        "subtitle": "Last news",
+        "subtitle": "News",
         "detail": "Detail"
     },
     "news": {
@@ -26,9 +26,16 @@
         "title": "Login"
     },
     "settings": {
-        "title": "Choose resource to add from the follow",
+        "new": {
+            "title": "Insert"
+        },
+        "edit": {
+            "title": "Edit"
+        },
+        "subtitle": "Choose resource to add from the follow",
         "button": {
             "save": "Save",
+            "delete": "Delete",
             "clear": "Clear"
         },
         "news": {

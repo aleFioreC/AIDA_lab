@@ -15,8 +15,9 @@
                         </p>
                     </div>
                     <div class="col-sm-4 center">
-                        <img *ngIf="card.file" class="img" [src]="card.file" alt="Image Source">
-                        <img *ngIf="!card.file" class="img" src="assets/noimage.png" alt="Image Source">
+                        <img *ngIf="card.file" class="img-thumbnail lazyloaded" [src]="card.file" alt="Image Source">
+                        <img *ngIf="!card.file" class="img-thumbnail lazyloaded" src="assets/noimage.png"
+                            alt="Image Source">
                     </div>
                 </div>
                 <div class="col-sm-2">

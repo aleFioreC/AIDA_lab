@@ -20,6 +20,7 @@ export class NewsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource: MatTableDataSource<CardLayout>;
   obs: Observable<any>;
+  card;
 
   constructor(private changeDetectorRef: ChangeDetectorRef, private _sanitizer: DomSanitizer, public dialog: MatDialog, private generalService: GeneralService, private router: Router) { }
 
@@ -55,6 +56,7 @@ export class NewsComponent implements OnInit {
       this.dataSource = new MatTableDataSource<CardLayout>(this.cards);
       this.dataSource.paginator = this.paginator;
       this.obs = this.dataSource.connect();
+      this.card = this.cards[0]
     });
   }
 

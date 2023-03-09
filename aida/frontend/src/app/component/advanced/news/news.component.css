@@ -14,14 +14,6 @@
     margin-bottom: 15px;
 }
 
-.dashboard-card {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    right: 15px;
-    bottom: 15px;
-}
-
 .more-button {
     position: absolute;
     top: 5px;
@@ -32,4 +24,26 @@
     word-break: break-word;
     text-overflow: ellipsis ellipsis;
     height: 70%;
+}
+
+
+
+.more-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
+
+.t {
+    text-align: justify;
+    text-overflow: ellipsis;
+}
+
+.long-text {
+    word-break: break-word;
+}
+
+.dashboard-card-content {
+    padding-left: 10px
 }

@@ -192,26 +192,6 @@ html {
     color: var(--bs-white)
 }
 
-@media (min-width: 1200px) {
-    .img-author {
-        width: 240px;
-        height: 230px;
-    }
-}
-
-@media (min-width: 725px) and (max-width: 1199px) {
-    .img-author {
-        width: 190px;
-        height: 180px;
-    }
-}
-
-@media(max-width: 724px) {
-    .img-author {
-        width: 180px;
-        height: 190px;
-    }
-}
 
 @media (min-width: 1200px) {
     .img {
@@ -732,7 +712,6 @@ mark,
 .img-thumbnail {
     padding: .25rem;
     background-color: #FCFCFC;
-    border: 1px solid #dee2e6;
     border-radius: .25rem;
     max-width: 100%;
     height: auto
@@ -5067,6 +5046,8 @@ button.bg-dark:focus {
 }
 
 .rounded-circle {
+    border: 1px solid #dee2e6;
+
     border-radius: 50% !important
 }
 

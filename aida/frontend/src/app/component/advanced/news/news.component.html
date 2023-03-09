@@ -1,32 +1,44 @@
-<div class="col-md-12 mt-3">
-    <h1 class="title">{{ 'dashboard.subtitle' | translate }}</h1>
-    <mat-grid-list cols="2" rowHeight="400px">
-        <mat-grid-tile *ngFor="let card of obs | async" [colspan]="card.cols" [rowspan]="card.rows">
-            <mat-card class="dashboard-card cursor">
-                <mat-card-header>
-                    <mat-card-title>
-                    </mat-card-title>
-                </mat-card-header>
-                <mat-card-content class="dashboard-card-content">
-                    <div class="row">
-                        <h1 class="title"> {{card.title}} </h1>
-                        <div class="col-sm-8 justify">
-                            <p class="long-text">
-                                {{card.description}}
-                            </p>
-                        </div>
-                        <div class="col-sm-4 center">
-                            <img *ngIf="card.file" class="img" [src]="card.file" alt="Image Source">
-                            <img *ngIf="!card.file" class="img" src="assets/noimage.png" alt="Image Source">
-                        </div>
+<div class="jumbotron block-home block-home-dense ">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 justify">
+                <h1 class="display-title">{{card?.title}}</h1>
+                <p class="lead">{{card?.description}}</p>
+            </div>
+            <div class="col-md-6">
+                <img *ngIf="card?.file" class="figure-img lazyloaded" [src]="card.file" alt="Image Source">
+                <img *ngIf="!card?.file" class="figure-img lazyloaded" src="assets/noimage.png" alt="Image Source">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="grid-container mt-2">
+    <div class="col-sm-12 col-md-12 mt-5" *ngFor="let card of obs | async">
+        <mat-card class="aida-card cursor">
+            <mat-card-header>
+                <mat-card-title>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="dashboard-card-content">
+                <div class="row">
+                    <h1 class="title"> {{card.title}} </h1>
+                    <div class="col-sm-8 justify">
+                        <p class="long-text">
+                            {{card.description}}
+                        </p>
                     </div>
-                    <div class="col-sm-2">
-                        <button class="btn btn-primary" (click)="open(card)">More information</button>
+                    <div class="col-sm-4 center">
+                        <img *ngIf="card.file" class="img-thumbnail lazyloaded" [src]="card.file" alt="Image Source">
+                        <img *ngIf="!card.file" class="img-thumbnail lazyloaded" src="assets/noimage.png"
+                            alt="Image Source">
                     </div>
-                </mat-card-content>
-            </mat-card>
-        </mat-grid-tile>
-    </mat-grid-list>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-primary" (click)="open(card)">More information</button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
     <div class="container-fluid" #focus>
         <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" (page)="scrollUp()"></mat-paginator>
     </div>
