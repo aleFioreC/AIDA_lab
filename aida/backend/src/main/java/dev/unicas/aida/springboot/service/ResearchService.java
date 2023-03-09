@@ -1,5 +1,6 @@
 package dev.unicas.aida.springboot.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +19,17 @@ public class ResearchService {
 	public Research save(Research n) {
 		this.repository.save(n);
 		return n;
+	}
+	
+	public Research edit(Research n, Integer id) throws Exception {
+		Optional<Research> research = findById(id);
+		if (research.isPresent()) {
+			Research p = research.get();
+			p = new Research(n.getTitle(), n.getDescription(), n.getYear(), n.getFile(), new Date());
+			return this.repository.save(p);
+		} else {
+			throw new Exception("Not found");
+		}
 	}
 
 	public List<Research> findAll() {

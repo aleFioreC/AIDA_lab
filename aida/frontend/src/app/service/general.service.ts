@@ -25,6 +25,10 @@ export class GeneralService {
         return this.httpClient.get(this.environment + '/people/findAll');
     }
 
+    getPeople(id: string) {
+        return this.httpClient.get(this.environment + '/people/findById/' + id);
+    }
+
     allResearch() {
         return this.httpClient.get(this.environment + '/research/findAll');
     }
@@ -45,7 +49,7 @@ export class GeneralService {
         return this.httpClient.post(this.environment + '/research/save', body);
     }
 
-    deletNews(id: number) {
+    deleteNews(id: number) {
         return this.httpClient.delete(this.environment + '/news/delete/' + id);
     }
 

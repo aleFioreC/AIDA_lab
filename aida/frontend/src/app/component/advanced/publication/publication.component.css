@@ -1,12 +1,16 @@
 .center {
-    text-align: center
+  text-align: center
 }
 
 table {
-    width: 100%;
-  }
-  
-  .mat-mdc-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.grid-container {
+  min-height: 500px;
+}

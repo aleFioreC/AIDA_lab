@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { CardLayout } from 'src/app/model/card_layout';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Research } from 'src/app/model/research';
 
 @Component({
   selector: 'app-private-section',
@@ -23,12 +24,14 @@ export class PrivateSectionComponent implements OnInit {
     if (!this.state.user) {
       this.router.navigate(['/']);
     }
-    this.findAll()
+    this.findAllNews()
+    this.findAllResearch()
   }
 
   news: CardLayout[] = [];
+  research: Research[] = [];
 
-  findAll() {
+  findAllNews() {
     this.news = []
     this.generalService.allNews().subscribe((res: any) => {
       res.forEach(element => {
@@ -36,6 +39,17 @@ export class PrivateSectionComponent implements OnInit {
         element.file = element.file != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file) : null
         let card = new CardLayout(element.idNews, element.title, '2', '1', element.description, element.file, element.creationDate)
         this.news.push(card)
+      });
+    });
+  }
+
+  findAllResearch() {
+    this.research = []
+    this.generalService.allResearch().subscribe((res: any) => {
+      res.forEach(element => {
+        element.description = element.description && element.description.length > 400 ? element.description.slice(0, 320) + '...read more...' : element.description
+        element.file = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file)
+        this.research.push(element)
       });
     });
   }
@@ -60,14 +74,25 @@ export class PrivateSectionComponent implements OnInit {
     this.router.navigate(['/insert'], { state: { user: this.state } });
   }
 
-  open(card) {
-    this.router.navigate(['/edit/' + card.id], { state: { user: this.state } })
+  openNews(card) {
+    this.router.navigate(['/edit-news/' + card.id], { state: { user: this.state } })
   }
 
-  remove(card) {
-    this.generalService.deletNews(card.id).subscribe(res => {
+  removeNews(card) {
+    this.generalService.deleteNews(card.id).subscribe(res => {
       this.openDialog()
     })
   }
+
+  openResearch(card) {
+    this.router.navigate(['/edit-research/' + card.id], { state: { user: this.state } })
+  }
+
+  removeResearch(card) {
+    this.generalService.deleteResearch(card.id).subscribe(res => {
+      this.openDialog()
+    })
+  }
+
 
 }

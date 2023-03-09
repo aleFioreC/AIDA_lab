@@ -35,7 +35,6 @@ import { PublicationComponent } from './component/advanced/publication/publicati
 import { ContactComponent } from './component/advanced/contact/contact.component';
 import { MatSelectModule } from '@angular/material/select';
 import { ResearchComponent } from './component/advanced/research/research.component';
-import { DashboardDetailComponent } from './component/basic/dashboard/dashboard-detail/dashboard-detail.component';
 import { ResearchDetailComponent } from './component/advanced/research/research-detail/research-detail.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { PrivateSectionComponent } from './component/advanced/private-section/private-section.component';
@@ -50,6 +49,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { EditNewsComponent } from './component/advanced/private-section/edit-news/edit-news.component';
 import { EditPeopleComponent } from './component/advanced/private-section/edit-people/edit-people.component';
 import { EditResearchComponent } from './component/advanced/private-section/edit-research/edit-research.component';
+import { NewsDetailComponent } from './component/advanced/news/news-detail/news-detail.component';
+import { AuthorDetailComponent } from './component/advanced/author/author-detail/author-detail.component';
 
 @NgModule({
   declarations: [
@@ -66,14 +67,15 @@ import { EditResearchComponent } from './component/advanced/private-section/edit
     PublicationComponent,
     ContactComponent,
     ResearchComponent,
-    DashboardDetailComponent,
     ResearchDetailComponent,
     PrivateSectionComponent,
     InsertComponent,
     LoginComponent,
     EditNewsComponent,
     EditPeopleComponent,
-    EditResearchComponent
+    EditResearchComponent,
+    NewsDetailComponent,
+    AuthorDetailComponent
   ],
   imports: [
     BrowserModule,

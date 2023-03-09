@@ -26,10 +26,16 @@
         "title": "Login"
     },
     "settings": {
-        "title": "Insert",
+        "new": {
+            "title": "Insert"
+        },
+        "edit": {
+            "title": "Edit"
+        },
         "subtitle": "Choose resource to add from the follow",
         "button": {
             "save": "Save",
+            "delete": "Delete",
             "clear": "Clear"
         },
         "news": {

@@ -26,10 +26,16 @@
         "title": "Accedi"
     },
     "settings": {
-        "title": "Inserisci",
+        "new": {
+            "title": "Inserisci"
+        },
+        "edit": {
+            "title": "Modifica"
+        },
         "subtitle": "Scegli quale informazione inserire tra le seguenti",
         "button": {
             "save": "Salva",
+            "delete": "Cancella",
             "clear": "Pulisci"
         },
         "news": {

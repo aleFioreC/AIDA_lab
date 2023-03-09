@@ -14,7 +14,6 @@ import { GeneralService } from 'src/app/service/general.service';
 })
 export class EditNewsComponent implements OnInit {
 
-
   imageSource;
   title;
   description;

@@ -1,0 +1,14 @@
+<div class="grid-container mt-5">
+    <div class="row col-sm-12">
+        <h1 class="title">{{people?.name}} {{people?.surname}}</h1>
+        <div class="row col-sm-4">
+            <img *ngIf="people.file" class="img-thumbnail rounded-circle lazyloaded" [src]="people.file"
+                alt="Image Source">
+            <img *ngIf="!people.file" class="img-thumbnail rounded-circle lazyloaded" src="assets/noimage.png"
+                alt="Image Source">
+        </div>
+        <div class="row col-sm-8 justify">
+            <h3>{{people?.role}}</h3>
+        </div>
+    </div>
+</div>

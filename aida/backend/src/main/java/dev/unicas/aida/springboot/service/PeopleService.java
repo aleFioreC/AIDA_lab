@@ -1,6 +1,7 @@
 package dev.unicas.aida.springboot.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +20,29 @@ public class PeopleService {
 		return n;
 	}
 
+	public People edit(People n, Integer id) throws Exception {
+		Optional<People> people = findById(id);
+		if (people.isPresent()) {
+			People p = people.get();
+			p = new People(n.getName(), n.getSurname(), n.getEmail(), n.getNumber(), n.getAdditionalInfo(), n.getRole(),
+					n.getFile());
+			return this.repository.save(p);
+		} else {
+			throw new Exception("Not found");
+		}
+	}
+
 	public List<People> findAll() {
 		return (List<People>) this.repository.findAllByOrderByIdPeopleDesc();
 	}
-	
+
+	public Optional<People> findById(Integer id) {
+		return this.repository.findById(id);
+	}
+
 	public boolean delete(Integer id) {
-		this.repository.deleteById(id);;
+		this.repository.deleteById(id);
+		;
 		return true;
 	}
 }

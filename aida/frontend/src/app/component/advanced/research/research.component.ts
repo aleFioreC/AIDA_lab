@@ -34,13 +34,6 @@ export class ResearchComponent implements OnInit {
     }
   }
 
-  /*   remove(card) {
-      this.generalService.deleteResearch(card.idResearch).subscribe(res => {
-        this.findAll()
-        this.openDialog()
-      })
-    } */
-
   @ViewChild('focus', { read: ElementRef }) tableInput: ElementRef;
   scrollUp(): void {
     setTimeout(() => window.scrollTo(0, 0));

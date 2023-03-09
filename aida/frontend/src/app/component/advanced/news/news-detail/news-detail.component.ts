@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { News } from 'src/app/model/news';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-dashboard-detail',
-  templateUrl: './dashboard-detail.component.html',
-  styleUrls: ['./dashboard-detail.component.css']
+  selector: 'app-news-detail',
+  templateUrl: './news-detail.component.html',
+  styleUrls: ['./news-detail.component.css']
 })
-export class DashboardDetailComponent implements OnInit {
+export class NewsDetailComponent implements OnInit {
 
   news: News;
   file: any;

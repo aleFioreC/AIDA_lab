@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,6 +44,11 @@ public class NewsController {
     	news.setCreationDate(new Date());
 		return this.service.save(news);
     }
+    
+	@PutMapping(value = "/edit/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public News save(@RequestBody News p,@PathVariable Integer id) throws Exception {
+		return this.service.edit(p, id);
+	}
     
     @DeleteMapping(value = "/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public boolean delete(@PathVariable Integer id) {

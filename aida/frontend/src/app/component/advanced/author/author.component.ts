@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { GeneralService } from 'src/app/service/general.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class AuthorComponent implements OnInit {
   full = [];
   researcher = [];
 
-  constructor(private _sanitizer: DomSanitizer, private generalService: GeneralService) { }
+  constructor(private router: Router, private _sanitizer: DomSanitizer, private generalService: GeneralService) { }
 
   ngOnInit(): void {
     this.findAll()
@@ -34,6 +35,10 @@ export class AuthorComponent implements OnInit {
       this.associate = this.all.filter(c => c.role == 'Associate Professor')
       this.full = this.all.filter(c => c.role == 'Full Professor')
     });
+  }
+
+  open(card) {
+    this.router.navigate(['/people/' + card.idPeople])
   }
 
 }

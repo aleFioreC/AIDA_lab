@@ -106,7 +106,12 @@ body {
 }
 
 .background {
-    background: var(--bs-primary) !important
+    background: var(--bs-white) !important;
+    border-bottom: 3px solid var(--bs-primary) !important;
+}
+
+.footer {
+    background: var(--bs-primary) !important;
 }
 
 html {
@@ -120,6 +125,71 @@ html {
 
 .cursor {
     cursor: pointer;
+}
+
+.grid-container {
+    min-height: 500px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.menu-spacer {
+    flex: 1 1 auto;
+}
+
+
+.divider {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.small-text {
+    font-size: 14px;
+    color: var(--bs-white)
+}
+
+.small-icon {
+    font-size: 24px;
+    color: var(--bs-white)
+}
+
+.logo {
+    height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.small-text-href {
+    cursor: pointer;
+    color: var(--bs-white)
+}
+
+.menu-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1rem;
+
+}
+
+.name {
+    margin-top: 8px;
+    font-weight: normal;
+}
+
+.designation {
+    margin-top: 2px;
+    font-size: 0.7rem;
+    color: var(--bs-white)
+}
+
+.p-4 {
+    color: var(--bs-white)
+}
+
+.p-3 {
+    color: var(--bs-white)
 }
 
 @media (min-width: 1200px) {

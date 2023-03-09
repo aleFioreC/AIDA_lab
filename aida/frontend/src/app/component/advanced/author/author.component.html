@@ -6,8 +6,8 @@
             <img *ngIf="card.file" class="img-thumbnail rounded-circle lazyloaded" [src]="card.file" alt="Image Source">
             <img *ngIf="!card.file" class="img-thumbnail rounded-circle lazyloaded" src="assets/noimage.png"
                 alt="Image Source">
-            <h3 class="person-name"> {{card.name}} {{card.surname}}</h3>
-            <h4 class="person-title"><small>{{card.role}}</small></h4>
+            <h3 class="person-name cursor" (click)="open(card)"> {{card.name}} {{card.surname}}</h3>
+            <h4 class=" person-title"><small>{{card.role}}</small></h4>
         </div>
     </div>
     <div class="row">
@@ -16,7 +16,7 @@
             <img *ngIf="card.file" class="img-thumbnail rounded-circle lazyloaded" [src]="card.file" alt="Image Source">
             <img *ngIf="!card.file" class="img-thumbnail rounded-circle lazyloaded" src="assets/noimage.png"
                 alt="Image Source">
-            <h3 class="person-name"> {{card.name}} {{card.surname}}</h3>
+            <h3 class="person-name cursor" (click)="open(card)"> {{card.name}} {{card.surname}}</h3>
             <h4 class="person-title"><small>{{card.role}}</small></h4>
         </div>
     </div>
@@ -26,7 +26,7 @@
             <img *ngIf="card.file" class="img-thumbnail rounded-circle lazyloaded" [src]="card.file" alt="Image Source">
             <img *ngIf="!card.file" class="img-thumbnail rounded-circle lazyloaded" src="assets/noimage.png"
                 alt="Image Source">
-            <h3 class="person-name"> {{card.name}} {{card.surname}}</h3>
+            <h3 class="person-name cursor" (click)="open(card)"> {{card.name}} {{card.surname}}</h3>
             <h4 class="person-title"><small>{{card.role}}</small></h4>
         </div>
     </div>

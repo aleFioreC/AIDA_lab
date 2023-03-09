@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,6 +41,11 @@ public class ResearchController {
 	@PostMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Research save(@RequestBody Research r) {
 		return this.service.save(r);
+	}
+	
+	@PutMapping(value = "/edit/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Research save(@RequestBody Research p,@PathVariable Integer id) throws Exception {
+		return this.service.edit(p, id);
 	}
 	
     @DeleteMapping(value = "/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)

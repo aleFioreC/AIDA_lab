@@ -8,14 +8,14 @@
   margin-left: 5px;
 }
 
-.small-text{
+.small-text {
   font-size: 14px;
-  color: var(--bs-white)
+  color: var(--bs-primary)
 }
 
-.small-icon{
+.small-icon {
   font-size: 24px;
-  color: var(--bs-white)
+  color: var(--bs-primary)
 }
 
 .logo {
@@ -26,12 +26,12 @@
 
 .cursor {
   cursor: pointer;
-  color: var(--bs-white)
+  color: var(--bs-primary)
 }
 
 .small-text-href {
   cursor: pointer;
-  color: var(--bs-white)
+  color: var(--bs-primary)
 }
 
 .menu-button {
@@ -59,14 +59,10 @@ mat-divider {
   margin-bottom: 16px;
 }
 
-mat-toolbar {
-  background: #004a9f;
-  color: white;
-}
-
 mat-sidenav {
   border-right: none;
-  background-color: var(--bs-primary) !important;
+  background-color: var(--bs-white) !important;
+  margin-bottom: 1px solid var(--bs-primary) !important;
   color: white;
   text-align: center;
 }

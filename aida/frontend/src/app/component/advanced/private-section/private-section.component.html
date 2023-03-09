@@ -4,37 +4,73 @@
 
 <mat-tab-group>
     <mat-tab label="News">
-        <h1 class="title">{{ 'dashboard.subtitle' | translate }}</h1>
-        <div class="col-sm-12 col-md-12 mt-5" *ngFor="let card of news">
-            <mat-card class="dashboard-card cursor">
-                <mat-card-header>
-                    <mat-card-title>
-                    </mat-card-title>
-                </mat-card-header>
-                <mat-card-content class="dashboard-card-content">
-                    <div class="row">
-                        <h1 class="title"> {{card.title}} </h1>
-                        <div class="col-sm-8 justify">
-                            <p class="long-text">
-                                {{card.description}}
-                            </p>
+        <div class="grid-container mt-2">
+            <h1 class="title">{{ 'dashboard.subtitle' | translate }}</h1>
+            <div class="col-sm-12 col-md-12 mt-5" *ngFor="let card of news">
+                <mat-card class="dashboard-card cursor">
+                    <mat-card-header>
+                        <mat-card-title>
+                        </mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content class="dashboard-card-content">
+                        <div class="row">
+                            <h1 class="title"> {{card.title}} </h1>
+                            <div class="col-sm-8 justify">
+                                <p class="long-text">
+                                    {{card.description}}
+                                </p>
+                            </div>
+                            <div class="col-sm-4 center">
+                                <img *ngIf="card.file" class="img" [src]="card.file" alt="Image Source">
+                                <img *ngIf="!card.file" class="img" src="assets/noimage.png" alt="Image Source">
+                            </div>
                         </div>
-                        <div class="col-sm-4 center">
-                            <img *ngIf="card.file" class="img" [src]="card.file" alt="Image Source">
-                            <img *ngIf="!card.file" class="img" src="assets/noimage.png" alt="Image Source">
+                        <div class="col-sm-6">
+                            <button mat-raised-button class="margin-left btn btn-primary"
+                                (click)="openNews(card)">Edit</button>
+                            <button mat-raised-button class="margin-left" color="warn" (click)="removeNews(card)">{{
+                                'settings.button.delete'
+                                | translate}}</button>
                         </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <button mat-raised-button class="margin-left btn btn-primary" (click)="open(card)">Edit</button>
-                        <button mat-raised-button class="margin-left" color="warn" (click)="remove(card)">{{
-                            'settings.button.clear'
-                            | translate}}</button>
-                    </div>
-                </mat-card-content>
-            </mat-card>
+                    </mat-card-content>
+                </mat-card>
+            </div>
         </div>
     </mat-tab>
     <mat-tab label=" People">
     </mat-tab>
-    <mat-tab label="Research"></mat-tab>
+    <mat-tab label="Research">
+        <div class="grid-container mt-2">
+            <h1 class="title">Research</h1>
+            <div class="col-sm-12 col-md-12 mt-5" *ngFor="let card of research">
+                <mat-card class="aida-card cursor">
+                    <mat-card-header>
+                        <mat-card-title>
+                        </mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content class="dashboard-card-content">
+                        <div class="row">
+                            <h1 class="title"> {{card.title}} </h1>
+                            <div class="col-sm-8 justify">
+                                <p class="long-text">
+                                    <span>{{card.description}}</span>
+                                </p>
+                            </div>
+                            <div class="col-sm-4 center">
+                                <img *ngIf="card.file" class="img" [src]="card.file" alt="Image Source">
+                                <img *ngIf="!card.file" class="img" src="assets/noimage.png" alt="Image Source">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <button mat-raised-button class="margin-left btn btn-primary"
+                                (click)="openResearch(card)">Edit</button>
+                            <button mat-raised-button class="margin-left" color="warn" (click)="removeResearch(card)">{{
+                                'settings.button.delete'
+                                | translate}}</button>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </mat-tab>
 </mat-tab-group>

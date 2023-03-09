@@ -27,8 +27,21 @@ public class People {
 
 	@Lob
 	private String file;
-
 	
+	public People() {}
+
+	public People(String name, String surname, String email, String number, String additionalInfo,
+			String role, String file) {
+		super();
+		this.name = name;
+		this.surname = surname;
+		this.email = email;
+		this.number = number;
+		this.additionalInfo = additionalInfo;
+		this.role = role;
+		this.file = file;
+	}
+
 	public Integer getIdPeople() {
 		return idPeople;
 	}

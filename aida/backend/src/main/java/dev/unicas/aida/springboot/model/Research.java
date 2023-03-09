@@ -29,10 +29,12 @@ public class Research {
 	public Research() {
 	}
 
-	public Research(String title, String description, String file, Date creation_date) {
+	public Research(String title, String description, Integer year
+,String file, Date creation_date) {
 		super();
 		this.title = title;
 		this.description = description;
+		this.year = year;
 		this.file = file;
 		this.creation_date = creation_date;
 	}
