@@ -415,6 +415,10 @@ img {
     border-style: none
 }
 
+.font {
+    font-size: 32px !important;
+}
+
 svg {
     overflow: hidden;
     vertical-align: middle

@@ -1,6 +1,10 @@
 <div class="jumbotron block-home block-home-dense ">
+    <div class="row bottom">
+        <h1 class="display-title">AIDA LAB Artificial Intelligence and Data
+            Analysis</h1>
+    </div>
     <div class="container">
-        <div class="row">
+        <div class="row" *ngIf="card">
             <div class="col-md-6 justify">
                 <h1 class="display-title">{{card?.title}}</h1>
                 <p class="lead">{{card?.description}}</p>
@@ -10,9 +14,14 @@
                 <img *ngIf="!card?.file" class="figure-img lazyloaded" src="assets/noimage.png" alt="Image Source">
             </div>
         </div>
+        <div class="row" *ngIf="!card">
+            <div class="col-md-12 center">
+                <h1 class="display-title">No recently news.</h1>
+            </div>
+        </div>
     </div>
 </div>
-<div class="grid-container mt-2">
+<div class="container grid-container mt-2">
     <div class="col-sm-12 col-md-12 mt-5" *ngFor="let card of obs | async">
         <mat-card class="aida-card cursor">
             <mat-card-header>

@@ -17,6 +17,10 @@ export class GeneralService {
         return this.httpClient.get(this.environment + '/news/findAll');
     }
 
+    topNews() {
+        return this.httpClient.get(this.environment + '/news/findTop');
+    }
+
     getNews(id: string) {
         return this.httpClient.get(this.environment + '/news/findById/' + id);
     }

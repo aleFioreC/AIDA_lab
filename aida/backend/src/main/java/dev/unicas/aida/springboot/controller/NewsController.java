@@ -31,6 +31,11 @@ public class NewsController {
     public List<News> findAll() {
     	return service.findAll();
     }
+    
+    @GetMapping(value = "/findTop", produces = MediaType.APPLICATION_JSON_VALUE)
+    public News findTopNews() {
+    	return service.findTopNews();
+    }
 
     @GetMapping(value = "/findById/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public News findById(@PathVariable Integer id) {

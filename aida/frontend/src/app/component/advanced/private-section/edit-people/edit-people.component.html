@@ -1,50 +1,56 @@
-<div class="row col-sm-12 mt-2">
+<div class="container grid-container mt-5">
 
-    <h1 class="title mt-2">{{ 'settings.people.title' | translate}}</h1>
+    <button class="btn btn-primary" (click)="back()">Back</button>
 
-    <div>
-        <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
-            (change)="uploadListener($event)" accept="*" />
+    <h1 class="title mt-2">{{ 'settings.edit.title' | translate}}</h1>
+
+    <div class="row mt-2">
+
+        <div>
+            <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
+                (change)="uploadListener($event)" accept="*" />
+        </div>
+
+        <div class="mat-h1 mt-5" *ngIf="imageSource">
+            <img class="img" [src]="imageSource" alt="Image Source">
+        </div>
+
+
+        <mat-form-field class="mt-4" appearance="fill">
+            <mat-label>Name</mat-label>
+            <input [(ngModel)]="people.name" matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Surname</mat-label>
+            <input [(ngModel)]="people.surname" matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input [(ngModel)]="people.email" matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Number</mat-label>
+            <input [(ngModel)]="people.number" matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Additional info</mat-label>
+            <input [(ngModel)]="people.additionalInfo" matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Role</mat-label>
+            <mat-select [(value)]="people.role">
+                <mat-option value="Full Professor">Full Professor</mat-option>
+                <mat-option value="Associate Professor">Associate Professor</mat-option>
+                <mat-option value="Researcher">Researcher</mat-option>
+            </mat-select>
+        </mat-form-field>
+
     </div>
-
-    <div class="mat-h1 mt-5" *ngIf="imageSource">
-        <img class="img" [src]="imageSource" alt="Image Source">
-    </div>
-
-
-    <mat-form-field class="mt-4" appearance="fill">
-        <mat-label>Name</mat-label>
-        <input [(ngModel)]="people.name" matInput>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-        <mat-label>Surname</mat-label>
-        <input [(ngModel)]="people.surname" matInput>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <input [(ngModel)]="people.email" matInput>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-        <mat-label>Number</mat-label>
-        <input [(ngModel)]="people.number" matInput>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-        <mat-label>Additional info</mat-label>
-        <input [(ngModel)]="people.additionalInfo" matInput>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-        <mat-label>Role</mat-label>
-        <mat-select [(value)]="people.role">
-            <mat-option value="Full Professor">Full Professor</mat-option>
-            <mat-option value="Associate Professor">Associate Professor</mat-option>
-            <mat-option value="Researcher">Researcher</mat-option>
-        </mat-select>
-    </mat-form-field>
 
     <div class="right mt-2">
         <button mat-raised-button class="btn btn-primary margin-left" (click)="savePeople()">{{

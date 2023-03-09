@@ -1,30 +1,36 @@
-<div class="row mt-2">
+<div class="container grid-container mt-5">
 
-    <h1 class="title mt-2">{{ 'settings.research.title' | translate}}</h1>
+    <button class="btn btn-primary" (click)="back()">Back</button>
 
-    <div>
-        <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
-            (change)="uploadListener($event)" accept="*" />
+    <h1 class="title mt-2">{{ 'settings.edit.title' | translate}}</h1>
+
+    <div class="row mt-2">
+
+        <div>
+            <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
+                (change)="uploadListener($event)" accept="*" />
+        </div>
+
+        <div class="mat-h1 mt-5" *ngIf="imageSource">
+            <img class="img" [src]="imageSource" alt="Image Source">
+        </div>
+
+        <mat-form-field class="mt-4" appearance="fill">
+            <mat-label>Title</mat-label>
+            <input [(ngModel)]="research.title" matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <textarea [(ngModel)]="research.description" matInput></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Year</mat-label>
+            <input [(ngModel)]="research.year" matInput>
+        </mat-form-field>
+
     </div>
-
-    <div class="mat-h1 mt-5" *ngIf="imageSource">
-        <img class="img" [src]="imageSource" alt="Image Source">
-    </div>
-
-    <mat-form-field class="mt-4" appearance="fill">
-        <mat-label>Title</mat-label>
-        <input [(ngModel)]="research.title" matInput>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-        <mat-label>Description</mat-label>
-        <textarea [(ngModel)]="research.description" matInput></textarea>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-        <mat-label>Year</mat-label>
-        <input [(ngModel)]="research.year" matInput>
-    </mat-form-field>
 
     <div class="right mt-2">
         <button mat-raised-button class="btn btn-primary margin-left" color="primary" (click)="saveResearch()">{{

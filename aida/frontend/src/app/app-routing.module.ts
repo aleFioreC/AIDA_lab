@@ -18,9 +18,10 @@ import { EditResearchComponent } from './component/advanced/private-section/edit
 import { PeopleResolver } from './model/resolver/people.resolver';
 import { AuthorDetailComponent } from './component/advanced/author/author-detail/author-detail.component';
 import { EditPeopleComponent } from './component/advanced/private-section/edit-people/edit-people.component';
+import { NewsComponent } from './component/advanced/news/news.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
+  { path: '', component: NewsComponent },
   { path: 'research', component: ResearchComponent },
   {
     path: 'research/:id',

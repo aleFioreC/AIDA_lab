@@ -1,147 +1,138 @@
-<div class="grid-container mt-2 mb-2">
+<div class="container grid-container mt-5">
 
     <button class="btn btn-primary" (click)="back()">Back</button>
 
-    <div class="row col-sm-6 mt-2">
+    <h1 class="title mt-2">{{ 'settings.new.title' | translate}}</h1>
 
-        <h1 class="title mt-2">{{ 'settings.new.title' | translate}}</h1>
+    <mat-tab-group>
+        <mat-tab label="News">
+            <div class="row col-sm-12 mt-2">
 
-        <mat-form-field appearance="fill">
-            <mat-label>{{'settings.subtitle' | translate}}</mat-label>
-            <mat-select [(value)]="selected" (selectionChange)="selection()">
-                <mat-option value="news">{{'news.title'| translate}}</mat-option>
-                <mat-option value="people">{{'people.title'| translate}}</mat-option>
-                <mat-option value="research">{{'research.title'| translate}}</mat-option>
-            </mat-select>
-        </mat-form-field>
+                <h1 class="title mt-2">{{ 'settings.news.title' | translate}}</h1>
 
-    </div>
+                <div>
+                    <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
+                        (change)="uploadListener($event)" accept="*" />
+                </div>
 
-    <div class="row col-sm-12 mt-2" *ngIf="showNews">
+                <div class="mat-h1 mt-2" *ngIf="imageSource">
+                    <img class="img" [src]="imageSource" alt="Image Source">
+                </div>
 
-        <h1 class="title mt-2">{{ 'settings.news.title' | translate}}</h1>
+                <mat-form-field class="mt-4" appearance="fill">
+                    <mat-label>Title</mat-label>
+                    <input [(ngModel)]="title" matInput>
+                </mat-form-field>
 
-        <div>
-            <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
-                (change)="uploadListener($event)" accept="*" />
-        </div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Description</mat-label>
+                    <textarea [(ngModel)]="description" matInput></textarea>
+                </mat-form-field>
 
-        <div class="mat-h1 mt-2" *ngIf="imageSource">
-            <img class="img" [src]="imageSource" alt="Image Source">
-        </div>
+                <div class="right mt-2">
+                    <button mat-raised-button class="btn btn-primary margin-left" (click)=" saveNews()">{{
+                        'settings.button.save' | translate}}</button>
+                    <button mat-raised-button class="margin-left" color="warn" (click)="clear()">{{
+                        'settings.button.clear'
+                        | translate}}</button>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Research">
+            <div class="row col-sm-12 mt-2">
 
-        <mat-form-field class="mt-4" appearance="fill">
-            <mat-label>Title</mat-label>
-            <input [(ngModel)]="title" matInput>
-        </mat-form-field>
+                <h1 class="title mt-2">{{ 'settings.research.title' | translate}}</h1>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Description</mat-label>
-            <textarea [(ngModel)]="description" matInput></textarea>
-        </mat-form-field>
+                <div>
+                    <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
+                        (change)="uploadListener($event)" accept="*" />
+                </div>
 
-        <div class="right mt-2">
-            <button mat-raised-button class="btn btn-primary margin-left" (click)=" saveNews()">{{
-                'settings.button.save' | translate}}</button>
-            <button mat-raised-button class="margin-left" color="warn" (click)="clear()">{{
-                'settings.button.clear'
-                | translate}}</button>
-        </div>
-    </div>
+                <div class="mat-h1 mt-5" *ngIf="imageSource">
+                    <img class="img" [src]="imageSource" alt="Image Source">
+                </div>
 
-    <div class="row col-sm-12 mt-2" *ngIf="showResearch">
+                <mat-form-field class="mt-4" appearance="fill">
+                    <mat-label>Title</mat-label>
+                    <input [(ngModel)]="title" matInput>
+                </mat-form-field>
 
-        <h1 class="title mt-2">{{ 'settings.research.title' | translate}}</h1>
+                <mat-form-field appearance="fill">
+                    <mat-label>Description</mat-label>
+                    <textarea [(ngModel)]="description" matInput></textarea>
+                </mat-form-field>
 
-        <div>
-            <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
-                (change)="uploadListener($event)" accept="*" />
-        </div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Year</mat-label>
+                    <input [(ngModel)]="year" matInput>
+                </mat-form-field>
 
-        <div class="mat-h1 mt-5" *ngIf="imageSource">
-            <img class="img" [src]="imageSource" alt="Image Source">
-        </div>
+                <div class="right mt-2">
+                    <button mat-raised-button class="btn btn-primary margin-left" color="primary"
+                        (click)="saveResearch()">{{
+                        'settings.button.save' | translate}}</button>
+                    <button mat-raised-button class="margin-left" color="warn" (click)="clear()">{{
+                        'settings.button.clear'
+                        | translate}}</button>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="People">
+            <div class="row col-sm-12 mt-2">
 
-        <mat-form-field class="mt-4" appearance="fill">
-            <mat-label>Title</mat-label>
-            <input [(ngModel)]="title" matInput>
-        </mat-form-field>
+                <h1 class="title mt-2">{{ 'settings.people.title' | translate}}</h1>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Description</mat-label>
-            <textarea [(ngModel)]="description" matInput></textarea>
-        </mat-form-field>
+                <div>
+                    <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
+                        (change)="uploadListener($event)" accept="*" />
+                </div>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Year</mat-label>
-            <input [(ngModel)]="year" matInput>
-        </mat-form-field>
+                <div class="mat-h1 mt-5" *ngIf="imageSource">
+                    <img class="img" [src]="imageSource" alt="Image Source">
+                </div>
 
-        <div class="right mt-2">
-            <button mat-raised-button class="btn btn-primary margin-left" color="primary" (click)="saveResearch()">{{
-                'settings.button.save' | translate}}</button>
-            <button mat-raised-button class="margin-left" color="warn" (click)="clear()">{{
-                'settings.button.clear'
-                | translate}}</button>
-        </div>
-    </div>
+                <mat-form-field class="mt-4" appearance="fill">
+                    <mat-label>Name</mat-label>
+                    <input [(ngModel)]="name" matInput>
+                </mat-form-field>
 
-    <div class="row col-sm-12 mt-2" *ngIf="showPeople;">
+                <mat-form-field appearance="fill">
+                    <mat-label>Surname</mat-label>
+                    <input [(ngModel)]="surname" matInput>
+                </mat-form-field>
 
-        <h1 class="title mt-2">{{ 'settings.people.title' | translate}}</h1>
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input [(ngModel)]="email" matInput>
+                </mat-form-field>
 
-        <div>
-            <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
-                (change)="uploadListener($event)" accept="*" />
-        </div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Number</mat-label>
+                    <input [(ngModel)]="number" matInput>
+                </mat-form-field>
 
-        <div class="mat-h1 mt-5" *ngIf="imageSource">
-            <img class="img" [src]="imageSource" alt="Image Source">
-        </div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Additional info</mat-label>
+                    <input [(ngModel)]="additionalInfo" matInput>
+                </mat-form-field>
 
-        <mat-form-field class="mt-4" appearance="fill">
-            <mat-label>Name</mat-label>
-            <input [(ngModel)]="name" matInput>
-        </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Role</mat-label>
+                    <mat-select [(value)]="role">
+                        <mat-option value="Full Professor">Full Professor</mat-option>
+                        <mat-option value="Associate Professor">Associate Professor</mat-option>
+                        <mat-option value="Researcher">Researcher</mat-option>
+                    </mat-select>
+                </mat-form-field>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Surname</mat-label>
-            <input [(ngModel)]="surname" matInput>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-            <mat-label>Email</mat-label>
-            <input [(ngModel)]="email" matInput>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-            <mat-label>Number</mat-label>
-            <input [(ngModel)]="number" matInput>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-            <mat-label>Additional info</mat-label>
-            <input [(ngModel)]="additionalInfo" matInput>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-            <mat-label>Role</mat-label>
-            <mat-select [(value)]="role">
-                <mat-option value="Full Professor">Full Professor</mat-option>
-                <mat-option value="Associate Professor">Associate Professor</mat-option>
-                <mat-option value="Researcher">Researcher</mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <div class="right mt-2">
-            <button mat-raised-button class="btn btn-primary margin-left" (click)="savePeople()">{{
-                'settings.button.save' | translate}}</button>
-            <button mat-raised-button class="margin-left" color="warn" (click)="clear()">{{
-                'settings.button.clear'
-                | translate}}</button>
-        </div>
-    </div>
-
-    <div class="row mt-2"></div>
-
+                <div class="right mt-2">
+                    <button mat-raised-button class="btn btn-primary margin-left" (click)="savePeople()">{{
+                        'settings.button.save' | translate}}</button>
+                    <button mat-raised-button class="margin-left" color="warn" (click)="clear()">{{
+                        'settings.button.clear'
+                        | translate}}</button>
+                </div>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
 </div>

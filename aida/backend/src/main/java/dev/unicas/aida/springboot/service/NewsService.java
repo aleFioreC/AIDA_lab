@@ -36,6 +36,13 @@ public class NewsService {
 		return (List<News>) this.repository.findAllByOrderByCreationDateDesc();
 	}
 
+	public News findTopNews() {
+		List<News> news = this.repository.findAllByOrderByCreationDateDesc();
+		if (!news.isEmpty() && news.get(0) != null)
+			return news.get(0);
+		return null;
+	}
+
 	public Optional<News> findById(Integer id) {
 		return this.repository.findById(id);
 	}

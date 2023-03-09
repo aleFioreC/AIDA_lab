@@ -1,9 +1,9 @@
-.grid-container {
-    margin: 20px;
-}
-
 .img-small {
     height: 100px;
+}
+
+.bottom {
+    border-bottom: 1px solid;
 }
 
 .align-img {

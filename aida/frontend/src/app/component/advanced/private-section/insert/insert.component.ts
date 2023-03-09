@@ -29,10 +29,6 @@ export class InsertComponent implements OnInit {
 
   selected;
 
-  showPeople: boolean = false;
-  showNews: boolean = false;
-  showResearch: boolean = false;
-
   state: any
 
   constructor(private generalService: GeneralService, public dialog: MatDialog, public router: Router, private location: Location) {
@@ -43,7 +39,6 @@ export class InsertComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.showNews = true
   }
 
   async uploadListener($event: any) {
@@ -79,24 +74,6 @@ export class InsertComponent implements OnInit {
       };
     });
   };
-
-  selection() {
-    if (this.selected == 'news') {
-      this.showNews = true
-      this.showPeople = false
-      this.showResearch = false
-    }
-    else if (this.selected == 'research') {
-      this.showResearch = true
-      this.showNews = false
-      this.showPeople = false
-    }
-    else if (this.selected == 'people') {
-      this.showPeople = true
-      this.showNews = false
-      this.showResearch = false
-    }
-  }
 
   saveNews() {
     let obj: News = new News(this.title, this.description, this.imageSource)
