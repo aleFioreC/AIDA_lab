@@ -1,4 +1,5 @@
 export class Research {
+    idResearch;
     title: string;
     description: string;
     year: number;

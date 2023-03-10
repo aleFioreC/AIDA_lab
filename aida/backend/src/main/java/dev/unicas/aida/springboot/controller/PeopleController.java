@@ -44,7 +44,7 @@ public class PeopleController {
 	}
 	
 	@PutMapping(value = "/edit/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public People save(@RequestBody People p,@PathVariable Integer id) throws Exception {
+	public People edit(@RequestBody People p,@PathVariable Integer id) throws Exception {
 		return this.service.edit(p,id);
 	}
 	

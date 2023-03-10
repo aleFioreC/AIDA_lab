@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ModalDialogComponent } from 'src/app/component/basic/modal-dialog/modal-dialog.component';
@@ -15,27 +16,40 @@ import { GeneralService } from 'src/app/service/general.service';
 })
 export class InsertComponent implements OnInit {
 
-
   imageSource;
-  title;
-  description;
-  name;
-  surname;
-  year;
-  role;
-  email;
-  number;
-  additionalInfo;
-
-  selected;
 
   state: any
 
-  constructor(private generalService: GeneralService, public dialog: MatDialog, public router: Router, private location: Location) {
+  requiredFormNews: FormGroup;
+  requiredFormResearch: FormGroup;
+  requiredFormPeople: FormGroup;
+
+  constructor(private fb: FormBuilder, private generalService: GeneralService, public dialog: MatDialog, public router: Router, private location: Location) {
     this.state = this.location.getState();
+    this.myForm();
     if (!this.state.user) {
       this.router.navigate(['/']);
     }
+  }
+
+  myForm() {
+    this.requiredFormNews = this.fb.group({
+      title: ['', Validators.required],
+      description: ['', Validators.required]
+    });
+    this.requiredFormResearch = this.fb.group({
+      title: ['', Validators.required],
+      description: ['', Validators.required],
+      year: ['', Validators.required]
+    });
+    this.requiredFormPeople = this.fb.group({
+      name: ['', Validators.required],
+      surname: ['', Validators.required],
+      email: ['', Validators.compose([Validators.required, Validators.email])],
+      role: ['', Validators.required],
+      additionalInfo: [''],
+      number: ['', Validators.required]
+    });
   }
 
   ngOnInit(): void {
@@ -48,16 +62,9 @@ export class InsertComponent implements OnInit {
   }
 
   clear() {
-    this.imageSource = null;
-    this.title = null;
-    this.description = null;
-    this.name = null;
-    this.surname = null;
-    this.year = null;
-    this.role = null;
-    this.email = null;
-    this.number = null;
-    this.additionalInfo = null;
+    this.requiredFormNews.reset()
+    this.requiredFormResearch.reset()
+    this.requiredFormPeople.reset()
   }
 
   convertBase64 = (file) => {
@@ -76,26 +83,26 @@ export class InsertComponent implements OnInit {
   };
 
   saveNews() {
-    let obj: News = new News(this.title, this.description, this.imageSource)
+    let obj: News = new News(this.requiredFormNews.value.title, this.requiredFormNews.value.description, this.imageSource)
     this.generalService.saveNews(obj).subscribe(res => {
       this.openDialog()
-      this.router.navigate(['/private']);
+      this.router.navigate(['/private'], { state: { user: res } });
     })
   }
 
   saveResearch() {
-    let obj: Research = new Research(this.title, this.description, this.year, this.imageSource)
+    let obj: Research = new Research(this.requiredFormResearch.value.title, this.requiredFormResearch.value.description, this.requiredFormResearch.value.year, this.imageSource)
     this.generalService.saveResearch(obj).subscribe(res => {
       this.openDialog()
-      this.router.navigate(['/private']);
+      this.router.navigate(['/private'], { state: { user: res } });
     })
   }
 
   savePeople() {
-    let obj: People = new People(this.name, this.surname, this.email, this.number, this.additionalInfo, this.role, this.imageSource)
+    let obj: People = new People(this.requiredFormPeople.value.name, this.requiredFormPeople.value.surname, this.requiredFormPeople.value.email, this.requiredFormPeople.value.number, this.requiredFormPeople.value.additionalInfo, this.requiredFormPeople.value.role, this.imageSource)
     this.generalService.savePeople(obj).subscribe(res => {
       this.openDialog()
-      this.router.navigate(['/private']);
+      this.router.navigate(['/private'], { state: { user: res } });
     })
   }
 

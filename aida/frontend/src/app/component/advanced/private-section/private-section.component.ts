@@ -4,10 +4,10 @@ import { ModalDialogComponent } from '../../basic/modal-dialog/modal-dialog.comp
 import { GeneralService } from 'src/app/service/general.service';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { CardLayout } from 'src/app/model/card_layout';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Research } from 'src/app/model/research';
 import { People } from 'src/app/model/people';
+import { News } from 'src/app/model/news';
 
 @Component({
   selector: 'app-private-section',
@@ -30,7 +30,7 @@ export class PrivateSectionComponent implements OnInit {
     this.findAllResearch()
   }
 
-  news: CardLayout[] = [];
+  news: News[] = [];
   research: Research[] = [];
   people: People[] = [];
 
@@ -50,8 +50,7 @@ export class PrivateSectionComponent implements OnInit {
       res.forEach(element => {
         element.description = element.description && element.description.length > 400 ? element.description.slice(0, 320) + '...read more...' : element.description
         element.file = element.file != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file) : null
-        let card = new CardLayout(element.idNews, element.title, '2', '1', element.description, element.file, element.creationDate)
-        this.news.push(card)
+        this.news.push(element)
       });
     });
   }
@@ -73,10 +72,14 @@ export class PrivateSectionComponent implements OnInit {
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
+    dialogConfig.height = '220px'
+    dialogConfig.width = '600px'
+    dialogConfig.panelClass = 'full-screen-modal'
 
     dialogConfig.data = {
       title: 'Operazione completata',
-      message: 'La risorsa è stata eliminata.'
+      message: 'La risorsa è stata eliminata.',
+      class: 'success-class'
     };
 
     this.dialog.open(ModalDialogComponent, dialogConfig);
@@ -94,6 +97,7 @@ export class PrivateSectionComponent implements OnInit {
   removeNews(card) {
     this.generalService.deleteNews(card.id).subscribe(res => {
       this.openDialog()
+      this.findAllNews()
     })
   }
 
@@ -104,6 +108,7 @@ export class PrivateSectionComponent implements OnInit {
   removeResearch(card) {
     this.generalService.deleteResearch(card.id).subscribe(res => {
       this.openDialog()
+      this.findAllResearch()
     })
   }
 
@@ -114,6 +119,7 @@ export class PrivateSectionComponent implements OnInit {
   deletePeople(card) {
     this.generalService.deletePeople(card.id).subscribe(res => {
       this.openDialog()
+      this.findAllPeople()
     })
   }
 

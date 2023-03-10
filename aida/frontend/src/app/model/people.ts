@@ -1,4 +1,5 @@
 export class People {
+    idPeople: number;
     name: string;
     surname: string;
     email: string;

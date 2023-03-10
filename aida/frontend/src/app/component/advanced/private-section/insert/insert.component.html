@@ -2,35 +2,56 @@
 
     <button class="btn btn-primary" (click)="back()">Back</button>
 
-    <h1 class="title mt-2">{{ 'settings.new.title' | translate}}</h1>
-
     <mat-tab-group>
         <mat-tab label="News">
             <div class="row col-sm-12 mt-2">
 
                 <h1 class="title mt-2">{{ 'settings.news.title' | translate}}</h1>
 
-                <div>
-                    <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
-                        (change)="uploadListener($event)" accept="*" />
-                </div>
+                <form [formGroup]="requiredFormNews" novalidate>
 
-                <div class="mat-h1 mt-2" *ngIf="imageSource">
-                    <img class="img" [src]="imageSource" alt="Image Source">
-                </div>
+                    <div>
+                        <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
+                            (change)="uploadListener($event)" accept="*" />
+                    </div>
 
-                <mat-form-field class="mt-4" appearance="fill">
-                    <mat-label>Title</mat-label>
-                    <input [(ngModel)]="title" matInput>
-                </mat-form-field>
+                    <div class="mat-h1 mt-2" *ngIf="imageSource">
+                        <img class="img" [src]="imageSource" alt="Image Source">
+                    </div>
 
-                <mat-form-field appearance="fill">
-                    <mat-label>Description</mat-label>
-                    <textarea [(ngModel)]="description" matInput></textarea>
-                </mat-form-field>
+                    <div class="row form-group pad">
+                        <mat-form-field class="mt-4" appearance="fill">
+                            <mat-label>Title</mat-label>
+                            <input formControlName="title" matInput>
+                        </mat-form-field>
+                    </div>
+
+                    <div *ngIf="requiredFormNews.controls['title'].invalid && requiredFormNews.controls['title'].touched"
+                        class="alert alert-danger">
+                        <div *ngIf="requiredFormNews.controls['title'].errors.required">
+                            Title is required.
+                        </div>
+                    </div>
+
+                    <div class="row form-group pad">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Description</mat-label>
+                            <textarea formControlName="description" matInput></textarea>
+                        </mat-form-field>
+                    </div>
+
+                    <div *ngIf="requiredFormNews.controls['description'].invalid && requiredFormNews.controls['description'].touched"
+                        class="alert alert-danger">
+                        <div *ngIf="requiredFormNews.controls['description'].errors.required">
+                            Description is required.
+                        </div>
+                    </div>
+
+                </form>
 
                 <div class="right mt-2">
-                    <button mat-raised-button class="btn btn-primary margin-left" (click)=" saveNews()">{{
+                    <button mat-raised-button class="btn btn-primary margin-left" (click)="saveNews()"
+                        [disabled]="requiredFormNews.invalid">{{
                         'settings.button.save' | translate}}</button>
                     <button mat-raised-button class="margin-left" color="warn" (click)="clear()">{{
                         'settings.button.clear'
@@ -43,33 +64,64 @@
 
                 <h1 class="title mt-2">{{ 'settings.research.title' | translate}}</h1>
 
-                <div>
-                    <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
-                        (change)="uploadListener($event)" accept="*" />
-                </div>
+                <form [formGroup]="requiredFormResearch" novalidate>
 
-                <div class="mat-h1 mt-5" *ngIf="imageSource">
-                    <img class="img" [src]="imageSource" alt="Image Source">
-                </div>
+                    <div>
+                        <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
+                            (change)="uploadListener($event)" accept="*" />
+                    </div>
 
-                <mat-form-field class="mt-4" appearance="fill">
-                    <mat-label>Title</mat-label>
-                    <input [(ngModel)]="title" matInput>
-                </mat-form-field>
+                    <div class="mat-h1 mt-5" *ngIf="imageSource">
+                        <img class="img" [src]="imageSource" alt="Image Source">
+                    </div>
 
-                <mat-form-field appearance="fill">
-                    <mat-label>Description</mat-label>
-                    <textarea [(ngModel)]="description" matInput></textarea>
-                </mat-form-field>
+                    <div class="row form-group pad">
+                        <mat-form-field class="mt-4" appearance="fill">
+                            <mat-label>Title</mat-label>
+                            <input formControlName="title" matInput>
+                        </mat-form-field>
+                    </div>
 
-                <mat-form-field appearance="fill">
-                    <mat-label>Year</mat-label>
-                    <input [(ngModel)]="year" matInput>
-                </mat-form-field>
+                    <div *ngIf="requiredFormResearch.controls['title'].invalid && requiredFormResearch.controls['title'].touched"
+                        class="alert alert-danger">
+                        <div *ngIf="requiredFormResearch.controls['title'].errors.required">
+                            Title is required.
+                        </div>
+                    </div>
+
+                    <div class="row form-group pad">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Description</mat-label>
+                            <textarea formControlName="description" matInput></textarea>
+                        </mat-form-field>
+                    </div>
+
+                    <div *ngIf="requiredFormResearch.controls['description'].invalid && requiredFormResearch.controls['description'].touched"
+                        class="alert alert-danger">
+                        <div *ngIf="requiredFormResearch.controls['description'].errors.required">
+                            Description is required.
+                        </div>
+                    </div>
+
+                    <div class="row form-group pad">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Year</mat-label>
+                            <input formControlName="year" matInput>
+                        </mat-form-field>
+                    </div>
+
+                    <div *ngIf="requiredFormResearch.controls['year'].invalid && requiredFormResearch.controls['year'].touched"
+                        class="alert alert-danger">
+                        <div *ngIf="requiredFormResearch.controls['year'].errors.required">
+                            Year is required.
+                        </div>
+                    </div>
+
+                </form>
 
                 <div class="right mt-2">
-                    <button mat-raised-button class="btn btn-primary margin-left" color="primary"
-                        (click)="saveResearch()">{{
+                    <button mat-raised-button class="btn btn-primary margin-left" (click)="saveResearch()"
+                        [disabled]="requiredFormResearch.invalid">{{
                         'settings.button.save' | translate}}</button>
                     <button mat-raised-button class="margin-left" color="warn" (click)="clear()">{{
                         'settings.button.clear'
@@ -82,51 +134,106 @@
 
                 <h1 class="title mt-2">{{ 'settings.people.title' | translate}}</h1>
 
-                <div>
-                    <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
-                        (change)="uploadListener($event)" accept="*" />
-                </div>
+                <form [formGroup]="requiredFormPeople" novalidate>
 
-                <div class="mat-h1 mt-5" *ngIf="imageSource">
-                    <img class="img" [src]="imageSource" alt="Image Source">
-                </div>
+                    <div>
+                        <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
+                            (change)="uploadListener($event)" accept="*" />
+                    </div>
 
-                <mat-form-field class="mt-4" appearance="fill">
-                    <mat-label>Name</mat-label>
-                    <input [(ngModel)]="name" matInput>
-                </mat-form-field>
+                    <div class="mat-h1 mt-5" *ngIf="imageSource">
+                        <img class="img" [src]="imageSource" alt="Image Source">
+                    </div>
 
-                <mat-form-field appearance="fill">
-                    <mat-label>Surname</mat-label>
-                    <input [(ngModel)]="surname" matInput>
-                </mat-form-field>
+                    <div class="row form-group pad">
+                        <mat-form-field class="mt-4" appearance="fill">
+                            <mat-label>Name</mat-label>
+                            <input formControlName="name" matInput>
+                        </mat-form-field>
+                    </div>
 
-                <mat-form-field appearance="fill">
-                    <mat-label>Email</mat-label>
-                    <input [(ngModel)]="email" matInput>
-                </mat-form-field>
+                    <div *ngIf="requiredFormPeople.controls['name'].invalid && requiredFormPeople.controls['name'].touched"
+                        class="alert alert-danger">
+                        <div *ngIf="requiredFormPeople.controls['name'].errors.required">
+                            Name is required.
+                        </div>
+                    </div>
 
-                <mat-form-field appearance="fill">
-                    <mat-label>Number</mat-label>
-                    <input [(ngModel)]="number" matInput>
-                </mat-form-field>
+                    <div class="row form-group pad">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Surname</mat-label>
+                            <input formControlName="surname" matInput>
+                        </mat-form-field>
+                    </div>
 
-                <mat-form-field appearance="fill">
-                    <mat-label>Additional info</mat-label>
-                    <input [(ngModel)]="additionalInfo" matInput>
-                </mat-form-field>
+                    <div *ngIf="requiredFormPeople.controls['surname'].invalid && requiredFormPeople.controls['surname'].touched"
+                        class="alert alert-danger">
+                        <div *ngIf="requiredFormPeople.controls['surname'].errors.required">
+                            Surname is required.
+                        </div>
+                    </div>
 
-                <mat-form-field appearance="fill">
-                    <mat-label>Role</mat-label>
-                    <mat-select [(value)]="role">
-                        <mat-option value="Full Professor">Full Professor</mat-option>
-                        <mat-option value="Associate Professor">Associate Professor</mat-option>
-                        <mat-option value="Researcher">Researcher</mat-option>
-                    </mat-select>
-                </mat-form-field>
+                    <div class="row form-group pad">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Email</mat-label>
+                            <input formControlName="email" matInput>
+                        </mat-form-field>
+                    </div>
+
+                    <div *ngIf="requiredFormPeople.controls['email'].invalid && requiredFormPeople.controls['email'].touched"
+                        class="alert alert-danger">
+                        <div *ngIf="requiredFormPeople.controls['email'].errors.required">
+                            Email is required.
+                        </div>
+                        <div *ngIf="requiredFormPeople.controls['email'].errors.email">
+                            Email not valid.
+                        </div>
+                    </div>
+
+                    <div class="row form-group pad">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Number</mat-label>
+                            <input formControlName="number" matInput>
+                        </mat-form-field>
+                    </div>
+
+                    <div *ngIf="requiredFormPeople.controls['number'].invalid && requiredFormPeople.controls['number'].touched"
+                        class="alert alert-danger">
+                        <div *ngIf="requiredFormPeople.controls['number'].errors.required">
+                            Number is required.
+                        </div>
+                    </div>
+
+                    <div class="row form-group pad">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Additional info</mat-label>
+                            <input formControlName="additionalInfo" matInput>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="row form-group pad">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Role</mat-label>
+                            <mat-select formControlName="role">
+                                <mat-option value="Full Professor">Full Professor</mat-option>
+                                <mat-option value="Associate Professor">Associate Professor</mat-option>
+                                <mat-option value="Researcher">Researcher</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div *ngIf="requiredFormPeople.controls['role'].invalid && requiredFormPeople.controls['role'].touched"
+                        class="alert alert-danger">
+                        <div *ngIf="requiredFormPeople.controls['role'].errors.required">
+                            Role is required.
+                        </div>
+                    </div>
+
+                </form>
 
                 <div class="right mt-2">
-                    <button mat-raised-button class="btn btn-primary margin-left" (click)="savePeople()">{{
+                    <button mat-raised-button class="btn btn-primary margin-left" (click)="savePeople()"
+                        [disabled]="requiredFormPeople.invalid">{{
                         'settings.button.save' | translate}}</button>
                     <button mat-raised-button class="margin-left" color="warn" (click)="clear()">{{
                         'settings.button.clear'

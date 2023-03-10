@@ -51,7 +51,7 @@ public class NewsController {
     }
     
 	@PutMapping(value = "/edit/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public News save(@RequestBody News p,@PathVariable Integer id) throws Exception {
+	public News edit(@RequestBody News p,@PathVariable Integer id) throws Exception {
 		return this.service.edit(p, id);
 	}
     

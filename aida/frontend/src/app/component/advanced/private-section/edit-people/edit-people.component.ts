@@ -41,9 +41,9 @@ export class EditPeopleComponent implements OnInit {
 
   savePeople() {
     let obj: People = new People(this.name, this.surname, this.email, this.number, this.additionalInfo, this.role, this.imageSource)
-    this.generalService.savePeople(obj).subscribe(res => {
+    this.generalService.editPeople(this.people.idPeople, obj).subscribe(res => {
       this.openDialog()
-      this.router.navigate(['/private']);
+      this.router.navigate(['/private'], { state: { user: this.state } });
     })
   }
 

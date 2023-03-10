@@ -44,7 +44,7 @@ public class ResearchController {
 	}
 	
 	@PutMapping(value = "/edit/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Research save(@RequestBody Research p,@PathVariable Integer id) throws Exception {
+	public Research edit(@RequestBody Research p,@PathVariable Integer id) throws Exception {
 		return this.service.edit(p, id);
 	}
 	

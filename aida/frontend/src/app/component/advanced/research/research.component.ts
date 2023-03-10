@@ -6,7 +6,6 @@ import { ModalDialogComponent } from '../../basic/modal-dialog/modal-dialog.comp
 import { Router } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { CardLayout } from 'src/app/model/card_layout';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -18,7 +17,7 @@ export class ResearchComponent implements OnInit {
 
   cards = [];
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  dataSource: MatTableDataSource<CardLayout>;
+  dataSource: MatTableDataSource<any>;
   obs: Observable<any>;
 
   constructor(private changeDetectorRef: ChangeDetectorRef, private _sanitizer: DomSanitizer, public dialog: MatDialog, private generalService: GeneralService, private router: Router) { }
@@ -51,7 +50,7 @@ export class ResearchComponent implements OnInit {
         element.file = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file)
         this.cards.push(element)
       });
-      this.dataSource = new MatTableDataSource<CardLayout>(this.cards);
+      this.dataSource = new MatTableDataSource<any>(this.cards);
       this.dataSource.paginator = this.paginator;
       this.obs = this.dataSource.connect();
     });

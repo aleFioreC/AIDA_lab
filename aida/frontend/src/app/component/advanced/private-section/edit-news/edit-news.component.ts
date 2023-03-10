@@ -56,9 +56,9 @@ export class EditNewsComponent implements OnInit {
 
   saveNews() {
     let obj: News = new News(this.title, this.description, this.imageSource)
-    this.generalService.saveNews(obj).subscribe(res => {
+    this.generalService.editNews(this.news.idNews, obj).subscribe(res => {
       this.openDialog()
-      this.router.navigate(['/private']);
+      this.router.navigate(['/private'], { state: { user: this.state } });
     })
   }
 

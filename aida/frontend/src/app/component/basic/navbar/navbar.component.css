@@ -18,6 +18,10 @@
   color: var(--bs-primary)
 }
 
+.mat-icon-button {
+  color: var(--bs-primary)
+}
+
 .logo {
   height: 50px;
   padding-left: 10px;

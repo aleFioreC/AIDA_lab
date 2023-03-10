@@ -153,11 +153,6 @@ html {
     color: var(--bs-white)
 }
 
-.logo {
-    height: 50px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
 
 .small-text-href {
     cursor: pointer;

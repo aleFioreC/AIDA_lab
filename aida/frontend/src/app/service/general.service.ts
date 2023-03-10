@@ -45,12 +45,24 @@ export class GeneralService {
         return this.httpClient.post(this.environment + '/news/save', body);
     }
 
+    editNews(id, body: any) {
+        return this.httpClient.put(this.environment + '/news/edit/' + id, body);
+    }
+
     savePeople(body: any) {
         return this.httpClient.post(this.environment + '/people/save', body);
     }
 
+    editPeople(id, body: any) {
+        return this.httpClient.put(this.environment + '/people/edit/' + id, body);
+    }
+
     saveResearch(body: any) {
         return this.httpClient.post(this.environment + '/research/save', body);
+    }
+
+    editResearch(id, body: any) {
+        return this.httpClient.put(this.environment + '/research/edit/' + id, body);
     }
 
     deleteNews(id: number) {

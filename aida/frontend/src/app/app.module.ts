@@ -27,7 +27,7 @@ import { GenericTableComponent } from './component/basic/generic-table/generic-t
 import { DashboardComponent } from './component/basic/dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MatNativeDateModule } from '@angular/material/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SpinnerComponent } from './component/basic/spinner/spinner.component';
 import { LoadingInterceptor } from './service/interceptor/loading.interceptor';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -98,6 +98,8 @@ import { AuthorDetailComponent } from './component/advanced/author/author-detail
     FormsModule,
     MatDialogModule,
     MatSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

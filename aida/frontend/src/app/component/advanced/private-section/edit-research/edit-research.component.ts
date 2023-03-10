@@ -58,9 +58,9 @@ export class EditResearchComponent implements OnInit {
 
   saveResearch() {
     let obj: Research = new Research(this.title, this.description, this.year, this.imageSource)
-    this.generalService.saveResearch(obj).subscribe(res => {
+    this.generalService.editResearch(this.research.idResearch, obj).subscribe(res => {
       this.openDialog()
-      this.router.navigate(['/private']);
+      this.router.navigate(['/private'], { state: { user: this.state } });
     })
   }
 
