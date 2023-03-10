@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './component/advanced/about/about.component';
-import { AuthorComponent } from './component/advanced/author/author.component';
 import { ContactComponent } from './component/advanced/contact/contact.component';
 import { PublicationComponent } from './component/advanced/publication/publication.component';
 import { ResearchComponent } from './component/advanced/research/research.component';
-import { DashboardComponent } from './component/basic/dashboard/dashboard.component';
 import { ResearchDetailComponent } from './component/advanced/research/research-detail/research-detail.component';
 import { PrivateSectionComponent } from './component/advanced/private-section/private-section.component';
 import { ResearchResolver } from './model/resolver/research.resolver';
@@ -16,9 +14,10 @@ import { EditNewsComponent } from './component/advanced/private-section/edit-new
 import { NewsDetailComponent } from './component/advanced/news/news-detail/news-detail.component';
 import { EditResearchComponent } from './component/advanced/private-section/edit-research/edit-research.component';
 import { PeopleResolver } from './model/resolver/people.resolver';
-import { AuthorDetailComponent } from './component/advanced/author/author-detail/author-detail.component';
 import { EditPeopleComponent } from './component/advanced/private-section/edit-people/edit-people.component';
 import { NewsComponent } from './component/advanced/news/news.component';
+import { PeopleDetailComponent } from './component/advanced/people/people-detail/people-detail.component';
+import { PeopleComponent } from './component/advanced/people/people.component';
 
 const routes: Routes = [
   { path: '', component: NewsComponent },
@@ -35,11 +34,11 @@ const routes: Routes = [
   },
   {
     path: 'people/:id',
-    component: AuthorDetailComponent,
+    component: PeopleDetailComponent,
     resolve: { people: PeopleResolver }
   },
   { path: 'publication', component: PublicationComponent },
-  { path: 'people', component: AuthorComponent },
+  { path: 'people', component: PeopleComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   {

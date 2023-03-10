@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,12 +16,14 @@ import { GeneralService } from 'src/app/service/general.service';
 export class EditNewsComponent implements OnInit {
 
   imageSource;
-  title;
-  description;
   state;
   news;
 
-  constructor(private _sanitizer: DomSanitizer, private activatedRoute: ActivatedRoute, private generalService: GeneralService, public dialog: MatDialog, public router: Router, private location: Location) { }
+  requiredForm: FormGroup;
+
+  constructor(private fb: FormBuilder, private _sanitizer: DomSanitizer, private activatedRoute: ActivatedRoute, private generalService: GeneralService, public dialog: MatDialog, public router: Router, private location: Location) {
+    this.myForm()
+  }
 
   ngOnInit(): void {
     this.state = this.location.getState();
@@ -30,7 +33,19 @@ export class EditNewsComponent implements OnInit {
     this.activatedRoute.data.subscribe((response: any) => {
       this.news = response.news
       this.imageSource = this.news.file != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + this.news.file) : null
+      this.setValue()
     });
+  }
+
+  myForm() {
+    this.requiredForm = this.fb.group({
+      title: ['', Validators.required],
+      description: ['', Validators.required]
+    });
+  }
+
+  setValue() {
+    this.requiredForm.patchValue({ title: this.news.title, description: this.news.description })
   }
 
   async uploadListener($event: any) {
@@ -55,7 +70,7 @@ export class EditNewsComponent implements OnInit {
   };
 
   saveNews() {
-    let obj: News = new News(this.title, this.description, this.imageSource)
+    let obj: News = new News(this.requiredForm.value.title, this.requiredForm.value.description, this.imageSource)
     this.generalService.editNews(this.news.idNews, obj).subscribe(res => {
       this.openDialog()
       this.router.navigate(['/private'], { state: { user: this.state } });
@@ -84,8 +99,7 @@ export class EditNewsComponent implements OnInit {
 
   clear() {
     this.imageSource = null;
-    this.title = null;
-    this.description = null;
+    this.requiredForm.reset()
   }
 
   back() {

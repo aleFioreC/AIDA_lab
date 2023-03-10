@@ -6,6 +6,10 @@
     border-bottom: 1px solid;
 }
 
+.right {
+    text-align: right;
+}
+
 .align-img {
     text-align: right;
     margin-top: 15px;

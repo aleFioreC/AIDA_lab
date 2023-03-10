@@ -4,11 +4,12 @@ import { Router } from '@angular/router';
 import { GeneralService } from 'src/app/service/general.service';
 
 @Component({
-  selector: 'app-author',
-  templateUrl: './author.component.html',
-  styleUrls: ['./author.component.css']
+  selector: 'app-people',
+  templateUrl: './people.component.html',
+  styleUrls: ['./people.component.css']
 })
-export class AuthorComponent implements OnInit {
+export class PeopleComponent implements OnInit {
+
 
   all = []
   associate = [];

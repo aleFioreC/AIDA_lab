@@ -10,7 +10,6 @@ import { MatCardModule } from '@angular/material/card';
 import { NavbarComponent } from './component/basic/navbar/navbar.component';
 import { FooterComponent } from './component/basic/footer/footer.component';
 import { ModalDialogComponent } from './component/basic/modal-dialog/modal-dialog.component';
-import { AuthorComponent } from './component/advanced/author/author.component';
 import { AboutComponent } from './component/advanced/about/about.component';
 import { NewsComponent } from './component/advanced/news/news.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -50,7 +49,8 @@ import { EditNewsComponent } from './component/advanced/private-section/edit-new
 import { EditPeopleComponent } from './component/advanced/private-section/edit-people/edit-people.component';
 import { EditResearchComponent } from './component/advanced/private-section/edit-research/edit-research.component';
 import { NewsDetailComponent } from './component/advanced/news/news-detail/news-detail.component';
-import { AuthorDetailComponent } from './component/advanced/author/author-detail/author-detail.component';
+import { PeopleComponent } from './component/advanced/people/people.component';
+import { PeopleDetailComponent } from './component/advanced/people/people-detail/people-detail.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +58,6 @@ import { AuthorDetailComponent } from './component/advanced/author/author-detail
     NavbarComponent,
     FooterComponent,
     ModalDialogComponent,
-    AuthorComponent,
     AboutComponent,
     NewsComponent,
     DashboardComponent,
@@ -75,7 +74,8 @@ import { AuthorDetailComponent } from './component/advanced/author/author-detail
     EditPeopleComponent,
     EditResearchComponent,
     NewsDetailComponent,
-    AuthorDetailComponent
+    PeopleComponent,
+    PeopleDetailComponent
   ],
   imports: [
     BrowserModule,

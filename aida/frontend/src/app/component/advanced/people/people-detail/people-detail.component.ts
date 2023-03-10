@@ -4,11 +4,11 @@ import { ActivatedRoute } from '@angular/router';
 import { People } from 'src/app/model/people';
 
 @Component({
-  selector: 'app-author-detail',
-  templateUrl: './author-detail.component.html',
-  styleUrls: ['./author-detail.component.css']
+  selector: 'app-people-detail',
+  templateUrl: './people-detail.component.html',
+  styleUrls: ['./people-detail.component.css']
 })
-export class AuthorDetailComponent implements OnInit {
+export class PeopleDetailComponent implements OnInit {
 
   people: People;
   file: any;
@@ -21,4 +21,5 @@ export class AuthorDetailComponent implements OnInit {
       this.file = this.people.file != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + this.people.file) : null
     });
   }
+
 }

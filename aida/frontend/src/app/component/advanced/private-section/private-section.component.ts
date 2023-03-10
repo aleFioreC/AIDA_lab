@@ -91,7 +91,7 @@ export class PrivateSectionComponent implements OnInit {
   }
 
   openNews(card) {
-    this.router.navigate(['/edit-news/' + card.id], { state: { user: this.state } })
+    this.router.navigate(['/edit-news/' + card.idNews], { state: { user: this.state } })
   }
 
   removeNews(card) {
