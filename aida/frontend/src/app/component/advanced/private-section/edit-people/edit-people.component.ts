@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,17 +16,13 @@ import { GeneralService } from 'src/app/service/general.service';
 export class EditPeopleComponent implements OnInit {
 
   imageSource;
-  name;
-  surname;
-  role;
-  email;
-  number;
-  additionalInfo;
-
   state: any
-  people;
+  people: People;
 
-  constructor(private _sanitizer: DomSanitizer, private activatedRoute: ActivatedRoute, private generalService: GeneralService, public dialog: MatDialog, public router: Router, private location: Location) {
+  requiredForm: FormGroup;
+
+  constructor(private fb: FormBuilder, private _sanitizer: DomSanitizer, private activatedRoute: ActivatedRoute, private generalService: GeneralService, public dialog: MatDialog, public router: Router, private location: Location) {
+    this.myForm()
   }
 
   ngOnInit(): void {
@@ -36,11 +33,27 @@ export class EditPeopleComponent implements OnInit {
     this.activatedRoute.data.subscribe((response: any) => {
       this.people = response.people
       this.imageSource = this.people.file != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + this.people.file) : null
+      this.setValue()
     });
   }
 
+  myForm() {
+    this.requiredForm = this.fb.group({
+      name: ['', Validators.required],
+      surname: ['', Validators.required],
+      email: ['', Validators.compose([Validators.required, Validators.email])],
+      role: ['', Validators.required],
+      additionalInfo: [''],
+      number: ['', Validators.required]
+    });
+  }
+
+  setValue() {
+    this.requiredForm.patchValue({ name: this.people.name, surname: this.people.surname, email: this.people.email, role: this.people.role, additionalInfo: this.people.additionalInfo, number: this.people.number })
+  }
+
   savePeople() {
-    let obj: People = new People(this.name, this.surname, this.email, this.number, this.additionalInfo, this.role, this.imageSource)
+    let obj: People = new People(this.requiredForm.value.name, this.requiredForm.value.surname, this.requiredForm.value.email, this.requiredForm.value.number, this.requiredForm.value.additionalInfo, this.requiredForm.value.role, this.imageSource)
     this.generalService.editPeople(this.people.idPeople, obj).subscribe(res => {
       this.openDialog()
       this.router.navigate(['/private'], { state: { user: this.state } });
@@ -55,12 +68,7 @@ export class EditPeopleComponent implements OnInit {
 
   clear() {
     this.imageSource = null;
-    this.name = null;
-    this.surname = null;
-    this.role = null;
-    this.email = null;
-    this.number = null;
-    this.additionalInfo = null;
+    this.requiredForm.reset()
   }
 
   convertBase64 = (file) => {

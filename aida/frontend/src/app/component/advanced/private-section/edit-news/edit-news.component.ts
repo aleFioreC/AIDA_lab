@@ -40,7 +40,7 @@ export class EditNewsComponent implements OnInit {
   myForm() {
     this.requiredForm = this.fb.group({
       title: ['', Validators.required],
-      description: ['', Validators.required]
+      description: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])]
     });
   }
 

@@ -6,35 +6,65 @@
 
     <div class="row mt-2">
 
-        <div>
-            <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
-                (change)="uploadListener($event)" accept="*" />
-        </div>
+        <form [formGroup]="requiredForm" novalidate>
 
-        <div class="mat-h1 mt-5" *ngIf="imageSource">
-            <img class="img" [src]="imageSource" alt="Image Source">
-        </div>
+            <div>
+                <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
+                    (change)="uploadListener($event)" accept="*" />
+            </div>
 
-        <mat-form-field class="mt-4" appearance="fill">
-            <mat-label>Title</mat-label>
-            <input [(ngModel)]="research.title" matInput>
-        </mat-form-field>
+            <div class="mat-h1 mt-5" *ngIf="imageSource">
+                <img class="img" [src]="imageSource" alt="Image Source">
+            </div>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Description</mat-label>
-            <textarea [(ngModel)]="research.description" matInput></textarea>
-        </mat-form-field>
+            <div class="row form-group pad">
+                <mat-form-field class="mt-4" appearance="fill">
+                    <mat-label>Title</mat-label>
+                    <input formControlName="title" matInput>
+                </mat-form-field>
+            </div>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Year</mat-label>
-            <input [(ngModel)]="research.year" matInput>
-        </mat-form-field>
+            <div *ngIf="requiredForm.controls['title'].invalid && requiredForm.controls['title'].touched"
+                class="alert alert-danger">
+                <div *ngIf="requiredForm.controls['title'].errors.required">
+                    Title is required.
+                </div>
+            </div>
+
+            <div class="row form-group pad">
+                <mat-form-field appearance="fill">
+                    <mat-label>Description</mat-label>
+                    <textarea formControlName="description" matInput></textarea>
+                </mat-form-field>
+                <div class="right">
+                    {{requiredForm.value.description.length}}/1024
+                </div>
+            </div>
+
+            <div *ngIf="requiredForm.controls['description'].invalid && requiredForm.controls['description'].touched"
+                class="alert alert-danger">
+                <div *ngIf="requiredForm.controls['description'].errors.required">
+                    Description is required.
+                </div>
+                <div *ngIf="requiredForm.controls['description'].hasError('maxlength')">
+                    Description cannot exceed 1024 characters.
+                </div>
+            </div>
+
+            <div class="row form-group pad">
+                <mat-form-field appearance="fill">
+                    <mat-label>Year</mat-label>
+                    <input formControlName="year" matInput>
+                </mat-form-field>
+            </div>
+
+        </form>
 
     </div>
 
     <div class="right mt-2">
         <button mat-raised-button class="btn btn-primary margin-left" color="primary" (click)="saveResearch()">{{
-            'settings.button.save' | translate}}</button>
+            'settings.button.edit' | translate}}</button>
         <button mat-raised-button class="margin-left" color="warn" (click)="clear()">{{
             'settings.button.clear'
             | translate}}</button>

@@ -35,11 +35,11 @@ export class InsertComponent implements OnInit {
   myForm() {
     this.requiredFormNews = this.fb.group({
       title: ['', Validators.required],
-      description: ['', Validators.required]
+      description: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
     });
     this.requiredFormResearch = this.fb.group({
       title: ['', Validators.required],
-      description: ['', Validators.required],
+      description: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
       year: ['', Validators.required]
     });
     this.requiredFormPeople = this.fb.group({

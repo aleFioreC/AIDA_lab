@@ -6,55 +6,111 @@
 
     <div class="row mt-2">
 
-        <div>
-            <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
-                (change)="uploadListener($event)" accept="*" />
-        </div>
+        <form [formGroup]="requiredForm" novalidate>
 
-        <div class="mat-h1 mt-5" *ngIf="imageSource">
-            <img class="img" [src]="imageSource" alt="Image Source">
-        </div>
+            <div>
+                <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
+                    (change)="uploadListener($event)" accept="*" />
+            </div>
+
+            <div class="mat-h1 mt-5" *ngIf="imageSource">
+                <img class="img" [src]="imageSource" alt="Image Source">
+            </div>
+
+            <div class="row form-group pad">
+                <mat-form-field class="mt-4" appearance="fill">
+                    <mat-label>Name</mat-label>
+                    <input formControlName="name" matInput>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="requiredForm.controls['name'].invalid && requiredForm.controls['name'].touched"
+                class="alert alert-danger">
+                <div *ngIf="requiredForm.controls['name'].errors.required">
+                    Name is required.
+                </div>
+            </div>
+
+            <div class="row form-group pad">
+                <mat-form-field appearance="fill">
+                    <mat-label>Surname</mat-label>
+                    <input formControlName="surname" matInput>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="requiredForm.controls['surname'].invalid && requiredForm.controls['surname'].touched"
+                class="alert alert-danger">
+                <div *ngIf="requiredForm.controls['surname'].errors.required">
+                    Surname is required.
+                </div>
+            </div>
+
+            <div class="row form-group pad">
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input formControlName="email" matInput>
+                </mat-form-field>
+            </div>
 
 
-        <mat-form-field class="mt-4" appearance="fill">
-            <mat-label>Name</mat-label>
-            <input [(ngModel)]="people.name" matInput>
-        </mat-form-field>
+            <div *ngIf="requiredForm.controls['email'].invalid && requiredForm.controls['email'].touched"
+                class="alert alert-danger">
+                <div *ngIf="requiredForm.controls['email'].errors.required">
+                    Email is required.
+                </div>
+                <div *ngIf="requiredForm.controls['email'].errors.email">
+                    Email not valid.
+                </div>
+            </div>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Surname</mat-label>
-            <input [(ngModel)]="people.surname" matInput>
-        </mat-form-field>
+            <div class="row form-group pad">
+                <mat-form-field appearance="fill">
+                    <mat-label>Number</mat-label>
+                    <input formControlName="number" matInput>
+                </mat-form-field>
+            </div>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Email</mat-label>
-            <input [(ngModel)]="people.email" matInput>
-        </mat-form-field>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Number</mat-label>
-            <input [(ngModel)]="people.number" matInput>
-        </mat-form-field>
+            <div *ngIf="requiredForm.controls['number'].invalid && requiredForm.controls['number'].touched"
+                class="alert alert-danger">
+                <div *ngIf="requiredForm.controls['number'].errors.required">
+                    Number is required.
+                </div>
+            </div>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Additional info</mat-label>
-            <input [(ngModel)]="people.additionalInfo" matInput>
-        </mat-form-field>
+            <div class="row form-group pad">
+                <mat-form-field appearance="fill">
+                    <mat-label>Additional info</mat-label>
+                    <input formControlName="additionalInfo" matInput>
+                </mat-form-field>
+            </div>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Role</mat-label>
-            <mat-select [(value)]="people.role">
-                <mat-option value="Full Professor">Full Professor</mat-option>
-                <mat-option value="Associate Professor">Associate Professor</mat-option>
-                <mat-option value="Researcher">Researcher</mat-option>
-            </mat-select>
-        </mat-form-field>
+            <div class="row form-group pad">
+                <mat-form-field appearance="fill">
+                    <mat-label>Role</mat-label>
+                    <mat-select formControlName="role">
+                        <mat-option value="Full Professor">Full Professor</mat-option>
+                        <mat-option value="Associate Professor">Associate Professor</mat-option>
+                        <mat-option value="Researcher">Researcher</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+
+            <div *ngIf="requiredForm.controls['role'].invalid && requiredForm.controls['role'].touched"
+                class="alert alert-danger">
+                <div *ngIf="requiredForm.controls['role'].errors.required">
+                    Role is required.
+                </div>
+            </div>
+
+        </form>
 
     </div>
 
     <div class="right mt-2">
         <button mat-raised-button class="btn btn-primary margin-left" (click)="savePeople()">{{
-            'settings.button.save' | translate}}</button>
+            'settings.button.edit' | translate}}</button>
         <button mat-raised-button class="margin-left" color="warn" (click)="clear()">{{
             'settings.button.clear'
             | translate}}</button>

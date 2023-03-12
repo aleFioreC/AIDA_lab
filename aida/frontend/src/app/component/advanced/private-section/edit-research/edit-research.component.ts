@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,13 +17,14 @@ export class EditResearchComponent implements OnInit {
 
 
   imageSource;
-  title;
-  description;
   state;
   research;
-  year;
 
-  constructor(private _sanitizer: DomSanitizer, private activatedRoute: ActivatedRoute, private generalService: GeneralService, public dialog: MatDialog, public router: Router, private location: Location) { }
+  requiredForm: FormGroup;
+
+  constructor(private fb: FormBuilder, private _sanitizer: DomSanitizer, private activatedRoute: ActivatedRoute, private generalService: GeneralService, public dialog: MatDialog, public router: Router, private location: Location) {
+    this.myForm()
+  }
 
   ngOnInit(): void {
     this.state = this.location.getState();
@@ -32,7 +34,20 @@ export class EditResearchComponent implements OnInit {
     this.activatedRoute.data.subscribe((response: any) => {
       this.research = response.research
       this.imageSource = this.research.file != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + this.research.file) : null
+      this.setValue()
     });
+  }
+
+  myForm() {
+    this.requiredForm = this.fb.group({
+      title: ['', Validators.required],
+      description: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
+      year: ['']
+    });
+  }
+
+  setValue() {
+    this.requiredForm.patchValue({ title: this.research.title, description: this.research.description })
   }
 
   async uploadListener($event: any) {
@@ -57,13 +72,12 @@ export class EditResearchComponent implements OnInit {
   };
 
   saveResearch() {
-    let obj: Research = new Research(this.title, this.description, this.year, this.imageSource)
+    let obj: Research = new Research(this.requiredForm.value.title, this.requiredForm.value.description, this.requiredForm.value.year, this.imageSource)
     this.generalService.editResearch(this.research.idResearch, obj).subscribe(res => {
       this.openDialog()
       this.router.navigate(['/private'], { state: { user: this.state } });
     })
   }
-
 
   openDialog() {
 
@@ -86,9 +100,7 @@ export class EditResearchComponent implements OnInit {
 
   clear() {
     this.imageSource = null;
-    this.title = null;
-    this.description = null;
-    this.year = null;
+    this.requiredForm.reset()
   }
 
   back() {

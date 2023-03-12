@@ -51,6 +51,7 @@ import { EditResearchComponent } from './component/advanced/private-section/edit
 import { NewsDetailComponent } from './component/advanced/news/news-detail/news-detail.component';
 import { PeopleComponent } from './component/advanced/people/people.component';
 import { PeopleDetailComponent } from './component/advanced/people/people-detail/people-detail.component';
+import { TopNewsComponent } from './component/advanced/news/top-news/top-news.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { PeopleDetailComponent } from './component/advanced/people/people-detail
     EditResearchComponent,
     NewsDetailComponent,
     PeopleComponent,
-    PeopleDetailComponent
+    PeopleDetailComponent,
+    TopNewsComponent
   ],
   imports: [
     BrowserModule,

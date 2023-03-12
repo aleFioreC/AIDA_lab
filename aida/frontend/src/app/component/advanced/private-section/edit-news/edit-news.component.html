@@ -36,12 +36,18 @@
                     <mat-label>Description</mat-label>
                     <textarea formControlName="description" matInput></textarea>
                 </mat-form-field>
+                <div class="right">
+                    {{requiredForm.value.description.length}}/1024
+                </div>
             </div>
 
             <div *ngIf="requiredForm.controls['description'].invalid && requiredForm.controls['description'].touched"
                 class="alert alert-danger">
                 <div *ngIf="requiredForm.controls['description'].errors.required">
                     Description is required.
+                </div>
+                <div *ngIf="requiredForm.controls['description'].hasError('maxlength')">
+                    Description cannot exceed 1024 characters.
                 </div>
             </div>
 
@@ -51,7 +57,7 @@
         <div class="right mt-2">
             <button mat-raised-button class="btn btn-primary margin-left" (click)=" saveNews()"
                 [disabled]="requiredForm.invalid">{{
-                'settings.button.save' | translate}}</button>
+                'settings.button.edit' | translate}}</button>
             <button mat-raised-button class="margin-left" color="warn" (click)="clear()">{{
                 'settings.button.clear'
                 | translate}}</button>
