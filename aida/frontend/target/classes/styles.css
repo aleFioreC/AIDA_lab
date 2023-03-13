@@ -154,12 +154,6 @@ html {
     color: var(--bs-white)
 }
 
-.logo {
-    height: 50px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
 .small-text-href {
     cursor: pointer;
     color: var(--bs-white)
@@ -414,6 +408,10 @@ a:not([href]):hover {
 img {
     vertical-align: middle;
     border-style: none
+}
+
+.font {
+    font-size: 32px !important;
 }
 
 svg {

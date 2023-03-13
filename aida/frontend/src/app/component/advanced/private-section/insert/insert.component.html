@@ -39,7 +39,7 @@
                             <textarea formControlName="description" matInput></textarea>
                         </mat-form-field>
                         <div class="right">
-                            {{requiredForm.value.description.length}}/1024
+                            {{requiredFormNews.value.description.length}}/1024
                         </div>
                     </div>
 
@@ -48,7 +48,7 @@
                         <div *ngIf="requiredFormNews.controls['description'].errors.required">
                             Description is required.
                         </div>
-                        <div *ngIf="requiredForm.controls['description'].hasError('maxlength')">
+                        <div *ngIf="requiredFormNews.controls['description'].hasError('maxlength')">
                             Description cannot exceed 1024 characters.
                         </div>
                     </div>
@@ -101,7 +101,7 @@
                             <textarea formControlName="description" matInput></textarea>
                         </mat-form-field>
                         <div class="right">
-                            {{requiredForm.value.description.length}}/1024
+                            {{requiredFormResearch.value.description.length}}/1024
                         </div>
                     </div>
 
@@ -110,7 +110,7 @@
                         <div *ngIf="requiredFormResearch.controls['description'].errors.required">
                             Description is required.
                         </div>
-                        <div *ngIf="requiredForm.controls['description'].hasError('maxlength')">
+                        <div *ngIf="requiredFormResearch.controls['description'].hasError('maxlength')">
                             Description cannot exceed 1024 characters.
                         </div>
                     </div>

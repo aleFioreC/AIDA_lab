@@ -35,6 +35,7 @@
         "subtitle": "Choose resource to add from the follow",
         "button": {
             "save": "Save",
+            "edit": "Edit",
             "delete": "Delete",
             "clear": "Clear"
         },

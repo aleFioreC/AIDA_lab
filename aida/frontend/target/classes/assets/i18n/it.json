@@ -35,6 +35,7 @@
         "subtitle": "Scegli quale informazione inserire tra le seguenti",
         "button": {
             "save": "Salva",
+            "edit": "Modifica",
             "delete": "Cancella",
             "clear": "Pulisci"
         },

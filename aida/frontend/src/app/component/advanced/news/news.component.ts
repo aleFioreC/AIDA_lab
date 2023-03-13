@@ -29,7 +29,7 @@ export class NewsComponent implements OnInit {
   }
 
   open(card) {
-    this.router.navigate(['/news/' + card.id])
+    this.router.navigate(['/news/' + card.idNews])
   }
 
   ngOnInit() {

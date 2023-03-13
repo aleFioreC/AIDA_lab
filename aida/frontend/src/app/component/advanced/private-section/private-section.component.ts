@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ModalDialogComponent } from '../../basic/modal-dialog/modal-dialog.component';
 import { GeneralService } from 'src/app/service/general.service';
@@ -95,7 +95,7 @@ export class PrivateSectionComponent implements OnInit {
   }
 
   removeNews(card) {
-    this.generalService.deleteNews(card.id).subscribe(res => {
+    this.generalService.deleteNews(card.idNews).subscribe(res => {
       this.openDialog()
       this.findAllNews()
     })
