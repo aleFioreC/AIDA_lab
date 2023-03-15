@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { GeneralService } from 'src/app/service/general.service';
 
 @Component({
@@ -10,10 +11,14 @@ export class TopNewsComponent implements OnInit {
 
   card;
 
-  constructor(private generalService: GeneralService) { }
+  constructor(private generalService: GeneralService, private router: Router) { }
 
   ngOnInit(): void {
     this.findTop()
+  }
+
+  open(card) {
+    this.router.navigate(['/news/' + card.idNews])
   }
 
   findTop() {

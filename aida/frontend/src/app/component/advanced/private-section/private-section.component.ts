@@ -98,6 +98,7 @@ export class PrivateSectionComponent implements OnInit {
     this.generalService.deleteNews(card.idNews).subscribe(res => {
       this.openDialog()
       this.findAllNews()
+      document.querySelector('.mat-sidenav-content').scrollTop = 0;
     })
   }
 

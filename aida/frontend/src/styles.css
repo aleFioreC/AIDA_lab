@@ -102,16 +102,11 @@ body {
 
 body {
     margin: 0;
-    background: var(--bs-primary) !important
 }
 
 .background {
     background: var(--bs-white) !important;
     border-bottom: 3px solid var(--bs-primary) !important;
-}
-
-.footer {
-    background: var(--bs-primary) !important;
 }
 
 html {
@@ -384,6 +379,7 @@ a {
 }
 
 
+h2,
 h3 {
     color: #00afdc;
     text-decoration: none;
@@ -3834,7 +3830,6 @@ input[type="button"].btn-block {
 
 .card-footer {
     padding: .75rem 1.25rem;
-    background-color: rgba(0, 0, 0, 0.03);
     border-top: 1px solid rgba(0, 0, 0, 0.125)
 }
 
@@ -4302,7 +4297,7 @@ a.badge-dark.focus {
 
 @media (min-width: 576px) {
     .jumbotron {
-        padding: 4rem 2rem
+        padding: 1rem 0rem
     }
 }
 
@@ -8810,19 +8805,16 @@ main>.container {
 
 .footer {
     width: 100%;
-    background-color: #f8f9fa
+    border-top: 1px solid var(--bs-primary-rgb);
 }
 
 .footer .footer-ribbon {
     text-align: center;
     margin-top: -1px;
     padding: 1em 1em 1.5em 1em;
-    background-color: #00afdc;
-    color: #fff
 }
 
 .footer .footer-ribbon h3 {
-    color: #fff;
     font-weight: bold
 }
 

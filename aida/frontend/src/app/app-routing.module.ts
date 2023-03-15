@@ -18,6 +18,9 @@ import { EditPeopleComponent } from './component/advanced/private-section/edit-p
 import { NewsComponent } from './component/advanced/news/news.component';
 import { PeopleDetailComponent } from './component/advanced/people/people-detail/people-detail.component';
 import { PeopleComponent } from './component/advanced/people/people.component';
+import { ThesisComponent } from './component/advanced/thesis/thesis.component';
+import { ThesisDetailComponent } from './component/advanced/thesis/thesis-detail/thesis-detail.component';
+import { ThesisResolver } from './model/resolver/thesis.resolver';
 
 const routes: Routes = [
   { path: '', component: NewsComponent },
@@ -26,6 +29,12 @@ const routes: Routes = [
     path: 'research/:id',
     component: ResearchDetailComponent,
     resolve: { research: ResearchResolver }
+  },
+  { path: 'thesis', component: ThesisComponent },
+  {
+    path: 'thesis/:id',
+    component: ThesisDetailComponent,
+    resolve: { thesis: ThesisResolver }
   },
   {
     path: 'news/:id',

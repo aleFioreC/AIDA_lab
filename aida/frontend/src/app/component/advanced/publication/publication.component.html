@@ -1,9 +1,15 @@
 <div class="container grid-container mt-5 mb-5">
     <h1 class="title">{{ 'publication.title' | translate }}</h1>
-    <h3>
+    <h2>
         IRIS è la soluzione IT che facilita la raccolta e la gestione dei dati relativi alle attività e ai prodotti
         della ricerca. Fornisce a ricercatori, amministratori e valutatori gli strumenti per monitorare i risultati
-        della ricerca, aumentarne la visibilità e allocare in modo efficace le risorse disponibili.
-    </h3>
-    <h3>For more info visit this <a target="_blank" href="https://iris.unicas.it/">site</a>.</h3>
+        della ricerca, aumentarne la visibilità e allocare in modo efficace le risorse disponibili. Per ulteriori
+        informazione <a target="_blank" href="https://iris.unicas.it/">visitare</a>.
+    </h2>
+    <h2>RECENT PUBLICATIONS</h2>
+    <ul>
+        <li *ngFor="let card of cards">
+            {{card.title}}
+        </li>
+    </ul>
 </div>

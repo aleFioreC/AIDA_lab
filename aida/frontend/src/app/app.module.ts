@@ -52,6 +52,8 @@ import { NewsDetailComponent } from './component/advanced/news/news-detail/news-
 import { PeopleComponent } from './component/advanced/people/people.component';
 import { PeopleDetailComponent } from './component/advanced/people/people-detail/people-detail.component';
 import { TopNewsComponent } from './component/advanced/news/top-news/top-news.component';
+import { ThesisComponent } from './component/advanced/thesis/thesis.component';
+import { ThesisDetailComponent } from './component/advanced/thesis/thesis-detail/thesis-detail.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +79,9 @@ import { TopNewsComponent } from './component/advanced/news/top-news/top-news.co
     NewsDetailComponent,
     PeopleComponent,
     PeopleDetailComponent,
-    TopNewsComponent
+    TopNewsComponent,
+    ThesisComponent,
+    ThesisDetailComponent
   ],
   imports: [
     BrowserModule,

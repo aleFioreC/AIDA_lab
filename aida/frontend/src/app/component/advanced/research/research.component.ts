@@ -56,20 +56,5 @@ export class ResearchComponent implements OnInit {
     });
   }
 
-  openDialog() {
-
-    const dialogConfig = new MatDialogConfig();
-
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-
-    dialogConfig.data = {
-      title: 'Operazione completata',
-      message: 'La risorsa è stata eliminata.'
-    };
-
-    this.dialog.open(ModalDialogComponent, dialogConfig);
-
-  }
 
 }

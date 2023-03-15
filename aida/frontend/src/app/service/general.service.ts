@@ -13,6 +13,14 @@ export class GeneralService {
         this.environment = environment.base_url
     }
 
+    allPublication() {
+        return this.httpClient.get(this.environment + '/publication/findAll');
+    }
+
+    allThesis() {
+        return this.httpClient.get(this.environment + '/thesis/findAll');
+    }
+
     allNews() {
         return this.httpClient.get(this.environment + '/news/findAll');
     }
@@ -31,6 +39,10 @@ export class GeneralService {
 
     getPeople(id: string) {
         return this.httpClient.get(this.environment + '/people/findById/' + id);
+    }
+
+    getThesis(id: string) {
+        return this.httpClient.get(this.environment + '/thesis/findById/' + id);
     }
 
     allResearch() {

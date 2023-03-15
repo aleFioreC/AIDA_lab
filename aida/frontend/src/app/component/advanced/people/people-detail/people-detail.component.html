@@ -1,17 +1,29 @@
 <div class="container grid-container mt-5">
-    <div class="row col-sm-12">
-        <h1 class="title">{{people?.name}} {{people?.surname}}</h1>
-        <div class="row col-sm-4">
-            <img *ngIf="people.file" class="img-thumbnail rounded-circle lazyloaded" [src]="people.file"
-                alt="Image Source">
-            <img *ngIf="!people.file" class="img-thumbnail rounded-circle lazyloaded" src="assets/noimage.png"
-                alt="Image Source">
+    <div class="person-single-column center">
+        <div class="person">
+            <img *ngIf="people.file" class="rounded-circle" [src]="people.file" alt="Image Source">
+            <img *ngIf="!people.file" class="rounded-circle" src="assets/noimage.png" alt="Image Source">
+            <h1 class="title">{{people?.name}} {{people?.surname}}</h1>
+            <h2 class="text-muted">{{people?.role}}</h2>
         </div>
-        <div class="row col-sm-8 justify">
-            <h2>{{people?.role}}</h2>
-            <h2>{{people?.email}}</h2>
-            <h2>{{people?.number}}</h2>
-            <h2>{{people?.additionalInfo}}</h2>
+    </div>
+    <div class="person-single-column center">
+        <div class="person-links mb-4">
+            <div class="row">
+                <div class="col">
+                    <h3>{{people?.email}}</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h3>{{people?.number}}</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h3>{{people?.additionalInfo}}</h3>
+                </div>
+            </div>
         </div>
     </div>
 </div>

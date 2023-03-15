@@ -27,6 +27,6 @@
         </mat-card>
     </div>
     <div class="container-fluid" #focus>
-        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" (page)="scrollUp()"></mat-paginator>
+        <mat-paginator *ngIf="cards.length" [pageSizeOptions]="[5, 10, 25, 100]" (page)="scrollUp()"></mat-paginator>
     </div>
 </div>

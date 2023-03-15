@@ -1,9 +1,6 @@
-<div class="jumbotron block-home block-home-dense ">
-    <div class="row bottom">
-        <h1 class="display-title">AIDA LAB <small>Artificial Intelligence and Data Analysis</small></h1>
-    </div>
+<div class="jumbotron block-home block-home-dense">
     <div class="container">
-        <div class="row" *ngIf="card">
+        <div class="row cursor" *ngIf="card" (click)="open(card)">
             <div class="col-md-6 justify">
                 <h1 class="display-title">{{card?.title}}</h1>
                 <p class="lead">{{card?.description}}</p>

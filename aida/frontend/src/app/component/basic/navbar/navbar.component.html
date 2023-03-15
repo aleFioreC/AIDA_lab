@@ -21,9 +21,13 @@
     <div class="menu-spacer" *ngIf="isShow">
       <span class="cursor" routerLink="/">Home</span>
       <span class="divider"></span>
+      <span class="cursor"> <a href="assets/web/index.html">P101</a></span>
+      <span class="divider"></span>
       <span class="cursor" routerLink="/people">{{ 'people.title' | translate }}</span>
       <span class="divider"></span>
       <span class="cursor" routerLink="/research">{{ 'research.title' | translate }}</span>
+      <span class="divider"></span>
+      <span class="cursor" routerLink="/thesis">{{ 'thesis.title' | translate }}</span>
       <span class="divider"></span>
       <span class="cursor" routerLink="/publication">{{ 'publication.title' | translate }}</span>
       <span class="divider"></span>
@@ -41,7 +45,10 @@
         <a (click)="sidenav.toggle()" class="small-text-href" routerLink="" mat-list-item>Home</a>
         <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/people" mat-list-item>{{ 'people.title' |
           translate }}</a>
+        <a (click)="sidenav.toggle()" class="small-text-href" href="assets/web/index.html" mat-list-item>P101</a>
         <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/research" mat-list-item>{{ 'research.title' |
+          translate }}</a>
+        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/thesis" mat-list-item>{{ 'thesis.title' |
           translate }}</a>
         <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/publication" mat-list-item>{{
           'publication.title' | translate }}</a>

@@ -1,0 +1,16 @@
+,A,V
+,,S
+,,toA
+,,mult
+,,S
+,A,print
+,b,exchange
+,,toA
+,,mult
+,A,print
+,b,sum
+,A,print
+,A,sqrt
+,A,print
+,/,print
+,,S
