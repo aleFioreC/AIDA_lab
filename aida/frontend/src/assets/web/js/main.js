@@ -69,12 +69,20 @@ $(function () {
     //     });
     // }
 
+    function make_base_auth(user, password) {
+        var tok = user + ':' + password;
+        var hash = btoa(tok);
+        return "Basic " + hash;
+    }
 
     // CODICE INTERAZIONE CON IL SERVER M.MOLINARA
     $.ajax({
         type: "GET",
-        url: "./listaProgrammi.action",
+        url: "http://localhost:8080/news/findAll",
         cache: false,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader('Authorization', make_base_auth("admin", "aidalab"));
+        },
         success: function (data) {
 
             var div = $('#modal');

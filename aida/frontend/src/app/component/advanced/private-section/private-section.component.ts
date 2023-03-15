@@ -8,6 +8,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Research } from 'src/app/model/research';
 import { People } from 'src/app/model/people';
 import { News } from 'src/app/model/news';
+import { Thesis } from 'src/app/model/thesis';
+import { ConfirmDialogComponent } from '../../basic/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-private-section',
@@ -17,6 +19,7 @@ import { News } from 'src/app/model/news';
 export class PrivateSectionComponent implements OnInit {
 
   state: any
+  result: string = '';
 
   constructor(private _sanitizer: DomSanitizer, private location: Location, public router: Router, public dialog: MatDialog, private generalService: GeneralService) { }
 
@@ -27,12 +30,14 @@ export class PrivateSectionComponent implements OnInit {
     }
     this.findAllPeople()
     this.findAllNews()
+    this.findAllThesis()
     this.findAllResearch()
   }
 
   news: News[] = [];
   research: Research[] = [];
   people: People[] = [];
+  thesis: Thesis[] = [];
 
   findAllPeople() {
     this.people = []
@@ -40,6 +45,16 @@ export class PrivateSectionComponent implements OnInit {
       res.forEach(element => {
         element.file = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file)
         this.people.push(element)
+      });
+    });
+  }
+
+  findAllThesis() {
+    this.thesis = []
+    this.generalService.allThesis().subscribe((res: any) => {
+      res.forEach(element => {
+        element.file = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file)
+        this.thesis.push(element)
       });
     });
   }
@@ -98,7 +113,6 @@ export class PrivateSectionComponent implements OnInit {
     this.generalService.deleteNews(card.idNews).subscribe(res => {
       this.openDialog()
       this.findAllNews()
-      document.querySelector('.mat-sidenav-content').scrollTop = 0;
     })
   }
 
@@ -107,7 +121,7 @@ export class PrivateSectionComponent implements OnInit {
   }
 
   removeResearch(card) {
-    this.generalService.deleteResearch(card.id).subscribe(res => {
+    this.generalService.deleteResearch(card.idResearch).subscribe(res => {
       this.openDialog()
       this.findAllResearch()
     })
@@ -118,11 +132,45 @@ export class PrivateSectionComponent implements OnInit {
   }
 
   deletePeople(card) {
-    this.generalService.deletePeople(card.id).subscribe(res => {
+    this.generalService.deletePeople(card.idPeople).subscribe(res => {
       this.openDialog()
       this.findAllPeople()
     })
   }
 
+  openThesis(card) {
+    this.router.navigate(['/edit-thesis/' + card.idThesis], { state: { user: this.state } })
+  }
+
+  deleteThesis(card) {
+    this.generalService.deleteThesis(card.idThesis).subscribe(res => {
+      this.openDialog()
+      this.findAllPeople()
+    })
+  }
+
+  confirmDialog(): void {
+
+    const message = `Are you sure you want to do this?`;
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.height = '220px'
+    dialogConfig.width = '600px'
+    dialogConfig.panelClass = 'full-screen-modal'
+
+    dialogConfig.data = {
+      title: 'Operazione completata',
+      message: 'La risorsa è stata eliminata.',
+    };
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, dialogConfig)
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      this.result = dialogResult;
+    });
+  }
 
 }

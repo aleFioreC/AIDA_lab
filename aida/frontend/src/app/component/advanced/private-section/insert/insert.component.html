@@ -253,5 +253,68 @@
                 </div>
             </div>
         </mat-tab>
+
+        <mat-tab label="Thesis">
+            <div class="row col-sm-12 mt-2">
+
+                <h1 class="title mt-2">{{ 'settings.thesis.title' | translate}}</h1>
+
+                <form [formGroup]="requiredFormThesis" novalidate>
+
+                    <div>
+                        <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
+                            (change)="uploadListener($event)" accept="*" />
+                    </div>
+
+                    <div class="mat-h1 mt-2" *ngIf="imageSource">
+                        <img class="img" [src]="imageSource" alt="Image Source">
+                    </div>
+
+                    <div class="row form-group pad">
+                        <mat-form-field class="mt-4" appearance="fill">
+                            <mat-label>Title</mat-label>
+                            <input formControlName="title" matInput>
+                        </mat-form-field>
+                    </div>
+
+                    <div *ngIf="requiredFormThesis.controls['title'].invalid && requiredFormThesis.controls['title'].touched"
+                        class="alert alert-danger">
+                        <div *ngIf="requiredFormThesis.controls['title'].errors.required">
+                            Title is required.
+                        </div>
+                    </div>
+
+                    <div class="row form-group pad">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Description</mat-label>
+                            <textarea formControlName="description" matInput></textarea>
+                        </mat-form-field>
+                        <div class="right">
+                            {{requiredFormThesis.value.description.length}}/1024
+                        </div>
+                    </div>
+
+                    <div *ngIf="requiredFormThesis.controls['description'].invalid && requiredFormThesis.controls['description'].touched"
+                        class="alert alert-danger">
+                        <div *ngIf="requiredFormThesis.controls['description'].errors.required">
+                            Description is required.
+                        </div>
+                        <div *ngIf="requiredFormThesis.controls['description'].hasError('maxlength')">
+                            Description cannot exceed 1024 characters.
+                        </div>
+                    </div>
+
+                </form>
+
+                <div class="right mt-2">
+                    <button mat-raised-button class="btn btn-primary margin-left" (click)="saveThesis()"
+                        [disabled]="requiredFormThesis.invalid">{{
+                        'settings.button.save' | translate}}</button>
+                    <button mat-raised-button class="margin-left" color="warn" (click)="clear()">{{
+                        'settings.button.clear'
+                        | translate}}</button>
+                </div>
+            </div>
+        </mat-tab>
     </mat-tab-group>
 </div>

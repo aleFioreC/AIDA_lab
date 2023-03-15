@@ -54,6 +54,9 @@ import { PeopleDetailComponent } from './component/advanced/people/people-detail
 import { TopNewsComponent } from './component/advanced/news/top-news/top-news.component';
 import { ThesisComponent } from './component/advanced/thesis/thesis.component';
 import { ThesisDetailComponent } from './component/advanced/thesis/thesis-detail/thesis-detail.component';
+import { EditThesisComponent } from './component/advanced/private-section/edit-thesis/edit-thesis.component';
+import { ConfirmDialogComponent } from './component/basic/confirm-dialog/confirm-dialog.component';
+import { P101Component } from './component/advanced/p101/p101.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +84,10 @@ import { ThesisDetailComponent } from './component/advanced/thesis/thesis-detail
     PeopleDetailComponent,
     TopNewsComponent,
     ThesisComponent,
-    ThesisDetailComponent
+    ThesisDetailComponent,
+    EditThesisComponent,
+    ConfirmDialogComponent,
+    P101Component
   ],
   imports: [
     BrowserModule,

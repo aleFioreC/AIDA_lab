@@ -81,6 +81,18 @@ export class GeneralService {
         return this.httpClient.delete(this.environment + '/news/delete/' + id);
     }
 
+    saveThesis(body: any) {
+        return this.httpClient.post(this.environment + '/thesis/save', body);
+    }
+
+    editThesis(id, body: any) {
+        return this.httpClient.put(this.environment + '/thesi/edit/' + id, body);
+    }
+
+    deleteThesis(id: number) {
+        return this.httpClient.delete(this.environment + '/thesis/delete/' + id);
+    }
+
     deletePeople(id: number) {
         return this.httpClient.delete(this.environment + '/people/delete/' + id);
     }

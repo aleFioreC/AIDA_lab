@@ -7,6 +7,7 @@ import { ModalDialogComponent } from 'src/app/component/basic/modal-dialog/modal
 import { News } from 'src/app/model/news';
 import { People } from 'src/app/model/people';
 import { Research } from 'src/app/model/research';
+import { Thesis } from 'src/app/model/thesis';
 import { GeneralService } from 'src/app/service/general.service';
 
 @Component({
@@ -23,6 +24,7 @@ export class InsertComponent implements OnInit {
   requiredFormNews: FormGroup;
   requiredFormResearch: FormGroup;
   requiredFormPeople: FormGroup;
+  requiredFormThesis: FormGroup;
 
   constructor(private fb: FormBuilder, private generalService: GeneralService, public dialog: MatDialog, public router: Router, private location: Location) {
     this.state = this.location.getState();
@@ -50,6 +52,10 @@ export class InsertComponent implements OnInit {
       additionalInfo: [''],
       number: ['', Validators.required]
     });
+    this.requiredFormThesis = this.fb.group({
+      title: ['', Validators.required],
+      description: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
+    });
   }
 
   ngOnInit(): void {
@@ -65,6 +71,7 @@ export class InsertComponent implements OnInit {
     this.requiredFormNews.reset()
     this.requiredFormResearch.reset()
     this.requiredFormPeople.reset()
+    this.requiredFormThesis.reset()
   }
 
   convertBase64 = (file) => {
@@ -85,6 +92,14 @@ export class InsertComponent implements OnInit {
   saveNews() {
     let obj: News = new News(this.requiredFormNews.value.title, this.requiredFormNews.value.description, this.imageSource)
     this.generalService.saveNews(obj).subscribe(res => {
+      this.openDialog()
+      this.router.navigate(['/private'], { state: { user: res } });
+    })
+  }
+
+  saveThesis() {
+    let obj: Thesis = new Thesis(this.requiredFormThesis.value.title, this.requiredFormThesis.value.description, this.imageSource)
+    this.generalService.saveThesis(obj).subscribe(res => {
       this.openDialog()
       this.router.navigate(['/private'], { state: { user: res } });
     })

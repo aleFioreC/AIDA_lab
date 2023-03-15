@@ -108,6 +108,40 @@
                 </div>
             </div>
         </mat-tab>
+        <mat-tab label="Thesis">
+            <div class="container grid-container mt-2">
+                <div class="col-sm-12 col-md-12 mt-5" *ngFor="let card of thesis">
+                    <mat-card class="dashboard-card cursor">
+                        <mat-card-header>
+                            <mat-card-title>
+                            </mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content class="dashboard-card-content">
+                            <div class="row">
+                                <h1 class="title"> {{card.title}} </h1>
+                                <div class="col-sm-8 justify">
+                                    <p class="long-text">
+                                        {{card.description}}
+                                    </p>
+                                </div>
+                                <div class="col-sm-4 center">
+                                    <img *ngIf="card.file" class="img" [src]="card.file" alt="Image Source">
+                                    <img *ngIf="!card.file" class="img" src="assets/noimage.png" alt="Image Source">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <button mat-raised-button class="margin-left btn btn-primary"
+                                    (click)="openThesis(card)">Edit</button>
+                                <button mat-raised-button class="margin-left" color="warn"
+                                    (click)="removeThesis(card)">{{
+                                    'settings.button.delete'
+                                    | translate}}</button>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+        </mat-tab>
     </mat-tab-group>
 
 </div>

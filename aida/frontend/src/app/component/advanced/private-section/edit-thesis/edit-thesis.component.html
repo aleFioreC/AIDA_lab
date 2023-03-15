@@ -1,0 +1,67 @@
+<div class="container grid-container mt-5">
+
+    <button class="btn btn-primary" (click)="back()">Back</button>
+
+    <div class="row mt-2">
+
+        <h1 class="title mt-2">{{ 'settings.edit.title' | translate}}</h1>
+
+        <form [formGroup]="requiredForm" novalidate>
+
+            <div>
+                <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
+                    (change)="uploadListener($event)" accept="*" />
+            </div>
+
+            <div class="mat-h1 mt-5" *ngIf="imageSource">
+                <img class="img" [src]="imageSource" alt="Image Source">
+            </div>
+
+            <div class="row form-group pad">
+                <mat-form-field class="mt-4" appearance="fill">
+                    <mat-label>Title</mat-label>
+                    <input formControlName="title" matInput>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="requiredForm.controls['title'].invalid && requiredForm.controls['title'].touched"
+                class="alert alert-danger">
+                <div *ngIf="requiredForm.controls['title'].errors.required">
+                    Title is required.
+                </div>
+            </div>
+
+            <div class="row form-group pad">
+                <mat-form-field appearance="fill">
+                    <mat-label>Description</mat-label>
+                    <textarea formControlName="description" matInput></textarea>
+                </mat-form-field>
+                <div class="right">
+                    {{requiredForm.value.description.length}}/1024
+                </div>
+            </div>
+
+            <div *ngIf="requiredForm.controls['description'].invalid && requiredForm.controls['description'].touched"
+                class="alert alert-danger">
+                <div *ngIf="requiredForm.controls['description'].errors.required">
+                    Description is required.
+                </div>
+                <div *ngIf="requiredForm.controls['description'].hasError('maxlength')">
+                    Description cannot exceed 1024 characters.
+                </div>
+            </div>
+
+        </form>
+
+
+        <div class="right mt-2">
+            <button mat-raised-button class="btn btn-primary margin-left" (click)=" saveNews()"
+                [disabled]="requiredForm.invalid">{{
+                'settings.button.edit' | translate}}</button>
+            <button mat-raised-button class="margin-left" color="warn" (click)="clear()">{{
+                'settings.button.clear'
+                | translate}}</button>
+        </div>
+    </div>
+
+</div>

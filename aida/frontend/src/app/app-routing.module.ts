@@ -21,6 +21,8 @@ import { PeopleComponent } from './component/advanced/people/people.component';
 import { ThesisComponent } from './component/advanced/thesis/thesis.component';
 import { ThesisDetailComponent } from './component/advanced/thesis/thesis-detail/thesis-detail.component';
 import { ThesisResolver } from './model/resolver/thesis.resolver';
+import { EditThesisComponent } from './component/advanced/private-section/edit-thesis/edit-thesis.component';
+import { P101Component } from './component/advanced/p101/p101.component';
 
 const routes: Routes = [
   { path: '', component: NewsComponent },
@@ -46,6 +48,7 @@ const routes: Routes = [
     component: PeopleDetailComponent,
     resolve: { people: PeopleResolver }
   },
+  { path: 'p101', component: P101Component },
   { path: 'publication', component: PublicationComponent },
   { path: 'people', component: PeopleComponent },
   { path: 'about', component: AboutComponent },
@@ -74,6 +77,11 @@ const routes: Routes = [
     component: EditPeopleComponent,
     resolve: { people: PeopleResolver }
   },
+  {
+    path: 'edit-thesis/:id',
+    component: EditThesisComponent,
+    resolve: { thesis: ThesisResolver }
+  }
 ];
 
 @NgModule({
