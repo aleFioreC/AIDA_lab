@@ -2,8 +2,17 @@
     <div class="row col-sm-12">
         <h1 class="title">{{research?.title}}</h1>
         <div class="row col-sm-12">
-            <img *ngIf="research.file" class="img" [src]="research.file" alt="Image Source">
-            <img *ngIf="!research.file" class="img" src="assets/noimage.png" alt="Image Source">
+            <ngb-carousel class="back">
+                <ng-template ngbSlide *ngFor="let file of files">
+                    <div class="picsum-img-wrapper center">
+                        <img [src]="file" class="img-thumbnail lazyloaded" />
+                    </div>
+                    <!-- <div class="carousel-caption">
+                        <h3>First slide label</h3>
+                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    </div>  -->
+                </ng-template>
+            </ngb-carousel>
         </div>
         <div class="row col-sm-12 justify mt-3">
             <h2>Description</h2>

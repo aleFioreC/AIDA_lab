@@ -60,6 +60,7 @@ span {
 .input_pass:focus {
     box-shadow: none !important;
     outline: 0px !important;
+    height: 50px;
 }
 
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before {

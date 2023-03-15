@@ -73,13 +73,10 @@
                 <form [formGroup]="requiredFormResearch" novalidate>
 
                     <div>
-                        <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
-                            (change)="uploadListener($event)" accept="*" />
+                        <input id="file" type="file" multiple class="form-control" (change)="onFileChange($event)">
                     </div>
 
-                    <div class="mat-h1 mt-5" *ngIf="imageSource">
-                        <img class="img" [src]="imageSource" alt="Image Source">
-                    </div>
+                    <img *ngFor='let url of images' [src]="url" height="150" width="200px" style="margin: 3px;">
 
                     <div class="row form-group pad">
                         <mat-form-field class="mt-4" appearance="fill">

@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { GeneralService } from 'src/app/service/general.service';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { ModalDialogComponent } from '../../basic/modal-dialog/modal-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
+import { Research } from 'src/app/model/research';
 
 @Component({
   selector: 'app-research',
@@ -15,7 +15,7 @@ import { Observable } from 'rxjs';
 })
 export class ResearchComponent implements OnInit {
 
-  cards = [];
+  cards: Research[] = [];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource: MatTableDataSource<any>;
   obs: Observable<any>;
@@ -47,7 +47,7 @@ export class ResearchComponent implements OnInit {
     this.generalService.allResearch().subscribe((res: any) => {
       res.forEach(element => {
         element.description = element.description && element.description.length > 400 ? element.description.slice(0, 320) + '...read more...' : element.description
-        element.file = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file)
+        element.file = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.files[0].file)
         this.cards.push(element)
       });
       this.dataSource = new MatTableDataSource<any>(this.cards);

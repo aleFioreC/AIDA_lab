@@ -75,7 +75,7 @@ export class PrivateSectionComponent implements OnInit {
     this.generalService.allResearch().subscribe((res: any) => {
       res.forEach(element => {
         element.description = element.description && element.description.length > 400 ? element.description.slice(0, 320) + '...read more...' : element.description
-        element.file = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file)
+        element.file = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.files[0].file)
         this.research.push(element)
       });
     });

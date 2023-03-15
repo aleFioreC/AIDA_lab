@@ -78,7 +78,7 @@ $(function () {
     // CODICE INTERAZIONE CON IL SERVER M.MOLINARA
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/news/findAll",
+        url: "http://localhost:4200/aida/programmi/findAll",
         cache: false,
         beforeSend: function (xhr) {
             xhr.setRequestHeader('Authorization', make_base_auth("admin", "aidalab"));
@@ -86,11 +86,11 @@ $(function () {
         success: function (data) {
 
             var div = $('#modal');
-            for (var i = 0; i < data.listaProgrammi.length; i++) {
-                sessionStorage.setItem(data.listaProgrammi[i].name + "-help", data.listaProgrammi[i].help);
-                sessionStorage.setItem(data.listaProgrammi[i].name + "-code", data.listaProgrammi[i].code);
+            for (var i = 0; i < data.length; i++) {
+                sessionStorage.setItem(data[i].name + "-help", data[i].help);
+                sessionStorage.setItem(data[i].name + "-code", data[i].code);
 
-                div.append("<ol class=programma>" + data.listaProgrammi[i].name + "</ol>");
+                div.append("<ol class=programma>" + data[i].name + "</ol>");
             }
             div.append('<button id="closedial">Chiudi</button>')
 

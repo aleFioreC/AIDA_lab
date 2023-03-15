@@ -1,12 +1,13 @@
 package dev.unicas.aida.springboot.model;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Research {
@@ -23,20 +24,10 @@ public class Research {
 
 	private Date creation_date;
 
-	@Lob
-	private String file;
+    @OneToMany(mappedBy="research")
+	private Set<ResearchFile> files;
 
 	public Research() {
-	}
-
-	public Research(String title, String description, Integer year
-,String file, Date creation_date) {
-		super();
-		this.title = title;
-		this.description = description;
-		this.year = year;
-		this.file = file;
-		this.creation_date = creation_date;
 	}
 
 	public Integer getIdResearch() {
@@ -63,14 +54,6 @@ public class Research {
 		this.description = description;
 	}
 
-	public String getFile() {
-		return file;
-	}
-
-	public void setFile(String file) {
-		this.file = file;
-	}
-
 	public Date getCreation_date() {
 		return creation_date;
 	}
@@ -85,6 +68,14 @@ public class Research {
 
 	public void setYear(Integer year) {
 		this.year = year;
+	}
+
+	public Set<ResearchFile> getFiles() {
+		return files;
+	}
+
+	public void setFiles(Set<ResearchFile> files) {
+		this.files = files;
 	}
 
 }

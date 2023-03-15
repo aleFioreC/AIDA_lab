@@ -18,6 +18,7 @@ import { GeneralService } from 'src/app/service/general.service';
 export class InsertComponent implements OnInit {
 
   imageSource;
+  images = [];
 
   state: any
 
@@ -72,6 +73,21 @@ export class InsertComponent implements OnInit {
     this.requiredFormResearch.reset()
     this.requiredFormPeople.reset()
     this.requiredFormThesis.reset()
+  }
+
+  onFileChange(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      var filesAmount = event.target.files.length;
+      for (let i = 0; i < filesAmount; i++) {
+        var reader = new FileReader();
+
+        reader.onload = (event: any) => {
+          this.images.push(event.target.result);
+        }
+
+        reader.readAsDataURL(event.target.files[i]);
+      }
+    }
   }
 
   convertBase64 = (file) => {

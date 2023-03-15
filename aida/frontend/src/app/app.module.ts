@@ -57,6 +57,7 @@ import { ThesisDetailComponent } from './component/advanced/thesis/thesis-detail
 import { EditThesisComponent } from './component/advanced/private-section/edit-thesis/edit-thesis.component';
 import { ConfirmDialogComponent } from './component/basic/confirm-dialog/confirm-dialog.component';
 import { P101Component } from './component/advanced/p101/p101.component';
+import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -121,8 +122,9 @@ import { P101Component } from './component/advanced/p101/p101.component';
     }),
     MatFormFieldModule,
     MatInputModule,
-    MatTabsModule
-  ],
+    MatTabsModule,
+    NgbCarouselModule,
+    NgbModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true,
