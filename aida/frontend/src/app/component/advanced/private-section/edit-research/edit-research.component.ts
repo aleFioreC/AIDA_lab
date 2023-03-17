@@ -2,11 +2,11 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalDialogComponent } from 'src/app/component/basic/modal-dialog/modal-dialog.component';
 import { Research } from 'src/app/model/research';
 import { GeneralService } from 'src/app/service/general.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-edit-research',
@@ -15,11 +15,9 @@ import { GeneralService } from 'src/app/service/general.service';
 })
 export class EditResearchComponent implements OnInit {
 
-
-  imageSource;
   state;
   research;
-
+  images: SafeResourceUrl[] = []
   requiredForm: FormGroup;
 
   constructor(private fb: FormBuilder, private _sanitizer: DomSanitizer, private activatedRoute: ActivatedRoute, private generalService: GeneralService, public dialog: MatDialog, public router: Router, private location: Location) {
@@ -33,7 +31,10 @@ export class EditResearchComponent implements OnInit {
     }
     this.activatedRoute.data.subscribe((response: any) => {
       this.research = response.research
-      this.imageSource = this.research.file != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + this.research.file) : null
+      this.research.files.forEach(element => {
+        let image = element != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file) : null
+        if (image) this.images.push(image)
+      })
       this.setValue()
     });
   }
@@ -50,29 +51,23 @@ export class EditResearchComponent implements OnInit {
     this.requiredForm.patchValue({ title: this.research.title, description: this.research.description })
   }
 
-  async uploadListener($event: any) {
-    let files = $event.srcElement.files;
-    let img = await this.convertBase64(files[0])
-    this.imageSource = img
+  onFileChange(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      var filesAmount = event.target.files.length;
+      for (let i = 0; i < filesAmount; i++) {
+        var reader = new FileReader();
+
+        reader.onload = (event: any) => {
+          this.images.push(event.target.result);
+        }
+
+        reader.readAsDataURL(event.target.files[i]);
+      }
+    }
   }
 
-  convertBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
-
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
-  };
-
   saveResearch() {
-    let obj: Research = new Research(this.requiredForm.value.title, this.requiredForm.value.description, this.requiredForm.value.year, this.imageSource)
+    let obj: Research = new Research(this.requiredForm.value.title, this.requiredForm.value.description, this.requiredForm.value.year, this.images)
     this.generalService.editResearch(this.research.idResearch, obj).subscribe(res => {
       this.openDialog()
       this.router.navigate(['/private'], { state: { user: this.state } });
@@ -99,7 +94,7 @@ export class EditResearchComponent implements OnInit {
   }
 
   clear() {
-    this.imageSource = null;
+    this.images = [];
     this.requiredForm.reset()
   }
 

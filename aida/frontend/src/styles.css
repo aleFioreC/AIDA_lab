@@ -185,22 +185,22 @@ html {
 
 @media (min-width: 1200px) {
     .img {
-        width: 260px;
-        height: 250px;
+        width: 320px;
+        height: 300px;
     }
 }
 
 @media (min-width: 725px) and (max-width: 1199px) {
     .img {
-        width: 190px;
-        height: 170px;
+        width: 220px;
+        height: 200px;
     }
 }
 
 @media(max-width: 724px) {
     .img {
-        width: 70px;
-        height: 50px;
+        width: 170px;
+        height: 150px;
     }
 }
 
@@ -438,11 +438,6 @@ label {
 
 button {
     border-radius: 0
-}
-
-button:focus {
-    outline: 1px dotted;
-    outline: 5px auto -webkit-focus-ring-color
 }
 
 input,
@@ -2376,12 +2371,6 @@ pre code {
     text-decoration: none
 }
 
-.btn:focus,
-.btn.focus {
-    outline: 0;
-    box-shadow: 0 0 0 .2rem rgba(0, 175, 220, 0.25)
-}
-
 .btn.disabled,
 .btn:disabled {
     opacity: .65
@@ -2413,7 +2402,6 @@ fieldset:disabled a.btn {
     color: #fff;
     background-color: #0091b6;
     border-color: #0086a9;
-    box-shadow: 0 0 0 .2rem rgba(38, 187, 225, 0.5)
 }
 
 .btn-primary.disabled,
@@ -2429,12 +2417,6 @@ fieldset:disabled a.btn {
     color: #fff;
     background-color: #0086a9;
     border-color: #007c9c
-}
-
-.btn-primary:not(:disabled):not(.disabled):active:focus,
-.btn-primary:not(:disabled):not(.disabled).active:focus,
-.show>.btn-primary.dropdown-toggle:focus {
-    box-shadow: 0 0 0 .2rem rgba(38, 187, 225, 0.5)
 }
 
 .btn-secondary {
@@ -2454,7 +2436,6 @@ fieldset:disabled a.btn {
     color: #fff;
     background-color: #5a6268;
     border-color: #545b62;
-    box-shadow: 0 0 0 .2rem rgba(130, 138, 145, 0.5)
 }
 
 .btn-secondary.disabled,
@@ -2470,12 +2451,6 @@ fieldset:disabled a.btn {
     color: #fff;
     background-color: #545b62;
     border-color: #4e555b
-}
-
-.btn-secondary:not(:disabled):not(.disabled):active:focus,
-.btn-secondary:not(:disabled):not(.disabled).active:focus,
-.show>.btn-secondary.dropdown-toggle:focus {
-    box-shadow: 0 0 0 .2rem rgba(130, 138, 145, 0.5)
 }
 
 .btn-success {
@@ -2495,7 +2470,6 @@ fieldset:disabled a.btn {
     color: #fff;
     background-color: #218838;
     border-color: #1e7e34;
-    box-shadow: 0 0 0 .2rem rgba(72, 180, 97, 0.5)
 }
 
 .btn-success.disabled,

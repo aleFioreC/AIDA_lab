@@ -5,3 +5,7 @@
 .back {
     background: var(--cyan);
 }
+
+.height {
+    min-height: 400px;
+}

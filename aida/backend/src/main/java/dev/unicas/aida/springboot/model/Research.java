@@ -24,10 +24,20 @@ public class Research {
 
 	private Date creation_date;
 
-    @OneToMany(mappedBy="research")
+	@OneToMany(mappedBy = "research")
 	private Set<ResearchFile> files;
 
 	public Research() {
+	}
+
+	public Research(Integer idResearch,String title, String description, Integer year, Date creation_date, Set<ResearchFile> files) {
+		super();
+		this.idResearch= idResearch;
+		this.title = title;
+		this.description = description;
+		this.year = year;
+		this.creation_date = creation_date;
+		this.files = files;
 	}
 
 	public Integer getIdResearch() {

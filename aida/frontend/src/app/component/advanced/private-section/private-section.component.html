@@ -22,14 +22,16 @@
                                     </p>
                                 </div>
                                 <div class="col-sm-4 center">
-                                    <img *ngIf="card.file" class="img" [src]="card.file" alt="Image Source">
-                                    <img *ngIf="!card.file" class="img" src="assets/noimage.png" alt="Image Source">
+                                    <img *ngIf="card.file" class="img lazyloaded" [src]="card.file" alt="Image Source">
+                                    <img *ngIf="!card.file" class="img lazyloaded" src="assets/noimage.png"
+                                        alt="Image Source">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <button mat-raised-button class="margin-left btn btn-primary"
                                     (click)="openNews(card)">Edit</button>
-                                <button mat-raised-button class="margin-left" color="warn" (click)="removeNews(card)">{{
+                                <button mat-raised-button class="margin-left" color="warn"
+                                    (click)="confirmDialog(card, 'news')">{{
                                     'settings.button.delete'
                                     | translate}}</button>
                             </div>
@@ -65,7 +67,7 @@
                                 <button mat-raised-button class="margin-left btn btn-primary"
                                     (click)="openPeople(card)">Edit</button>
                                 <button mat-raised-button class="margin-left" color="warn"
-                                    (click)="removePeople(card)">{{
+                                    (click)="confirmDialog(card, 'people')">{{
                                     'settings.button.delete'
                                     | translate}}</button>
                             </div>
@@ -91,15 +93,16 @@
                                     </p>
                                 </div>
                                 <div class="col-sm-4 center">
-                                    <img *ngIf="card.file" class="img" [src]="card.file" alt="Image Source">
-                                    <img *ngIf="!card.file" class="img" src="assets/noimage.png" alt="Image Source">
+                                    <img *ngIf="card.file" class="img lazyloaded" [src]="card.file" alt="Image Source">
+                                    <img *ngIf="!card.file" class="img lazyloaded" src="assets/noimage.png"
+                                        alt="Image Source">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <button mat-raised-button class="margin-left btn btn-primary"
                                     (click)="openResearch(card)">Edit</button>
                                 <button mat-raised-button class="margin-left" color="warn"
-                                    (click)="removeResearch(card)">{{
+                                    (click)="confirmDialog(card, 'research')">{{
                                     'settings.button.delete'
                                     | translate}}</button>
                             </div>
@@ -125,15 +128,16 @@
                                     </p>
                                 </div>
                                 <div class="col-sm-4 center">
-                                    <img *ngIf="card.file" class="img" [src]="card.file" alt="Image Source">
-                                    <img *ngIf="!card.file" class="img" src="assets/noimage.png" alt="Image Source">
+                                    <img *ngIf="card.file" class="img lazyloaded" [src]="card.file" alt="Image Source">
+                                    <img *ngIf="!card.file" class="img lazyloaded" src="assets/noimage.png"
+                                        alt="Image Source">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <button mat-raised-button class="margin-left btn btn-primary"
                                     (click)="openThesis(card)">Edit</button>
                                 <button mat-raised-button class="margin-left" color="warn"
-                                    (click)="removeThesis(card)">{{
+                                    (click)="confirmDialog(card, 'thesis')">{{
                                     'settings.button.delete'
                                     | translate}}</button>
                             </div>

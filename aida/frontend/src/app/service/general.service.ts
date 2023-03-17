@@ -86,7 +86,7 @@ export class GeneralService {
     }
 
     editThesis(id, body: any) {
-        return this.httpClient.put(this.environment + '/thesi/edit/' + id, body);
+        return this.httpClient.put(this.environment + '/thesis/edit/' + id, body);
     }
 
     deleteThesis(id: number) {

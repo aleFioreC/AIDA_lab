@@ -24,8 +24,12 @@ public class PeopleService {
 		Optional<People> people = findById(id);
 		if (people.isPresent()) {
 			People p = people.get();
-			p = new People(n.getName(), n.getSurname(), n.getEmail(), n.getNumber(), n.getAdditionalInfo(), n.getRole(),
-					n.getFile());
+			p.setName(n.getName());
+			p.setSurname(n.getSurname());
+			p.setEmail(n.getEmail());
+			p.setNumber(n.getNumber());
+			p.setAdditionalInfo(n.getAdditionalInfo());
+			p.setFile(n.getFile());
 			return this.repository.save(p);
 		} else {
 			throw new Exception("Not found");

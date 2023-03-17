@@ -18,6 +18,7 @@ export class EditThesisComponent implements OnInit {
   imageSource;
   state;
   thesis;
+  edit = false;
 
   requiredForm: FormGroup;
 
@@ -32,6 +33,7 @@ export class EditThesisComponent implements OnInit {
     }
     this.activatedRoute.data.subscribe((response: any) => {
       this.thesis = response.thesis
+      this.edit = false;
       this.imageSource = this.thesis.file != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + this.thesis.file) : null
       this.setValue()
     });
@@ -52,6 +54,7 @@ export class EditThesisComponent implements OnInit {
     let files = $event.srcElement.files;
     let img = await this.convertBase64(files[0])
     this.imageSource = img
+    this.edit = true
   }
 
   convertBase64 = (file) => {
@@ -69,10 +72,11 @@ export class EditThesisComponent implements OnInit {
     });
   };
 
-  saveNews() {
-    let obj: Thesis = new Thesis(this.requiredForm.value.title, this.requiredForm.value.description, this.imageSource)
+  saveThesis() {
+    let obj: Thesis = new Thesis(this.requiredForm.value.title, this.requiredForm.value.description, this.edit ? this.imageSource : this.thesis.file)
     this.generalService.editThesis(this.thesis.idThesis, obj).subscribe(res => {
       this.openDialog()
+      this.edit = false;
       this.router.navigate(['/private'], { state: { user: this.state } });
     })
   }

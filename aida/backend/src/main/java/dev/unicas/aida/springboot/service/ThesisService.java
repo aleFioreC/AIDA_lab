@@ -1,6 +1,5 @@
 package dev.unicas.aida.springboot.service;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,7 +24,9 @@ public class ThesisService {
 		Optional<Thesis> thesis = findById(id);
 		if (thesis.isPresent()) {
 			Thesis p = thesis.get();
-			p = new Thesis(n.getTitle(), n.getDescription(), n.getFile(), new Date());
+			p.setTitle(n.getTitle());
+			p.setDescription(n.getDescription());
+			p.setFile(n.getFile());
 			return this.repository.save(p);
 		} else {
 			throw new Exception("Not found");

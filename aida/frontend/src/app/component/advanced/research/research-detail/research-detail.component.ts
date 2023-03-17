@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Research } from 'src/app/model/research';
-import { ResearchFiles } from 'src/app/model/research_files';
 
 @Component({
   selector: 'app-research-detail',

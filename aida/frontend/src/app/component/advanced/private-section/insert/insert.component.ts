@@ -69,6 +69,8 @@ export class InsertComponent implements OnInit {
   }
 
   clear() {
+    this.imageSource = null
+    this.images = []
     this.requiredFormNews.reset()
     this.requiredFormResearch.reset()
     this.requiredFormPeople.reset()

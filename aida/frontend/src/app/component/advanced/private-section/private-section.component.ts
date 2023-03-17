@@ -81,26 +81,6 @@ export class PrivateSectionComponent implements OnInit {
     });
   }
 
-  openDialog() {
-
-    const dialogConfig = new MatDialogConfig();
-
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.height = '220px'
-    dialogConfig.width = '600px'
-    dialogConfig.panelClass = 'full-screen-modal'
-
-    dialogConfig.data = {
-      title: 'Operazione completata',
-      message: 'La risorsa è stata eliminata.',
-      class: 'success-class'
-    };
-
-    this.dialog.open(ModalDialogComponent, dialogConfig);
-
-  }
-
   new() {
     this.router.navigate(['/insert'], { state: { user: this.state } });
   }
@@ -131,7 +111,7 @@ export class PrivateSectionComponent implements OnInit {
     this.router.navigate(['/edit-people/' + card.idPeople], { state: { user: this.state } })
   }
 
-  deletePeople(card) {
+  removePeople(card) {
     this.generalService.deletePeople(card.idPeople).subscribe(res => {
       this.openDialog()
       this.findAllPeople()
@@ -142,14 +122,14 @@ export class PrivateSectionComponent implements OnInit {
     this.router.navigate(['/edit-thesis/' + card.idThesis], { state: { user: this.state } })
   }
 
-  deleteThesis(card) {
+  removeThesis(card) {
     this.generalService.deleteThesis(card.idThesis).subscribe(res => {
       this.openDialog()
-      this.findAllPeople()
+      this.findAllThesis()
     })
   }
 
-  confirmDialog(): void {
+  confirmDialog(card, selection): void {
 
     const message = `Are you sure you want to do this?`;
 
@@ -162,15 +142,47 @@ export class PrivateSectionComponent implements OnInit {
     dialogConfig.panelClass = 'full-screen-modal'
 
     dialogConfig.data = {
-      title: 'Operazione completata',
-      message: 'La risorsa è stata eliminata.',
+      title: 'Warning',
+      message: message,
     };
 
     const dialogRef = this.dialog.open(ConfirmDialogComponent, dialogConfig)
 
     dialogRef.afterClosed().subscribe(dialogResult => {
       this.result = dialogResult;
+      if (this.result && selection == 'thesis') {
+        this.removeThesis(card)
+      }
+      else if (this.result && selection == 'news') {
+        this.removeNews(card)
+      }
+      else if (this.result && selection == 'research') {
+        this.removeResearch(card)
+      } else {
+        this.removePeople(card)
+      }
     });
+
+  }
+
+  openDialog() {
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.height = '220px'
+    dialogConfig.width = '600px'
+    dialogConfig.panelClass = 'full-screen-modal'
+
+    dialogConfig.data = {
+      title: 'Operazione completata',
+      message: 'La risorsa è stata eliminata.',
+      class: 'success-class'
+    };
+
+    this.dialog.open(ModalDialogComponent, dialogConfig);
+
   }
 
 }
