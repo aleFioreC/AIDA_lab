@@ -9,11 +9,15 @@
         <form [formGroup]="requiredForm" novalidate>
 
             <div>
-                <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
+                <input class="form-control" type="file" #fileInput name="File" id="txtFileUpload"
                     (change)="uploadListener($event)" accept="*" />
             </div>
 
             <div class="top col-md-3 col-6 mb-4" *ngIf="imageSource">
+                <div class="right">
+                    <button mat-raised-button class="margin-left" color="warn"
+                        (click)="delete()"><mat-icon>delete</mat-icon></button>
+                </div>
                 <img class="card-img-top lazyloaded" [src]="imageSource" alt="Image Source">
             </div>
 

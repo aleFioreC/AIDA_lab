@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -27,6 +27,12 @@ export class InsertComponent implements OnInit {
   requiredFormResearch: FormGroup;
   requiredFormPeople: FormGroup;
   requiredFormThesis: FormGroup;
+
+  @ViewChild('fileInput')
+  fileInput: ElementRef;
+
+  ngOnInit(): void {
+  }
 
   constructor(private fb: FormBuilder, private generalService: GeneralService, public dialog: MatDialog, public router: Router, private location: Location) {
     this.state = this.location.getState();
@@ -60,9 +66,6 @@ export class InsertComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-  }
-
   async uploadListener($event: any) {
     let files = $event.srcElement.files;
     let img = await this.convertBase64(files[0])
@@ -70,6 +73,7 @@ export class InsertComponent implements OnInit {
   }
 
   clear() {
+    this.fileInput.nativeElement.value = ''
     this.imageSource = null
     this.images = []
     this.requiredFormNews.reset()
@@ -90,6 +94,15 @@ export class InsertComponent implements OnInit {
 
         reader.readAsDataURL(event.target.files[i]);
       }
+    }
+  }
+
+  delete(image) {
+    this.fileInput.nativeElement.value = ''
+    if (image) {
+      console.log(image)
+    } else {
+      this.imageSource = null
     }
   }
 

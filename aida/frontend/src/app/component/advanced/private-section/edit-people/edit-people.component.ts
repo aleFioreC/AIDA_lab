@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -21,6 +21,9 @@ export class EditPeopleComponent implements OnInit {
   edit = false;
 
   requiredForm: FormGroup;
+
+  @ViewChild('fileInput')
+  fileInput: ElementRef;
 
   constructor(private fb: FormBuilder, private _sanitizer: DomSanitizer, private activatedRoute: ActivatedRoute, private generalService: GeneralService, public dialog: MatDialog, public router: Router, private location: Location) {
     this.myForm()
@@ -54,6 +57,11 @@ export class EditPeopleComponent implements OnInit {
     this.requiredForm.patchValue({ name: this.people.name, surname: this.people.surname, email: this.people.email, role: this.people.role, additionalInfo: this.people.additionalInfo, number: this.people.number })
   }
 
+  delete() {
+    this.fileInput.nativeElement.value = ''
+    this.imageSource = null
+  }
+
   savePeople() {
     let obj: People = new People(this.requiredForm.value.name, this.requiredForm.value.surname, this.requiredForm.value.email, this.requiredForm.value.number, this.requiredForm.value.additionalInfo, this.requiredForm.value.role, this.edit ? this.imageSource : this.people.file)
     this.generalService.editPeople(this.people.idPeople, obj).subscribe(res => {
@@ -71,6 +79,7 @@ export class EditPeopleComponent implements OnInit {
   }
 
   clear() {
+    this.fileInput.nativeElement.value = ''
     this.imageSource = null;
     this.requiredForm.reset()
   }

@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -21,6 +21,9 @@ export class EditNewsComponent implements OnInit {
   edit = false;
 
   requiredForm: FormGroup;
+
+  @ViewChild('fileInput')
+  fileInput: ElementRef;
 
   constructor(private fb: FormBuilder, private _sanitizer: DomSanitizer, private activatedRoute: ActivatedRoute, private generalService: GeneralService, public dialog: MatDialog, public router: Router, private location: Location) {
     this.myForm()
@@ -48,6 +51,11 @@ export class EditNewsComponent implements OnInit {
 
   setValue() {
     this.requiredForm.patchValue({ title: this.news.title, description: this.news.description })
+  }
+
+  delete() {
+    this.fileInput.nativeElement.value = ''
+    this.imageSource = null
   }
 
   async uploadListener($event: any) {
@@ -102,6 +110,7 @@ export class EditNewsComponent implements OnInit {
   }
 
   clear() {
+    this.fileInput.nativeElement.value = ''
     this.imageSource = null;
     this.requiredForm.reset()
   }

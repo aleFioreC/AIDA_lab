@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -21,6 +21,9 @@ export class EditResearchComponent implements OnInit {
   images: SafeResourceUrl[] = []
   requiredForm: FormGroup;
   edit = false;
+
+  @ViewChild('fileInput')
+  fileInput: ElementRef;
 
   constructor(private fb: FormBuilder, private _sanitizer: DomSanitizer, private activatedRoute: ActivatedRoute, private generalService: GeneralService, public dialog: MatDialog, public router: Router, private location: Location) {
     this.myForm()
@@ -69,6 +72,13 @@ export class EditResearchComponent implements OnInit {
     }
   }
 
+  delete(image) {
+    this.fileInput.nativeElement.value = ''
+    if (image) {
+      console.log(image)
+    }
+  }
+
   saveResearch() {
     let files: ResearchFiles[] = []
     if (this.edit) {
@@ -106,6 +116,7 @@ export class EditResearchComponent implements OnInit {
   }
 
   clear() {
+    this.fileInput.nativeElement.value = ''
     this.images = [];
     this.requiredForm.reset()
   }

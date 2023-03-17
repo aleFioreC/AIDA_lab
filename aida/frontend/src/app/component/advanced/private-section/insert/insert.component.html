@@ -11,11 +11,15 @@
                 <form [formGroup]="requiredFormNews" novalidate>
 
                     <div>
-                        <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
+                        <input class="form-control" type="file" #fileInput name="File" id="txtFileUpload"
                             (change)="uploadListener($event)" accept="*" />
                     </div>
 
                     <div class="top col-md-3 col-6 mb-4" *ngIf="imageSource">
+                        <div class="right">
+                            <button mat-raised-button class="margin-left" color="warn"
+                                (click)="delete()"><mat-icon>delete</mat-icon></button>
+                        </div>
                         <img class="card-img-top lazyloaded" [src]="imageSource" alt="Image Source">
                     </div>
 
@@ -39,7 +43,7 @@
                             <textarea formControlName="description" matInput></textarea>
                         </mat-form-field>
                         <div class="right">
-                            {{requiredFormNews.value.description.length}}/1024
+                            {{requiredFormNews.value.description?.length}}/1024
                         </div>
                     </div>
 
@@ -73,10 +77,15 @@
                 <form [formGroup]="requiredFormResearch" novalidate>
 
                     <div>
-                        <input id="file" type="file" multiple class="form-control" (change)="onFileChange($event)">
+                        <input id="file" type="file" #fileInput multiple class="form-control"
+                            (change)="onFileChange($event)">
                     </div>
 
                     <div class="pad col-md-3 col-6 mb-4" *ngFor='let url of images'>
+                        <div class="right">
+                            <button mat-raised-button class="margin-left" color="warn"
+                                (click)="delete(url)"><mat-icon>delete</mat-icon></button>
+                        </div>
                         <img class="card-img-top lazyloaded" [src]="url" alt="Image Source">
                     </div>
 
@@ -100,7 +109,7 @@
                             <textarea formControlName="description" matInput></textarea>
                         </mat-form-field>
                         <div class="right">
-                            {{requiredFormResearch.value.description.length}}/1024
+                            {{requiredFormResearch.value.description?.length}}/1024
                         </div>
                     </div>
 
@@ -148,11 +157,15 @@
                 <form [formGroup]="requiredFormPeople" novalidate>
 
                     <div>
-                        <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
+                        <input class="form-control" type="file" #fileInput name="File" id="txtFileUpload"
                             (change)="uploadListener($event)" accept="*" />
                     </div>
 
                     <div class="pad col-md-3 col-6 mb-4" *ngIf="imageSource">
+                        <div class="right">
+                            <button mat-raised-button class="margin-left" color="warn"
+                                (click)="delete()"><mat-icon>delete</mat-icon></button>
+                        </div>
                         <img class="card-img-top lazyloaded" [src]="imageSource" alt="Image Source">
                     </div>
 
@@ -261,11 +274,15 @@
                 <form [formGroup]="requiredFormThesis" novalidate>
 
                     <div>
-                        <input class="form-control" type="file" #csvReader name="File" id="txtFileUpload"
+                        <input class="form-control" type="file" #fileInput name="File" id="txtFileUpload"
                             (change)="uploadListener($event)" accept="*" />
                     </div>
 
                     <div class="pad col-md-3 col-6 mb-4" *ngIf="imageSource">
+                        <div class="right">
+                            <button mat-raised-button class="margin-left" color="warn"
+                                (click)="delete()"><mat-icon>delete</mat-icon></button>
+                        </div>
                         <img class="card-img-top lazyloaded" [src]="imageSource" alt="Image Source">
                     </div>
 
@@ -289,7 +306,7 @@
                             <textarea formControlName="description" matInput></textarea>
                         </mat-form-field>
                         <div class="right">
-                            {{requiredFormThesis.value.description.length}}/1024
+                            {{requiredFormThesis.value.description?.length}}/1024
                         </div>
                     </div>
 
