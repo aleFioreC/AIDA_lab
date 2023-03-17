@@ -7,6 +7,7 @@ import { ModalDialogComponent } from 'src/app/component/basic/modal-dialog/modal
 import { News } from 'src/app/model/news';
 import { People } from 'src/app/model/people';
 import { Research } from 'src/app/model/research';
+import { ResearchFiles } from 'src/app/model/research_files';
 import { Thesis } from 'src/app/model/thesis';
 import { GeneralService } from 'src/app/service/general.service';
 
@@ -124,9 +125,15 @@ export class InsertComponent implements OnInit {
   }
 
   saveResearch() {
-    let obj: Research = new Research(this.requiredFormResearch.value.title, this.requiredFormResearch.value.description, this.requiredFormResearch.value.year, this.imageSource)
+    let files: ResearchFiles[] = []
+    this.images.forEach(element => {
+      let file = new ResearchFiles(element)
+      files.push(file)
+    })
+    let obj: Research = new Research(this.requiredFormResearch.value.title, this.requiredFormResearch.value.description, this.requiredFormResearch.value.year, files)
     this.generalService.saveResearch(obj).subscribe(res => {
       this.openDialog()
+      files = []
       this.router.navigate(['/private'], { state: { user: res } });
     })
   }

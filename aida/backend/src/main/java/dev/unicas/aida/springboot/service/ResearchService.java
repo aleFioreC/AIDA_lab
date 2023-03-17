@@ -21,8 +21,8 @@ public class ResearchService {
 	public ResearchFileRepository repositoryFile;
 
 	public Research save(Research n) {
-		saveFiles(n);
 		this.repository.save(n);
+		saveFiles(n);
 		return n;
 	}
 
@@ -69,7 +69,10 @@ public class ResearchService {
 		return this.repository.findById(id);
 	}
 
-	public boolean delete(Integer id) {
+	public boolean delete(Integer id) 
+	{
+		Optional<Research> entity = this.repository.findById(id);
+		this.deleteFiles(entity.get());
 		this.repository.deleteById(id);
 		return true;
 	}

@@ -1,9 +1,9 @@
 <div class="container grid-container mt-5">
     <div class="row col-sm-12">
         <h1 class="title">{{news?.title}}</h1>
-        <div class="row col-sm-12">
-            <img *ngIf="news.file" class="img lazyloaded" [src]="news.file" alt="Image Source">
-            <img *ngIf="!news.file" class="img lazyloaded" src="assets/noimage.png" alt="Image Source">
+        <div class="col-md-3 col-6 mb-4">
+            <img *ngIf="news.file" class="card-img-top lazyloaded" [src]="news.file" alt="Image Source">
+            <img *ngIf="!news.file" class="card-img-top lazyloaded" src="assets/noimage.png" alt="Image Source">
         </div>
         <div class="row col-sm-12 justify mt-3">
             <h2>Description</h2>

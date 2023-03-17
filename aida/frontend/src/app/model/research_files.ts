@@ -1,9 +1,7 @@
 export class ResearchFiles {
     idFile;
     file: string;
-
-    constructor(idFile, file) {
-        this.idFile = idFile
+    constructor(file) {
         this.file = file
     }
 }

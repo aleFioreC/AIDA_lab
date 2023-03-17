@@ -7,6 +7,7 @@ import { ModalDialogComponent } from 'src/app/component/basic/modal-dialog/modal
 import { Research } from 'src/app/model/research';
 import { GeneralService } from 'src/app/service/general.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { ResearchFiles } from 'src/app/model/research_files';
 
 @Component({
   selector: 'app-edit-research',
@@ -16,9 +17,10 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 export class EditResearchComponent implements OnInit {
 
   state;
-  research;
+  research: Research;
   images: SafeResourceUrl[] = []
   requiredForm: FormGroup;
+  edit = false;
 
   constructor(private fb: FormBuilder, private _sanitizer: DomSanitizer, private activatedRoute: ActivatedRoute, private generalService: GeneralService, public dialog: MatDialog, public router: Router, private location: Location) {
     this.myForm()
@@ -32,6 +34,7 @@ export class EditResearchComponent implements OnInit {
     this.activatedRoute.data.subscribe((response: any) => {
       this.research = response.research
       this.research.files.forEach(element => {
+        this.edit = false;
         let image = element != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file) : null
         if (image) this.images.push(image)
       })
@@ -60,16 +63,25 @@ export class EditResearchComponent implements OnInit {
         reader.onload = (event: any) => {
           this.images.push(event.target.result);
         }
-
+        this.edit = true
         reader.readAsDataURL(event.target.files[i]);
       }
     }
   }
 
   saveResearch() {
-    let obj: Research = new Research(this.requiredForm.value.title, this.requiredForm.value.description, this.requiredForm.value.year, this.images)
+    let files: ResearchFiles[] = []
+    if (this.edit) {
+      this.images.forEach(element => {
+        let file = new ResearchFiles(element)
+        files.push(file)
+      })
+    }
+    let obj: Research = new Research(this.requiredForm.value.title, this.requiredForm.value.description, this.requiredForm.value.year, this.edit ? files : this.research.files)
     this.generalService.editResearch(this.research.idResearch, obj).subscribe(res => {
       this.openDialog()
+      files = []
+      this.edit = false;
       this.router.navigate(['/private'], { state: { user: this.state } });
     })
   }

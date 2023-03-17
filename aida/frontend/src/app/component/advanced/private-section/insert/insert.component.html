@@ -15,8 +15,8 @@
                             (change)="uploadListener($event)" accept="*" />
                     </div>
 
-                    <div class="mat-h1 mt-2" *ngIf="imageSource">
-                        <img class="img lazyloaded" [src]="imageSource" alt="Image Source">
+                    <div class="top col-md-3 col-6 mb-4" *ngIf="imageSource">
+                        <img class="card-img-top lazyloaded" [src]="imageSource" alt="Image Source">
                     </div>
 
                     <div class="row form-group pad">
@@ -76,7 +76,9 @@
                         <input id="file" type="file" multiple class="form-control" (change)="onFileChange($event)">
                     </div>
 
-                    <img *ngFor='let url of images' [src]="url" height="150" width="200px" style="margin: 3px;">
+                    <div class="pad col-md-3 col-6 mb-4" *ngFor='let url of images'>
+                        <img class="card-img-top lazyloaded" [src]="url" alt="Image Source">
+                    </div>
 
                     <div class="row form-group pad">
                         <mat-form-field class="mt-4" appearance="fill">
@@ -150,8 +152,8 @@
                             (change)="uploadListener($event)" accept="*" />
                     </div>
 
-                    <div class="mat-h1 mt-5" *ngIf="imageSource">
-                        <img class="img lazyloaded" [src]="imageSource" alt="Image Source">
+                    <div class="pad col-md-3 col-6 mb-4" *ngIf="imageSource">
+                        <img class="card-img-top lazyloaded" [src]="imageSource" alt="Image Source">
                     </div>
 
                     <div class="row form-group pad">
@@ -263,8 +265,8 @@
                             (change)="uploadListener($event)" accept="*" />
                     </div>
 
-                    <div class="mat-h1 mt-2" *ngIf="imageSource">
-                        <img class="img lazyloaded" [src]="imageSource" alt="Image Source">
+                    <div class="pad col-md-3 col-6 mb-4" *ngIf="imageSource">
+                        <img class="card-img-top lazyloaded" [src]="imageSource" alt="Image Source">
                     </div>
 
                     <div class="row form-group pad">

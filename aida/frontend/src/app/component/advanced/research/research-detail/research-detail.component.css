@@ -8,4 +8,26 @@
 
 .height {
     min-height: 400px;
+    max-height: 450px;
+}
+
+@media (min-width: 1200px) {
+    .img {
+        width: 380px;
+        height: 330px;
+    }
+}
+
+@media (min-width: 725px) and (max-width: 1199px) {
+    .img {
+        width: 320px;
+        height: 300px;
+    }
+}
+
+@media(max-width: 724px) {
+    .img {
+        width: 270px;
+        height: 250px;
+    }
 }

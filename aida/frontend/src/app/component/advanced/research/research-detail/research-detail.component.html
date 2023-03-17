@@ -4,13 +4,9 @@
         <div class="row col-sm-12">
             <ngb-carousel class="back">
                 <ng-template ngbSlide *ngFor="let file of files">
-                    <div class="picsum-img-wrapper center height">
-                        <img [src]="file" class="img-thumbnail mt-2 lazyloaded" />
+                    <div class="pad col-md-12 mb-4 center height">
+                        <img [src]="file" class="img lazyloaded mt-5" />
                     </div>
-                    <!-- <div class="carousel-caption">
-                        <h3>First slide label</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    </div>  -->
                 </ng-template>
             </ngb-carousel>
         </div>

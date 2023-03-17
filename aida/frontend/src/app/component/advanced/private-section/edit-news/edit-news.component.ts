@@ -18,6 +18,7 @@ export class EditNewsComponent implements OnInit {
   imageSource;
   state;
   news;
+  edit = false;
 
   requiredForm: FormGroup;
 
@@ -32,6 +33,7 @@ export class EditNewsComponent implements OnInit {
     }
     this.activatedRoute.data.subscribe((response: any) => {
       this.news = response.news
+      this.edit = false;
       this.imageSource = this.news.file != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + this.news.file) : null
       this.setValue()
     });
@@ -52,6 +54,7 @@ export class EditNewsComponent implements OnInit {
     let files = $event.srcElement.files;
     let img = await this.convertBase64(files[0])
     this.imageSource = img
+    this.edit = true
   }
 
   convertBase64 = (file) => {
@@ -70,9 +73,10 @@ export class EditNewsComponent implements OnInit {
   };
 
   saveNews() {
-    let obj: News = new News(this.requiredForm.value.title, this.requiredForm.value.description, this.imageSource)
+    let obj: News = new News(this.requiredForm.value.title, this.requiredForm.value.description, this.edit ? this.imageSource : this.news.file)
     this.generalService.editNews(this.news.idNews, obj).subscribe(res => {
       this.openDialog()
+      this.edit = false;
       this.router.navigate(['/private'], { state: { user: this.state } });
     })
   }

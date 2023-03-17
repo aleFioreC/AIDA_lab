@@ -8,10 +8,10 @@ export class Research {
     file: string;
     files: ResearchFiles[];
 
-    constructor(title, description, year, file) {
+    constructor(title, description, year, files) {
         this.title = title
         this.description = description
         this.year = year
-        this.file = file
+        this.files = files
     }
 }

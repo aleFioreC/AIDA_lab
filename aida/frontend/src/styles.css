@@ -204,6 +204,10 @@ html {
     }
 }
 
+.top {
+    margin-top: 10px;
+}
+
 .justify {
     text-align: justify;
 }

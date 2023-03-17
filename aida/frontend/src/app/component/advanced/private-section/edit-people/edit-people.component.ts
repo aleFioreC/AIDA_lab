@@ -18,6 +18,7 @@ export class EditPeopleComponent implements OnInit {
   imageSource;
   state: any
   people: People;
+  edit = false;
 
   requiredForm: FormGroup;
 
@@ -32,6 +33,7 @@ export class EditPeopleComponent implements OnInit {
     }
     this.activatedRoute.data.subscribe((response: any) => {
       this.people = response.people
+      this.edit = false;
       this.imageSource = this.people.file != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + this.people.file) : null
       this.setValue()
     });
@@ -53,9 +55,10 @@ export class EditPeopleComponent implements OnInit {
   }
 
   savePeople() {
-    let obj: People = new People(this.requiredForm.value.name, this.requiredForm.value.surname, this.requiredForm.value.email, this.requiredForm.value.number, this.requiredForm.value.additionalInfo, this.requiredForm.value.role, this.imageSource)
+    let obj: People = new People(this.requiredForm.value.name, this.requiredForm.value.surname, this.requiredForm.value.email, this.requiredForm.value.number, this.requiredForm.value.additionalInfo, this.requiredForm.value.role, this.edit ? this.imageSource : this.people.file)
     this.generalService.editPeople(this.people.idPeople, obj).subscribe(res => {
       this.openDialog()
+      this.edit = false;
       this.router.navigate(['/private'], { state: { user: this.state } });
     })
   }
@@ -64,6 +67,7 @@ export class EditPeopleComponent implements OnInit {
     let files = $event.srcElement.files;
     let img = await this.convertBase64(files[0])
     this.imageSource = img
+    this.edit = true
   }
 
   clear() {

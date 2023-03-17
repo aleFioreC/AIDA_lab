@@ -122,14 +122,15 @@
                         <mat-card-content class="dashboard-card-content">
                             <div class="row">
                                 <h1 class="title"> {{card.title}} </h1>
-                                <div class="col-sm-8 justify">
+                                <div class="col-md-9 col-6 ">
                                     <p class="long-text">
                                         {{card.description}}
                                     </p>
                                 </div>
-                                <div class="col-sm-4 center">
-                                    <img *ngIf="card.file" class="img lazyloaded" [src]="card.file" alt="Image Source">
-                                    <img *ngIf="!card.file" class="img lazyloaded" src="assets/noimage.png"
+                                <div class="col-md-3 col-6 mb-4">
+                                    <img *ngIf="card.file" class="card-img-top lazyloaded" [src]="card.file"
+                                        alt="Image Source">
+                                    <img *ngIf="!card.file" class="card-img-top lazyloaded" src="assets/noimage.png"
                                         alt="Image Source">
                                 </div>
                             </div>

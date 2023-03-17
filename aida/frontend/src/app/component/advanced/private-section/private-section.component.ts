@@ -158,7 +158,7 @@ export class PrivateSectionComponent implements OnInit {
       }
       else if (this.result && selection == 'research') {
         this.removeResearch(card)
-      } else {
+      } else if (this.result && selection == 'people') {
         this.removePeople(card)
       }
     });
