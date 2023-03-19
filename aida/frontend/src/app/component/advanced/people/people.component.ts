@@ -32,9 +32,9 @@ export class PeopleComponent implements OnInit {
         element.file = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file)
         this.all.push(element)
       });
-      this.researcher = this.all.filter(c => c.role == 'Researcher')
-      this.associate = this.all.filter(c => c.role == 'Associate Professor')
-      this.full = this.all.filter(c => c.role == 'Full Professor')
+      this.researcher = this.all.filter(c => c.roleGroup == 'Scientific staff')
+      this.associate = this.all.filter(c => c.roleGroup == 'Faculty')
+      this.full = this.all.filter(c => c.roleGroup == 'Chair')
     });
   }
 

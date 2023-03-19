@@ -48,13 +48,14 @@ export class EditPeopleComponent implements OnInit {
       surname: ['', Validators.required],
       email: ['', Validators.compose([Validators.required, Validators.email])],
       role: ['', Validators.required],
+      group: ['', Validators.required],
       additionalInfo: [''],
       number: ['', Validators.required]
     });
   }
 
   setValue() {
-    this.requiredForm.patchValue({ name: this.people.name, surname: this.people.surname, email: this.people.email, role: this.people.role, additionalInfo: this.people.additionalInfo, number: this.people.number })
+    this.requiredForm.patchValue({ name: this.people.name, surname: this.people.surname, email: this.people.email, role: this.people.role, additionalInfo: this.people.additionalInfo, number: this.people.number, group: this.people.roleGroup })
   }
 
   delete() {
@@ -63,7 +64,7 @@ export class EditPeopleComponent implements OnInit {
   }
 
   savePeople() {
-    let obj: People = new People(this.requiredForm.value.name, this.requiredForm.value.surname, this.requiredForm.value.email, this.requiredForm.value.number, this.requiredForm.value.additionalInfo, this.requiredForm.value.role, this.edit ? this.imageSource : this.people.file)
+    let obj: People = new People(this.requiredForm.value.name, this.requiredForm.value.surname, this.requiredForm.value.email, this.requiredForm.value.number, this.requiredForm.value.additionalInfo, this.requiredForm.value.role, this.requiredForm.value.group, this.edit ? this.imageSource : this.people.file)
     this.generalService.editPeople(this.people.idPeople, obj).subscribe(res => {
       this.openDialog()
       this.edit = false;

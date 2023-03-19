@@ -3,6 +3,11 @@
   text-align: right
 }
 
+.menu-spacer-logo {
+  flex: 0.2 0 auto;
+  text-align: right
+}
+
 .divider {
   margin-right: 5px;
   margin-left: 5px;

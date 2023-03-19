@@ -209,6 +209,10 @@ html {
     }
 }
 
+.right {
+    text-align: right;
+}
+
 .top {
     margin-top: 10px;
 }

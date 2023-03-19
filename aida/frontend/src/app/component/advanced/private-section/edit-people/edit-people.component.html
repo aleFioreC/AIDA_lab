@@ -95,16 +95,34 @@
                     <mat-select formControlName="role">
                         <mat-option value="Full Professor">Full Professor</mat-option>
                         <mat-option value="Associate Professor">Associate Professor</mat-option>
+                        <mat-option value="Assistant Professor">Assistant Professor</mat-option>
                         <mat-option value="Researcher">Researcher</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
 
-
             <div *ngIf="requiredForm.controls['role'].invalid && requiredForm.controls['role'].touched"
                 class="alert alert-danger">
                 <div *ngIf="requiredForm.controls['role'].errors.required">
                     Role is required.
+                </div>
+            </div>
+
+            <div class="row form-group pad">
+                <mat-form-field appearance="fill">
+                    <mat-label>Group</mat-label>
+                    <mat-select formControlName="group">
+                        <mat-option value="Chair">Chair</mat-option>
+                        <mat-option value="Faculty">Faculty</mat-option>
+                        <mat-option value="Scientific staff">Scientific staff</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="requiredForm.controls['group'].invalid && requiredForm.controls['group'].touched"
+                class="alert alert-danger">
+                <div *ngIf="requiredForm.controls['group'].errors.required">
+                    Group is required.
                 </div>
             </div>
 

@@ -1,7 +1,7 @@
 <div class="container grid-container mt-5 mb-2">
     <h1 class="title">{{ 'people.title' | translate }}</h1>
     <div class="row">
-        <h1 class="subtitle">Full professor</h1>
+        <h1 class="subtitle">Chair</h1>
         <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 person" *ngFor="let card of full">
             <img *ngIf="card.file" class="img-thumbnail rounded-circle lazyloaded" [src]="card.file" alt="Image Source">
             <img *ngIf="!card.file" class="img-thumbnail rounded-circle lazyloaded" src="assets/noimage.png"
@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="row">
-        <h1 class="subtitle">Associate professor</h1>
+        <h1 class="subtitle">Faculty</h1>
         <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 person" *ngFor="let card of associate">
             <img *ngIf="card.file" class="img-thumbnail rounded-circle lazyloaded" [src]="card.file" alt="Image Source">
             <img *ngIf="!card.file" class="img-thumbnail rounded-circle lazyloaded" src="assets/noimage.png"
@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="row">
-        <h1 class="subtitle">Researcher</h1>
+        <h1 class="subtitle">Scientific staff</h1>
         <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 person" *ngFor="let card of researcher">
             <img *ngIf="card.file" class="img-thumbnail rounded-circle lazyloaded" [src]="card.file" alt="Image Source">
             <img *ngIf="!card.file" class="img-thumbnail rounded-circle lazyloaded" src="assets/noimage.png"

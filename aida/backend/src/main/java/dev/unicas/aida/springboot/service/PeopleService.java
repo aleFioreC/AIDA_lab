@@ -30,6 +30,8 @@ public class PeopleService {
 			p.setNumber(n.getNumber());
 			p.setAdditionalInfo(n.getAdditionalInfo());
 			p.setFile(n.getFile());
+			p.setRole(n.getRole());
+			p.setRoleGroup(n.getRoleGroup());
 			return this.repository.save(p);
 		} else {
 			throw new Exception("Not found");
@@ -46,7 +48,6 @@ public class PeopleService {
 
 	public boolean delete(Integer id) {
 		this.repository.deleteById(id);
-		;
 		return true;
 	}
 }

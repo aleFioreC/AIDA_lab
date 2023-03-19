@@ -1,6 +1,6 @@
 <div class="container grid-container mt-5">
     <div class="row col-sm-12">
-        <h1 class="title">{{research?.title}}</h1>
+        <h1 class="title">{{research?.title.toUpperCase()}}</h1>
         <div class="row col-sm-12">
             <ngb-carousel class="back">
                 <ng-template ngbSlide *ngFor="let file of files">

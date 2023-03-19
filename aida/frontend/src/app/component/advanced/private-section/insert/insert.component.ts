@@ -64,6 +64,7 @@ export class InsertComponent implements OnInit {
       surname: ['', Validators.required],
       email: ['', Validators.compose([Validators.required, Validators.email])],
       role: ['', Validators.required],
+      group: ['', Validators.required],
       additionalInfo: [''],
       number: ['', Validators.required]
     });
@@ -189,7 +190,7 @@ export class InsertComponent implements OnInit {
   }
 
   savePeople() {
-    let obj: People = new People(this.requiredFormPeople.value.name, this.requiredFormPeople.value.surname, this.requiredFormPeople.value.email, this.requiredFormPeople.value.number, this.requiredFormPeople.value.additionalInfo, this.requiredFormPeople.value.role, this.imageSource)
+    let obj: People = new People(this.requiredFormPeople.value.name, this.requiredFormPeople.value.surname, this.requiredFormPeople.value.email, this.requiredFormPeople.value.number, this.requiredFormPeople.value.additionalInfo, this.requiredFormPeople.value.role, this.requiredFormPeople.value.group, this.imageSource)
     this.generalService.savePeople(obj).subscribe(res => {
       this.openDialog()
       this.router.navigate(['/private'], { state: { user: res } });

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row cursor" *ngIf="card" (click)="open(card)">
             <div class="col-md-6 justify">
-                <h1 class="display-title">{{card?.title}}</h1>
+                <h1 class="display-title">{{card?.title.toUpperCase()}}</h1>
                 <p class="lead">{{card?.description}}</p>
             </div>
             <div class="col-md-6">
@@ -12,7 +12,7 @@
         </div>
         <div class="row" *ngIf="!card">
             <div class="col-md-12 center">
-                <h1 class="display-title">No recently news.</h1>
+                <h1 class="display-title">{{ 'news.nonews' | translate}}</h1>
             </div>
         </div>
     </div>

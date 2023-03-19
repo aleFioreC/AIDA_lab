@@ -5,7 +5,8 @@
         "detail": "Dettaglio"
     },
     "news": {
-        "title": "News"
+        "title": "News",
+        "nonews": "Nessuna news recente."
     },
     "people": {
         "title": "Persone"
@@ -40,7 +41,8 @@
             "save": "Salva",
             "edit": "Modifica",
             "delete": "Cancella",
-            "clear": "Pulisci"
+            "clear": "Pulisci",
+            "more": "Più informazioni"
         },
         "description": "Descrizione",
         "news": {

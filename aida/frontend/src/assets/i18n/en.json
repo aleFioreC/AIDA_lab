@@ -5,7 +5,8 @@
         "detail": "Detail"
     },
     "news": {
-        "title": "News"
+        "title": "News",
+        "nonews": "No recently news."
     },
     "people": {
         "title": "People"
@@ -40,7 +41,8 @@
             "save": "Save",
             "edit": "Edit",
             "delete": "Delete",
-            "clear": "Clear"
+            "clear": "Clear",
+            "more": "More information"
         },
         "description": "Description",
         "news": {

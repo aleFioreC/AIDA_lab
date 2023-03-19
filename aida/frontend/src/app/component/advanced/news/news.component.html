@@ -1,5 +1,5 @@
 <div class="container mt-2">
-    <h1 class="title">AIDA LAB <small>Artificial Intelligence and Data Analysis</small></h1>
+    <h1 class="title">AIDA LAB <small> Artificial Intelligence and Data Analysis Laboratory </small></h1>
 </div>
 
 <app-top-news></app-top-news>
@@ -13,7 +13,7 @@
             </mat-card-header>
             <mat-card-content class="dashboard-card-content">
                 <div class="row">
-                    <h1 class="title"> {{card.title}} </h1>
+                    <h1 class="title"> {{card.title.toUpperCase()}} </h1>
                     <div class="col-sm-4 center">
                         <img *ngIf="card.file" class="img-thumbnail lazyloaded" [src]="card.file" alt="Image Source">
                         <img *ngIf="!card.file" class="img-thumbnail lazyloaded" src="assets/noimage.png"
@@ -26,7 +26,8 @@
                     </div>
                 </div>
                 <div class="col-sm-12 right">
-                    <button class="btn btn-primary" (click)="open(card)">More information</button>
+                    <button class="btn btn-primary" (click)="open(card)">{{ 'settings.button.more' | translate
+                        }}</button>
                 </div>
             </mat-card-content>
         </mat-card>

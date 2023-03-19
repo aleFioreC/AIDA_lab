@@ -25,13 +25,16 @@ public class People {
 
 	private String role;
 
+	private String roleGroup;
+
 	@Lob
 	private String file;
-	
-	public People() {}
 
-	public People(String name, String surname, String email, String number, String additionalInfo,
-			String role, String file) {
+	public People() {
+	}
+
+	public People(String name, String surname, String email, String number, String additionalInfo, String role,
+			String roleGroup, String file) {
 		super();
 		this.name = name;
 		this.surname = surname;
@@ -39,6 +42,7 @@ public class People {
 		this.number = number;
 		this.additionalInfo = additionalInfo;
 		this.role = role;
+		this.roleGroup = roleGroup;
 		this.file = file;
 	}
 
@@ -104,6 +108,14 @@ public class People {
 
 	public void setFile(String file) {
 		this.file = file;
+	}
+
+	public String getRoleGroup() {
+		return roleGroup;
+	}
+
+	public void setRoleGroup(String roleGroup) {
+		this.roleGroup = roleGroup;
 	}
 
 }
