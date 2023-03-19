@@ -10,6 +10,8 @@ import { People } from 'src/app/model/people';
 import { News } from 'src/app/model/news';
 import { Thesis } from 'src/app/model/thesis';
 import { ConfirmDialogComponent } from '../../basic/confirm-dialog/confirm-dialog.component';
+import { CardDisplay } from 'src/app/model/card_display';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-private-section',
@@ -20,8 +22,14 @@ export class PrivateSectionComponent implements OnInit {
 
   state: any
   result: string = '';
+  currentLanguage = '';
 
-  constructor(private _sanitizer: DomSanitizer, private location: Location, public router: Router, public dialog: MatDialog, private generalService: GeneralService) { }
+  constructor(private translate: TranslateService, private _sanitizer: DomSanitizer, private location: Location, public router: Router, public dialog: MatDialog, private generalService: GeneralService) {
+    this.currentLanguage = this.translate.currentLang ? this.translate.currentLang : this.translate.defaultLang
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.currentLanguage = event.lang;
+    });
+  }
 
   ngOnInit(): void {
     this.state = this.location.getState();
@@ -34,10 +42,10 @@ export class PrivateSectionComponent implements OnInit {
     this.findAllResearch()
   }
 
-  news: News[] = [];
-  research: Research[] = [];
-  people: People[] = [];
-  thesis: Thesis[] = [];
+  news: CardDisplay[] = [];
+  research: CardDisplay[] = [];
+  people: CardDisplay[] = [];
+  thesis: CardDisplay[] = [];
 
   findAllPeople() {
     this.people = []
@@ -51,32 +59,39 @@ export class PrivateSectionComponent implements OnInit {
 
   findAllThesis() {
     this.thesis = []
-    this.generalService.allThesis().subscribe((res: any) => {
+    this.generalService.allThesis().subscribe((res: Thesis[]) => {
       res.forEach(element => {
-        element.file = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file)
-        this.thesis.push(element)
+        let languages = element.langs.filter(c => c.language == this.currentLanguage)[0]
+        let description = languages.description && languages.description.length > 400 ? languages.description.slice(0, 320) + '...read more...' : languages.description
+        let file = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file)
+        let card = new CardDisplay(element.idThesis, languages.title, description, file)
+        this.thesis.push(card)
       });
     });
   }
 
   findAllNews() {
     this.news = []
-    this.generalService.allNews().subscribe((res: any) => {
+    this.generalService.allNews().subscribe((res: News[]) => {
       res.forEach(element => {
-        element.description = element.description && element.description.length > 400 ? element.description.slice(0, 320) + '...read more...' : element.description
-        element.file = element.file != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file) : null
-        this.news.push(element)
+        let languages = element.langs.filter(c => c.language == this.currentLanguage)[0]
+        let description = languages.description && languages.description.length > 400 ? languages.description.slice(0, 320) + '...read more...' : languages.description
+        let file = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file)
+        let card = new CardDisplay(element.idNews, languages.title, description, file)
+        this.news.push(card)
       });
     });
   }
 
   findAllResearch() {
     this.research = []
-    this.generalService.allResearch().subscribe((res: any) => {
+    this.generalService.allResearch().subscribe((res: Research[]) => {
       res.forEach(element => {
-        element.description = element.description && element.description.length > 400 ? element.description.slice(0, 320) + '...read more...' : element.description
-        element.file = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.files[0].file)
-        this.research.push(element)
+        let languages = element.langs.filter(c => c.language == this.currentLanguage)[0]
+        let description = languages.description && languages.description.length > 400 ? languages.description.slice(0, 320) + '...read more...' : languages.description
+        let file = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.files[0].file)
+        let card = new CardDisplay(element.idResearch, languages.title, description, file)
+        this.research.push(card)
       });
     });
   }
@@ -86,44 +101,44 @@ export class PrivateSectionComponent implements OnInit {
   }
 
   openNews(card) {
-    this.router.navigate(['/edit-news/' + card.idNews], { state: { user: this.state } })
+    this.router.navigate(['/edit-news/' + card.id], { state: { user: this.state } })
   }
 
   removeNews(card) {
-    this.generalService.deleteNews(card.idNews).subscribe(res => {
+    this.generalService.deleteNews(card.id).subscribe(res => {
       this.openDialog()
       this.findAllNews()
     })
   }
 
   openResearch(card) {
-    this.router.navigate(['/edit-research/' + card.idResearch], { state: { user: this.state } })
+    this.router.navigate(['/edit-research/' + card.id], { state: { user: this.state } })
   }
 
   removeResearch(card) {
-    this.generalService.deleteResearch(card.idResearch).subscribe(res => {
+    this.generalService.deleteResearch(card.id).subscribe(res => {
       this.openDialog()
       this.findAllResearch()
     })
   }
 
   openPeople(card) {
-    this.router.navigate(['/edit-people/' + card.idPeople], { state: { user: this.state } })
+    this.router.navigate(['/edit-people/' + card.id], { state: { user: this.state } })
   }
 
   removePeople(card) {
-    this.generalService.deletePeople(card.idPeople).subscribe(res => {
+    this.generalService.deletePeople(card.id).subscribe(res => {
       this.openDialog()
       this.findAllPeople()
     })
   }
 
   openThesis(card) {
-    this.router.navigate(['/edit-thesis/' + card.idThesis], { state: { user: this.state } })
+    this.router.navigate(['/edit-thesis/' + card.id], { state: { user: this.state } })
   }
 
   removeThesis(card) {
-    this.generalService.deleteThesis(card.idThesis).subscribe(res => {
+    this.generalService.deleteThesis(card.id).subscribe(res => {
       this.openDialog()
       this.findAllThesis()
     })
@@ -131,7 +146,7 @@ export class PrivateSectionComponent implements OnInit {
 
   confirmDialog(card, selection): void {
 
-    const message = `Are you sure you want to do this?`;
+    const message = `Sei sicuro di voler rimuovere l'elemento?`;
 
     const dialogConfig = new MatDialogConfig();
 
@@ -177,7 +192,7 @@ export class PrivateSectionComponent implements OnInit {
 
     dialogConfig.data = {
       title: 'Operazione completata',
-      message: 'La risorsa è stata eliminata.',
+      message: 'Elemento rimosso con successo.',
       class: 'success-class'
     };
 

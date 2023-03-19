@@ -12,8 +12,8 @@
       Artificial Intelligence and Data Analysis Laboratory
     </span>
     <div class="menu-spacer"></div>
-    <mat-icon *ngIf="false">language</mat-icon>
-    <button mat-button [matMenuTriggerFor]="language" *ngIf="false">{{selected?.toUpperCase()}}</button>
+    <mat-icon class="small-icon">language</mat-icon>
+    <button mat-button class="small-text" [matMenuTriggerFor]="language">{{selected?.toUpperCase()}}</button>
     <mat-menu #language="matMenu">
       <button mat-menu-item (click)="setLanguage('it')">IT</button>
       <button mat-menu-item (click)="setLanguage('en')">EN</button>

@@ -1,17 +1,15 @@
 import { ResearchFiles } from "./research_files";
+import { ResearchLang } from "./research_lang";
 
 export class Research {
-    idResearch;
-    title: string;
-    description: string;
-    year: number;
-    file: string;
+    idResearch: number;
+    year: string;
+    langs: ResearchLang[]
     files: ResearchFiles[];
 
-    constructor(title, description, year, files) {
-        this.title = title
-        this.description = description
+    constructor(year, langs, files) {
         this.year = year
+        this.langs = langs
         this.files = files
     }
 }

@@ -1,12 +1,13 @@
-export class Thesis {
-    idThesis: number;
-    title: string;
-    description: string;
-    file: string;
+import { ThesisLang } from "./thesis_lang";
 
-    constructor(title, description, file) {
-        this.title = title
-        this.description = description
+export class Thesis {
+
+    idThesis: number;
+    file: string;
+    langs: ThesisLang[]
+
+    constructor(file, langs) {
         this.file = file
+        this.langs = langs
     }
 }

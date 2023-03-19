@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dev.unicas.aida.springboot.model.News;
+import dev.unicas.aida.springboot.model.NewsLang;
+import dev.unicas.aida.springboot.repository.NewsLangRepository;
 import dev.unicas.aida.springboot.repository.NewsRepository;
 
 @Service
@@ -15,8 +17,12 @@ public class NewsService {
 	@Autowired
 	public NewsRepository repository;
 
+	@Autowired
+	public NewsLangRepository langRepository;
+	
 	public News save(News n) {
 		this.repository.save(n);
+		saveLanguages(n);
 		return n;
 	}
 
@@ -24,15 +30,29 @@ public class NewsService {
 		Optional<News> news = findById(id);
 		if (news.isPresent()) {
 			News p = news.get();
-			p.setTitle(n.getTitle());
-			p.setDescription(n.getDescription());
+			deleteLanguages(n);
 			p.setFile(n.getFile());
+			p.setLangs(n.getLangs());
+			saveLanguages(p);
 			return this.repository.save(p);
 		} else {
 			throw new Exception("Not found");
 		}
 	}
 
+	private void saveLanguages(News news) {
+		for (NewsLang lang : news.getLangs()) {
+			lang.setNews(news);
+			this.langRepository.save(lang);
+		}
+	}
+
+	private void deleteLanguages(News news) {
+		for (NewsLang lang : news.getLangs()) {
+			this.langRepository.delete(lang);
+		}
+	}
+	
 	public List<News> findAll() {
 		return (List<News>) this.repository.findAllByOrderByCreationDateDesc();
 	}
@@ -49,8 +69,9 @@ public class NewsService {
 	}
 
 	public boolean delete(Integer id) {
+		Optional<News> entity = this.repository.findById(id);
+		this.deleteLanguages(entity.get());
 		this.repository.deleteById(id);
-		;
 		return true;
 	}
 }

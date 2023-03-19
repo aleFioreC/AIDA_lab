@@ -5,10 +5,13 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ModalDialogComponent } from 'src/app/component/basic/modal-dialog/modal-dialog.component';
 import { News } from 'src/app/model/news';
+import { NewsLang } from 'src/app/model/news_lang';
 import { People } from 'src/app/model/people';
 import { Research } from 'src/app/model/research';
 import { ResearchFiles } from 'src/app/model/research_files';
+import { ResearchLang } from 'src/app/model/research_lang';
 import { Thesis } from 'src/app/model/thesis';
+import { ThesisLang } from 'src/app/model/thesis_lang';
 import { GeneralService } from 'src/app/service/general.service';
 
 @Component({
@@ -44,12 +47,16 @@ export class InsertComponent implements OnInit {
 
   myForm() {
     this.requiredFormNews = this.fb.group({
-      title: ['', Validators.required],
-      description: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
+      titleIt: ['', Validators.required],
+      descriptionIt: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
+      titleEn: ['', Validators.required],
+      descriptionEn: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
     });
     this.requiredFormResearch = this.fb.group({
-      title: ['', Validators.required],
-      description: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
+      titleIt: ['', Validators.required],
+      descriptionIt: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
+      titleEn: ['', Validators.required],
+      descriptionEn: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
       year: ['', Validators.required]
     });
     this.requiredFormPeople = this.fb.group({
@@ -61,8 +68,10 @@ export class InsertComponent implements OnInit {
       number: ['', Validators.required]
     });
     this.requiredFormThesis = this.fb.group({
-      title: ['', Validators.required],
-      description: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
+      titleIt: ['', Validators.required],
+      descriptionIt: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
+      titleEn: ['', Validators.required],
+      descriptionEn: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
     });
   }
 
@@ -100,7 +109,12 @@ export class InsertComponent implements OnInit {
   delete(image) {
     this.fileInput.nativeElement.value = ''
     if (image) {
-      console.log(image)
+      if (image) {
+        let index = this.images.indexOf(image)
+        if (index > -1) {
+          this.images.splice(index, 1);
+        }
+      }
     } else {
       this.imageSource = null
     }
@@ -122,33 +136,56 @@ export class InsertComponent implements OnInit {
   };
 
   saveNews() {
-    let obj: News = new News(this.requiredFormNews.value.title, this.requiredFormNews.value.description, this.imageSource)
-    this.generalService.saveNews(obj).subscribe(res => {
+    this.generalService.saveNews(this.getNews()).subscribe(res => {
       this.openDialog()
       this.router.navigate(['/private'], { state: { user: res } });
     })
+  }
+
+  getNews() {
+    let langs: NewsLang[] = []
+    let it = new NewsLang(this.requiredFormNews.value.titleIt, this.requiredFormNews.value.descriptionIt, 'it')
+    let en = new NewsLang(this.requiredFormNews.value.titleEn, this.requiredFormNews.value.descriptionEn, 'en')
+    langs.push(it)
+    langs.push(en)
+    return new News(this.imageSource, langs)
   }
 
   saveThesis() {
-    let obj: Thesis = new Thesis(this.requiredFormThesis.value.title, this.requiredFormThesis.value.description, this.imageSource)
-    this.generalService.saveThesis(obj).subscribe(res => {
+    this.generalService.saveThesis(this.getThesis()).subscribe(res => {
       this.openDialog()
       this.router.navigate(['/private'], { state: { user: res } });
     })
   }
 
+  getThesis() {
+    let langs: ThesisLang[] = []
+    let it = new ThesisLang(this.requiredFormThesis.value.titleIt, this.requiredFormThesis.value.descriptionIt, 'it')
+    let en = new ThesisLang(this.requiredFormThesis.value.titleEn, this.requiredFormThesis.value.descriptionEn, 'en')
+    langs.push(it)
+    langs.push(en)
+    return new Thesis(this.imageSource, langs)
+  }
+
   saveResearch() {
+    this.generalService.saveResearch(this.getResearch()).subscribe(res => {
+      this.openDialog()
+      this.router.navigate(['/private'], { state: { user: res } });
+    })
+  }
+
+  getResearch() {
     let files: ResearchFiles[] = []
     this.images.forEach(element => {
       let file = new ResearchFiles(element)
       files.push(file)
     })
-    let obj: Research = new Research(this.requiredFormResearch.value.title, this.requiredFormResearch.value.description, this.requiredFormResearch.value.year, files)
-    this.generalService.saveResearch(obj).subscribe(res => {
-      this.openDialog()
-      files = []
-      this.router.navigate(['/private'], { state: { user: res } });
-    })
+    let langs: ResearchLang[] = []
+    let it = new ResearchLang(this.requiredFormResearch.value.titleIt, this.requiredFormResearch.value.descriptionIt, 'it')
+    let en = new ResearchLang(this.requiredFormResearch.value.titleEn, this.requiredFormResearch.value.descriptionEn, 'en')
+    langs.push(it)
+    langs.push(en)
+    return new Research(this.requiredFormResearch.value.year, langs, files)
   }
 
   savePeople() {

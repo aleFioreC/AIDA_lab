@@ -6,6 +6,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalDialogComponent } from 'src/app/component/basic/modal-dialog/modal-dialog.component';
 import { Thesis } from 'src/app/model/thesis';
+import { ThesisLang } from 'src/app/model/thesis_lang';
 import { GeneralService } from 'src/app/service/general.service';
 
 @Component({
@@ -44,13 +45,20 @@ export class EditThesisComponent implements OnInit {
 
   myForm() {
     this.requiredForm = this.fb.group({
-      title: ['', Validators.required],
-      description: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])]
+      titleIt: ['', Validators.required],
+      descriptionIt: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
+      titleEn: ['', Validators.required],
+      descriptionEn: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
     });
   }
 
   setValue() {
-    this.requiredForm.patchValue({ title: this.thesis.title, description: this.thesis.description })
+    let it = this.thesis.langs.filter(c => c.language == 'it')[0]
+    let en = this.thesis.langs.filter(c => c.language == 'en')[0]
+    this.requiredForm.patchValue({
+      titleIt: it.title, descriptionIt: it.description,
+      titleEn: en.title, descriptionEn: en.description,
+    })
   }
 
   async uploadListener($event: any) {
@@ -81,14 +89,22 @@ export class EditThesisComponent implements OnInit {
   };
 
   saveThesis() {
-    let obj: Thesis = new Thesis(this.requiredForm.value.title, this.requiredForm.value.description, this.edit ? this.imageSource : this.thesis.file)
-    this.generalService.editThesis(this.thesis.idThesis, obj).subscribe(res => {
+    let obj: Thesis = null
+    this.generalService.editThesis(this.thesis.idThesis, this.getThesis()).subscribe(res => {
       this.openDialog()
       this.edit = false;
       this.router.navigate(['/private'], { state: { user: this.state } });
     })
   }
 
+  getThesis() {
+    let langs: ThesisLang[] = []
+    let it = new ThesisLang(this.requiredForm.value.titleIt, this.requiredForm.value.descriptionIt, 'it')
+    let en = new ThesisLang(this.requiredForm.value.titleEn, this.requiredForm.value.descriptionEn, 'en')
+    langs.push(it)
+    langs.push(en)
+    return new Thesis(this.imageSource, langs)
+  }
 
   openDialog() {
 

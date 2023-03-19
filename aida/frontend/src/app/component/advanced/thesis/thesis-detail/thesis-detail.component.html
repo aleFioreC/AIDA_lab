@@ -6,7 +6,7 @@
             <img *ngIf="!thesis.file" class="card-img-top lazyloaded" src="assets/noimage.png" alt="Image Source">
         </div>
         <div class="row col-sm-12 justify mt-3">
-            <h2>Description</h2>
+            <h2> {{ 'settings.description' | translate }}</h2>
             <p>{{thesis?.description}}</p>
         </div>
     </div>

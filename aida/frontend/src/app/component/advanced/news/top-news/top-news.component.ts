@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { CardDisplay } from 'src/app/model/card_display';
+import { News } from 'src/app/model/news';
 import { GeneralService } from 'src/app/service/general.service';
 
 @Component({
@@ -10,20 +13,26 @@ import { GeneralService } from 'src/app/service/general.service';
 export class TopNewsComponent implements OnInit {
 
   card;
+  currentLanguage: any;
 
-  constructor(private generalService: GeneralService, private router: Router) { }
+  constructor(private translate: TranslateService, private generalService: GeneralService, private router: Router) { }
 
   ngOnInit(): void {
+    this.currentLanguage = this.translate.currentLang ? this.translate.currentLang : this.translate.defaultLang
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.currentLanguage = event.lang;
+    });
     this.findTop()
   }
 
   open(card) {
-    this.router.navigate(['/news/' + card.idNews])
+    this.router.navigate(['/news/' + card.id])
   }
 
   findTop() {
-    this.generalService.topNews().subscribe((res: any) => {
-      this.card = res
+    this.generalService.topNews().subscribe((res: News) => {
+      let languages = res.langs.filter(c => c.language == this.currentLanguage)[0]
+      this.card = new CardDisplay(res.idNews, languages.title, languages.description, res.file)
     })
   }
 

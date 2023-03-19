@@ -1,12 +1,13 @@
-export class News {
-    idNews: number;
-    title: string;
-    description: string;
-    file: string;
+import { NewsLang } from "./news_lang";
 
-    constructor(title, description, file) {
-        this.title = title
-        this.description = description
+export class News {
+
+    idNews: number;
+    file: string;
+    langs: NewsLang[]
+
+    constructor(file, langs) {
         this.file = file
+        this.langs = langs
     }
 }

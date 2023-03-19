@@ -1,6 +1,7 @@
 package dev.unicas.aida.springboot.model;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Thesis {
@@ -16,25 +18,24 @@ public class Thesis {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idThesis;
 
-	private String title;
-
-	private String description;
-
 	@Column(name = "CREATION_DATE")
 	private Date creationDate;
 
 	@Lob
 	private String file;
 
+	@OneToMany(mappedBy = "thesis")
+	private Set<ThesisLang> langs;
+
 	public Thesis() {
 	}
 
-	public Thesis(String title, String description, String file, Date creation_date) {
+	public Thesis(Integer idThesis, Date creationDate, String file, Set<ThesisLang> langs) {
 		super();
-		this.title = title;
-		this.description = description;
+		this.idThesis = idThesis;
+		this.creationDate = creationDate;
 		this.file = file;
-		this.creationDate = creation_date;
+		this.langs = langs;
 	}
 
 	public Integer getIdThesis() {
@@ -45,20 +46,12 @@ public class Thesis {
 		this.idThesis = idThesis;
 	}
 
-	public String getTitle() {
-		return title;
+	public Date getCreationDate() {
+		return creationDate;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
 	}
 
 	public String getFile() {
@@ -69,12 +62,12 @@ public class Thesis {
 		this.file = file;
 	}
 
-	public Date getCreationDate() {
-		return creationDate;
+	public Set<ThesisLang> getLangs() {
+		return langs;
 	}
 
-	public void setCreationDate(Date creationDate) {
-		this.creationDate = creationDate;
+	public void setLangs(Set<ThesisLang> langs) {
+		this.langs = langs;
 	}
 
 }

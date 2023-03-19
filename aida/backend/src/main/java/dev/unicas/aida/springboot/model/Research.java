@@ -16,13 +16,12 @@ public class Research {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idResearch;
 
-	private String title;
-
-	private String description;
-
 	private Integer year;
 
 	private Date creation_date;
+
+	@OneToMany(mappedBy = "research")
+	private Set<ResearchLang> langs;
 
 	@OneToMany(mappedBy = "research")
 	private Set<ResearchFile> files;
@@ -30,13 +29,13 @@ public class Research {
 	public Research() {
 	}
 
-	public Research(Integer idResearch,String title, String description, Integer year, Date creation_date, Set<ResearchFile> files) {
+	public Research(Integer idResearch, Integer year, Date creation_date, Set<ResearchLang> langs,
+			Set<ResearchFile> files) {
 		super();
-		this.idResearch= idResearch;
-		this.title = title;
-		this.description = description;
+		this.idResearch = idResearch;
 		this.year = year;
 		this.creation_date = creation_date;
+		this.langs = langs;
 		this.files = files;
 	}
 
@@ -48,20 +47,12 @@ public class Research {
 		this.idResearch = idResearch;
 	}
 
-	public String getTitle() {
-		return title;
+	public Integer getYear() {
+		return year;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
+	public void setYear(Integer year) {
+		this.year = year;
 	}
 
 	public Date getCreation_date() {
@@ -72,12 +63,12 @@ public class Research {
 		this.creation_date = creation_date;
 	}
 
-	public Integer getYear() {
-		return year;
+	public Set<ResearchLang> getLangs() {
+		return langs;
 	}
 
-	public void setYear(Integer year) {
-		this.year = year;
+	public void setLangs(Set<ResearchLang> langs) {
+		this.langs = langs;
 	}
 
 	public Set<ResearchFile> getFiles() {

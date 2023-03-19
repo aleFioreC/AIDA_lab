@@ -1,5 +1,6 @@
 package dev.unicas.aida.springboot.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +41,7 @@ public class ResearchController {
 
 	@PostMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Research save(@RequestBody Research r) {
+		r.setCreation_date(new Date());
 		return this.service.save(r);
 	}
 	

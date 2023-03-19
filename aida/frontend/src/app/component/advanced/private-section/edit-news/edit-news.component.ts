@@ -6,6 +6,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalDialogComponent } from 'src/app/component/basic/modal-dialog/modal-dialog.component';
 import { News } from 'src/app/model/news';
+import { NewsLang } from 'src/app/model/news_lang';
 import { GeneralService } from 'src/app/service/general.service';
 
 @Component({
@@ -44,13 +45,20 @@ export class EditNewsComponent implements OnInit {
 
   myForm() {
     this.requiredForm = this.fb.group({
-      title: ['', Validators.required],
-      description: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])]
+      titleIt: ['', Validators.required],
+      descriptionIt: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
+      titleEn: ['', Validators.required],
+      descriptionEn: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
     });
   }
 
   setValue() {
-    this.requiredForm.patchValue({ title: this.news.title, description: this.news.description })
+    let it = this.news.langs.filter(c => c.language == 'it')[0]
+    let en = this.news.langs.filter(c => c.language == 'en')[0]
+    this.requiredForm.patchValue({
+      titleIt: it.title, descriptionIt: it.description,
+      titleEn: en.title, descriptionEn: en.description,
+    })
   }
 
   delete() {
@@ -81,12 +89,20 @@ export class EditNewsComponent implements OnInit {
   };
 
   saveNews() {
-    let obj: News = new News(this.requiredForm.value.title, this.requiredForm.value.description, this.edit ? this.imageSource : this.news.file)
-    this.generalService.editNews(this.news.idNews, obj).subscribe(res => {
+    this.generalService.editNews(this.news.idNews, this.getNews()).subscribe(res => {
       this.openDialog()
       this.edit = false;
       this.router.navigate(['/private'], { state: { user: this.state } });
     })
+  }
+
+  getNews() {
+    let langs: NewsLang[] = []
+    let it = new NewsLang(this.requiredForm.value.titleIt, this.requiredForm.value.descriptionIt, 'it')
+    let en = new NewsLang(this.requiredForm.value.titleEn, this.requiredForm.value.descriptionEn, 'en')
+    langs.push(it)
+    langs.push(en)
+    return new News(this.imageSource, langs)
   }
 
 

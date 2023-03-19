@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dev.unicas.aida.springboot.model.Thesis;
+import dev.unicas.aida.springboot.model.ThesisLang;
+import dev.unicas.aida.springboot.repository.ThesisLangRepository;
 import dev.unicas.aida.springboot.repository.ThesisRepository;
 
 @Service
@@ -14,9 +16,13 @@ public class ThesisService {
 
 	@Autowired
 	public ThesisRepository repository;
+	
+	@Autowired
+	public ThesisLangRepository langRepository;
 
 	public Thesis save(Thesis n) {
 		this.repository.save(n);
+		saveLanguages(n);
 		return n;
 	}
 
@@ -24,12 +30,26 @@ public class ThesisService {
 		Optional<Thesis> thesis = findById(id);
 		if (thesis.isPresent()) {
 			Thesis p = thesis.get();
-			p.setTitle(n.getTitle());
-			p.setDescription(n.getDescription());
+			deleteLanguages(n);
 			p.setFile(n.getFile());
+			p.setLangs(n.getLangs());
+			saveLanguages(p);
 			return this.repository.save(p);
 		} else {
 			throw new Exception("Not found");
+		}
+	}
+	
+	private void saveLanguages(Thesis thesis) {
+		for (ThesisLang lang : thesis.getLangs()) {
+			lang.setThesis(thesis);
+			this.langRepository.save(lang);
+		}
+	}
+
+	private void deleteLanguages(Thesis thesis) {
+		for (ThesisLang lang : thesis.getLangs()) {
+			this.langRepository.delete(lang);
 		}
 	}
 
@@ -42,8 +62,9 @@ public class ThesisService {
 	}
 
 	public boolean delete(Integer id) {
+		Optional<Thesis> entity = this.repository.findById(id);
+		this.deleteLanguages(entity.get());
 		this.repository.deleteById(id);
-		;
 		return true;
 	}
 }

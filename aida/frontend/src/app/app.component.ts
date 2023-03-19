@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateService } from "@ngx-translate/core";
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { ModalDialogComponent } from './component/basic/modal-dialog/modal-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,18 +14,26 @@ import { ModalDialogComponent } from './component/basic/modal-dialog/modal-dialo
 export class AppComponent implements OnInit {
 
   ngOnInit(): void {
-    this.translate.setDefaultLang('en');
-    this.translate.use('en');
   }
 
-  constructor(private translate: TranslateService, public dialog: MatDialog) {
+  constructor(private translate: TranslateService, public dialog: MatDialog, public router: Router) {
+    this.translate.setDefaultLang('en')
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
   }
 
   setLanguage(language: string) {
     this.translate.use(language)
+    this.reloadCurrentRoute()
     this.openDialog(language)
   }
 
+  reloadCurrentRoute() {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/']);
+    });
+  }
 
   openDialog(language: string) {
 
@@ -37,7 +46,7 @@ export class AppComponent implements OnInit {
 
     dialogConfig.data = {
       title: 'Operazione completata',
-      message: 'Hai selezionato come linguaggio della pagina ' + language.toUpperCase() + '.',
+      message: 'Hai selezionato il linguaggio ' + language.toUpperCase() + '.',
       class: 'success-class'
     };
 

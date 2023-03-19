@@ -25,31 +25,65 @@
 
                     <div class="row form-group pad">
                         <mat-form-field class="mt-4" appearance="fill">
-                            <mat-label>Title</mat-label>
-                            <input formControlName="title" matInput>
+                            <mat-label>Title (IT)</mat-label>
+                            <input formControlName="titleIt" matInput>
                         </mat-form-field>
                     </div>
 
-                    <div *ngIf="requiredFormNews.controls['title'].invalid && requiredFormNews.controls['title'].touched"
+                    <div *ngIf="requiredFormNews.controls['titleIt'].invalid && requiredFormNews.controls['titleIt'].touched"
                         class="alert alert-danger">
-                        <div *ngIf="requiredFormNews.controls['title'].errors.required">
+                        <div *ngIf="requiredFormNews.controls['titleIt'].errors.required">
                             Title is required.
                         </div>
                     </div>
 
                     <div class="row form-group pad">
                         <mat-form-field appearance="fill">
-                            <mat-label>Description</mat-label>
-                            <textarea formControlName="description" matInput></textarea>
+                            <mat-label>Description (IT)</mat-label>
+                            <textarea formControlName="descriptionIt" matInput></textarea>
                         </mat-form-field>
                         <div class="right">
-                            {{requiredFormNews.value.description?.length}}/1024
+                            {{requiredFormNews.value.descriptionIt?.length}}/1024
                         </div>
                     </div>
 
-                    <div *ngIf="requiredFormNews.controls['description'].invalid && requiredFormNews.controls['description'].touched"
+                    <div *ngIf="requiredFormNews.controls['descriptionIt'].invalid && requiredFormNews.controls['descriptionIt'].touched"
                         class="alert alert-danger">
-                        <div *ngIf="requiredFormNews.controls['description'].errors.required">
+                        <div *ngIf="requiredFormNews.controls['descriptionIt'].errors.required">
+                            Description is required.
+                        </div>
+                        <div *ngIf="requiredFormNews.controls['descriptionIt'].hasError('maxlength')">
+                            Description cannot exceed 1024 characters.
+                        </div>
+                    </div>
+
+                    <div class="row form-group pad">
+                        <mat-form-field class="mt-4" appearance="fill">
+                            <mat-label>Title (EN)</mat-label>
+                            <input formControlName="titleEn" matInput>
+                        </mat-form-field>
+                    </div>
+
+                    <div *ngIf="requiredFormNews.controls['titleEn'].invalid && requiredFormNews.controls['titleEn'].touched"
+                        class="alert alert-danger">
+                        <div *ngIf="requiredFormNews.controls['titleEn'].errors.required">
+                            Title is required.
+                        </div>
+                    </div>
+
+                    <div class="row form-group pad">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Description (EN)</mat-label>
+                            <textarea formControlName="descriptionEn" matInput></textarea>
+                        </mat-form-field>
+                        <div class="right">
+                            {{requiredFormNews.value.descriptionEn?.length}}/1024
+                        </div>
+                    </div>
+
+                    <div *ngIf="requiredFormNews.controls['descriptionEn'].invalid && requiredFormNews.controls['descriptionEn'].touched"
+                        class="alert alert-danger">
+                        <div *ngIf="requiredFormNews.controls['descriptionEn'].errors.required">
                             Description is required.
                         </div>
                         <div *ngIf="requiredFormNews.controls['description'].hasError('maxlength')">
@@ -91,34 +125,68 @@
 
                     <div class="row form-group pad">
                         <mat-form-field class="mt-4" appearance="fill">
-                            <mat-label>Title</mat-label>
-                            <input formControlName="title" matInput>
+                            <mat-label>Title (IT)</mat-label>
+                            <input formControlName="titleIt" matInput>
                         </mat-form-field>
                     </div>
 
-                    <div *ngIf="requiredFormResearch.controls['title'].invalid && requiredFormResearch.controls['title'].touched"
+                    <div *ngIf="requiredFormResearch.controls['titleIt'].invalid && requiredFormResearch.controls['titleIt'].touched"
                         class="alert alert-danger">
-                        <div *ngIf="requiredFormResearch.controls['title'].errors.required">
+                        <div *ngIf="requiredFormResearch.controls['titleIt'].errors.required">
                             Title is required.
                         </div>
                     </div>
 
                     <div class="row form-group pad">
                         <mat-form-field appearance="fill">
-                            <mat-label>Description</mat-label>
-                            <textarea formControlName="description" matInput></textarea>
+                            <mat-label>Description (IT) </mat-label>
+                            <textarea formControlName="descriptionIt" matInput></textarea>
                         </mat-form-field>
                         <div class="right">
-                            {{requiredFormResearch.value.description?.length}}/1024
+                            {{requiredFormResearch.value.descriptionIt?.length}}/1024
                         </div>
                     </div>
 
-                    <div *ngIf="requiredFormResearch.controls['description'].invalid && requiredFormResearch.controls['description'].touched"
+                    <div *ngIf="requiredFormResearch.controls['descriptionIt'].invalid && requiredFormResearch.controls['descriptionIt'].touched"
                         class="alert alert-danger">
-                        <div *ngIf="requiredFormResearch.controls['description'].errors.required">
+                        <div *ngIf="requiredFormResearch.controls['descriptionIt'].errors.required">
                             Description is required.
                         </div>
-                        <div *ngIf="requiredFormResearch.controls['description'].hasError('maxlength')">
+                        <div *ngIf="requiredFormResearch.controls['descriptionIt'].hasError('maxlength')">
+                            Description cannot exceed 1024 characters.
+                        </div>
+                    </div>
+
+                    <div class="row form-group pad">
+                        <mat-form-field class="mt-4" appearance="fill">
+                            <mat-label>Title (EN)</mat-label>
+                            <input formControlName="titleEn" matInput>
+                        </mat-form-field>
+                    </div>
+
+                    <div *ngIf="requiredFormResearch.controls['titleEn'].invalid && requiredFormResearch.controls['titleEn'].touched"
+                        class="alert alert-danger">
+                        <div *ngIf="requiredFormResearch.controls['titleEn'].errors.required">
+                            Title is required.
+                        </div>
+                    </div>
+
+                    <div class="row form-group pad">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Description (EN)</mat-label>
+                            <textarea formControlName="descriptionEn" matInput></textarea>
+                        </mat-form-field>
+                        <div class="right">
+                            {{requiredFormResearch.value.descriptionEn?.length}}/1024
+                        </div>
+                    </div>
+
+                    <div *ngIf="requiredFormResearch.controls['descriptionEn'].invalid && requiredFormResearch.controls['descriptionEn'].touched"
+                        class="alert alert-danger">
+                        <div *ngIf="requiredFormResearch.controls['descriptionEn'].errors.required">
+                            Description is required.
+                        </div>
+                        <div *ngIf="requiredFormResearch.controls['descriptionEn'].hasError('maxlength')">
                             Description cannot exceed 1024 characters.
                         </div>
                     </div>
@@ -288,37 +356,72 @@
 
                     <div class="row form-group pad">
                         <mat-form-field class="mt-4" appearance="fill">
-                            <mat-label>Title</mat-label>
-                            <input formControlName="title" matInput>
+                            <mat-label>Title (IT)</mat-label>
+                            <input formControlName="titleIt" matInput>
                         </mat-form-field>
                     </div>
 
-                    <div *ngIf="requiredFormThesis.controls['title'].invalid && requiredFormThesis.controls['title'].touched"
+                    <div *ngIf="requiredFormThesis.controls['titleIt'].invalid && requiredFormThesis.controls['titleIt'].touched"
                         class="alert alert-danger">
-                        <div *ngIf="requiredFormThesis.controls['title'].errors.required">
+                        <div *ngIf="requiredFormThesis.controls['titleIt'].errors.required">
                             Title is required.
                         </div>
                     </div>
 
                     <div class="row form-group pad">
                         <mat-form-field appearance="fill">
-                            <mat-label>Description</mat-label>
-                            <textarea formControlName="description" matInput></textarea>
+                            <mat-label>Description (IT)</mat-label>
+                            <textarea formControlName="descriptionIt" matInput></textarea>
                         </mat-form-field>
                         <div class="right">
-                            {{requiredFormThesis.value.description?.length}}/1024
+                            {{requiredFormThesis.value.descriptionIt?.length}}/1024
                         </div>
                     </div>
 
-                    <div *ngIf="requiredFormThesis.controls['description'].invalid && requiredFormThesis.controls['description'].touched"
+                    <div *ngIf="requiredFormThesis.controls['descriptionIt'].invalid && requiredFormThesis.controls['descriptionIt'].touched"
                         class="alert alert-danger">
-                        <div *ngIf="requiredFormThesis.controls['description'].errors.required">
+                        <div *ngIf="requiredFormThesis.controls['descriptionIt'].errors.required">
                             Description is required.
                         </div>
-                        <div *ngIf="requiredFormThesis.controls['description'].hasError('maxlength')">
+                        <div *ngIf="requiredFormThesis.controls['descriptionIt'].hasError('maxlength')">
                             Description cannot exceed 1024 characters.
                         </div>
                     </div>
+
+                    <div class="row form-group pad">
+                        <mat-form-field class="mt-4" appearance="fill">
+                            <mat-label>Title (EN)</mat-label>
+                            <input formControlName="titleEn" matInput>
+                        </mat-form-field>
+                    </div>
+
+                    <div *ngIf="requiredFormThesis.controls['titleEn'].invalid && requiredFormThesis.controls['titleEn'].touched"
+                        class="alert alert-danger">
+                        <div *ngIf="requiredFormThesis.controls['titleEn'].errors.required">
+                            Title is required.
+                        </div>
+                    </div>
+
+                    <div class="row form-group pad">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Description (EN)</mat-label>
+                            <textarea formControlName="descriptionEn" matInput></textarea>
+                        </mat-form-field>
+                        <div class="right">
+                            {{requiredFormThesis.value.descriptionEn?.length}}/1024
+                        </div>
+                    </div>
+
+                    <div *ngIf="requiredFormThesis.controls['descriptionEn'].invalid && requiredFormThesis.controls['descriptionEn'].touched"
+                        class="alert alert-danger">
+                        <div *ngIf="requiredFormThesis.controls['descriptionEn'].errors.required">
+                            Description is required.
+                        </div>
+                        <div *ngIf="requiredFormThesis.controls['descriptionEn'].hasError('maxlength')">
+                            Description cannot exceed 1024 characters.
+                        </div>
+                    </div>
+
 
                 </form>
 

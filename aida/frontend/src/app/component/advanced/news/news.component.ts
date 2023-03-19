@@ -4,7 +4,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
+import { CardDisplay } from 'src/app/model/card_display';
 import { News } from 'src/app/model/news';
 import { GeneralService } from 'src/app/service/general.service';
 
@@ -15,13 +17,19 @@ import { GeneralService } from 'src/app/service/general.service';
 })
 export class NewsComponent implements OnInit {
 
-  cards: News[] = [];
+  cards: CardDisplay[] = [];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource: MatTableDataSource<any>;
   obs: Observable<any>;
-  card;
+  card: CardDisplay;
+  currentLanguage = ''
 
-  constructor(private changeDetectorRef: ChangeDetectorRef, private _sanitizer: DomSanitizer, public dialog: MatDialog, private generalService: GeneralService, private router: Router) { }
+  constructor(private translate: TranslateService, private changeDetectorRef: ChangeDetectorRef, private _sanitizer: DomSanitizer, public dialog: MatDialog, private generalService: GeneralService, private router: Router) {
+    this.currentLanguage = this.translate.currentLang ? this.translate.currentLang : this.translate.defaultLang
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.currentLanguage = event.lang;
+    });
+  }
 
   @ViewChild('focus', { read: ElementRef }) tableInput: ElementRef;
   scrollUp(): void {
@@ -29,7 +37,7 @@ export class NewsComponent implements OnInit {
   }
 
   open(card) {
-    this.router.navigate(['/news/' + card.idNews])
+    this.router.navigate(['/news/' + card.id])
   }
 
   ngOnInit() {
@@ -44,22 +52,25 @@ export class NewsComponent implements OnInit {
   }
 
   findTop() {
-    this.generalService.topNews().subscribe((res: any) => {
-      this.card = res
-      this.findAll(this.card)
+    this.generalService.topNews().subscribe((res: News) => {
+      let languages = res.langs.filter(c => c.language == this.currentLanguage)[0]
+      this.card = new CardDisplay(res.idNews, languages.title, languages.description, res.file)
+      this.findAll(res)
     })
   }
 
   findAll(news) {
     this.cards = []
     if (news) {
-      this.generalService.allNews().subscribe((res: any) => {
+      this.generalService.allNews().subscribe((res: News[]) => {
         res.forEach(element => {
-          element.description = element.description && element.description.length > 400 ? element.description.slice(0, 320) + '...read more...' : element.description
-          element.file = element.file != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file) : null
-          this.cards.push(element)
+          let languages = element.langs.filter(c => c.language == this.currentLanguage)[0]
+          let description = languages.description && languages.description.length > 400 ? languages.description.slice(0, 320) + '...read more...' : languages.description
+          let file = element.file != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file) : null
+          let card = new CardDisplay(element.idNews, languages.title, description, file)
+          this.cards.push(card)
         });
-        this.cards = this.cards.filter(c => c.idNews != news.idNews)
+        this.cards = this.cards.filter(c => c.id != news.idNews)
         this.dataSource = new MatTableDataSource<any>(this.cards);
         this.dataSource.paginator = this.paginator;
         this.obs = this.dataSource.connect();

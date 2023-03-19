@@ -7,6 +7,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
 import { Research } from 'src/app/model/research';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { CardDisplay } from 'src/app/model/card_display';
 
 @Component({
   selector: 'app-research',
@@ -15,12 +17,19 @@ import { Research } from 'src/app/model/research';
 })
 export class ResearchComponent implements OnInit {
 
-  cards: Research[] = [];
+  cards: CardDisplay[] = [];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource: MatTableDataSource<any>;
   obs: Observable<any>;
+  card: CardDisplay;
+  currentLanguage = '';
 
-  constructor(private changeDetectorRef: ChangeDetectorRef, private _sanitizer: DomSanitizer, public dialog: MatDialog, private generalService: GeneralService, private router: Router) { }
+  constructor(private translate: TranslateService, private changeDetectorRef: ChangeDetectorRef, private _sanitizer: DomSanitizer, public dialog: MatDialog, private generalService: GeneralService, private router: Router) {
+    this.currentLanguage = this.translate.currentLang ? this.translate.currentLang : this.translate.defaultLang
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.currentLanguage = event.lang;
+    });
+  }
 
   ngOnInit(): void {
     this.changeDetectorRef.detectChanges();
@@ -37,18 +46,19 @@ export class ResearchComponent implements OnInit {
   scrollUp(): void {
     setTimeout(() => window.scrollTo(0, 0));
   }
-
   open(card) {
-    this.router.navigate(['/research/' + card.idResearch])
+    this.router.navigate(['/research/' + card.id])
   }
 
   findAll() {
     this.cards = []
     this.generalService.allResearch().subscribe((res: any) => {
       res.forEach(element => {
-        element.description = element.description && element.description.length > 400 ? element.description.slice(0, 320) + '...read more...' : element.description
-        element.file = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.files[0].file)
-        this.cards.push(element)
+        let languages = element.langs.filter(c => c.language == this.currentLanguage)[0]
+        let description = languages.description && languages.description.length > 400 ? languages.description.slice(0, 320) + '...read more...' : languages.description
+        let file = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.files[0].file)
+        let card = new CardDisplay(element.idResearch, languages.title, description, file)
+        this.cards.push(card)
       });
       this.dataSource = new MatTableDataSource<any>(this.cards);
       this.dataSource.paginator = this.paginator;

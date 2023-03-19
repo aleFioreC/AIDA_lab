@@ -8,6 +8,7 @@ import { Research } from 'src/app/model/research';
 import { GeneralService } from 'src/app/service/general.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ResearchFiles } from 'src/app/model/research_files';
+import { ResearchLang } from 'src/app/model/research_lang';
 
 @Component({
   selector: 'app-edit-research',
@@ -47,14 +48,22 @@ export class EditResearchComponent implements OnInit {
 
   myForm() {
     this.requiredForm = this.fb.group({
-      title: ['', Validators.required],
-      description: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
+      titleIt: ['', Validators.required],
+      descriptionIt: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
+      titleEn: ['', Validators.required],
+      descriptionEn: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
       year: ['']
     });
   }
 
   setValue() {
-    this.requiredForm.patchValue({ title: this.research.title, description: this.research.description })
+    let it = this.research.langs.filter(c => c.language == 'it')[0]
+    let en = this.research.langs.filter(c => c.language == 'en')[0]
+    this.requiredForm.patchValue({
+      titleIt: it.title, descriptionIt: it.description,
+      titleEn: en.title, descriptionEn: en.description,
+      year: this.research.year
+    })
   }
 
   onFileChange(event: any) {
@@ -75,11 +84,22 @@ export class EditResearchComponent implements OnInit {
   delete(image) {
     this.fileInput.nativeElement.value = ''
     if (image) {
-      console.log(image)
+      let index = this.images.indexOf(image)
+      if (index > -1) {
+        this.images.splice(index, 1);
+      }
     }
   }
 
   saveResearch() {
+    this.generalService.editResearch(this.research.idResearch, this.getResearch()).subscribe(res => {
+      this.openDialog()
+      this.edit = false;
+      this.router.navigate(['/private'], { state: { user: this.state } });
+    })
+  }
+
+  getResearch() {
     let files: ResearchFiles[] = []
     if (this.edit) {
       this.images.forEach(element => {
@@ -87,13 +107,12 @@ export class EditResearchComponent implements OnInit {
         files.push(file)
       })
     }
-    let obj: Research = new Research(this.requiredForm.value.title, this.requiredForm.value.description, this.requiredForm.value.year, this.edit ? files : this.research.files)
-    this.generalService.editResearch(this.research.idResearch, obj).subscribe(res => {
-      this.openDialog()
-      files = []
-      this.edit = false;
-      this.router.navigate(['/private'], { state: { user: this.state } });
-    })
+    let langs: ResearchLang[] = []
+    let it = new ResearchLang(this.requiredForm.value.titleIt, this.requiredForm.value.descriptionIt, 'it')
+    let en = new ResearchLang(this.requiredForm.value.titleEn, this.requiredForm.value.descriptionEn, 'en')
+    langs.push(it)
+    langs.push(en)
+    return new Research(this.requiredForm.value.year, langs, files)
   }
 
   openDialog() {

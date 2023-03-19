@@ -22,34 +22,69 @@
 
             <div class="row form-group pad">
                 <mat-form-field class="mt-4" appearance="fill">
-                    <mat-label>Title</mat-label>
-                    <input formControlName="title" matInput>
+                    <mat-label>Title (IT)</mat-label>
+                    <input formControlName="titleIt" matInput>
                 </mat-form-field>
             </div>
 
-            <div *ngIf="requiredForm.controls['title'].invalid && requiredForm.controls['title'].touched"
+            <div *ngIf="requiredForm.controls['titleIt'].invalid && requiredForm.controls['titleIt'].touched"
                 class="alert alert-danger">
-                <div *ngIf="requiredForm.controls['title'].errors.required">
+                <div *ngIf="requiredForm.controls['titleIt'].errors.required">
                     Title is required.
                 </div>
             </div>
 
             <div class="row form-group pad">
                 <mat-form-field appearance="fill">
-                    <mat-label>Description</mat-label>
-                    <textarea formControlName="description" matInput></textarea>
+                    <mat-label>Description (IT)</mat-label>
+                    <textarea formControlName="descriptionIt" matInput></textarea>
                 </mat-form-field>
                 <div class="right">
-                    {{requiredForm.value.description?.length}}/1024
+                    {{requiredForm.value.descriptionIt?.length}}/1024
                 </div>
             </div>
 
-            <div *ngIf="requiredForm.controls['description'].invalid && requiredForm.controls['description'].touched"
+            <div *ngIf="requiredForm.controls['descriptionIt'].invalid && requiredForm.controls['descriptionIt'].touched"
                 class="alert alert-danger">
-                <div *ngIf="requiredForm.controls['description'].errors.required">
+                <div *ngIf="requiredForm.controls['descriptionIt'].errors.required">
                     Description is required.
                 </div>
-                <div *ngIf="requiredForm.controls['description'].hasError('maxlength')">
+                <div *ngIf="requiredForm.controls['descriptionIt'].hasError('maxlength')">
+                    Description cannot exceed 1024 characters.
+                </div>
+            </div>
+
+
+            <div class="row form-group pad">
+                <mat-form-field class="mt-4" appearance="fill">
+                    <mat-label>Title (EN)</mat-label>
+                    <input formControlName="titleEn" matInput>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="requiredForm.controls['titleEn'].invalid && requiredForm.controls['titleEn'].touched"
+                class="alert alert-danger">
+                <div *ngIf="requiredForm.controls['titleEn'].errors.required">
+                    Title is required.
+                </div>
+            </div>
+
+            <div class="row form-group pad">
+                <mat-form-field appearance="fill">
+                    <mat-label>Description (EN)</mat-label>
+                    <textarea formControlName="descriptionEn" matInput></textarea>
+                </mat-form-field>
+                <div class="right">
+                    {{requiredForm.value.descriptionEn?.length}}/1024
+                </div>
+            </div>
+
+            <div *ngIf="requiredForm.controls['descriptionEn'].invalid && requiredForm.controls['descriptionEn'].touched"
+                class="alert alert-danger">
+                <div *ngIf="requiredForm.controls['descriptionEn'].errors.required">
+                    Description is required.
+                </div>
+                <div *ngIf="requiredForm.controls['descriptionEn'].hasError('maxlength')">
                     Description cannot exceed 1024 characters.
                 </div>
             </div>
