@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
@@ -17,7 +18,7 @@ export class ResearchDetailComponent implements OnInit {
   currentLanguage;
   files: SafeResourceUrl[] = [];
 
-  constructor(private translate: TranslateService, private _sanitizer: DomSanitizer, private activatedRoute: ActivatedRoute) {
+  constructor(private location: Location, private translate: TranslateService, private _sanitizer: DomSanitizer, private activatedRoute: ActivatedRoute) {
     this.currentLanguage = this.translate.currentLang ? this.translate.currentLang : this.translate.defaultLang
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.currentLanguage = event.lang;
@@ -33,6 +34,10 @@ export class ResearchDetailComponent implements OnInit {
       let languages = response.research.langs.filter(c => c.language == this.currentLanguage)[0]
       this.research = new CardDisplay(response.research.idResearch, languages.title, languages.description, this.file)
     });
+  }
+
+  back() {
+    this.location.back()
   }
 
 }

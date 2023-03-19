@@ -1,7 +1,7 @@
 <div class="container grid-container mt-5">
 
     <button class="btn btn-primary" (click)="new()">
-        <span>Add an item +</span>
+        <span>New <mat-icon>save</mat-icon></span>
     </button>
 
     <mat-tab-group>
@@ -29,11 +29,9 @@
                             </div>
                             <div class="col-sm-6">
                                 <button mat-raised-button class="margin-left btn btn-primary"
-                                    (click)="openNews(card)">Edit</button>
+                                    (click)="openNews(card)"><mat-icon>mode_edit</mat-icon></button>
                                 <button mat-raised-button class="margin-left" color="warn"
-                                    (click)="confirmDialog(card, 'news')">{{
-                                    'settings.button.delete'
-                                    | translate}}</button>
+                                    (click)="confirmDialog(card, 'news')"><mat-icon>delete</mat-icon></button>
                             </div>
                         </mat-card-content>
                     </mat-card>
@@ -65,11 +63,9 @@
                             </div>
                             <div class="col-sm-6">
                                 <button mat-raised-button class="margin-left btn btn-primary"
-                                    (click)="openPeople(card)">Edit</button>
+                                    (click)="openPeople(card)"><mat-icon>mode_edit</mat-icon></button>
                                 <button mat-raised-button class="margin-left" color="warn"
-                                    (click)="confirmDialog(card, 'people')">{{
-                                    'settings.button.delete'
-                                    | translate}}</button>
+                                    (click)="confirmDialog(card, 'people')"><mat-icon>delete</mat-icon></button>
                             </div>
                         </mat-card-content>
                     </mat-card>
@@ -100,11 +96,9 @@
                             </div>
                             <div class="col-sm-6">
                                 <button mat-raised-button class="margin-left btn btn-primary"
-                                    (click)="openResearch(card)">Edit</button>
+                                    (click)="openResearch(card)"><mat-icon>mode_edit</mat-icon></button>
                                 <button mat-raised-button class="margin-left" color="warn"
-                                    (click)="confirmDialog(card, 'research')">{{
-                                    'settings.button.delete'
-                                    | translate}}</button>
+                                    (click)="confirmDialog(card, 'research')"><mat-icon>delete</mat-icon></button>
                             </div>
                         </mat-card-content>
                     </mat-card>
@@ -136,11 +130,9 @@
                             </div>
                             <div class="col-sm-6">
                                 <button mat-raised-button class="margin-left btn btn-primary"
-                                    (click)="openThesis(card)">Edit</button>
+                                    (click)="openThesis(card)"><mat-icon>mode_edit</mat-icon></button>
                                 <button mat-raised-button class="margin-left" color="warn"
-                                    (click)="confirmDialog(card, 'thesis')">{{
-                                    'settings.button.delete'
-                                    | translate}}</button>
+                                    (click)="confirmDialog(card, 'thesis')"><mat-icon>delete</mat-icon></button>
                             </div>
                         </mat-card-content>
                     </mat-card>

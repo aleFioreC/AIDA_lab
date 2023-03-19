@@ -1,6 +1,7 @@
 <div class="container grid-container mt-5">
 
-    <button class="btn btn-primary" (click)="back()">Back</button>
+    <button class="btn btn-primary" (click)="back()"><mat-icon>arrow_circle_left</mat-icon>
+    </button>
 
     <mat-tab-group>
         <mat-tab label="News">
@@ -95,11 +96,10 @@
 
                 <div class="right mt-2">
                     <button mat-raised-button class="btn btn-primary margin-left" (click)="saveNews()"
-                        [disabled]="requiredFormNews.invalid">{{
-                        'settings.button.save' | translate}}</button>
-                    <button mat-raised-button class="margin-left" color="warn" (click)="clear()">{{
-                        'settings.button.clear'
-                        | translate}}</button>
+                        [disabled]="requiredFormNews.invalid"><mat-icon>save</mat-icon></button>
+                    <button mat-raised-button class="margin-left" color="warn" (click)="clear()">
+                        <mat-icon>clear</mat-icon>
+                    </button>
                 </div>
             </div>
         </mat-tab>
@@ -209,11 +209,10 @@
 
                 <div class="right mt-2">
                     <button mat-raised-button class="btn btn-primary margin-left" (click)="saveResearch()"
-                        [disabled]="requiredFormResearch.invalid">{{
-                        'settings.button.save' | translate}}</button>
-                    <button mat-raised-button class="margin-left" color="warn" (click)="clear()">{{
-                        'settings.button.clear'
-                        | translate}}</button>
+                        [disabled]="requiredFormResearch.invalid"><mat-icon>save</mat-icon></button>
+                    <button mat-raised-button class="margin-left" color="warn" (click)="clear()">
+                        <mat-icon>clear</mat-icon>
+                    </button>
                 </div>
             </div>
         </mat-tab>
@@ -344,11 +343,10 @@
 
                 <div class="right mt-2">
                     <button mat-raised-button class="btn btn-primary margin-left" (click)="savePeople()"
-                        [disabled]="requiredFormPeople.invalid">{{
-                        'settings.button.save' | translate}}</button>
-                    <button mat-raised-button class="margin-left" color="warn" (click)="clear()">{{
-                        'settings.button.clear'
-                        | translate}}</button>
+                        [disabled]="requiredFormPeople.invalid"><mat-icon>save</mat-icon></button>
+                    <button mat-raised-button class="margin-left" color="warn" (click)="clear()">
+                        <mat-icon>clear</mat-icon>
+                    </button>
                 </div>
             </div>
         </mat-tab>
@@ -446,11 +444,10 @@
 
                 <div class="right mt-2">
                     <button mat-raised-button class="btn btn-primary margin-left" (click)="saveThesis()"
-                        [disabled]="requiredFormThesis.invalid">{{
-                        'settings.button.save' | translate}}</button>
-                    <button mat-raised-button class="margin-left" color="warn" (click)="clear()">{{
-                        'settings.button.clear'
-                        | translate}}</button>
+                        [disabled]="requiredFormThesis.invalid"><mat-icon>save</mat-icon></button>
+                    <button mat-raised-button class="margin-left" color="warn" (click)="clear()">
+                        <mat-icon>clear</mat-icon>
+                    </button>
                 </div>
             </div>
         </mat-tab>

@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
@@ -15,7 +16,7 @@ export class ThesisDetailComponent implements OnInit {
   file: SafeUrl;
   currentLanguage;
 
-  constructor(private translate: TranslateService, private _sanitizer: DomSanitizer, private activatedRoute: ActivatedRoute) {
+  constructor(private location: Location, private translate: TranslateService, private _sanitizer: DomSanitizer, private activatedRoute: ActivatedRoute) {
     this.currentLanguage = this.translate.currentLang ? this.translate.currentLang : this.translate.defaultLang
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.currentLanguage = event.lang;
@@ -27,6 +28,10 @@ export class ThesisDetailComponent implements OnInit {
       this.file = response.thesis.file != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + response.thesis.file) : null
       this.thesis = new CardDisplay(response.thesis.idThesis, languages.title, languages.description, response.thesis.file)
     });
+  }
+
+  back() {
+    this.location.back()
   }
 
 }

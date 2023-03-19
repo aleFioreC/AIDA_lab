@@ -1,9 +1,9 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { CardDisplay } from 'src/app/model/card_display';
-import { News } from 'src/app/model/news';
 
 @Component({
   selector: 'app-news-detail',
@@ -16,7 +16,7 @@ export class NewsDetailComponent implements OnInit {
   file: SafeUrl;
   currentLanguage;
 
-  constructor(private translate: TranslateService, private _sanitizer: DomSanitizer, private activatedRoute: ActivatedRoute) {
+  constructor(private location: Location, private translate: TranslateService, private _sanitizer: DomSanitizer, private activatedRoute: ActivatedRoute) {
     this.currentLanguage = this.translate.currentLang ? this.translate.currentLang : this.translate.defaultLang
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       this.currentLanguage = event.lang;
@@ -29,6 +29,10 @@ export class NewsDetailComponent implements OnInit {
       this.file = response.news.file != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + response.news.file) : null
       this.news = new CardDisplay(response.news.idNews, languages.title, languages.description, response.news.file)
     });
+  }
+
+  back() {
+    this.location.back()
   }
 
 }

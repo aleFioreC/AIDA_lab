@@ -30,8 +30,8 @@ export class AppComponent implements OnInit {
   }
 
   reloadCurrentRoute() {
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['/']);
+    this.router.navigateByUrl(this.router.url, { skipLocationChange: true }).then(() => {
+      this.router.navigate([this.router.url]);
     });
   }
 

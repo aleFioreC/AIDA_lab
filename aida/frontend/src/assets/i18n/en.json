@@ -15,7 +15,8 @@
         "title": "Research"
     },
     "thesis": {
-        "title": "Thesis"
+        "title": "Thesis gallery",
+        "message": "Below is an overview of PhD theses written or supervised by members of the group."
     },
     "publication": {
         "title": "Publication"

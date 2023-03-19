@@ -15,7 +15,8 @@
         "title": "Ricerche"
     },
     "thesis": {
-        "title": "Tesi"
+        "title": "Tesi",
+        "message": "Di seguito alcune delle tesi di laurea scritte o supervisionate dai membri del laboratorio di ricerca."
     },
     "publication": {
         "title": "Pubblicazioni"

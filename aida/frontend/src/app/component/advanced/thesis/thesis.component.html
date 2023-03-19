@@ -1,7 +1,7 @@
 <div class="container grid-container mt-5">
     <div class="row">
-        <h1 class="title">Thesis gallery</h1>
-        <p>Below is an overview of PhD theses written or supervised by members of the group.
+        <h1 class="title">{{ 'thesis.title' | translate}}</h1>
+        <p>{{ 'thesis.message' | translate}}
         </p>
         <div class="col-md-3 col-6 mb-4" *ngFor="let card of cards">
             <div class="card cursor" (click)="open(card)">
