@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ModalDialogComponent } from 'src/app/component/basic/modal-dialog/modal-dialog.component';
 import { Research } from 'src/app/model/research';
 import { GeneralService } from 'src/app/service/general.service';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ResearchFiles } from 'src/app/model/research_files';
 import { ResearchLang } from 'src/app/model/research_lang';
 
@@ -19,9 +19,8 @@ export class EditResearchComponent implements OnInit {
 
   state;
   research: Research;
-  images: SafeResourceUrl[] = []
+  images: string[] = []
   requiredForm: FormGroup;
-  edit = false;
 
   @ViewChild('fileInput')
   fileInput: ElementRef;
@@ -38,9 +37,7 @@ export class EditResearchComponent implements OnInit {
     this.activatedRoute.data.subscribe((response: any) => {
       this.research = response.research
       this.research.files.forEach(element => {
-        this.edit = false;
-        let image = element != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file) : null
-        if (image) this.images.push(image)
+        this.images.push(element.file)
       })
       this.setValue()
     });
@@ -59,11 +56,13 @@ export class EditResearchComponent implements OnInit {
   setValue() {
     let it = this.research.langs.filter(c => c.language == 'it')[0]
     let en = this.research.langs.filter(c => c.language == 'en')[0]
-    this.requiredForm.patchValue({
-      titleIt: it.title, descriptionIt: it.description,
-      titleEn: en.title, descriptionEn: en.description,
-      year: this.research.year
-    })
+    if (it && en) {
+      this.requiredForm.patchValue({
+        titleIt: it.title, descriptionIt: it.description,
+        titleEn: en.title, descriptionEn: en.description,
+        year: this.research.year
+      })
+    }
   }
 
   onFileChange(event: any) {
@@ -75,7 +74,7 @@ export class EditResearchComponent implements OnInit {
         reader.onload = (event: any) => {
           this.images.push(event.target.result);
         }
-        this.edit = true
+
         reader.readAsDataURL(event.target.files[i]);
       }
     }
@@ -94,19 +93,16 @@ export class EditResearchComponent implements OnInit {
   saveResearch() {
     this.generalService.editResearch(this.research.idResearch, this.getResearch()).subscribe(res => {
       this.openDialog()
-      this.edit = false;
       this.router.navigate(['/private'], { state: { user: this.state } });
     })
   }
 
   getResearch() {
     let files: ResearchFiles[] = []
-    if (this.edit) {
-      this.images.forEach(element => {
-        let file = new ResearchFiles(element)
-        files.push(file)
-      })
-    }
+    this.images.forEach(element => {
+      let file = new ResearchFiles(element)
+      files.push(file)
+    })
     let langs: ResearchLang[] = []
     let it = new ResearchLang(this.requiredForm.value.titleIt, this.requiredForm.value.descriptionIt, 'it')
     let en = new ResearchLang(this.requiredForm.value.titleEn, this.requiredForm.value.descriptionEn, 'en')

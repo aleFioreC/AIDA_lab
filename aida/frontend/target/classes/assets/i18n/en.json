@@ -5,7 +5,8 @@
         "detail": "Detail"
     },
     "news": {
-        "title": "News"
+        "title": "News",
+        "nonews": "No recently news."
     },
     "people": {
         "title": "People"
@@ -14,7 +15,8 @@
         "title": "Research"
     },
     "thesis": {
-        "title": "Thesis"
+        "title": "Thesis gallery",
+        "message": "Below is an overview of PhD theses written or supervised by members of the group."
     },
     "publication": {
         "title": "Publication"
@@ -40,7 +42,8 @@
             "save": "Save",
             "edit": "Edit",
             "delete": "Delete",
-            "clear": "Clear"
+            "clear": "Clear",
+            "more": "More information"
         },
         "description": "Description",
         "news": {
@@ -55,5 +58,10 @@
         "thesis": {
             "title": "New thesis"
         }
+    },
+    "operation": {
+        "success": "Successful operation",
+        "error": "Error during operation",
+        "language": "Current language"
     }
 }

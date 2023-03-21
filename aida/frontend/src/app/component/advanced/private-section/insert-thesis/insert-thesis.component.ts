@@ -1,48 +1,42 @@
 import { Location } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ModalDialogComponent } from 'src/app/component/basic/modal-dialog/modal-dialog.component';
 import { Thesis } from 'src/app/model/thesis';
 import { ThesisLang } from 'src/app/model/thesis_lang';
 import { GeneralService } from 'src/app/service/general.service';
 
 @Component({
-  selector: 'app-edit-thesis',
-  templateUrl: './edit-thesis.component.html',
-  styleUrls: ['./edit-thesis.component.css']
+  selector: 'app-insert-thesis',
+  templateUrl: './insert-thesis.component.html',
+  styleUrls: ['./insert-thesis.component.css']
 })
-export class EditThesisComponent implements OnInit {
+export class InsertThesisComponent implements OnInit {
+
 
   imageSource;
-  state;
-  thesis;
 
-  requiredForm: FormGroup;
+  state: any
+
+  requiredFormThesis: FormGroup;
 
   @ViewChild('fileInput')
   fileInput: ElementRef;
 
-  constructor(private fb: FormBuilder, private _sanitizer: DomSanitizer, private activatedRoute: ActivatedRoute, private generalService: GeneralService, public dialog: MatDialog, public router: Router, private location: Location) {
-    this.myForm()
-  }
-
-  ngOnInit(): void {
+  constructor(private fb: FormBuilder, private generalService: GeneralService, public dialog: MatDialog, public router: Router, private location: Location) {
     this.state = this.location.getState();
+    this.myForm();
     if (!this.state.user) {
       this.router.navigate(['/']);
     }
-    this.activatedRoute.data.subscribe((response: any) => {
-      this.thesis = response.thesis
-      this.imageSource = this.thesis.file != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + this.thesis.file) : null
-      this.setValue()
-    });
+  }
+  ngOnInit(): void {
   }
 
   myForm() {
-    this.requiredForm = this.fb.group({
+    this.requiredFormThesis = this.fb.group({
       titleIt: ['', Validators.required],
       descriptionIt: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
       titleEn: ['', Validators.required],
@@ -50,21 +44,32 @@ export class EditThesisComponent implements OnInit {
     });
   }
 
-  setValue() {
-    let it = this.thesis.langs.filter(c => c.language == 'it')[0]
-    let en = this.thesis.langs.filter(c => c.language == 'en')[0]
-    if (it && en) {
-      this.requiredForm.patchValue({
-        titleIt: it.title, descriptionIt: it.description,
-        titleEn: en.title, descriptionEn: en.description,
-      })
-    }
-  }
-
   async uploadListener($event: any) {
     let files = $event.srcElement.files;
     let img = await this.convertBase64(files[0])
     this.imageSource = img
+  }
+
+  saveThesis() {
+    this.generalService.saveThesis(this.getThesis()).subscribe(res => {
+      this.openDialog()
+      this.router.navigate(['/private'], { state: { user: res } });
+    })
+  }
+
+  getThesis() {
+    let langs: ThesisLang[] = []
+    let it = new ThesisLang(this.requiredFormThesis.value.titleIt, this.requiredFormThesis.value.descriptionIt, 'it')
+    let en = new ThesisLang(this.requiredFormThesis.value.titleEn, this.requiredFormThesis.value.descriptionEn, 'en')
+    langs.push(it)
+    langs.push(en)
+    return new Thesis(this.imageSource, langs)
+  }
+
+  clear() {
+    this.fileInput.nativeElement.value = ''
+    this.imageSource = null
+    this.requiredFormThesis.reset()
   }
 
   delete() {
@@ -87,22 +92,6 @@ export class EditThesisComponent implements OnInit {
     });
   };
 
-  saveThesis() {
-    this.generalService.editThesis(this.thesis.idThesis, this.getThesis()).subscribe(res => {
-      this.openDialog()
-      this.router.navigate(['/private'], { state: { user: this.state } });
-    })
-  }
-
-  getThesis() {
-    let langs: ThesisLang[] = []
-    let it = new ThesisLang(this.requiredForm.value.titleIt, this.requiredForm.value.descriptionIt, 'it')
-    let en = new ThesisLang(this.requiredForm.value.titleEn, this.requiredForm.value.descriptionEn, 'en')
-    langs.push(it)
-    langs.push(en)
-    return new Thesis(this.imageSource, langs)
-  }
-
   openDialog() {
 
     const dialogConfig = new MatDialogConfig();
@@ -122,14 +111,9 @@ export class EditThesisComponent implements OnInit {
 
   }
 
-  clear() {
-    this.fileInput.nativeElement.value = ''
-    this.imageSource = null;
-    this.requiredForm.reset()
-  }
-
   back() {
     this.router.navigate(['/private'], { state: { user: this.state } })
   }
+
 
 }

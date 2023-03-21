@@ -9,7 +9,6 @@ import { PrivateSectionComponent } from './component/advanced/private-section/pr
 import { ResearchResolver } from './model/resolver/research.resolver';
 import { NewsResolver } from './model/resolver/news.resolver';
 import { LoginComponent } from './component/advanced/private-section/login/login.component';
-import { InsertComponent } from './component/advanced/private-section/insert/insert.component';
 import { EditNewsComponent } from './component/advanced/private-section/edit-news/edit-news.component';
 import { NewsDetailComponent } from './component/advanced/news/news-detail/news-detail.component';
 import { EditResearchComponent } from './component/advanced/private-section/edit-research/edit-research.component';
@@ -23,6 +22,10 @@ import { ThesisDetailComponent } from './component/advanced/thesis/thesis-detail
 import { ThesisResolver } from './model/resolver/thesis.resolver';
 import { EditThesisComponent } from './component/advanced/private-section/edit-thesis/edit-thesis.component';
 import { P101Component } from './component/advanced/p101/p101.component';
+import { InsertResearchComponent } from './component/advanced/private-section/insert-research/insert-research.component';
+import { InsertThesisComponent } from './component/advanced/private-section/insert-thesis/insert-thesis.component';
+import { InsertPeopleComponent } from './component/advanced/private-section/insert-people/insert-people.component';
+import { InsertNewsComponent } from './component/advanced/private-section/insert-news/insert-news.component';
 
 const routes: Routes = [
   { path: '', component: NewsComponent },
@@ -60,7 +63,16 @@ const routes: Routes = [
     path: 'private', component: PrivateSectionComponent
   },
   {
-    path: 'insert', component: InsertComponent
+    path: 'insert-news', component: InsertNewsComponent
+  },
+  {
+    path: 'insert-people', component: InsertPeopleComponent
+  },
+  {
+    path: 'insert-thesis', component: InsertThesisComponent
+  },
+  {
+    path: 'insert-research', component: InsertResearchComponent
   },
   {
     path: 'edit-news/:id',

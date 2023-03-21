@@ -53,9 +53,11 @@ export class NewsComponent implements OnInit {
 
   findTop() {
     this.generalService.topNews().subscribe((res: News) => {
-      let languages = res.langs.filter(c => c.language == this.currentLanguage)[0]
-      this.card = new CardDisplay(res.idNews, languages.title, languages.description, res.file)
-      this.findAll(res)
+      if (res && res.langs) {
+        let languages = res.langs.filter(c => c.language == this.currentLanguage)[0]
+        this.card = new CardDisplay(res.idNews, languages.title, languages.description, res.file)
+        this.findAll(res)
+      }
     })
   }
 

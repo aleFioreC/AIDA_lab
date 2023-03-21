@@ -26,15 +26,13 @@ public class NewsService {
 		return n;
 	}
 
-	public News edit(News n, Integer id) throws Exception {
+	public News edit(News res, Integer id) throws Exception {
 		Optional<News> news = findById(id);
 		if (news.isPresent()) {
-			News p = news.get();
-			deleteLanguages(n);
-			p.setFile(n.getFile());
-			p.setLangs(n.getLangs());
-			saveLanguages(p);
-			return this.repository.save(p);
+			this.delete(id);
+			this.repository.save(res);
+			saveLanguages(res);
+			return res;
 		} else {
 			throw new Exception("Not found");
 		}

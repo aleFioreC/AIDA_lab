@@ -58,5 +58,10 @@
         "thesis": {
             "title": "Nuova tesi"
         }
+    },
+    "operation": {
+        "success": "Operazione completata con successo",
+        "error": "Errori durante l'operazione",
+        "language": "Linguaggio corrente"
     }
 }

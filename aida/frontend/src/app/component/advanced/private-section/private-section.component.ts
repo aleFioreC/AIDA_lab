@@ -63,7 +63,7 @@ export class PrivateSectionComponent implements OnInit {
       res.forEach(element => {
         let languages = element.langs.filter(c => c.language == this.currentLanguage)[0]
         let description = languages.description && languages.description.length > 400 ? languages.description.slice(0, 320) + '...read more...' : languages.description
-        let file = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file)
+        let file = element.file != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file) : null
         let card = new CardDisplay(element.idThesis, languages.title, description, file)
         this.thesis.push(card)
       });
@@ -76,7 +76,7 @@ export class PrivateSectionComponent implements OnInit {
       res.forEach(element => {
         let languages = element.langs.filter(c => c.language == this.currentLanguage)[0]
         let description = languages.description && languages.description.length > 400 ? languages.description.slice(0, 320) + '...read more...' : languages.description
-        let file = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file)
+        let file = element.file != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file) : null
         let card = new CardDisplay(element.idNews, languages.title, description, file)
         this.news.push(card)
       });
@@ -89,15 +89,27 @@ export class PrivateSectionComponent implements OnInit {
       res.forEach(element => {
         let languages = element.langs.filter(c => c.language == this.currentLanguage)[0]
         let description = languages.description && languages.description.length > 400 ? languages.description.slice(0, 320) + '...read more...' : languages.description
-        let file = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.files[0].file)
+        let file = element.files.length && element.files[0] != null ? this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.files[0].file) : null
         let card = new CardDisplay(element.idResearch, languages.title, description, file)
         this.research.push(card)
       });
     });
   }
 
-  new() {
-    this.router.navigate(['/insert'], { state: { user: this.state } });
+  newPeople() {
+    this.router.navigate(['/insert-people'], { state: { user: this.state } });
+  }
+
+  newNews() {
+    this.router.navigate(['/insert-news'], { state: { user: this.state } });
+  }
+
+  newThesis() {
+    this.router.navigate(['/insert-thesis'], { state: { user: this.state } });
+  }
+
+  newResearch() {
+    this.router.navigate(['/insert-research'], { state: { user: this.state } });
   }
 
   openNews(card) {

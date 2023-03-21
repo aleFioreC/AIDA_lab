@@ -26,15 +26,13 @@ public class ThesisService {
 		return n;
 	}
 
-	public Thesis edit(Thesis n, Integer id) throws Exception {
+	public Thesis edit(Thesis res, Integer id) throws Exception {
 		Optional<Thesis> thesis = findById(id);
 		if (thesis.isPresent()) {
-			Thesis p = thesis.get();
-			deleteLanguages(n);
-			p.setFile(n.getFile());
-			p.setLangs(n.getLangs());
-			saveLanguages(p);
-			return this.repository.save(p);
+			this.delete(id);
+			this.repository.save(res);
+			saveLanguages(res);
+			return res;
 		} else {
 			throw new Exception("Not found");
 		}

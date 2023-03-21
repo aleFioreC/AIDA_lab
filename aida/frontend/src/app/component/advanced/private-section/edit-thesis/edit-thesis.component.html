@@ -94,12 +94,10 @@
 
 
         <div class="right mt-2">
-            <button mat-raised-button class="btn btn-primary margin-left" (click)="saveThesis()"
-                [disabled]="requiredForm.invalid">{{
-                'settings.button.edit' | translate}}</button>
-            <button mat-raised-button class="margin-left" color="warn" (click)="clear()">{{
-                'settings.button.clear'
-                | translate}}</button>
+            <button mat-raised-button class="btn btn-primary margin-left"
+                (click)="saveThesis()"><mat-icon>save</mat-icon></button>
+            <button mat-raised-button class="margin-left" color="warn" (click)="clear()">
+                <mat-icon>clear</mat-icon></button>
         </div>
     </div>
 

@@ -41,3 +41,7 @@
 .title {
     padding: 10px;
 }
+
+.c {
+    min-height: 250px;
+}

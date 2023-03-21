@@ -204,6 +204,10 @@ html {
     }
 }
 
+.grid-container {
+    min-height: 400px;
+}
+
 .right {
     text-align: right;
 }

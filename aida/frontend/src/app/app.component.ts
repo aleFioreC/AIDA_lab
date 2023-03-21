@@ -44,9 +44,11 @@ export class AppComponent implements OnInit {
     dialogConfig.height = '220px'
     dialogConfig.width = '600px'
 
+    let lang = language == 'it' ? 'Italiano' : 'English'
+
     dialogConfig.data = {
-      title: 'Operazione completata',
-      message: 'Hai selezionato il linguaggio ' + language.toUpperCase() + '.',
+      title: this.translate.get("operation.success"),
+      message: this.translate.get("operation.language") + ": " + lang,
       class: 'success-class'
     };
 

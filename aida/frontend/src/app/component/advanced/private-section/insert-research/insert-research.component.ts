@@ -1,35 +1,26 @@
 import { Location } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ModalDialogComponent } from 'src/app/component/basic/modal-dialog/modal-dialog.component';
-import { News } from 'src/app/model/news';
-import { NewsLang } from 'src/app/model/news_lang';
-import { People } from 'src/app/model/people';
 import { Research } from 'src/app/model/research';
 import { ResearchFiles } from 'src/app/model/research_files';
 import { ResearchLang } from 'src/app/model/research_lang';
-import { Thesis } from 'src/app/model/thesis';
-import { ThesisLang } from 'src/app/model/thesis_lang';
 import { GeneralService } from 'src/app/service/general.service';
 
 @Component({
-  selector: 'app-insert',
-  templateUrl: './insert.component.html',
-  styleUrls: ['./insert.component.css']
+  selector: 'app-insert-research',
+  templateUrl: './insert-research.component.html',
+  styleUrls: ['./insert-research.component.css']
 })
-export class InsertComponent implements OnInit {
+export class InsertResearchComponent implements OnInit {
 
-  imageSource;
   images = [];
 
   state: any
 
-  requiredFormNews: FormGroup;
   requiredFormResearch: FormGroup;
-  requiredFormPeople: FormGroup;
-  requiredFormThesis: FormGroup;
 
   @ViewChild('fileInput')
   fileInput: ElementRef;
@@ -46,12 +37,6 @@ export class InsertComponent implements OnInit {
   }
 
   myForm() {
-    this.requiredFormNews = this.fb.group({
-      titleIt: ['', Validators.required],
-      descriptionIt: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
-      titleEn: ['', Validators.required],
-      descriptionEn: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
-    });
     this.requiredFormResearch = this.fb.group({
       titleIt: ['', Validators.required],
       descriptionIt: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
@@ -59,37 +44,12 @@ export class InsertComponent implements OnInit {
       descriptionEn: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
       year: ['', Validators.required]
     });
-    this.requiredFormPeople = this.fb.group({
-      name: ['', Validators.required],
-      surname: ['', Validators.required],
-      email: ['', Validators.compose([Validators.required, Validators.email])],
-      role: ['', Validators.required],
-      group: ['', Validators.required],
-      additionalInfo: [''],
-      number: ['', Validators.required]
-    });
-    this.requiredFormThesis = this.fb.group({
-      titleIt: ['', Validators.required],
-      descriptionIt: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
-      titleEn: ['', Validators.required],
-      descriptionEn: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
-    });
-  }
-
-  async uploadListener($event: any) {
-    let files = $event.srcElement.files;
-    let img = await this.convertBase64(files[0])
-    this.imageSource = img
   }
 
   clear() {
     this.fileInput.nativeElement.value = ''
-    this.imageSource = null
     this.images = []
-    this.requiredFormNews.reset()
     this.requiredFormResearch.reset()
-    this.requiredFormPeople.reset()
-    this.requiredFormThesis.reset()
   }
 
   onFileChange(event: any) {
@@ -116,8 +76,6 @@ export class InsertComponent implements OnInit {
           this.images.splice(index, 1);
         }
       }
-    } else {
-      this.imageSource = null
     }
   }
 
@@ -135,38 +93,6 @@ export class InsertComponent implements OnInit {
       };
     });
   };
-
-  saveNews() {
-    this.generalService.saveNews(this.getNews()).subscribe(res => {
-      this.openDialog()
-      this.router.navigate(['/private'], { state: { user: res } });
-    })
-  }
-
-  getNews() {
-    let langs: NewsLang[] = []
-    let it = new NewsLang(this.requiredFormNews.value.titleIt, this.requiredFormNews.value.descriptionIt, 'it')
-    let en = new NewsLang(this.requiredFormNews.value.titleEn, this.requiredFormNews.value.descriptionEn, 'en')
-    langs.push(it)
-    langs.push(en)
-    return new News(this.imageSource, langs)
-  }
-
-  saveThesis() {
-    this.generalService.saveThesis(this.getThesis()).subscribe(res => {
-      this.openDialog()
-      this.router.navigate(['/private'], { state: { user: res } });
-    })
-  }
-
-  getThesis() {
-    let langs: ThesisLang[] = []
-    let it = new ThesisLang(this.requiredFormThesis.value.titleIt, this.requiredFormThesis.value.descriptionIt, 'it')
-    let en = new ThesisLang(this.requiredFormThesis.value.titleEn, this.requiredFormThesis.value.descriptionEn, 'en')
-    langs.push(it)
-    langs.push(en)
-    return new Thesis(this.imageSource, langs)
-  }
 
   saveResearch() {
     this.generalService.saveResearch(this.getResearch()).subscribe(res => {
@@ -188,15 +114,6 @@ export class InsertComponent implements OnInit {
     langs.push(en)
     return new Research(this.requiredFormResearch.value.year, langs, files)
   }
-
-  savePeople() {
-    let obj: People = new People(this.requiredFormPeople.value.name, this.requiredFormPeople.value.surname, this.requiredFormPeople.value.email, this.requiredFormPeople.value.number, this.requiredFormPeople.value.additionalInfo, this.requiredFormPeople.value.role, this.requiredFormPeople.value.group, this.imageSource)
-    this.generalService.savePeople(obj).subscribe(res => {
-      this.openDialog()
-      this.router.navigate(['/private'], { state: { user: res } });
-    })
-  }
-
 
   openDialog() {
 
@@ -220,6 +137,5 @@ export class InsertComponent implements OnInit {
   back() {
     this.router.navigate(['/private'], { state: { user: this.state } })
   }
-
 
 }

@@ -35,15 +35,11 @@ public class ResearchService {
 	public Research edit(Research res, Integer id) throws Exception {
 		Optional<Research> research = findById(id);
 		if (research.isPresent()) {
-			Research r = research.get();
-			deleteFiles(r);
-			deleteLanguages(r);
-			r.setYear(res.getYear());
-			r.setFiles(res.getFiles());
-			r.setLangs(res.getLangs());
-			saveFiles(r);
-			saveLanguages(r);
-			return this.repository.save(r);
+			this.delete(id);
+			this.repository.save(res);
+			saveFiles(res);
+			saveLanguages(res);
+			return res;
 		} else {
 			throw new Exception("Not found");
 		}

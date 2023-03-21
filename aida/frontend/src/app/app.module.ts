@@ -42,7 +42,6 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
-import { InsertComponent } from './component/advanced/private-section/insert/insert.component';
 import { LoginComponent } from './component/advanced/private-section/login/login.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { EditNewsComponent } from './component/advanced/private-section/edit-news/edit-news.component';
@@ -58,6 +57,10 @@ import { EditThesisComponent } from './component/advanced/private-section/edit-t
 import { ConfirmDialogComponent } from './component/basic/confirm-dialog/confirm-dialog.component';
 import { P101Component } from './component/advanced/p101/p101.component';
 import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { InsertNewsComponent } from './component/advanced/private-section/insert-news/insert-news.component';
+import { InsertPeopleComponent } from './component/advanced/private-section/insert-people/insert-people.component';
+import { InsertResearchComponent } from './component/advanced/private-section/insert-research/insert-research.component';
+import { InsertThesisComponent } from './component/advanced/private-section/insert-thesis/insert-thesis.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +78,6 @@ import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ResearchComponent,
     ResearchDetailComponent,
     PrivateSectionComponent,
-    InsertComponent,
     LoginComponent,
     EditNewsComponent,
     EditPeopleComponent,
@@ -88,7 +90,11 @@ import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ThesisDetailComponent,
     EditThesisComponent,
     ConfirmDialogComponent,
-    P101Component
+    P101Component,
+    InsertNewsComponent,
+    InsertPeopleComponent,
+    InsertResearchComponent,
+    InsertThesisComponent
   ],
   imports: [
     BrowserModule,

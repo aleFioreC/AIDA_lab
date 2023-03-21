@@ -58,5 +58,10 @@
         "thesis": {
             "title": "New thesis"
         }
+    },
+    "operation": {
+        "success": "Successful operation",
+        "error": "Error during operation",
+        "language": "Current language"
     }
 }

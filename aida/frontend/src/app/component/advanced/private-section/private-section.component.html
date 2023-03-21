@@ -1,12 +1,11 @@
 <div class="container grid-container mt-5">
 
-    <button class="btn btn-primary" (click)="new()">
-        <span>New <mat-icon>save</mat-icon></span>
-    </button>
-
     <mat-tab-group>
         <mat-tab label="News">
             <div class="container grid-container mt-2">
+                <button class="btn btn-primary" (click)="newNews()">
+                    <span>New news <mat-icon>save</mat-icon></span>
+                </button>
                 <div class="col-sm-12 col-md-12 mt-5" *ngFor="let card of news">
                     <mat-card class="dashboard-card cursor">
                         <mat-card-header>
@@ -40,6 +39,9 @@
         </mat-tab>
         <mat-tab label="People">
             <div class="container grid-container mt-2">
+                <button class="btn btn-primary" (click)="newPeople()">
+                    <span>New people <mat-icon>save</mat-icon></span>
+                </button>
                 <div class="col-sm-12 col-md-12 mt-5" *ngFor="let card of people">
                     <mat-card class="aida-card cursor">
                         <mat-card-header>
@@ -74,6 +76,9 @@
         </mat-tab>
         <mat-tab label="Research">
             <div class="container grid-container mt-2">
+                <button class="btn btn-primary" (click)="newResearch()">
+                    <span>New research <mat-icon>save</mat-icon></span>
+                </button>
                 <div class="col-sm-12 col-md-12 mt-5" *ngFor="let card of research">
                     <mat-card class="aida-card cursor">
                         <mat-card-header>
@@ -107,6 +112,9 @@
         </mat-tab>
         <mat-tab label="Thesis">
             <div class="container grid-container mt-2">
+                <button class="btn btn-primary" (click)="newThesis()">
+                    <span>New thesis <mat-icon>save</mat-icon></span>
+                </button>
                 <div class="col-sm-12 col-md-12 mt-5" *ngFor="let card of thesis">
                     <mat-card class="dashboard-card cursor">
                         <mat-card-header>
