@@ -45,14 +45,21 @@ export class AppComponent implements OnInit {
     dialogConfig.width = '600px'
 
     let lang = language == 'it' ? 'Italiano' : 'English'
+    let titleMod = ''
+    let messageMod = ''
 
-    dialogConfig.data = {
-      title: this.translate.get("operation.success"),
-      message: this.translate.get("operation.language") + ": " + lang,
-      class: 'success-class'
-    };
-
-    this.dialog.open(ModalDialogComponent, dialogConfig);
-
+    this.translate.get("operation.success").subscribe(res => {
+      titleMod = res
+      this.translate.get("operation.success").subscribe(res => {
+        messageMod = res
+        dialogConfig.data = {
+          title: titleMod,
+          message: messageMod + ": " + lang,
+          class: 'success-class'
+        };
+        this.dialog.open(ModalDialogComponent, dialogConfig);
+      })
+    })
   }
+
 }

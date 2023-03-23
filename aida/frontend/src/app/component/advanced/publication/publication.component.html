@@ -1,15 +1,32 @@
 <div class="container grid-container mt-5 mb-5">
     <h1 class="title">{{ 'publication.title' | translate }}</h1>
-    <h2>
+    <!-- <h2>
         IRIS è la soluzione IT che facilita la raccolta e la gestione dei dati relativi alle attività e ai prodotti
         della ricerca. Fornisce a ricercatori, amministratori e valutatori gli strumenti per monitorare i risultati
         della ricerca, aumentarne la visibilità e allocare in modo efficace le risorse disponibili. Per ulteriori
         informazione <a target="_blank" href="https://iris.unicas.it/">visitare</a>.
     </h2>
-    <h2>RECENT PUBLICATIONS</h2>
+    <h2>RECENT PUBLICATIONS</h2> -->
+    <div class="btn-group btn-group-toggle year-button-group" data-toggle="buttons">
+        <a class="btn btn-link" style="color:grey">all</a>
+        <a class="btn btn-link" style="color:grey">all
+            years</a>
+        <a class="btn btn-link" style="color:grey; font-weight: bold">2023</a>
+        <a class="btn btn-link" style="color:grey">2022</a>
+        <a class="btn btn-link" style="color:grey">2021</a>
+    </div>
     <ul>
-        <li *ngFor="let card of cards">
-            {{card.title}}
-        </li>
+        <h2>2023</h2>
+        <ol>
+            <li *ngFor="let card of cards"> {{card.title}}
+                G. Sidorenkov, R. Stadhouders, C. Jacobs, F. Mohamed Hoesein, H. Gietema, K. Nackaerts, Z. Saghir, M.
+                Heuvelmans, H. Donker, J. Aerts, R. Vermeulen, A. Uitterlinden, V. Lenters, J. van Rooij, C.
+                Schaefer-Prokop, H. Groen, P. de Jong, R. Cornelissen, M. Prokop, G. de Bock and R. Vliegenthart,
+                " Multi-source data approach for personalized outcome prediction in lung cancer screening: update from
+                the NELSON trial.", <i>European journal of epidemiology,
+                </i>2023.<div>
+                </div>
+            </li>
+        </ol>
     </ul>
 </div>

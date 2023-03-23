@@ -135,11 +135,11 @@ export class PrivateSectionComponent implements OnInit {
   }
 
   openPeople(card) {
-    this.router.navigate(['/edit-people/' + card.id], { state: { user: this.state } })
+    this.router.navigate(['/edit-people/' + card.idPeople], { state: { user: this.state } })
   }
 
   removePeople(card) {
-    this.generalService.deletePeople(card.id).subscribe(res => {
+    this.generalService.deletePeople(card.idPeople).subscribe(res => {
       this.openDialog()
       this.findAllPeople()
     })
