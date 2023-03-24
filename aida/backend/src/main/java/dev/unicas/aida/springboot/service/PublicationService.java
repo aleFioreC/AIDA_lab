@@ -1,5 +1,7 @@
 package dev.unicas.aida.springboot.service;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Collections;
 
 import org.apache.logging.log4j.LogManager;
@@ -9,6 +11,12 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import dev.unicas.aida.springboot.model.dto.ResultListDto;
 
 @Service
 public class PublicationService {
@@ -30,6 +38,13 @@ public class PublicationService {
 		ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 		log.info(response.getStatusCode());
 		return response.getBody();
+	}
+
+	public ResultListDto findAllR() throws JsonParseException, JsonMappingException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		InputStream is = PublicationService.class.getResourceAsStream("/publications.json");
+		ResultListDto result = mapper.readValue(is, ResultListDto.class);
+		return result;
 	}
 
 	/*

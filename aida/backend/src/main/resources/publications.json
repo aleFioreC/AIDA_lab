@@ -1,0 +1,46 @@
+{
+    "resultList": [
+        {
+            "search.legacyid_i": 0,
+            "handle": "XXXX/YYYYYYYY",
+            "dateIssued.year": 1998,
+            "dc.date.issued_dt": "1998-11-01T00:00:00Z",
+            "dc.identifier.doi": "10.1002/(SICI)1098-2299(199811/12)45:3/4<379::AID-DDR38>3.0.CO;2-Y",
+            "dc.subject.keywords": "adenosine A3 receptors; astrocytes; rat; human; cell survival",
+            "dc.title": "Adenosine A3 receptor and viability of astrocytes",
+            "descriptionAbstractAll": "We investigated the role of the A(3) adenosine receptor in cells of the astroglial lineage (both rat primary astrocytes and human astrocytoma ADF cells) by means of the selective A(3) agonists N-6-(3-iodobenzyl)-adenosine-5'-N-methyluronamide (IB-MECA) and CI-IB-MECA, and by utilizing the selective AS receptor antagonist MRS1191. Exposure of ADF cells to mu M concentrations of either agonist resulted in reduction of cell number, likely due to cell death. In both rat astrocytes and human astrocytoma cells, at concentrations 2-3 orders of magnitude lower (which were not associated with cytotoxicity), these same agonists induced a marked reorganization of the cytoskeleton, with appearance of stress fibers and numerous cell protrusions. Functionally, these morphological changes were associated with cell protection, as demonstrated by a significant reduction of spontaneous apoptosis in A(3) agonist-treated cells. To confirm a role for the A(3) receptor in this effect, MRS1191 completely counteracted CI-IB-MECA-induced reduction of spontaneous apoptosis. In ADF cells, Ay agonists also induced changes in the intracellular distribution of the anti-apoptotic protein Bcl-X-L which became localized in cell protrusions. Also, this effect was specifically antagonized by MRS1191. These dual actions of A(3) agonists in vitro may have important in vivo implications. For example, a robust and acute activation of the A(3) receptor following massive adenosine release during ischemia may contribute to brain cell death; conversely, a subthreshold activation of this receptor prior to ischemia may trigger protective mechanisms (i.e., induction of stress fibers and of a Bcl-X-L-dependent reorganization of cytoskeleton) making the brain more resistant to subsequent insults (\"ischemic tolerance\").",
+            "dc.type.miur": "262",
+            "score": 5.2882724,
+            "collection": "01 - Articolo su periodico",
+            "citation": "Adenosine A3 receptor and viability of astrocytes / M.P. Abbracchio, S. Ceruti, R. Brambilla, D. Barbieri, C. Franceschi, A.M. Giammarioli, K.A. Jacobson, F. Cattabeni, W. Malorni. - In: DRUG DEVELOPMENT RESEARCH. - ISSN 0272-4391. - 45:3-4(1998 Nov), pp. 379-386. ((Intervento presentato al 6. convegno International Symposium on Adenosine and Adenine Nucleotides, New Frontiers in the 3rd-Millennium tenutosi a Ferrara nel 1998 [10.1002/(SICI)1098-2299(199811/12)45:3/4<379::AID-DDR38>3.0.CO;2-Y].",
+            "authors": "M.P. Abbracchio, S.M. Ceruti, M. Paffetti, D. Barbieri, C. Franceschi, A.M. Giammarioli, K.A. Jacobson, P. Baciga, W. Malorni",
+            "dateIssued": "1998-11-01T00:00:00Z",
+            "language": "eng",
+            "journal": {
+                "pid": "journalXXXXX",
+                "issn": "YYYY-XXXX",
+                "title": "DRUG DEVELOPMENT RESEARCH"
+            },
+            "fulltextPresence": "reserved",
+            "ssd": "Settore BIO/14 - Farmacologia",
+            "lastModified": "2023-03-14T16:20:09Z",
+            "citationCount": {
+                "isi": "35",
+                "scopus": "42"
+            },
+            "person": [
+                {
+                    "lastname": "COGNOME",
+                    "firstname": "NOME",
+                    "mail": "nome.cognome@ateneo.it",
+                    "cf": "XXXXXXXXXXXXX",
+                    "id": "000000",
+                    "idAb": "TT",
+                    "pid": "rpXXXXX",
+                    "idCsa": "yyyyyyxxxxxxxxxxxxxxxx"
+                }
+            ],
+            "stato": "archive"
+        }
+    ]
+}

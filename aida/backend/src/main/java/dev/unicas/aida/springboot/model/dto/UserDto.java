@@ -5,7 +5,10 @@ public class UserDto {
 	private String name;
 
 	private String surname;
-	
+
+	public UserDto() {
+	}
+
 	public UserDto(String name, String surname) {
 		super();
 		this.name = name;

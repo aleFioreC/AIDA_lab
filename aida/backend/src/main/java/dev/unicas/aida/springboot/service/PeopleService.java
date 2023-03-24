@@ -26,6 +26,7 @@ public class PeopleService {
 			People p = people.get();
 			p.setName(n.getName());
 			p.setSurname(n.getSurname());
+			p.setCf(n.getCf());
 			p.setEmail(n.getEmail());
 			p.setNumber(n.getNumber());
 			p.setAdditionalInfo(n.getAdditionalInfo());

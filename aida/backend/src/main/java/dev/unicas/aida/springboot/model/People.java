@@ -17,6 +17,8 @@ public class People {
 
 	private String surname;
 
+	private String cf;
+
 	private String email;
 
 	private String number;
@@ -33,11 +35,12 @@ public class People {
 	public People() {
 	}
 
-	public People(String name, String surname, String email, String number, String additionalInfo, String role,
-			String roleGroup, String file) {
+	public People(String name, String surname, String cf, String email, String number, String additionalInfo,
+			String role, String roleGroup, String file) {
 		super();
 		this.name = name;
 		this.surname = surname;
+		this.cf = cf;
 		this.email = email;
 		this.number = number;
 		this.additionalInfo = additionalInfo;
@@ -68,6 +71,14 @@ public class People {
 
 	public void setSurname(String surname) {
 		this.surname = surname;
+	}
+
+	public String getCf() {
+		return cf;
+	}
+
+	public void setCf(String cf) {
+		this.cf = cf;
 	}
 
 	public String getRole() {

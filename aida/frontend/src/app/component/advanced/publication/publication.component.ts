@@ -17,7 +17,7 @@ export class PublicationComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.allPublication().subscribe((res: any) => {
-      res.forEach(element => {
+      res.resultList.forEach(element => {
         this.cards.push(element)
       })
     })

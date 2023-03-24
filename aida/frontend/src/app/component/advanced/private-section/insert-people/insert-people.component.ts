@@ -41,7 +41,8 @@ export class InsertPeopleComponent implements OnInit {
       role: ['', Validators.required],
       group: ['', Validators.required],
       additionalInfo: [''],
-      number: ['', Validators.required]
+      number: ['', Validators.required],
+      cf: ['', Validators.compose([Validators.required, Validators.minLength(16), Validators.maxLength(16)])],
     });
   }
 

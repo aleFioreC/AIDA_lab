@@ -15,6 +15,7 @@ export class PeopleComponent implements OnInit {
   associate = [];
   full = [];
   researcher = [];
+  technicalStaff = [];
 
   constructor(private router: Router, private _sanitizer: DomSanitizer, private generalService: GeneralService) { }
 
@@ -32,6 +33,7 @@ export class PeopleComponent implements OnInit {
         element.file = this._sanitizer.bypassSecurityTrustUrl('data:image/png;base64' + element.file)
         this.all.push(element)
       });
+      this.technicalStaff = this.all.filter(c => c.roleGroup == 'Technical staff')
       this.researcher = this.all.filter(c => c.roleGroup == 'Scientific staff')
       this.associate = this.all.filter(c => c.roleGroup == 'Faculty')
       this.full = this.all.filter(c => c.roleGroup == 'Chair')
