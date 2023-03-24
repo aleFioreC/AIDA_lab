@@ -1,0 +1,153 @@
+{
+    "uid": "person-3",
+    "id": 3,
+    "discriminator": "person",
+    "displayValue": "asd qwe 123",
+    "lastModified": "2017-08-31T06:21:48",
+    "priorityLastPosition": {
+        "phdCourse": {
+            "positionType": {
+                "description": "DOTTORANDO",
+                "discriminator": "research",
+                "id": "8330"
+            },
+            "description": "MEDICINA TRASLAZIONALE E MOLECOLARE (DIMET) - 45R",
+            "id": 4547,
+            "sourceId": "45R"
+        },
+        "identificationNumber": {
+            "positionType": {
+                "description": "Non Docente di ruolo",
+                "id": "2736",
+                "discriminator": "support"
+            },
+            "id": 3736,
+            "description": "2320"
+        },
+        "department": {
+            "sourceId": "3499",
+            "positionType": {
+                "discriminator": "support",
+                "id": "2736",
+                "description": "Non Docente di ruolo"
+            },
+            "id": 30955,
+            "idAb": "112929",
+            "description": "DIPARTIMENTO DI MEDICINA E CHIRURGIA (SCHOOL OF MEDICINE AND SURGERY)"
+        },
+        "supportTitle": {
+            "description": "Categoria C - Area tecnica, tecnico-scientifica ed elaborazione dati",
+            "positionType": {
+                "description": "Non Docente di ruolo",
+                "id": "2736",
+                "discriminator": "support"
+            },
+            "id": 7613
+        },
+        "researchTitle": {
+            "id": 23881,
+            "positionType": {
+                "description": "DOTTORANDO",
+                "id": "8330",
+                "discriminator": "research"
+            },
+            "description": "DOTTORANDO"
+        }
+    },
+    "priorityCurrentPosition": {
+        "identificationNumber": {
+            "positionType": {
+                "id": "2736",
+                "description": "Non Docente di ruolo",
+                "discriminator": "support"
+            },
+            "id": 3736,
+            "description": "2320"
+        },
+        "department": {
+            "sourceId": "3499",
+            "positionType": {
+                "id": "2736",
+                "description": "Non Docente di ruolo",
+                "discriminator": "support"
+            },
+            "id": 30955,
+            "idAb": "112929",
+            "description": "DIPARTIMENTO DI MEDICINA E CHIRURGIA (SCHOOL OF MEDICINE AND SURGERY)"
+        },
+        "supportTitle": {
+            "positionType": {
+                "id": "2736",
+                "discriminator": "support",
+                "description": "Non Docente di ruolo"
+            },
+            "id": 7613,
+            "description": "Categoria C - Area tecnica, tecnico-scientifica ed elaborazione dati"
+        }
+    },
+    "codiceFiscaleSet": [
+        {
+            "startDate": "1998-06-10T00:00:00",
+            "description": "XXXXXXXXXXXXXXXXX"
+        }
+    ],
+    "positionCurrentSet": [
+        {
+            "organizationUnit": {
+                "organizationUnitType": {
+                    "description": "supportTitle"
+                },
+                "description": "Categoria C - Area tecnica, tecnico-scientifica ed elaborazione dati",
+                "id": 7613
+            },
+            "discriminator": "support",
+            "id": 19126302,
+            "positionType": {
+                "description": "Non Docente di ruolo",
+                "id": 2736
+            },
+            "startDate": "2015-10-01T00:00:00",
+            "endDate": "2222-02-01T00:00:00",
+            "priority": 70
+        }
+    ],
+    "positionLastSet": [
+        {
+            "organizationUnit": {
+                "sourceId": "1100",
+                "organizationUnitType": {
+                    "description": "department"
+                },
+                "id": 1692,
+                "description": "EX-DIPARTIMENTO DI BIOTECNOLOGIE E BIOSCIENZE-(1998/2012)",
+                "idAb": "100130"
+            },
+            "startDate": "2004-12-16T00:00:00",
+            "discriminator": "research",
+            "positionType": {
+                "id": 8330,
+                "description": "DOTTORANDO"
+            },
+            "priority": 0,
+            "id": 19068955,
+            "endDate": "2007-11-27T00:00:00"
+        }
+    ],
+    "gender": {
+        "id": 20242,
+        "description": "Femminile"
+    },
+    "cf": "XXXXXXXXXXXXXXXXX",
+    "contactSet": [
+        {
+            "principal": true,
+            "description": "asd.qwe@universita.it",
+            "type": "mail"
+        }
+    ],
+    "idAb": "111748",
+    "pid": "rp00491",
+    "lastName": "asd qwe",
+    "firstName": "123",
+    "birthDate": "1973-12-19T00:00:00"
+}

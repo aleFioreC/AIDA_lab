@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
-import dev.unicas.aida.springboot.model.dto.ResultListDto;
+import dev.unicas.aida.springboot.model.iris.IRISResult;
 import dev.unicas.aida.springboot.service.PublicationService;
 
 @RestController
@@ -24,7 +24,7 @@ public class PublicationController {
 	private PublicationService service;
 
 	@GetMapping(value = "/findAll", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResultListDto findAll() throws JsonParseException, JsonMappingException, IOException {
+	public IRISResult findAll() throws JsonParseException, JsonMappingException, IOException {
 		return service.findAllR();
 	}
 

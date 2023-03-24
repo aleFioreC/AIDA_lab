@@ -13,10 +13,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import dev.unicas.aida.springboot.model.dto.ResultListDto;
+import dev.unicas.aida.springboot.model.iris.IRISPeople;
+import dev.unicas.aida.springboot.model.iris.IRISResult;
 
 @Service
 public class PublicationService {
@@ -40,10 +42,20 @@ public class PublicationService {
 		return response.getBody();
 	}
 
-	public ResultListDto findAllR() throws JsonParseException, JsonMappingException, IOException {
-		ObjectMapper mapper = new ObjectMapper();
+	public IRISResult findAllR() throws JsonParseException, JsonMappingException, IOException {
+		IRISPeople people = this.findAllPeople();
+		System.out.println(people.toString());
+		ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		InputStream is = PublicationService.class.getResourceAsStream("/publications.json");
-		ResultListDto result = mapper.readValue(is, ResultListDto.class);
+		IRISResult result = mapper.readValue(is, IRISResult.class);
+		return result;
+	}
+	
+
+	public IRISPeople findAllPeople() throws JsonParseException, JsonMappingException, IOException {
+		ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		InputStream is = PublicationService.class.getResourceAsStream("/people.json");
+		IRISPeople result = mapper.readValue(is, IRISPeople.class);
 		return result;
 	}
 

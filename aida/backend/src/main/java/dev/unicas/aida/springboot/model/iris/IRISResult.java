@@ -1,17 +1,15 @@
-package dev.unicas.aida.springboot.model.dto;
+package dev.unicas.aida.springboot.model.iris;
 
 import java.util.List;
 
-import dev.unicas.aida.springboot.model.iris.Publication;
-
-public class ResultListDto {
+public class IRISResult {
 
 	private List<Publication> resultList;
 
-	public ResultListDto() {
+	public IRISResult() {
 	}
 
-	public ResultListDto(List<Publication> resultList) {
+	public IRISResult(List<Publication> resultList) {
 		super();
 		this.resultList = resultList;
 	}
