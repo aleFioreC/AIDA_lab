@@ -1,15 +1,15 @@
 package dev.unicas.aida.springboot.model.iris;
 
-public class Citation {
+public class IRISCitation {
 
 	private String isi;
 
 	private String scopus;
 
-	public Citation() {
+	public IRISCitation() {
 	}
 
-	public Citation(String isi, String scopus) {
+	public IRISCitation(String isi, String scopus) {
 		super();
 		this.isi = isi;
 		this.scopus = scopus;

@@ -2,16 +2,16 @@ package dev.unicas.aida.springboot.model.iris;
 
 import java.math.BigDecimal;
 
-public class Gender {
+public class IRISGender {
 
 	private BigDecimal id;
 
 	private String description;
 
-	public Gender() {
+	public IRISGender() {
 	}
 
-	public Gender(BigDecimal id, String description) {
+	public IRISGender(BigDecimal id, String description) {
 		super();
 		this.id = id;
 		this.description = description;

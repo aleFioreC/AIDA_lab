@@ -1,6 +1,6 @@
 package dev.unicas.aida.springboot.model.iris;
 
-public class Journal {
+public class IRISJournal {
 
 	private String pid;
 
@@ -8,10 +8,10 @@ public class Journal {
 
 	private String title;
 
-	public Journal() {
+	public IRISJournal() {
 	}
 
-	public Journal(String pid, String issn, String title) {
+	public IRISJournal(String pid, String issn, String title) {
 		super();
 		this.pid = pid;
 		this.issn = issn;

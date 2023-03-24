@@ -1,5 +1,5 @@
 
-export class Journal {
+export class IRISJournal {
 
     pid: string;
     issn: string;

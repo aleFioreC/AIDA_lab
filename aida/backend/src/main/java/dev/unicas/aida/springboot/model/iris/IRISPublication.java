@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Publication {
+public class IRISPublication {
 
 	@JsonProperty("search.legacyid_i")
 	private BigDecimal legacyid_i;
@@ -44,7 +44,7 @@ public class Publication {
 
 	private String language;
 
-	private Journal journal;
+	private IRISJournal journal;
 
 	private String fulltextPresence;
 
@@ -52,19 +52,19 @@ public class Publication {
 
 	private String lastModified;
 
-	private Citation citationCount;
+	private IRISCitation citationCount;
 
-	private List<Person> person;
+	private List<IRISPerson> person;
 
 	private String stato;
 
-	public Publication() {
+	public IRISPublication() {
 	}
 
-	public Publication(BigDecimal legacyid_i, String handle, BigDecimal year, String issued_dt, String doi,
+	public IRISPublication(BigDecimal legacyid_i, String handle, BigDecimal year, String issued_dt, String doi,
 			String keywords, String title, String descriptionAbstractAll, String miur, BigDecimal score,
-			String collection, String citation, String authors, String dateIssued, String language, Journal journal,
-			String fulltextPresence, String ssd, String lastModified, Citation citationCount, List<Person> person,
+			String collection, String citation, String authors, String dateIssued, String language, IRISJournal journal,
+			String fulltextPresence, String ssd, String lastModified, IRISCitation citationCount, List<IRISPerson> person,
 			String stato) {
 		super();
 		this.legacyid_i = legacyid_i;
@@ -211,11 +211,11 @@ public class Publication {
 		this.language = language;
 	}
 
-	public Journal getJournal() {
+	public IRISJournal getJournal() {
 		return journal;
 	}
 
-	public void setJournal(Journal journal) {
+	public void setJournal(IRISJournal journal) {
 		this.journal = journal;
 	}
 
@@ -243,19 +243,19 @@ public class Publication {
 		this.lastModified = lastModified;
 	}
 
-	public Citation getCitationCount() {
+	public IRISCitation getCitationCount() {
 		return citationCount;
 	}
 
-	public void setCitationCount(Citation citationCount) {
+	public void setCitationCount(IRISCitation citationCount) {
 		this.citationCount = citationCount;
 	}
 
-	public List<Person> getPerson() {
+	public List<IRISPerson> getPerson() {
 		return person;
 	}
 
-	public void setPerson(List<Person> person) {
+	public void setPerson(List<IRISPerson> person) {
 		this.person = person;
 	}
 

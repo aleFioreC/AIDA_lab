@@ -1,8 +1,8 @@
-import { Publication } from "./publication";
+import { IRISPublication } from "./iris_publication";
 
 export class IRISResult {
 
-    resultList: Publication[];
+    resultList: IRISPublication[];
 
     constructor(resultList) {
         this.resultList = resultList

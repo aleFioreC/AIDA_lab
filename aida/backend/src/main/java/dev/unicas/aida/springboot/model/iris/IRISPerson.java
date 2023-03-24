@@ -1,6 +1,6 @@
 package dev.unicas.aida.springboot.model.iris;
 
-public class Person {
+public class IRISPerson {
 
 	private String lastname;
 
@@ -18,10 +18,10 @@ public class Person {
 
 	private String idCsa;
 
-	public Person() {
+	public IRISPerson() {
 	}
 
-	public Person(String lastname, String firstname, String mail, String cf, String id, String idAb, String pid,
+	public IRISPerson(String lastname, String firstname, String mail, String cf, String id, String idAb, String pid,
 			String idCsa) {
 		super();
 		this.lastname = lastname;

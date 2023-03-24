@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IRISPublication } from 'src/app/model/iris/iris_publication';
 import { IRISResult } from 'src/app/model/iris/iris_result';
-import { Publication } from 'src/app/model/iris/publication';
 import { GeneralService } from 'src/app/service/general.service';
 
 
@@ -11,7 +11,7 @@ import { GeneralService } from 'src/app/service/general.service';
 })
 export class PublicationComponent implements OnInit {
 
-  cards: Publication[] = [];
+  cards: IRISPublication[] = [];
 
   imageSource;
 

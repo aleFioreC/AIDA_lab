@@ -1,6 +1,6 @@
 package dev.unicas.aida.springboot.model.iris;
 
-public class Contact {
+public class IRISContact {
 
 	private boolean principal;
 
@@ -8,10 +8,10 @@ public class Contact {
 
 	private String type;
 
-	public Contact() {
+	public IRISContact() {
 	}
 
-	public Contact(boolean principal, String description, String type) {
+	public IRISContact(boolean principal, String description, String type) {
 		super();
 		this.principal = principal;
 		this.description = description;

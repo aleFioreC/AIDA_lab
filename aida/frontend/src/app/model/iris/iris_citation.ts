@@ -1,5 +1,5 @@
 
-export class Citation {
+export class IRISCitation {
 
     isi: string;
     scopus: string;

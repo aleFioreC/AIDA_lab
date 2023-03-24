@@ -15,11 +15,11 @@ public class IRISPeople {
 
 	private String lastModified;
 
-	private Gender gender;
+	private IRISGender gender;
 
 	private String cf;
 
-	private List<Contact> contactSet;
+	private List<IRISContact> contactSet;
 
 	private String idAb;
 
@@ -35,7 +35,7 @@ public class IRISPeople {
 	}
 
 	public IRISPeople(String uid, BigDecimal id, String discriminator, String displayValue, String lastModified,
-			Gender gender, String cf, List<Contact> contactSet, String idAb, String pid, String lastName,
+			IRISGender gender, String cf, List<IRISContact> contactSet, String idAb, String pid, String lastName,
 			String firstName, String birthDate) {
 		super();
 		this.uid = uid;
@@ -93,11 +93,11 @@ public class IRISPeople {
 		this.lastModified = lastModified;
 	}
 
-	public Gender getGender() {
+	public IRISGender getGender() {
 		return gender;
 	}
 
-	public void setGender(Gender gender) {
+	public void setGender(IRISGender gender) {
 		this.gender = gender;
 	}
 
@@ -109,11 +109,11 @@ public class IRISPeople {
 		this.cf = cf;
 	}
 
-	public List<Contact> getContactSet() {
+	public List<IRISContact> getContactSet() {
 		return contactSet;
 	}
 
-	public void setContactSet(List<Contact> contactSet) {
+	public void setContactSet(List<IRISContact> contactSet) {
 		this.contactSet = contactSet;
 	}
 

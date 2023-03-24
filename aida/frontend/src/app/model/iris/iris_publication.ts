@@ -1,9 +1,8 @@
-import { last } from "rxjs/operators";
-import { Citation } from "./citation";
-import { Journal } from "./journal";
-import { Person } from "./person";
+import { IRISCitation } from "./iris_citation";
+import { IRISJournal } from "./iris_journal";
+import { IRISPerson } from "./iris_person";
 
-export class Publication {
+export class IRISPublication {
 
     legacyid_i: number;
     handle: string;
@@ -20,12 +19,12 @@ export class Publication {
     authors: string;
     dateIssued: string;
     language: string;
-    journal: Journal;
+    journal: IRISJournal;
     fulltextPresence: string;
     ssd: string;
     lastModified: string;
-    citationCount: Citation;
-    person: Person[];
+    citationCount: IRISCitation;
+    person: IRISPerson[];
     stato: string;
 
     constructor(legacyid_i, handle, year, issued_dt, doi, keywords, title, descriptionAbstractAll,
