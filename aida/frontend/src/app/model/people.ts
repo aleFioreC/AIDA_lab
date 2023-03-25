@@ -2,6 +2,7 @@ export class People {
     idPeople: number;
     name: string;
     surname: string;
+    cf: string;
     email: string;
     number: string;
     additionalInfo: string;
@@ -9,9 +10,10 @@ export class People {
     roleGroup: string;
     file: string;
 
-    constructor(name, surname, email, number, additionalInfo, role, group, file) {
+    constructor(name, surname, cf, email, number, additionalInfo, role, group, file) {
         this.name = name
         this.surname = surname
+        this.cf = cf
         this.email = email
         this.number = number
         this.additionalInfo = additionalInfo

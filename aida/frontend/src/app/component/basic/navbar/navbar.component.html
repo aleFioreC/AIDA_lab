@@ -18,8 +18,6 @@
     <div class="menu-spacer" *ngIf="isShow">
       <span class="cursor" routerLink="/">Home</span>
       <span class="divider"></span>
-      <span class="cursor" routerLink="/p101">P101</span>
-      <span class="divider"></span>
       <span class="cursor" routerLink="/people">{{ 'people.title' | translate }}</span>
       <span class="divider"></span>
       <span class="cursor" routerLink="/research">{{ 'research.title' | translate }}</span>
@@ -33,6 +31,8 @@
       <span class="cursor" routerLink="/contact">{{ 'contact.title' | translate }}</span>
       <span class="divider"></span>
       <span class="cursor" routerLink="/login">{{ 'login.title' | translate }}</span>
+      <span class="divider"></span>
+      <span class="cursor" routerLink="/p101">P101</span>
     </div>
   </mat-toolbar>
 
@@ -42,7 +42,6 @@
         <a (click)="sidenav.toggle()" class="small-text-href" routerLink="" mat-list-item>Home</a>
         <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/people" mat-list-item>{{ 'people.title' |
           translate }}</a>
-        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/p101" mat-list-item>P101</a>
         <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/research" mat-list-item>{{ 'research.title' |
           translate }}</a>
         <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/thesis" mat-list-item>{{ 'thesis.title' |
@@ -55,6 +54,7 @@
           translate }}</a>
         <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/login" mat-list-item>{{ 'login.title' |
           translate }}</a>
+        <a (click)="sidenav.toggle()" class="small-text-href" routerLink="/p101" mat-list-item>P101</a>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>

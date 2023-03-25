@@ -62,7 +62,7 @@
                     Fiscal Code is required.
                 </div>
                 <div
-                    *ngIf="requiredFormPeople.controls['cf'].hasError('minlength') && requiredFormPeople.controls['cf'].hasError('maxlength')">
+                    *ngIf="requiredFormPeople.controls['cf'].hasError('minlength') || requiredFormPeople.controls['cf'].hasError('maxlength')">
                     Fiscal Code not valid.
                 </div>
             </div>

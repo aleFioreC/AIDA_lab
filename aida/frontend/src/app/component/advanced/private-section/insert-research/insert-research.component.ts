@@ -39,9 +39,9 @@ export class InsertResearchComponent implements OnInit {
   myForm() {
     this.requiredFormResearch = this.fb.group({
       titleIt: ['', Validators.required],
-      descriptionIt: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
+      descriptionIt: ['', Validators.compose([Validators.required, Validators.maxLength(1500)])],
       titleEn: ['', Validators.required],
-      descriptionEn: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
+      descriptionEn: ['', Validators.compose([Validators.required, Validators.maxLength(1500)])],
       year: ['', Validators.required]
     });
   }

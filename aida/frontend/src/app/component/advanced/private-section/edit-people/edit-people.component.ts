@@ -50,7 +50,7 @@ export class EditPeopleComponent implements OnInit {
       role: ['', Validators.required],
       group: ['', Validators.required],
       additionalInfo: [''],
-      number: ['', Validators.required],
+      number: [''],
       cf: ['', Validators.compose([Validators.required, Validators.minLength(16), Validators.maxLength(16)])],
     });
   }
@@ -65,7 +65,7 @@ export class EditPeopleComponent implements OnInit {
   }
 
   savePeople() {
-    let obj: People = new People(this.requiredForm.value.name, this.requiredForm.value.surname, this.requiredForm.value.email, this.requiredForm.value.number, this.requiredForm.value.additionalInfo, this.requiredForm.value.role, this.requiredForm.value.group, this.edit ? this.imageSource : this.people.file)
+    let obj: People = new People(this.requiredForm.value.name, this.requiredForm.value.surname, this.requiredForm.value.cf, this.requiredForm.value.email, this.requiredForm.value.number, this.requiredForm.value.additionalInfo, this.requiredForm.value.role, this.requiredForm.value.group, this.edit ? this.imageSource : this.people.file)
     this.generalService.editPeople(this.people.idPeople, obj).subscribe(res => {
       this.openDialog()
       this.edit = false;

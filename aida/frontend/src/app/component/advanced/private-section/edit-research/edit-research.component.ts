@@ -46,9 +46,9 @@ export class EditResearchComponent implements OnInit {
   myForm() {
     this.requiredForm = this.fb.group({
       titleIt: ['', Validators.required],
-      descriptionIt: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
+      descriptionIt: ['', Validators.compose([Validators.required, Validators.maxLength(1500)])],
       titleEn: ['', Validators.required],
-      descriptionEn: ['', Validators.compose([Validators.required, Validators.maxLength(1024)])],
+      descriptionEn: ['', Validators.compose([Validators.required, Validators.maxLength(1500)])],
       year: ['']
     });
   }
