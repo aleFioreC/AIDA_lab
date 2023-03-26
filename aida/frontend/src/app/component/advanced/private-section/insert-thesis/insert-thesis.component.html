@@ -13,7 +13,7 @@
                     (change)="uploadListener($event)" accept="*" />
             </div>
 
-            <div class="pad col-md-3 col-6 mb-4" *ngIf="imageSource">
+            <div class="pad pad-img col-md-3 col-6 mb-4" *ngIf="imageSource">
                 <div class="right">
                     <button mat-raised-button class="margin-left" color="warn"
                         (click)="delete()"><mat-icon>delete</mat-icon></button>
@@ -41,7 +41,7 @@
                     <textarea formControlName="descriptionIt" matInput></textarea>
                 </mat-form-field>
                 <div class="right">
-                    {{requiredFormThesis.value.descriptionIt?.length}}/1024
+                    {{requiredFormThesis.value.descriptionIt?.length}}/1500
                 </div>
             </div>
 
@@ -51,7 +51,7 @@
                     Description is required.
                 </div>
                 <div *ngIf="requiredFormThesis.controls['descriptionIt'].hasError('maxlength')">
-                    Description cannot exceed 1024 characters.
+                    Description cannot exceed 1500 characters.
                 </div>
             </div>
 
@@ -75,7 +75,7 @@
                     <textarea formControlName="descriptionEn" matInput></textarea>
                 </mat-form-field>
                 <div class="right">
-                    {{requiredFormThesis.value.descriptionEn?.length}}/1024
+                    {{requiredFormThesis.value.descriptionEn?.length}}/1500
                 </div>
             </div>
 
@@ -85,7 +85,7 @@
                     Description is required.
                 </div>
                 <div *ngIf="requiredFormThesis.controls['descriptionEn'].hasError('maxlength')">
-                    Description cannot exceed 1024 characters.
+                    Description cannot exceed 1500 characters.
                 </div>
             </div>
 

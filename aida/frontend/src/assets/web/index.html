@@ -26,14 +26,14 @@
     <script src="js/tipped/tipped.js"></script>
     <link rel="stylesheet" type="text/css" href="css/tipped/tipped.css" />
 
-    <div id="fb-root"></div>
+    <!-- <div id="fb-root"></div>
     <script>(function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
             js = d.createElement(s); js.id = id;
             js.src = "//connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v2.9&appId=231919623485016";
             fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
+        }(document, 'script', 'facebook-jssdk'));</script> -->
 
 </head>
 
@@ -209,15 +209,14 @@
     <div id="p101">
         <div id="lights">
             <div id="etichetta"><b>Olivetti</b> <i>Programma101</i><br>
-                <div class="fb-like" data-href="https://www.facebook.com/P101Unicas/" data-layout="button_count"
-                    data-action="like" data-size="small" data-show-faces="true" data-share="true">Facebook</div>
+                <a href="https:/www.facebook.com/P101Unicas/" target="blank"><img src="images/facebook.jpeg" height="40"
+                        width="100" /></a>
             </div>
             <span id="green_light"></span>
             <span id="red_light"></span>
         </div>
 
-
-        <div id="controlli">
+        <div id="controlli" style="margin-top:10px">
             <span id="resetTop" class="reset">Gen. Reset</span>
             <span id="interlinea">I</span>
             <span id="eliminaStampa">Elimina Stampa</span>

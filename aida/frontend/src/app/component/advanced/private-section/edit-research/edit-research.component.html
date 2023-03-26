@@ -13,7 +13,7 @@
                 <input id="file" type="file" #fileInput multiple class="form-control" (change)="onFileChange($event)">
             </div>
 
-            <div class="top col-md-3 col-6 mb-4" *ngFor='let url of images'>
+            <div class="top pad-img col-md-3 col-6 mb-4" *ngFor='let url of images'>
                 <div class="right">
                     <button mat-raised-button class="margin-left" color="warn"
                         (click)="delete(url)"><mat-icon>delete</mat-icon></button>
