@@ -78,7 +78,7 @@ $(function () {
     // CODICE INTERAZIONE CON IL SERVER M.MOLINARA
     $.ajax({
         type: "GET",
-        url: "http://localhost:4200/aida/programmi/findAll",
+        url: "/aida/programmi/findAll",
         cache: false,
         beforeSend: function (xhr) {
             xhr.setRequestHeader('Authorization', make_base_auth("admin", "aidalab"));

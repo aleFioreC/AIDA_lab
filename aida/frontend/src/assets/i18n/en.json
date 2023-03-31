@@ -1,4 +1,7 @@
 {
+    "version": {
+        "number": "Number version"
+    },
     "dashboard": {
         "text": "Welcome to the Home Page of the Artificial Intelligence and Data Analysis Group of the DIEI the University of Cassino and Southern Lazio, Cassino, Italy",
         "subtitle": "News",
