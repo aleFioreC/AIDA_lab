@@ -1,4 +1,8 @@
 <div class="container grid-container mt-5">
+
+    <button class="btn btn-primary  mt-2 ml-2 mb-2" (click)="back()"><mat-icon>arrow_circle_left</mat-icon>
+    </button>
+
     <div class="person-single-column center">
         <div class="person">
             <img *ngIf="people.file" class="rounded-circle" [src]="people.file" alt="Image Source">

@@ -1,5 +1,6 @@
 package dev.unicas.aida.springboot.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,6 +31,7 @@ public class NewsService {
 		Optional<News> news = findById(id);
 		if (news.isPresent()) {
 			this.delete(id);
+			res.setCreationDate(new Date());
 			this.repository.save(res);
 			saveLanguages(res);
 			return res;

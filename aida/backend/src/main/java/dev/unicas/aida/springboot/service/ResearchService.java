@@ -1,5 +1,6 @@
 package dev.unicas.aida.springboot.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,6 +37,7 @@ public class ResearchService {
 		Optional<Research> research = findById(id);
 		if (research.isPresent()) {
 			this.delete(id);
+			res.setCreation_date(new Date());
 			this.repository.save(res);
 			saveFiles(res);
 			saveLanguages(res);

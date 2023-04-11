@@ -3,7 +3,7 @@
 }
 
 .back {
-    background: var(--cyan);
+    background: var(--bs-primary);
 }
 
 .height {
@@ -13,8 +13,8 @@
 
 @media (min-width: 1200px) {
     .img {
-        width: 380px;
-        height: 330px;
+        width: 350px;
+        height: 320px;
     }
 }
 

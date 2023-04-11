@@ -1,5 +1,6 @@
 package dev.unicas.aida.springboot.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,6 +31,7 @@ public class ThesisService {
 		Optional<Thesis> thesis = findById(id);
 		if (thesis.isPresent()) {
 			this.delete(id);
+			res.setCreationDate(new Date());
 			this.repository.save(res);
 			saveLanguages(res);
 			return res;

@@ -19,6 +19,7 @@ export class EditNewsComponent implements OnInit {
   imageSource;
   state;
   news;
+  edit: boolean = false
 
   requiredForm: FormGroup;
 
@@ -70,6 +71,7 @@ export class EditNewsComponent implements OnInit {
     let files = $event.srcElement.files;
     let img = await this.convertBase64(files[0])
     this.imageSource = img
+    this.edit = true
   }
 
   convertBase64 = (file) => {
@@ -90,6 +92,7 @@ export class EditNewsComponent implements OnInit {
   saveNews() {
     this.generalService.editNews(this.news.idNews, this.getNews()).subscribe(res => {
       this.openDialog()
+      this.edit = false;
       this.router.navigate(['/private'], { state: { user: this.state } });
     })
   }
@@ -100,7 +103,7 @@ export class EditNewsComponent implements OnInit {
     let en = new NewsLang(this.requiredForm.value.titleEn, this.requiredForm.value.descriptionEn, 'en')
     langs.push(it)
     langs.push(en)
-    return new News(this.imageSource, langs)
+    return new News(this.edit ? this.imageSource : this.news.file, langs)
   }
 
 
