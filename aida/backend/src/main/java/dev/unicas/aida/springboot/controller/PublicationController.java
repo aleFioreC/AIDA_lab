@@ -1,6 +1,8 @@
 package dev.unicas.aida.springboot.controller;
 
 import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -12,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
-import dev.unicas.aida.springboot.model.iris.IRISResult;
 import dev.unicas.aida.springboot.service.PublicationService;
 
 @RestController
@@ -24,8 +25,8 @@ public class PublicationController {
 	private PublicationService service;
 
 	@GetMapping(value = "/findAll", produces = MediaType.APPLICATION_JSON_VALUE)
-	public IRISResult findAll() throws JsonParseException, JsonMappingException, IOException {
-		return service.findAllR();
+	public String findAll() throws JsonParseException, JsonMappingException, IOException, KeyManagementException, NoSuchAlgorithmException {
+		return service.findAll();
 	}
 
 }

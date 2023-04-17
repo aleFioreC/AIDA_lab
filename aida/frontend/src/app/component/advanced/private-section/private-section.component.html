@@ -4,7 +4,7 @@
         <mat-tab label="News">
             <div class="container grid-container mt-2">
                 <button class="btn btn-primary" (click)="newNews()">
-                    <span>New news <mat-icon>save</mat-icon></span>
+                    <span>New news <mat-icon matTooltip="New">save</mat-icon></span>
                 </button>
                 <div class="col-sm-12 col-md-12 mt-5" *ngFor="let card of news">
                     <mat-card class="dashboard-card cursor">
@@ -28,9 +28,10 @@
                             </div>
                             <div class="col-sm-6">
                                 <button mat-raised-button class="margin-left btn btn-primary"
-                                    (click)="openNews(card)"><mat-icon>mode_edit</mat-icon></button>
+                                    (click)="openNews(card)"><mat-icon matTooltip="Edit">mode_edit</mat-icon></button>
                                 <button mat-raised-button class="margin-left" color="warn"
-                                    (click)="confirmDialog(card, 'news')"><mat-icon>delete</mat-icon></button>
+                                    (click)="confirmDialog(card, 'news')"><mat-icon
+                                        matTooltip="Delete">delete</mat-icon></button>
                             </div>
                         </mat-card-content>
                     </mat-card>
@@ -65,9 +66,10 @@
                             </div>
                             <div class="col-sm-6">
                                 <button mat-raised-button class="margin-left btn btn-primary"
-                                    (click)="openPeople(card)"><mat-icon>mode_edit</mat-icon></button>
+                                    (click)="openPeople(card)"><mat-icon matTooltip="Edit">mode_edit</mat-icon></button>
                                 <button mat-raised-button class="margin-left" color="warn"
-                                    (click)="confirmDialog(card, 'people')"><mat-icon>delete</mat-icon></button>
+                                    (click)="confirmDialog(card, 'people')"><mat-icon
+                                        matTooltip="Delete">delete</mat-icon></button>
                             </div>
                         </mat-card-content>
                     </mat-card>
@@ -101,9 +103,11 @@
                             </div>
                             <div class="col-sm-6">
                                 <button mat-raised-button class="margin-left btn btn-primary"
-                                    (click)="openResearch(card)"><mat-icon>mode_edit</mat-icon></button>
+                                    (click)="openResearch(card)"><mat-icon
+                                        matTooltip="Edit">mode_edit</mat-icon></button>
                                 <button mat-raised-button class="margin-left" color="warn"
-                                    (click)="confirmDialog(card, 'research')"><mat-icon>delete</mat-icon></button>
+                                    (click)="confirmDialog(card, 'research')"><mat-icon
+                                        matTooltip="Delete">delete</mat-icon></button>
                             </div>
                         </mat-card-content>
                     </mat-card>
@@ -138,9 +142,10 @@
                             </div>
                             <div class="col-sm-6">
                                 <button mat-raised-button class="margin-left btn btn-primary"
-                                    (click)="openThesis(card)"><mat-icon>mode_edit</mat-icon></button>
+                                    (click)="openThesis(card)"><mat-icon matTooltip="Edit">mode_edit</mat-icon></button>
                                 <button mat-raised-button class="margin-left" color="warn"
-                                    (click)="confirmDialog(card, 'thesis')"><mat-icon>delete</mat-icon></button>
+                                    (click)="confirmDialog(card, 'thesis')"><mat-icon
+                                        matTooltip="Delete">delete</mat-icon></button>
                             </div>
                         </mat-card-content>
                     </mat-card>

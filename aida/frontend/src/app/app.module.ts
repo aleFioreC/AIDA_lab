@@ -61,6 +61,7 @@ import { InsertNewsComponent } from './component/advanced/private-section/insert
 import { InsertPeopleComponent } from './component/advanced/private-section/insert-people/insert-people.component';
 import { InsertResearchComponent } from './component/advanced/private-section/insert-research/insert-research.component';
 import { InsertThesisComponent } from './component/advanced/private-section/insert-thesis/insert-thesis.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -119,6 +120,7 @@ import { InsertThesisComponent } from './component/advanced/private-section/inse
     MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
+    MatTooltipModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
