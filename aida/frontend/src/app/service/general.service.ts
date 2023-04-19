@@ -13,8 +13,8 @@ export class GeneralService {
         this.environment = environment.base_url
     }
 
-    allPublication() {
-        return this.httpClient.get(this.environment + '/publication/findAll');
+    allPublication(year) {
+        return this.httpClient.get(this.environment + '/publication/findAll/' + year);
     }
 
     allThesis() {

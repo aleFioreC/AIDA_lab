@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,9 +25,9 @@ public class PublicationController {
 	@Autowired
 	private PublicationService service;
 
-	@GetMapping(value = "/findAll", produces = MediaType.APPLICATION_JSON_VALUE)
-	public String findAll() throws JsonParseException, JsonMappingException, IOException, KeyManagementException, NoSuchAlgorithmException {
-		return service.findAll();
+	@GetMapping(value = "/findAll/{year}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public String findAll(@PathVariable String year) throws JsonParseException, JsonMappingException, IOException, KeyManagementException, NoSuchAlgorithmException {
+		return service.findAll(year);
 	}
 
 }

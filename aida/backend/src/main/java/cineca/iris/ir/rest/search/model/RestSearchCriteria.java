@@ -29,7 +29,7 @@ package cineca.iris.ir.rest.search.model;
  * @author pmeriggi
  *
  */
-public class RestSearchCriteria extends RestSearchElement {
+public class RestSearchCriteria {
 
     private String column;
     private String operation;
@@ -64,7 +64,6 @@ public class RestSearchCriteria extends RestSearchElement {
     }
 
     public RestSearchCriteria(String key, String operation, String value) {
-        super();
         this.column = key;
         this.operation = operation;
         this.value = value;

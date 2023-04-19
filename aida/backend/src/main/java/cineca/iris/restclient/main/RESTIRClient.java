@@ -745,6 +745,18 @@ public class RESTIRClient {
 		return response;
 	}
 
+	public Response people(String cf) throws IOException {
+		this.webTarget = this.client.target(baseURI + pathIR).path("people/" + cf);
+
+		Response response = this.webTarget.request(MediaType.APPLICATION_JSON)
+				.header(HeaderScopeEnum.getHeaderTag(), HeaderScopeEnum.ROLE_ADMIN.getHeaderValue()).get();
+		if (response.getStatus() != 200) {
+			ErrorResponse error = mapper.readValue(response.readEntity(String.class), ErrorResponse.class);
+			throw new RuntimeException("Failed : HTTP error code : " + response.getStatus() + " - "+ error.getMessage());
+		}
+		return response;
+	}
+	
 	/**
 	 * Get person by id (person or cris)
 	 * 

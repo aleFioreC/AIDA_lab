@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { IRISPublication } from 'src/app/model/iris/iris_publication';
-import { IRISResult } from 'src/app/model/iris/iris_result';
 import { GeneralService } from 'src/app/service/general.service';
 
 
@@ -11,15 +9,17 @@ import { GeneralService } from 'src/app/service/general.service';
 })
 export class PublicationComponent implements OnInit {
 
-  cards: IRISPublication[] = [];
+  cards: any[] = [];
+  year: string;
 
   imageSource;
 
   constructor(private service: GeneralService) { }
 
   ngOnInit(): void {
-    this.service.allPublication().subscribe((res: IRISResult) => {
-      res.resultList.forEach(element => {
+    this.year = '2023'
+    this.service.allPublication('2023').subscribe((res: any) => {
+      res.restResourseDTOList.forEach(element => {
         this.cards.push(element)
       })
     })
@@ -27,8 +27,9 @@ export class PublicationComponent implements OnInit {
 
   search(year) {
     this.cards = []
-    this.service.allPublication().subscribe((res: IRISResult) => {
-      res.resultList.forEach(element => {
+    this.year = year
+    this.service.allPublication(year).subscribe((res: any) => {
+      res.restResourseDTOList.forEach(element => {
         this.cards.push(element)
       })
     })
