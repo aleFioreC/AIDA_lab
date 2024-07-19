@@ -17,10 +17,12 @@ export class PublicationComponent implements OnInit {
   constructor(private service: GeneralService) { }
 
   ngOnInit(): void {
-    this.year = '2023'
-    this.service.allPublication('2023').subscribe((res: any) => {
-      res.restResourseDTOList.forEach(element => {
-        this.cards.push(element)
+    this.year = '2024'
+    this.service.allPublication(this.year).subscribe((res: any) => {
+      res.forEach(element => {
+        element.restResourseDTOList.forEach(el => {
+          this.cards.push(el)
+        })
       })
     })
   }
@@ -29,8 +31,10 @@ export class PublicationComponent implements OnInit {
     this.cards = []
     this.year = year
     this.service.allPublication(year).subscribe((res: any) => {
-      res.restResourseDTOList.forEach(element => {
-        this.cards.push(element)
+      res.forEach(element => {
+        element.restResourseDTOList.forEach(el => {
+          this.cards.push(el)
+        })
       })
     })
   }

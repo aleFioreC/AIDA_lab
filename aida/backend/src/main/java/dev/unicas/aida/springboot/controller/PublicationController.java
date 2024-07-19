@@ -3,6 +3,7 @@ package dev.unicas.aida.springboot.controller;
 import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
+import cineca.iris.ir.rest.model.CollectionResponse;
 import dev.unicas.aida.springboot.service.PublicationService;
 
 @RestController
@@ -26,7 +28,7 @@ public class PublicationController {
 	private PublicationService service;
 
 	@GetMapping(value = "/findAll/{year}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public String findAll(@PathVariable String year) throws JsonParseException, JsonMappingException, IOException, KeyManagementException, NoSuchAlgorithmException {
+	public List<CollectionResponse> findAll(@PathVariable String year) throws JsonParseException, JsonMappingException, IOException, KeyManagementException, NoSuchAlgorithmException {
 		return service.findAll(year);
 	}
 
