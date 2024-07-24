@@ -1,9 +1,7 @@
-
-
 .more-button {
-    position: absolute;
-    top: 5px;
-    right: 10px;
+  position: absolute;
+  top: 5px;
+  right: 10px;
 }
 
 
@@ -16,6 +14,6 @@
   word-break: break-word;
 }
 
-.dashboard-card-content{
+.dashboard-card-content {
   padding-left: 10px
 }
