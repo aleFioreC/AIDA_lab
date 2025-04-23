@@ -118,7 +118,7 @@ export class EditThesisComponent implements OnInit {
 
     dialogConfig.data = {
       title: 'Operazione completata',
-      message: 'Salvataggio effettuato correttamente.',
+      message: 'Operazione effettuata con successo',
       class: 'success-class'
     };
 

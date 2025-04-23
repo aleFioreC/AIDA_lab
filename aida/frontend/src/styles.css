@@ -4006,10 +4006,11 @@ input[type="button"].btn-block {
     display: flex;
     flex-wrap: wrap;
     padding: .75rem 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     list-style: none;
-    background-color: #e9ecef;
-    border-radius: .25rem
+    background: none !important;
+    border-radius: .25rem;
+    border-bottom: 3px solid var(--bs-primary) !important;
 }
 
 .breadcrumb-item {
@@ -8822,6 +8823,7 @@ main>.container {
 .footer {
     width: 100%;
     border-top: 1px solid var(--bs-primary-rgb);
+    display: contents;
 }
 
 .footer .footer-ribbon {

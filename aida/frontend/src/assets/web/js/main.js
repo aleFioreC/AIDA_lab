@@ -81,7 +81,7 @@ $(function () {
         url: "/aida/programmi/findAll",
         cache: false,
         beforeSend: function (xhr) {
-            xhr.setRequestHeader('Authorization', make_base_auth("admin", "aidalab"));
+            xhr.setRequestHeader('Authorization', make_base_auth("admin", "$$p101-2016-P101$$"));
         },
         success: function (data) {
 

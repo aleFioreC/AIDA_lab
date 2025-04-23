@@ -64,7 +64,7 @@
     },
     "operation": {
         "success": "Operazione completata con successo",
-        "error": "Errori durante l'operazione",
+        "error": "Si è verificato un errore",
         "language": "Linguaggio corrente"
     }
 }

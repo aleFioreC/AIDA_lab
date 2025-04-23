@@ -39,9 +39,9 @@ export class LoadingInterceptor implements HttpInterceptor {
         catchError((error: HttpErrorResponse) => {
           let errorMsg = ''
           if (error.status != 403) {
-            errorMsg = 'Errore durante l\'\operazione.';
+            errorMsg = 'Errore durante il recupero dei dati';
           } else {
-            errorMsg = 'Non sei autorizzato ad accedere alla sezione.'
+            errorMsg = 'Utente non autorizzato ad accedere alla sezione.'
           }
           const dialogConfig = new MatDialogConfig();
           dialogConfig.disableClose = true;

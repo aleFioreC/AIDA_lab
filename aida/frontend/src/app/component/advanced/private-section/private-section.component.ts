@@ -169,7 +169,7 @@ export class PrivateSectionComponent implements OnInit {
     dialogConfig.panelClass = 'full-screen-modal'
 
     dialogConfig.data = {
-      title: 'Warning',
+      title: 'Attenzione',
       message: message,
     };
 
@@ -204,7 +204,7 @@ export class PrivateSectionComponent implements OnInit {
 
     dialogConfig.data = {
       title: 'Operazione completata',
-      message: 'Elemento rimosso con successo.',
+      message: 'Operazione eseguita con successo',
       class: 'success-class'
     };
 
