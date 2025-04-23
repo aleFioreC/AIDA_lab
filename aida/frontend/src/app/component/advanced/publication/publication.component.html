@@ -8,6 +8,9 @@
         <ol>
             <li *ngFor="let card of cards"> {{card.name}} - {{card.lookupValues.contributors}}
             </li>
+            <span *ngIf="cards.length == 0">
+                Nessun risultato disponibile per la ricerca effettuata
+            </span>
         </ol>
     </ul>
 </div>

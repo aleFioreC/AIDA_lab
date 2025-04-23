@@ -14,6 +14,26 @@ export class PeopleDetailComponent implements OnInit {
   people: People;
   file: any;
 
+  breadcrumb =  [
+    {
+      label: 'Home',
+      url: '/',
+      class: 'breadcrumb-item',
+      active: false
+    },
+    {
+      label: 'People',
+      url: '/people',
+      class: 'breadcrumb-item',
+      active: false
+    },
+    {
+      label: 'Detail',
+      class: 'breadcrumb-item',
+      active: true
+    }
+  ]
+
   constructor(private location: Location, private _sanitizer: DomSanitizer, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -23,8 +43,8 @@ export class PeopleDetailComponent implements OnInit {
     });
   }
 
-  back() {
-    this.location.back()
-  }
+  // back() {
+  //   this.location.back()
+  // }
 
 }

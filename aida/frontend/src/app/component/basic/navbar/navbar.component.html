@@ -30,9 +30,9 @@
       <span class="divider"></span>
       <span class="cursor" routerLink="/contact">{{ 'contact.title' | translate }}</span>
       <span class="divider"></span>
-      <span class="cursor" routerLink="/login">{{ 'login.title' | translate }}</span>
-      <span class="divider"></span>
       <span class="cursor" routerLink="/p101">P101</span>
+      <span class="divider"></span>
+      <span class="cursor" routerLink="/login">{{ 'login.title' | translate }}</span>
     </div>
   </mat-toolbar>
 
@@ -61,6 +61,14 @@
       <div>
         <router-outlet></router-outlet>
       </div>
+      <footer class="footer background">
+        <div class="row col-sm-12">
+            <div class="foot-title  text-center col-sm-12">
+                Università degli studi di Cassino e del Lazio Meridionale     
+                <span> <img class="logo-footer" src="assets/logo_aida.png"></span>
+            </div>
+        </div>
+    </footer>
     </mat-sidenav-content>
 
   </mat-sidenav-container>

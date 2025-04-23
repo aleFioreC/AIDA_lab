@@ -13,6 +13,26 @@ import { Research } from 'src/app/model/research';
 })
 export class ResearchDetailComponent implements OnInit {
 
+  breadcrumb =  [
+    {
+      label: 'Home',
+      url: '/',
+      class: 'breadcrumb-item',
+      active: false
+    },
+    {
+      label: 'Research',
+      url: '/research',
+      class: 'breadcrumb-item',
+      active: false
+    },
+    {
+      label: 'Detail',
+      class: 'breadcrumb-item',
+      active: true
+    }
+  ]
+
   research: CardDisplay;
   file: SafeResourceUrl;
   currentLanguage;

@@ -16,6 +16,27 @@ export class NewsDetailComponent implements OnInit {
   file: SafeUrl;
   currentLanguage;
 
+  
+  breadcrumb =  [
+    {
+      label: 'Home',
+      url: '/',
+      class: 'breadcrumb-item',
+      active: false
+    },
+    {
+      label: 'News',
+      url: '/',
+      class: 'breadcrumb-item',
+      active: false
+    },
+    {
+      label: 'Detail',
+      class: 'breadcrumb-item',
+      active: true
+    }
+  ]
+
   constructor(private location: Location, private translate: TranslateService, private _sanitizer: DomSanitizer, private activatedRoute: ActivatedRoute) {
     this.currentLanguage = this.translate.currentLang ? this.translate.currentLang : this.translate.defaultLang
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
@@ -31,8 +52,8 @@ export class NewsDetailComponent implements OnInit {
     });
   }
 
-  back() {
-    this.location.back()
-  }
+  // back() {
+  //   this.location.back()
+  // }
 
 }

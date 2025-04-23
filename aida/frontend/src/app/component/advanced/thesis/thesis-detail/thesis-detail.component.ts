@@ -12,6 +12,27 @@ import { CardDisplay } from 'src/app/model/card_display';
 })
 export class ThesisDetailComponent implements OnInit {
 
+  
+  breadcrumb =  [
+    {
+      label: 'Home',
+      url: '/',
+      class: 'breadcrumb-item',
+      active: false
+    },
+    {
+      label: 'Thesis',
+      url: '/thesis',
+      class: 'breadcrumb-item',
+      active: false
+    },
+    {
+      label: 'Detail',
+      class: 'breadcrumb-item',
+      active: true
+    }
+  ]
+
   thesis: CardDisplay;
   file: SafeUrl;
   currentLanguage;
